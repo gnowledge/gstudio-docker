@@ -26,5 +26,5 @@ python manage.py create_schema STs_run1.csv
 python manage.py create_schema ATs.csv
 python manage.py create_schema RTs.csv
 python manage.py create_schema STs_run2.csv
-python manage.py filldb
+# python manage.py filldb
 supervisord -n
