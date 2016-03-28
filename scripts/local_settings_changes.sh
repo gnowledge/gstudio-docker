@@ -4,7 +4,7 @@
 #       http://unix.stackexchange.com/questions/89913/sed-ignore-line-starting-whitespace-for-match
 #sed -e '/Used for postgres db/ s/^#*/#/' -i  confs/local_settings.py.default 
 
-echo -e 'Please select the database for storing the users: \n   1. sqlite \n   2. postgresql';
+echo -e 'Please select the database for storing the users credentials: \n   1. sqlite \n   2. postgresql';
 read OPTION ;
 echo -e "USER input : $OPTION";
 if [[ "$OPTION" == "" ]]; then

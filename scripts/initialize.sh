@@ -45,8 +45,8 @@ sleep 60;
 echo "Starting cron service {Crontab}" ;
 /usr/sbin/cron ;
 
-#echo "[run] start postgresql" ;     # Used for postgres db
-#/etc/init.d/postgresql start ;      # Used for postgres db
+echo "[run] start postgresql" ;     # Used for postgres db
+/etc/init.d/postgresql start ;      # Used for postgres db
 
 echo "[run] start postfix" ;
 /etc/init.d/postfix start ;

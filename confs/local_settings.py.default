@@ -25,12 +25,12 @@ GSTUDIO_SITE_LANDING_TEMPLATE = "ndf/landing_page_clix.html"
 DATABASES = {
     'default': {
     # We have 2 database (postgres and sqlite3) connection details here. Ensure the part of connection details of database not in use is commented.  
-'ENGINE': 'django.db.backends.postgresql_psycopg2',		# Used for postgres db 
-'NAME': 'gstudio_psql',						# Used for postgres db 
-'USER': 'glab',							# Used for postgres db 
-'PASSWORD':'Gstudi0@2)1^',					# Used for postgres db 
-'HOST':'localhost',						# Used for postgres db 
-'PORT':''							# Used for postgres db 
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',		# Used for postgres db 
+	'NAME': 'gstudio_psql',						# Used for postgres db 
+	'USER': 'glab',							# Used for postgres db 
+	'PASSWORD':'Gstudi02)1^',					# Used for postgres db 
+	'HOST':'localhost',						# Used for postgres db 
+	'PORT':''							# Used for postgres db 
 
 #'ENGINE': 'django.db.backends.sqlite3',				# Used for sqlite3 db 
 #'NAME': 'gstudio-sqlite3.db',					# Used for sqlite3 db          

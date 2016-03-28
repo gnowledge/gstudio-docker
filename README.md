@@ -32,6 +32,16 @@ Script details
 		    1. installing docker application
 		    2. building the images and starting the container
 		    3. loading the imaes and starting the container 
+	   procedure   : bash build-docker.sh
+	   	    1. it will check docker application
+		    1.1. if it is installed, print the version. 
+		    1.2. if it is not installed, install the same. 
+		    2. reboot the system.
+		    3. again execute the same command after reboot (bash build-docker.sh) to load the image / build the image.
+		    3.1 load the image.
+		    3.2 build the image.
+		    	3.2.1 Please give branch name of online repo  
+		    4. start the container.
 
 	2. script name : initialize.sh
 	   execution   : bash initialize.sh

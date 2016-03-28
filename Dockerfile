@@ -2,7 +2,7 @@
 FROM ubuntu:14.04 
 
 # file Author / Maintainer to GN 
-MAINTAINER nagarjun@gnowledge.org, mrunal@gnowledge.org
+MAINTAINER nagarjun@gnowledge.org, mrunal@gnowledge.org, satej@gnowledge.org
 
 # file adding auser "docker" 
 # -m : home directory

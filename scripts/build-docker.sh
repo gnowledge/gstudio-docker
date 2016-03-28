@@ -329,6 +329,7 @@ else
     $sh_c 'sudo start docker'  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
     $sh_c 'sudo service docker start'  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
     
+fi
     $sh_c 'touch docker-inst.lock'   | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
     $sh_c 'echo $INSTALL_LOG > docker-inst.lock'    | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
     
@@ -336,7 +337,6 @@ else
     
     exit
     
-fi
 elif [[ -f docker-inst.lock ]]; then
 
 
@@ -357,8 +357,14 @@ read -t 60 repo_branch
 if [ "$repo_branch" == "" ]; then
     echo -e "\nInfo-msg : No value provided. So applying default value as replica. \n"  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
     repo_branch="replica";
-else
+fi 
+
+git branch -r  | cut -d/ -f2- | grep -v HEAD | grep $repo_branch > /dev/null 2>&1
+
+if [ $? -eq 0 ]; then
     echo -e "\nInfo-msg : Value provided is $repo_branch. \n"  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
+else
+    echo -e "\nInfo-msg : Value provided is $repo_branch. Input is invalid \n"  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
 fi
 
 if [ -d "gstudio" ]; then
