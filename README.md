@@ -23,3 +23,65 @@ Building the Image
 
 Build the image by running "build-docker.sh" script from the project directory after cloning the project files. If you are re-building the image, delete the 'gstudio' directory to get the fresh updates from gstudio project. 
 
+Script details
+---------------------
+
+	1. script name : build-docker.sh
+	   execution   : bash build-docker.sh
+	   use	       : used for the following -
+		    1. installing docker application
+		    2. building the images and starting the container
+		    3. loading the imaes and starting the container 
+	   procedure   : bash build-docker.sh
+	   	    1. it will check docker application
+		    1.1. if it is installed, print the version. 
+		    1.2. if it is not installed, install the same. 
+		    2. reboot the system.
+		    3. again execute the same command after reboot (bash build-docker.sh) to load the image / build the image.
+		    3.1 load the image.
+		    3.2 build the image.
+		    	3.2.1 Please give branch name of online repo  
+		    4. start the container.
+
+	2. script name : initialize.sh
+	   execution   : bash initialize.sh
+	   use	       : used for the following -
+		    1. starting the applications at the startup of a docker container
+		    2. execute application related scripts
+
+	3. script name : numa-arch-check.sh
+	   execution   : bash numa-arch-check.sh
+	   use	       : used for the following -
+		    1. check of numa arch.
+
+	4. script name : generate-self-certified-certificate-ssl.sh
+	   execution   : bash generate-self-certified-certificate-ssl.sh
+	   use	       : used for the following -
+		    1. generate ssl certificate (self certified ssl certificate).
+
+	5. script name : local_settings_changes.sh
+	   execution   : bash local_settings_changes.sh
+	   use	       : used for the following -
+		    1. generate ssl certificate (self certified ssl certificate).
+
+	6. script name : smtpd.sh
+	   execution   : bash smtpd.sh
+	   use	       : used for the following -
+		    1. starting smtpd 
+
+	7. script name : Bulk-User-creation.sh
+	   execution   : bash Bulk-User-creation.sh
+	   use	       : used for the following -
+		    1. creating the bulk users. It makes use of "Users.csv" for creating user details for creation.
+       		    Note : First add new usernames and passwords in "Users.csv".
+
+	8. script name : git-update.sh
+	   execution   : bash git-update.sh
+	   use	       : used for the following -
+		    1. updating the code from git
+
+	9. script name : ss-gpg-setup.sh
+	   execution   : bash ss-gpg-setup.sh
+	   use	       : used for the following -  (Under developement)
+		    1. take installing user and school details.
+		    2. generate gpg keys.
