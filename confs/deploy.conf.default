@@ -1,0 +1,52 @@
+# Mrunal : All the depolyment configuration are stored here
+
+#--------------------------------------------------------------------#
+# Log file details...
+#--------------------------------------------------------------------#
+LOG_DIR="";
+INSTALL_LOG=""; # Mrunal : Fri Aug 28 17:38:35 IST 2015 : used for redirecting Standard_output(Normal msg)
+INSTALL_LOG_FILE="$LOG_DIR/$INSTALL_LOG"; # Mrunal : Fri Aug 28 17:38:35 IST 2015 : used for redirecting Standard_output(Normal msg)
+dHOME="/home/docker/code"
+# ---------------- Log files variable def ends here -----------------
+
+dHOME="";
+hHOME="";
+
+_TYPE="";
+_OPTION="";
+_repo_branch="";
+_INTERNET_STATUS="0";
+
+dock_img_name_repo="school-server/$repo_branch";
+dock_img_name_tag="v1-$(date +%Y%m%d-%H%M%S)";
+dock_img_name="$dock_img_name_repo:$dock_img_name_tag";
+dock_img_file=replica-test-20151230-1915.tar;
+dock_img=replica-test;
+dock_con=school-server-con-$repo_branch-$_TYPE;
+
+port_ssh_dock=22;
+port_ssh_host=8022;
+    
+port_smtp_dock=25;
+port_smtp_host=8025;
+
+port_http_dock=80;
+port_http_host=80;
+    
+port_https_dock=443;
+port_https_host=443;
+
+port_django_dev_dock=8000;
+port_django_dev_host=8000;
+    
+port_mongo_dock=27107;
+port_mongo_host=27107;
+
+port_smtp_test_dock=1025;
+port_smtp_test_host=11025;
+    
+port_imap_dock=143;
+port_imap_host=8143;
+
+port_smtps_dock=587;
+port_smtps_host=8857;

@@ -113,7 +113,7 @@ function internet_check() {
     if ([ "$_INT_COM" == 0 ] && [ "$_META" == 0 ] && [ "$_GOOGLE" == 0 ]); then  # If no internet connection
         echo -e "\nInternet connection failed. Please check the network connections(IP, gateway, routes or physical cables)."  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /" 2>&1 | tee -a ${INSTALL_LOG_FILE}
 	_TYPE=0;
-	echo -e 'Type of image : \n   1. Docker-build {Building a docker image} \n   2. Docker-image-load {Loading a existing docker image}';
+	echo -e 'Please select the database for storing the users: \n   1. Docker-build {Building a docker image} \n   2. Docker-image-load {Loading a existing docker image}';
 	read _TYPE ;
 	echo -e "USER input : $_TYPE";
 	
@@ -347,65 +347,118 @@ internet_check
 echo -e "\nInfo-msg : Checking gstudio repo local directory. If the directory exists then take git pull or else take clone of online repo  \n"  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
 
 # docker image and container related variables
-_repo_branch="";
+repo_branch="";
 
 
 echo -e "\nInfo-msg : Please give branch name of online repo "  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
 echo -e -n "\n${red}Branch name: ${reset}"  | tee -a ${INSTALL_LOG_FILE}
-read -t 60 _repo_branch
+read -t 60 repo_branch
 
-if [ "$_repo_branch" == "" ]; then
+if [ "$repo_branch" == "" ]; then
     echo -e "\nInfo-msg : No value provided. So applying default value as replica. \n"  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
-    _repo_branch="replica";
+    repo_branch="replica";
 fi 
 
-git branch -r  | cut -d/ -f2- | grep -v HEAD | grep $_repo_branch > /dev/null 2>&1
+git branch -r  | cut -d/ -f2- | grep -v HEAD | grep $repo_branch > /dev/null 2>&1
 
 if [ $? -eq 0 ]; then
-    echo -e "\nInfo-msg : Value provided is $_repo_branch. \n"  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
+    echo -e "\nInfo-msg : Value provided is $repo_branch. \n"  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
 else
-    echo -e "\nInfo-msg : Value provided is $_repo_branch. Input is invalid \n"  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
-    exit
+    echo -e "\nInfo-msg : Value provided is $repo_branch. Input is invalid \n"  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
 fi
 
 if [ -d "gstudio" ]; then
     cd gstudio
 
-    git branch -r --list | grep $_repo_branch  > /dev/null 2>&1   # Mrunal : No redirections here please
+    git branch -r --list | grep $repo_branch  > /dev/null 2>&1   # Mrunal : No redirections here please
     if [ $? -eq 0 ]; then               # If internet connection is available
 	echo -e "\nInfo-msg : Value is correct hence continuing the procedure. \n"  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
     else
 	echo -e "\nInfo-msg : No value provided. So applying default value as replica. \n"  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
-	_repo_branch="replica";
+	repo_branch="replica";
     fi	
 
     # Pull the gstudio code from github online repo
-    echo -e "\nInfo-msg : Pull the gstudio latest code from github online repo and $_repo_branch branch as gstudio directory already exist.\n"  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
+    echo -e "\nInfo-msg : Pull the gstudio latest code from github online repo and $repo_branch branch as gstudio directory already exist.\n"  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
     
-    git branch --list | grep $_repo_branch  > /dev/null 2>&1   # Mrunal : No redirections here please
+    git branch --list | grep $repo_branch  > /dev/null 2>&1   # Mrunal : No redirections here please
     if [ $? -eq 0 ]; then               # If internet connection is available
-	git checkout $_repo_branch       # Switch to branch 
+	git checkout $repo_branch       # Switch to branch 
     else
-	git checkout -b $_repo_branch    # Create and Switched to branch
+	git checkout -b $repo_branch    # Create and Switched to branch
     fi	
     #git pull https://github.com/gnowledge/gstudio.git
-    git pull origin $_repo_branch | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
+    git pull origin $repo_branch | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
     cd ..
 else    
     # Clone the gstudio code from github online repo
-    echo -e "\nInfo-msg : Clone the gstudio code from github online repo : $_repo_branch \n"  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
-    git clone https://github.com/gnowledge/gstudio.git -b $_repo_branch | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
+    echo -e "\nInfo-msg : Clone the gstudio code from github online repo : $repo_branch \n"  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
+    git clone https://github.com/gnowledge/gstudio.git -b $repo_branch | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
 fi
 
 
 echo -e 'Please select the database for storing the users credentials: \n   1. sqlite \n   2. postgresql';
-read _OPTION ;
+read OPTION ;
 
 # Mrunal : for applying comments for sqlite3/postgresql
-bash scripts/local_settings_changes.sh $_OPTION $_repo_branch
+bash scripts/local_settings_changes.sh $OPTION $repo_branch
 
-# Mrunal : start the container
-bash scripts/start-new-container.sh $_OPTION $_repo_branch
+dock_img_name_repo="school-server/$repo_branch";
+dock_img_name_tag="v1-$(date +%Y%m%d-%H%M%S)";
+dock_img_name="$dock_img_name_repo:$dock_img_name_tag";
+dock_img_file=replica-test-20151230-1915.tar;
+dock_img=replica-test;
+dock_con=school-server-con-$repo_branch-$_TYPE;
+
+port_ssh_dock=22;
+port_ssh_host=8022;
+
+port_smtp_dock=25;
+port_smtp_host=8025;
+
+port_http_dock=80;
+port_http_host=80;
+
+port_https_dock=443;
+port_https_host=443;
+
+port_django_dev_dock=8000;
+port_django_dev_host=8000;
+
+port_mongo_dock=27107;
+port_mongo_host=27107;
+
+port_smtp_test_dock=1025;
+port_smtp_test_host=11025;
+
+port_imap_dock=143;
+port_imap_host=8143;
+
+port_smtps_dock=587;
+port_smtps_host=8857;
+
+
+# Checking for the interent connections
+internet_check
+
+
+# Build the docker image (via instructions in Docker file)
+echo -e "\nInfo-msg : Build the docker image (via instructions in Docker file). This process may take long time {Depends on the internet speed. Approx(45mins - 1.45mins)} . docker build -t $dock_img_name . \n"  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
+docker build -t $dock_img_name . | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
+
+docker images $dock_img_name | grep $dock_img_name_tag  > /dev/null 2>&1   # Mrunal : No redirections here please
+if [ $? -eq 0 ]; then
+    # Docker-Image created successfully
+    echo -e "Info-msg : Docker-Image created successfully. Now initiating the Docker-Container with created docker image(gnowgi/gstudio).\n" | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
+    echo -e "\nInfo-msg : **Docker-container initialization** \n"  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
+#    docker run -it -p 8825:25 -p 8822:22 -p 80:80 -p 8443:443 -p 8000:8000 -p 27017:27017 -p 8143:143 -p 8857:587 -p 8025:1025 --name=$dock_con  $dock_img_name
+     docker run -it -d  -p $port_ssh_host:$port_ssh_dock -p $port_smtp_host:$port_smtp_dock -p $port_https_host:$port_https_dock -p $port_http_host:$port_http_dock -p $port_django_dev_host:$port_django_dev_dock -p $port_mongo_host:$port_mongo_dock -p $port_smtp_test_host:$port_smtp_test_dock -p $port_imap_host:$port_imap_dock -p $port_smtps_host:$port_smtps_dock --name=$dock_con  $dock_img_name  ;
+
+    $sh_c 'rm docker-inst.lock'   | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}       # Image created no need of this file docker-inst.lock
+else
+    # Docker-Image creation Failed
+    echo -e "Caution-msg : Docker-Image creation Failed. Please try again. \n" | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
+fi
 
 echo -e "\nInfo-msg : copy pre-install logs to docker system \n" | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}
 sudo docker cp ${INSTALL_LOG_FILE} $(docker inspect -f '{{.Id}}'  $(docker ps -q)):/root/DockerLogs/  | sed -e "s/^/$(date +%Y%b%d-%I%M%S%p) $   /"  2>&1 | tee -a ${INSTALL_LOG_FILE}

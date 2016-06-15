@@ -1,12 +1,29 @@
 #!/bin/bash
 
 # Script for git pull
-# Default branch name is mongokit
+# Default branch name is master
 
-branch_name="mongokit"
+branch_name="$1";
+if [[ "$1" == "" ]]; then
+    echo -e 'Please provide the branch names like: \n   1. master \n   2. alpha \n   3. mongokit \n';
+    read branch_name ;
+fi
+    
+echo -e "USER input : $branch_name";
+branch_name="alpha";
+
+
+udate="$(date +%Y%m%d-%H%M%S)"
+mkdir -p /home/docker/code/git-update/$udate
+
+
+echo "Server update (git) starting"
 
 echo "[run] go to the code folder - gstudio"
 cd /home/docker/code/gstudio/
+
+echo "[run] Execute git logs (before)"
+git log >> /home/docker/code/git-update/$udate/git-update-before.log
 
 echo "[run] Execute git status"
 git status
@@ -16,6 +33,8 @@ git diff
 
 echo "[run] Execute git stash"
 git stash
+
+
 
 
 echo "[run] Git Pull started"
@@ -28,6 +47,9 @@ echo "[run] Git Pull completed"
 
 echo "[run] Execute git stash"
 git stash apply
+
+echo "[run] Execute git stash drop"
+git stash drop
 
 echo "[run] Execute git status"
 git status
@@ -49,10 +71,25 @@ python manage.py create_schema STs_run1.csv
 python manage.py create_schema ATs.csv
 python manage.py create_schema RTs.csv
 python manage.py create_schema STs_run2.csv
-#python manage.py filldb      						   # Mrunal M. Nachankar : Mon, 07-09-2015 12:15:AM : Suggested by Rachna/GN
 
 echo "[run] property_order_reset"										# Mrunal M. Nachankar : Mon, 07-09-2015 12:15:AM 
 echo "execfile('property_order_reset.py')" | python manage.py shell	   # Mrunal M. Nachankar : Mon, 07-09-2015 12:15:AM 
 
+echo "[run] create_auth_objs.py" ;							   # Mrunal M. Nachankar : Mon, 07-09-2015 12:15:AM 
+echo "execfile('../doc/deployer/create_auth_objs.py')" | python manage.py shell ;	   # Mrunal M. Nachankar : Mon, 07-09-2015 12:15:AM 
+
 echo "[run] Sync_existing"						   # Mrunal M. Nachankar : Mon, 07-09-2015 12:15:AM 
 python manage.py sync_existing_documents				   # Mrunal M. Nachankar : Mon, 07-09-2015 12:15:AM 
+
+
+echo "[run] Execute git logs (after)"
+git log >> /home/docker/code/git-update/$udate/git-update-after.log
+
+
+echo "[run] Bower install"
+bower install --allow-root
+
+echo "[run] collectstatic"
+echo yes | python manage.py collectstatic
+
+echo "Server update (git) finished successfully"
