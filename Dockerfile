@@ -59,7 +59,6 @@ RUN mkdir -p /home/docker/code/   \
    &&  mkdir -p /data/benchmark-dump   \
    &&  mkdir -p /data/heartbeats   \
    &&  mkdir -p /backups/incremental   \
-   &&  mkdir -p /backups/archives   \
    &&  mkdir -p /softwares   \
    &&  echo "code, data, rcs-repo, media, benchmark-dump, heartbeats, backups and softwares driectories are created"  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
@@ -172,9 +171,15 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime  | sed -e "s/^/$(date
    &&  mkdir /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/ndf/management/commands/schema_files  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
 # Restore default postgres database
-RUN /etc/init.d/postgresql start  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
-   chown postgres:postgres /data/pgdata.sql  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+RUN /etc/init.d/postgresql start   \
    &&  echo "psql -f /data/pgdata.sql;" | sudo su - postgres    \
-   &&  crontab /home/docker/code/confs/mycron
+   &&  crontab /home/docker/code/confs/mycron    \
+   &&  rm /etc/rc.local    \
+   &&  ln -s /home/docker/code/confs/rc.local /etc/    \
+   &&  /etc/init.d/rc.local start    \
+   &&  /etc/init.d/postgresql start
+
+# Perform collectstatic
+RUN echo yes | /usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py collectstatic
 
 CMD /home/docker/code/scripts/initialize.sh  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /"  2>&1 | tee -a ${LOG_INSTALL_DOCKER}

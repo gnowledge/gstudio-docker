@@ -21,7 +21,5 @@
 # 
 # m h  dom mon dow   command
 
-@reboot /home/docker/code/scripts/heartbeat.sh  >> /data/heartbeats/hb-$(date +\%Y\%m\%d-\%H\%M\%S).log
-@reboot /home/docker/code/scripts/bkp.sh  >> /tmp/cron-bkp.log
 01 *  * * * /home/docker/code/scripts/heartbeat.sh  >> /data/heartbeats/hb-$(date +\%Y\%m\%d-\%H\%M\%S).log
 

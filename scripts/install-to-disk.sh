@@ -87,7 +87,7 @@ fi
 
 echo -e "\n${cyan}Installing coreos, the host operating system to /dev/$disk_i ${reset}"
 
-sudo /home/core/setup-software/coreos/coreos-install.sh -d /dev/$disk_i -C stable -c /home/core/setup-software/coreos/cloud-config.yaml -b http://localhost/setup-software/coreos/mirror 
+sudo /home/core/setup-software/coreos/coreos-install.sh -d /dev/$disk_i -C stable -c /home/core/setup-software/coreos/cloud-config.yaml -b http://localhost/softwares/coreos/mirror 
 
 echo -e "\n${cyan}Successfully installed coreos, the host operating system to /dev/$disk_i ${reset}"
 
