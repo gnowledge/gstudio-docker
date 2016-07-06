@@ -28,7 +28,7 @@ mongodump --db gstudio-mongodb --collection Benchmarks --out .
 
 echo -e "\nPostgres backup file exist. So performing incremental backup \n".
 mkdir /data/postgres-dump
-echo "cd /data/postgres-du
+echo "cd /data/postgres-dump
 pg_dumpall > pg_dump_all.sql;
 " | sudo su - postgres ;   
 

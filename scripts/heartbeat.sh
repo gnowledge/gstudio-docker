@@ -1,9 +1,5 @@
 #!/bin/bash
 {
-    dHOME="/home/docker/code"
-    
-    source $dHOME/confs/deploy.conf
-    source confs/deploy.conf
 
     mkdir -p /data/heartbeats/
     
