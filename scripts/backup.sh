@@ -21,6 +21,7 @@
 
 sleep 60;     # To start mongo
 
+
 echo -e "\nBenchmark backup file exist. So performing incremental backup \n".
 mkdir /data/benchmark-dump
 cd /data/benchmark-dump
@@ -28,9 +29,11 @@ mongodump --db gstudio-mongodb --collection Benchmarks --out .
 
 echo -e "\nPostgres backup file exist. So performing incremental backup \n".
 mkdir /data/postgres-dump
-echo "cd /data/postgres-dump
-pg_dumpall > pg_dump_all.sql;
+echo "pg_dumpall > pg_dump_all.sql;
 " | sudo su - postgres ;   
+
+cp -av /var/lib/postgresql/pg_dump_all.sql /data/postgres-dump
+
 
 if [[ "$(ls -ltr /backups/incremental/*full*.gpg | wc -l)" -le "2" ]]; then
     echo -e "\n Full backup files does not exist. So performing full backup \n".
@@ -41,3 +44,5 @@ elif [[ "$(ls -ltr /backups/incremental/*full*.gpg | wc -l)" -ge "3" ]]; then
     cd /home/docker/code/duplicity/
     ./duplicity-backup.sh --backup
 fi
+touch /backups/.stfolder
+chmod 644 /backups/incremental/*
