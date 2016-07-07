@@ -32,7 +32,7 @@ mkdir /data/postgres-dump
 echo "pg_dumpall > pg_dump_all.sql;
 " | sudo su - postgres ;   
 
-mv -av /var/lib/postgresql/pg_dump_all.sql /data/postgres-dump
+mv /var/lib/postgresql/pg_dump_all.sql /data/postgres-dump
 
 
 if [[ "$(ls -ltr /backups/incremental/*full*.gpg | wc -l)" -le "2" ]]; then
