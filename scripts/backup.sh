@@ -32,7 +32,7 @@ mkdir /data/postgres-dump
 echo "pg_dumpall > pg_dump_all.sql;
 " | sudo su - postgres ;   
 
-cp -av /var/lib/postgresql/pg_dump_all.sql /data/postgres-dump
+mv -av /var/lib/postgresql/pg_dump_all.sql /data/postgres-dump
 
 
 if [[ "$(ls -ltr /backups/incremental/*full*.gpg | wc -l)" -le "2" ]]; then
@@ -44,5 +44,9 @@ elif [[ "$(ls -ltr /backups/incremental/*full*.gpg | wc -l)" -ge "3" ]]; then
     cd /home/docker/code/duplicity/
     ./duplicity-backup.sh --backup
 fi
+
+cp -av /root/.gnupg /backups/incremental/
+
 touch /backups/.stfolder
+
 chmod 644 /backups/incremental/*
