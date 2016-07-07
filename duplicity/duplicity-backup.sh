@@ -381,7 +381,7 @@ get_lock()
       # Write lock acquisition errors to log file and stderr
       echo "lock failed, could not acquire ${LOCKFILE}" | tee -a ${LOGFILE} >&2
       echo "lock held by $(cat ${LOCKFILE})" | tee -a ${LOGFILE} >&2
-      email_logfile
+      #email_logfile      # Mrunal : commented sending emails
       exit 2
   fi
 }
@@ -847,7 +847,7 @@ echo -e "---------    END DUPLICITY-BACKUP SCRIPT    ---------\n" >> ${LOGFILE}
 if [ "$EMAIL_FAILURE_ONLY" = "yes" ]; then
   if [ ${BACKUP_ERROR} ]; then
     EMAIL_SUBJECT="BACKUP ERROR: ${EMAIL_SUBJECT}"
-    email_logfile
+    #email_logfile       # Mrunal : commented sending emails
   fi
 else
   if [ ${BACKUP_ERROR} ]; then
@@ -855,7 +855,7 @@ else
   else
     EMAIL_SUBJECT="BACKUP OK: ${EMAIL_SUBJECT}"
   fi
-  email_logfile
+  #email_logfile       # Mrunal : commented sending emails
 fi
 
 # remove old logfiles
