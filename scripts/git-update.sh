@@ -19,6 +19,9 @@ mkdir -p /home/docker/code/git-update/$udate
 
 echo "Server update (git) starting"
 
+echo "[run] enabling maintenance templete"
+mv /home/docker/code/maintenance/maintenance.disable /home/docker/code/maintenance/maintenance.enable
+
 echo "[run] go to the code folder - gstudio"
 cd /home/docker/code/gstudio/
 
@@ -91,5 +94,9 @@ bower install --allow-root
 
 echo "[run] collectstatic"
 echo yes | python manage.py collectstatic
+
+
+echo "[run] enabling maintenance templete"
+mv /home/docker/code/maintenance/maintenance.enable /home/docker/code/maintenance/maintenance.disable
 
 echo "Server update (git) finished successfully"
