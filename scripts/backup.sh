@@ -22,10 +22,15 @@
 sleep 60;     # To start mongo
 
 
+# echo -e "\nBenchmark backup file exist. So performing incremental backup \n".
+# mkdir /data/benchmark-dump
+# cd /data/benchmark-dump
+# mongodump --db gstudio-mongodb --collection Benchmarks --out .
+
 echo -e "\nBenchmark backup file exist. So performing incremental backup \n".
-mkdir /data/benchmark-dump
-cd /data/benchmark-dump
-mongodump --db gstudio-mongodb --collection Benchmarks --out .
+mkdir /data/Counters-dump
+cd /data/Counters-dump
+mongodump --db gstudio-mongodb --collection Counters --out .
 
 echo -e "\nPostgres backup file exist. So performing incremental backup \n".
 mkdir /data/postgres-dump
@@ -35,18 +40,26 @@ echo "pg_dumpall > pg_dump_all.sql;
 mv /var/lib/postgresql/pg_dump_all.sql /data/postgres-dump
 
 
-if [[ "$(ls -ltr /backups/incremental/*full*.gpg | wc -l)" -le "2" ]]; then
-    echo -e "\n Full backup files does not exist. So performing full backup \n".
-    cd /home/docker/code/duplicity/
-    ./duplicity-backup.sh --full
-elif [[ "$(ls -ltr /backups/incremental/*full*.gpg | wc -l)" -ge "3" ]]; then
-    echo -e "\n Full backup file exist. So performing incremental backup \n".
-    cd /home/docker/code/duplicity/
-    ./duplicity-backup.sh --backup
-fi
+# if [[ "$(ls -ltr /backups/incremental/*full*.gpg | wc -l)" -le "2" ]]; then
+#     echo -e "\n Full backup files does not exist. So performing full backup \n".
+#     cd /home/docker/code/duplicity/
+#     ./duplicity-backup.sh --full
+# elif [[ "$(ls -ltr /backups/incremental/*full*.gpg | wc -l)" -ge "3" ]]; then
+#     echo -e "\n Full backup file exist. So performing incremental backup \n".
+#     cd /home/docker/code/duplicity/
+#     ./duplicity-backup.sh --backup
+# fi
 
-cp -av /root/.gnupg /backups/incremental/
+mkdir /backups/rsync
+
+echo -e "\nBackup via rsync in process please be patient"
+rsync -avzPh  /data/media /data/rcs-repo /data/benchmark-dump /data/Counters-dump  /backups/rsync/       # /backups/db/ /backups/incremental/
+
+#cp -av /root/.gnupg /backups/incremental/
+cp -av /root/.gnupg /backups/rsync/
 
 touch /backups/.stfolder
+touch /backups/rsync/.stfolder
 
-chmod 644 /backups/incremental/*
+#chmod 644 /backups/incremental/*
+chmod 644 /backups/rsync/*
