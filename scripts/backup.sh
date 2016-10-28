@@ -58,7 +58,7 @@ python manage.py fillCounter
 mkdir /backups/rsync
 
 echo -e "\nBackup via rsync in process please be patient"
-rsync -avzPh  /data/media /data/rcs-repo /data/benchmark-dump /data/Counters-dump  /backups/rsync/       # /backups/db/ /backups/incremental/
+rsync -avzPh  /data/media /data/rcs-repo /data/benchmark-dump /data/counters-dump  /backups/rsync/       # /backups/db/ /backups/incremental/
 
 #cp -av /root/.gnupg /backups/incremental/
 cp -av /root/.gnupg /backups/rsync/
