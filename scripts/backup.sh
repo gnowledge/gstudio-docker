@@ -21,15 +21,14 @@
 
 sleep 60;     # To start mongo
 
-
 # echo -e "\nBenchmark backup file exist. So performing incremental backup \n".
 # mkdir /data/benchmark-dump
 # cd /data/benchmark-dump
 # mongodump --db gstudio-mongodb --collection Benchmarks --out .
 
-echo -e "\nBenchmark backup file exist. So performing incremental backup \n".
-mkdir /data/Counters-dump
-cd /data/Counters-dump
+echo -e "\nCounter backup file exist. So performing incremental backup \n".
+mkdir /data/counters-dump
+cd /data/counters-dump
 mongodump --db gstudio-mongodb --collection Counters --out .
 
 echo -e "\nPostgres backup file exist. So performing incremental backup \n".
@@ -49,6 +48,12 @@ mv /var/lib/postgresql/pg_dump_all.sql /data/postgres-dump
 #     cd /home/docker/code/duplicity/
 #     ./duplicity-backup.sh --backup
 # fi
+
+
+# change directory and fillcounter
+cd /home/docker/code/gstudio/gnowsys-ndf/
+python manage.py fillCounter
+
 
 mkdir /backups/rsync
 
