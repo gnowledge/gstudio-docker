@@ -30,7 +30,7 @@ sleep 5
 update_patch="update_nov_16";
 
 echo -e "\n${cyan}copy updated patch from /mnt/home/core/${update_patch} to /home/docker/code/ in gstudio container ${reset}";
-sudo docker cp /mnt/${update_patch} /home/docker/code/;
+sudo docker cp /mnt/${update_patch} gstudio:/home/docker/code/;
 
 echo -e "\n${cyan}Update offline patch ${reset}";
 docker exec -it gstudio /bin/sh -c "/bin/bash /home/docker/code/${update_patch}/git-offline-update.sh";
