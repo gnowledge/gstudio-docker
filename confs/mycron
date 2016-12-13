@@ -25,3 +25,4 @@
 
 05 *  * * * /home/docker/code/scripts/backup.sh  >> /tmp/cron-bkp.log
 
+10 *  * * * /home/docker/code/scripts/analytics.sh  >> /tmp/cron-analytics.log
