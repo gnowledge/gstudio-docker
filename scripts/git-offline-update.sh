@@ -77,3 +77,11 @@ echo -e "\n${cyan}collectstatic ${reset}"
 echo yes | python manage.py collectstatic
 
 # collectstatic - ended
+
+
+# set newly updated crontab - started
+
+echo -e "\n${cyan}Applying newly updated cron jobs in crontab ${reset}"
+crontab /home/docker/code/confs/mycron
+
+# set newly updated crontab - ended
