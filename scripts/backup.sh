@@ -54,11 +54,13 @@ mv /var/lib/postgresql/pg_dump_all.sql /data/postgres-dump
 cd /home/docker/code/gstudio/gnowsys-ndf/
 python manage.py fillCounter
 
+ss_id=`echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed 's/.*=//')`
+ss_id1=`echo $ss_id | sed "s/'//g"`
 
-mkdir /backups/rsync
+mkdir -p /backups/rsync/$ss_id1
 
 echo -e "\nBackup via rsync in process please be patient"
-rsync -avzPh  /data/media /data/rcs-repo /data/benchmark-dump /data/counters-dump  /backups/rsync/       # /backups/db/ /backups/incremental/
+rsync -avzPh  /data/media /data/rcs-repo /data/benchmark-dump /data/counters-dump /data/gstudio-exported-users-analytics-csvs  /backups/rsync/$ss_id1/       # /backups/db/ /backups/incremental/
 
 #cp -av /root/.gnupg /backups/incremental/
 cp -av /root/.gnupg /backups/rsync/
