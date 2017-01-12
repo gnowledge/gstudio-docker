@@ -20,14 +20,14 @@ white="\033[0;98m" ;
 reset="\033[0m" ;
 
 # Mrunal : 20161123 : below part is added by Mrunal as suggested by Nagarjuna
-echo -e "\n${cyan}***   Learning Studio - DOER Edition (November 2016 update patch)   ***${reset}\n" ;
+echo -e "\n${cyan}***   Learning Studio - DOER Edition (January 2017 update patch)   ***${reset}\n" ;
 echo -e "${cyan}      school server installation      ${reset}\n" ;
 echo -e "\n${brown}Note : \nThis installation is a one-time or infrequently used process.${reset}" ;
 echo -e "${brown}It uses a terminal-console which may show many details during installations.${reset}" ;
 echo -e "${brown}This is normal. Please let the installation proceed.${reset}\n" ;
 sleep 5
 
-update_patch="update_nov_16";
+update_patch="update_$(date +%Y_%m_%d)";                                   # "update_nov_16";
 
 echo -e "\n${cyan}copy updated patch from /mnt/home/core/${update_patch} to /home/docker/code/ in gstudio container ${reset}";
 sudo docker cp /mnt/${update_patch} gstudio:/home/docker/code/;

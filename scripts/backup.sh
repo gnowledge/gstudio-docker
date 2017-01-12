@@ -27,12 +27,16 @@ sleep 60;     # To start mongo
 # mongodump --db gstudio-mongodb --collection Benchmarks --out .
 
 echo -e "\nCounter backup file exist. So performing incremental backup \n".
-mkdir /data/counters-dump
+if [ ! -d /data/counters-dump ]; then
+    mkdir /data/counters-dump
+fi
 cd /data/counters-dump
 mongodump --db gstudio-mongodb --collection Counters --out .
 
 echo -e "\nPostgres backup file exist. So performing incremental backup \n".
-mkdir /data/postgres-dump
+if [ ! -d /data/postgres-dump ]; then
+    mkdir /data/postgres-dump
+fi
 echo "pg_dumpall > pg_dump_all.sql;
 " | sudo su - postgres ;   
 
@@ -57,16 +61,22 @@ python manage.py fillCounter
 ss_id=`echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed 's/.*=//')`
 ss_id1=`echo $ss_id | sed "s/'//g"`
 
-mkdir -p /backups/rsync/$ss_id1
+if [ ! -d /backups/rsync/$ss_id1 ]; then
+    mkdir /backups/rsync/$ss_id1
+fi
 
 echo -e "\nBackup via rsync in process please be patient"
-rsync -avzPh  /data/media /data/rcs-repo /data/benchmark-dump /data/counters-dump /data/gstudio-exported-users-analytics-csvs  /backups/rsync/$ss_id1/       # /backups/db/ /backups/incremental/
+rsync -avzPh  /data/media /data/rcs-repo /data/benchmark-dump /data/counters-dump /data/gstudio-exported-users-analytics-csvs  /backups/rsync/$ss_id1/
 
-#cp -av /root/.gnupg /backups/incremental/
-cp -av /root/.gnupg /backups/rsync/
+cp -av /root/.gnupg /backups/rsync/$ss_id1/
 
-touch /backups/.stfolder
-touch /backups/rsync/.stfolder
+touch /backups/$ss_id1/.stfolder
+touch /backups/rsync/$ss_id1/.stfolder
+touch /backups/rsync/$ss_id1/.stignore
+
+touch /root/Sync/.stfolder
+touch /root/Sync/.stignore
+chmod +x /root/Sync/*
 
 #chmod 644 /backups/incremental/*
-chmod 644 /backups/rsync/*
+chmod +x /backups/rsync/*

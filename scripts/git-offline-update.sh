@@ -21,7 +21,7 @@ grey="\033[0;97m" ;
 white="\033[0;98m" ;
 reset="\033[0m" ;
 
-update_patch="update_nov_16";
+update_patch="update_$(date +%Y_%m_%d)";                                   # "update_nov_16";
 
 # git offline update docker code - started
 
