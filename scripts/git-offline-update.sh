@@ -26,7 +26,7 @@ update_patch="update_$(date +%Y_%m_%d)";                                   # "up
 # git offline update docker code - started
 
 #git_commit_no_docker="20c14df4325c2e419b552b6c749aeb09ce344e5b";             # Earlier commit no
-git_commit_no_docker="b303754915e129b1aea7bcc7f17fca02fd1a816c";              # Commit on 09-01-2017
+git_commit_no_docker="99f63dc08cc81d8911cdf2c30b1e33eff71d266d";              # Commit on 12-01-2017
 
 echo -e "\n${cyan}change the directory to /home/docker/code/ ${reset}"
 cd /home/docker/code/
