@@ -26,7 +26,7 @@ update_patch="update_$(basename $(ls -rt1 /mnt/update* |  head -n 1))";
 # git offline update docker code - started
 
 #git_commit_no_docker="20c14df4325c2e419b552b6c749aeb09ce344e5b";             # Earlier commit no
-git_commit_no_docker="99f63dc08cc81d8911cdf2c30b1e33eff71d266d";              # Commit on 12-01-2017
+git_commit_no_docker="b5904762d04238bf1169847db9c886dffaeb5578";              # Commit on 13-01-2017
 
 echo -e "\n${cyan}change the directory to /home/docker/code/ ${reset}"
 cd /home/docker/code/
