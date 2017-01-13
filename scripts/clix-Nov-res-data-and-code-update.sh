@@ -27,7 +27,8 @@ echo -e "${brown}It uses a terminal-console which may show many details during i
 echo -e "${brown}This is normal. Please let the installation proceed.${reset}\n" ;
 sleep 5
 
-update_patch="update_$(basename $(ls -rt1 /mnt/update* |  head -n 1));
+filename=$(basename $(ls -t1 /mnt/update_* |  head -n 1));
+update_patch="${filename%.*.*}";
 
 echo -e "\n${cyan}copy updated patch from /mnt/home/core/${update_patch} to /home/docker/code/ in gstudio container ${reset}";
 sudo docker cp /mnt/${update_patch} gstudio:/home/docker/code/;

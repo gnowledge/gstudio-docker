@@ -21,7 +21,8 @@ grey="\033[0;97m" ;
 white="\033[0;98m" ;
 reset="\033[0m" ;
 
-update_patch="update_$(basename $(ls -rt1 /mnt/update* |  head -n 1))";
+filename=$(basename $(ls -d /home/docker/code/update_* |  head -n 1));
+update_patch="${filename%.*.*}";
 
 # git offline update docker code - started
 
