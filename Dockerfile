@@ -80,6 +80,15 @@ RUN cd gstudio && git reset --hard $commitid && cd ..
 RUN wget http://103.36.84.69:9001/static.tgz
 RUN tar -xvzf static.tgz  && rm -rf static.tgz
 
+# Clone dlkit repos at manage.py level
+RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
+   &&  git clone https://bitbucket.org/cjshaw/dlkit_runtime.git   \
+   &&  git clone https://bitbucket.org/cjshaw/dlkit-tests.git   \
+   &&  git clone https://bitbucket.org/cjshaw/dlkit.git   \
+   &&  cd dlkit   \
+   &&  git submodule update --init --recursive   \
+   &&  fab update_data
+
 #bower install
 RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
    &&  bower install --allow-root  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
@@ -169,11 +178,11 @@ RUN set -x \
         && mv /etc/mongod.conf /etc/mongod.conf.orig  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
 RUN mkdir -p /data/db && chown -R mongodb:mongodb /data/db  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
-VOLUME /data
+VOLUME /data ["/data", "/backups", "/softwares"]
 
 # Exposing the ports - {ssh} , {smtp} , {https (with ssl)} , {http} , {for developement user (Developer)} , {smtpd command (to test mail machanism locally)} , {imap : gnowledge} , {smtp : gnowledge} , {mongodb}
 RUN echo "EXPOSE  22  25  443  80  8000  1025  143  587"  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
-EXPOSE  22  25  443  80  8000  1025  143  587  27017
+EXPOSE  22  25  443  80  8000  1025  143  587  27017  8080 5555
 
 # {change this line for your timezone} and {nltk installation and building search base} and {creation of schema_files directory}
 RUN ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
