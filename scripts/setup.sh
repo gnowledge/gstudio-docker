@@ -113,7 +113,7 @@ elif [[ "$disk_t_ck" != "" ]]; then
   echo -e "docker run -d --restart=always  -v /home/core/backups:/srv/backups  -v /srv/syncthing:/srv/config  -p 22000:22000  -p 21025:21025/udp  -p 8080:8080  --name=syncthing  joeybaker/syncthing"
   docker run -d --restart=always  -v /home/core/backups:/srv/backups  -v /srv/syncthing:/srv/config  -p 22000:22000  -p 21025:21025/udp  -p 8080:8080  --name=syncthing  joeybaker/syncthing
 
-  docker exec -it gstudio /bin/sh -c "/bin/echo GSTUDIO_INSTITUTE_ID = ${ss_id} > /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py"
+  docker exec -it gstudio /bin/sh -c "/bin/echo GSTUDIO_INSTITUTE_ID = \'${ss_id}\'' > /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py"
 
   docker restart gstudio
 
