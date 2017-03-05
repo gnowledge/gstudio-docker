@@ -86,8 +86,7 @@ RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
    &&  git clone https://bitbucket.org/cjshaw/dlkit-tests.git   \
    &&  git clone https://bitbucket.org/cjshaw/dlkit.git   \
    &&  cd dlkit   \
-   &&  git submodule update --init --recursive   \
-   &&  fab update_data
+   &&  git submodule update --init --recursive
 
 #bower install
 RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
@@ -198,6 +197,12 @@ RUN /etc/init.d/postgresql start   \
    &&  ln -s /home/docker/code/confs/rc.local /etc/    \
    &&  /etc/init.d/rc.local start    \
    &&  /etc/init.d/postgresql start
+
+# fab update
+RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
+   &&  pip install flower   \
+   &&  pip install Fabric==1.12.0   \
+   &&  fab update_data
 
 # Perform collectstatic
 RUN echo yes | /usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py collectstatic
