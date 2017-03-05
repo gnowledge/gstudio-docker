@@ -201,10 +201,9 @@ RUN /etc/init.d/postgresql start   \
 # fab update
 RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
    &&  pip install flower   \
-   &&  pip install Fabric==1.12.0   \
-   &&  fab update_data
+   &&  pip install Fabric==1.12.0   
 
 # Perform collectstatic
-RUN echo yes | /usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py collectstatic
+#RUN echo yes | /usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py collectstatic
 
 CMD /home/docker/code/scripts/initialize.sh  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /"  2>&1 | tee -a ${LOG_INSTALL_DOCKER}
