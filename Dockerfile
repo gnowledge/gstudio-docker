@@ -26,19 +26,23 @@ RUN echo "PATH="$LOG_DIR_DOCKER   \
 RUN apt-get update  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
 # install nginx
-# add all the repositories (nginx, ffmpeg and ffmpeg2theora, nodejs{bower}, )
+# add all the repositories (nginx, ffmpeg and ffmpeg2theora, nodejs{bower} and yarn)
 RUN apt-get install -y python-software-properties  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
    &&  apt-get install -y software-properties-common python-software-properties  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
    &&  add-apt-repository -y ppa:nginx/stable  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
    &&  add-apt-repository -y ppa:mc3man/trusty-media  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
-   &&  add-apt-repository -y ppa:chris-lea/node.js  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+   &&  curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -   \
+   &&  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -   \
+   &&  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list\
+   &&  apt-get install apt-transport-https -y --force-yes
 
 
-# update the repository sources list
-RUN apt-get update  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+# update the keys and repository sources list
+RUN apt-key update && apt-get update  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
-# install packages related application and ( ssh, mail {for mailbox / mail relaying}, sqlite and postgresql, ffmpeg and ffmpeg2theora, bash {commands} auto completion and crontab, SCSS/SAAS stylesheets {ruby}, nodejs{bower}, wget and duplicity)
-RUN apt-get install -y dialog net-tools build-essential git python python-pip python-setuptools python-dev rcs emacs24 libjpeg-dev memcached libevent-dev libfreetype6-dev zlib1g-dev nginx supervisor curl g++ make     openssh-client openssh-server     mailutils postfix     sqlite3   libpq-dev postgresql postgresql-contrib python-psycopg2     ffmpeg gstreamer0.10-ffmpeg ffmpeg2theora     bash-completion cron     ruby ruby-dev     nodejs     wget     duplicity   rabbitmq-server | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+# install packages related application and ( ssh, mail {for mailbox / mail relaying}, sqlite and postgresql, ffmpeg and ffmpeg2theora, bash {commands} auto completion and crontab, SCSS/SAAS stylesheets {ruby}, nodejs{bower}, wget, duplicity, rabbitmq-server and yarn)
+RUN apt-get install -y dialog net-tools build-essential git python python-pip python-setuptools python-dev rcs emacs24 libjpeg-dev memcached libevent-dev libfreetype6-dev zlib1g-dev nginx supervisor curl g++ make     openssh-client openssh-server     mailutils postfix     sqlite3   libpq-dev postgresql postgresql-contrib python-psycopg2     ffmpeg gstreamer0.10-ffmpeg ffmpeg2theora     bash-completion cron     ruby ruby-dev     nodejs     wget     duplicity   rabbitmq-server   yarn | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+
 RUN easy_install pip  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
 # install uwsgi now because it takes a little while
@@ -83,10 +87,26 @@ RUN tar -xvzf static.tgz  && rm -rf static.tgz
 # Clone dlkit repos at manage.py level
 RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
    &&  git clone https://bitbucket.org/cjshaw/dlkit_runtime.git   \
-   &&  git clone https://bitbucket.org/cjshaw/dlkit-tests.git   \
    &&  git clone https://bitbucket.org/cjshaw/dlkit.git   \
    &&  cd dlkit   \
    &&  git submodule update --init --recursive
+
+# Clone qbank repos at manage.py level
+RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
+   &&  git clone https://github.com/gnowledge/qbank-lite.git   \
+   &&  cd qbank-lite   \
+   &&  git submodule update --init --recursive   \
+   &&  python main.py
+
+# Clone OpenAssessmentsClient repos at gstudio level
+RUN cd /home/docker/code/   \
+   &&  git clone https://github.com/gnowledge/OpenAssessmentsClient.git   \
+   &&  yarn   \
+   &&  yarn build   \
+   &&  mkdir /softwares/oac /softwares/oat   \
+   &&  cp -av /home/docker/code/OpenAssessmentsClient/build/prod/* /softwares/oac/   \
+   &&  cp -av /home/docker/code/OpenAssessmentsClient/build/prod/* /softwares/oat/   \
+   &&  cp -av /softwares/oat/author.html /softwares/oat/index.html
 
 #bower install
 RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
