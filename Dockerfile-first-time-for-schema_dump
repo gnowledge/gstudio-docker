@@ -222,7 +222,8 @@ RUN /etc/init.d/postgresql start   \
 # fab update
 RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
    &&  pip install flower   \
-   &&  pip install Fabric==1.12.0   
+   &&  pip install Fabric==1.12.0   \   
+   &&  fab update_data
 
 # Perform collectstatic
 #RUN echo yes | /usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py collectstatic
