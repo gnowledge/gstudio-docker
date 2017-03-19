@@ -85,6 +85,10 @@ RUN cd gstudio && git reset --hard $commitid && cd ..
 RUN wget http://103.36.84.69:9001/static.tgz
 RUN tar -xvzf static.tgz  && rm -rf static.tgz
 
+# RUN pip install to install pip related required packages as per requirements.txt
+RUN pip install -r /home/docker/code/gstudio/requirements.txt  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+
+
 # Clone dlkit repos at manage.py level
 RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
    &&  git clone https://bitbucket.org/cjshaw/dlkit_runtime.git   \
@@ -96,6 +100,7 @@ RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
 RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
    &&  git clone https://github.com/gnowledge/qbank-lite.git   \
    &&  cd qbank-lite   \
+   &&  pip install -r /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/requirements.txt  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
    &&  git submodule update --init --recursive   \
    &&  python main.py
 
@@ -146,9 +151,6 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf   \
    &&  ln -s /home/docker/code/confs/main.cf /etc/postfix/  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
    &&  ln -s /home/docker/code/confs/sasl_passwd /etc/postfix/  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
    &&  ln -s /home/docker/code/confs/sasl_passwd.db /etc/postfix/  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   
-
-# RUN pip install to install pip related required packages as per requirements.txt
-RUN pip install -r /home/docker/code/gstudio/requirements.txt  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
 RUN echo "Size of deb packages files : "  du -hs  /var/cache/apt/archives/   \
    &&  ls -ltr  /var/cache/apt/archives/   \
