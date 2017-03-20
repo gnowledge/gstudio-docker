@@ -41,8 +41,8 @@ RUN apt-get install -y python-software-properties  | sed -e "s/^/$(date +%Y%m%d-
 # update the keys and repository sources list
 RUN apt-key update && apt-get update  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
-# install packages related application and ( ssh, mail {for mailbox / mail relaying}, sqlite and postgresql, ffmpeg and ffmpeg2theora, bash {commands} auto completion and crontab, SCSS/SAAS stylesheets {ruby}, nodejs{bower}, wget, duplicity, rabbitmq-server and yarn)
-RUN apt-get install -y dialog net-tools build-essential git python python-pip python-setuptools python-dev rcs emacs24 libjpeg-dev memcached libevent-dev libfreetype6-dev zlib1g-dev nginx supervisor curl g++ make     openssh-client openssh-server     mailutils postfix     sqlite3   libpq-dev postgresql postgresql-contrib python-psycopg2     ffmpeg gstreamer0.10-ffmpeg ffmpeg2theora     bash-completion cron     ruby ruby-dev     nodejs     wget     duplicity   rabbitmq-server   yarn | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+# install packages related application and ( ssh, mail {for mailbox / mail relaying}, sqlite and postgresql, ffmpeg and ffmpeg2theora, bash {commands} auto completion and crontab, SCSS/SAAS stylesheets {ruby}, nodejs{bower}, wget, duplicity, rabbitmq-server, yarn and cffi dependency{libssl-dev and libffi-dev}, and lxml dependency {libxml2-dev and libxslt1-dev})
+RUN apt-get install -y dialog net-tools build-essential git python python-pip python-setuptools python-dev rcs emacs24 libjpeg-dev memcached libevent-dev libfreetype6-dev zlib1g-dev nginx supervisor curl g++ make     openssh-client openssh-server     mailutils postfix     sqlite3   libpq-dev postgresql postgresql-contrib python-psycopg2     ffmpeg gstreamer0.10-ffmpeg ffmpeg2theora     bash-completion cron     ruby ruby-dev     nodejs     wget     duplicity   rabbitmq-server   yarn   libssl-dev libffi-dev   libxml2-dev libxslt1-dev | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
 RUN easy_install pip  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
