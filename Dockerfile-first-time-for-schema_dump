@@ -107,6 +107,7 @@ RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
 # Clone OpenAssessmentsClient repos at gstudio level
 RUN cd /home/docker/code/   \
    &&  git clone https://github.com/gnowledge/OpenAssessmentsClient.git   \
+   &&  cd OpenAssessmentsClient   \
    &&  yarn   \
    &&  yarn build   \
    &&  mkdir /softwares/oac /softwares/oat   \

@@ -102,11 +102,12 @@ RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
    &&  cd qbank-lite   \
    &&  pip install -r /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/requirements.txt  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
    &&  git submodule update --init --recursive   \
-   &&  python main.py
+   &&  python main.py &
 
 # Clone OpenAssessmentsClient repos at gstudio level
 RUN cd /home/docker/code/   \
    &&  git clone https://github.com/gnowledge/OpenAssessmentsClient.git   \
+   &&  cd OpenAssessmentsClient   \
    &&  yarn   \
    &&  yarn build   \
    &&  mkdir /softwares/oac /softwares/oat   \
@@ -224,7 +225,7 @@ RUN /etc/init.d/postgresql start   \
 # fab update
 RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
    &&  pip install flower   \
-   &&  pip install Fabric==1.12.0   
+   &&  pip install Fabric==1.12.0
 
 # Perform collectstatic
 #RUN echo yes | /usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py collectstatic
