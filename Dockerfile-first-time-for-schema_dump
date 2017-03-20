@@ -100,8 +100,8 @@ RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
    &&  git clone https://github.com/gnowledge/qbank-lite.git   \
    &&  cd qbank-lite   \
    &&  pip install -r /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/requirements.txt  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
-   &&  git submodule update --init --recursive   \
-   &&  python main.py
+   &&  git submodule update --init --recursive   
+#   &&  python main.py
 
 
 # Clone OpenAssessmentsClient repos at gstudio level
