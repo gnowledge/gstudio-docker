@@ -99,10 +99,9 @@ RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
 RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
    &&  git clone https://github.com/gnowledge/qbank-lite.git   \
    &&  cd qbank-lite   \
-   &&  pip install -r /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/requirements.txt  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+#   &&  pip install -r /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/requirements.txt   \
    &&  git submodule update --init --recursive   
 #   &&  python main.py
-
 
 # Clone OpenAssessmentsClient repos at gstudio level
 RUN cd /home/docker/code/   \
@@ -152,7 +151,6 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf   \
    &&  ln -s /home/docker/code/confs/main.cf /etc/postfix/  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
    &&  ln -s /home/docker/code/confs/sasl_passwd /etc/postfix/  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
    &&  ln -s /home/docker/code/confs/sasl_passwd.db /etc/postfix/  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   
-
 
 RUN echo "Size of deb packages files : "  du -hs  /var/cache/apt/archives/   \
    &&  ls -ltr  /var/cache/apt/archives/   \
@@ -214,6 +212,11 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime  | sed -e "s/^/$(date
    &&  /home/docker/code/scripts/nltk-initialization.py  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
    &&  mkdir /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/ndf/management/commands/schema_files  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
+# Setting data directory for "collectstatic"
+RUN cd /data/   \
+   &&   wget http://clixplatform.tiss.edu/softwares/initial-schema-dump-clixplatform/clean-data-kedar-mrunal-20170324-clixplatform.tar.bz2   \
+   &&   tar xvjf clean-data-kedar-mrunal-20170324-clixplatform.tar.bz2 
+
 # Restore default postgres database
 RUN /etc/init.d/postgresql start   \
    &&  echo "psql -f /data/pgdata.sql;" | sudo su - postgres    \
@@ -230,6 +233,6 @@ RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
    &&  fab update_data
 
 # Perform collectstatic
-#RUN echo yes | /usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py collectstatic
+RUN echo yes | /usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py collectstatic
 
 CMD /home/docker/code/scripts/initialize.sh  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /"  2>&1 | tee -a ${LOG_INSTALL_DOCKER}

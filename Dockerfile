@@ -88,7 +88,6 @@ RUN tar -xvzf static.tgz  && rm -rf static.tgz
 # RUN pip install to install pip related required packages as per requirements.txt
 RUN pip install -r /home/docker/code/gstudio/requirements.txt  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
-
 # Clone dlkit repos at manage.py level
 RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
    &&  git clone https://bitbucket.org/cjshaw/dlkit_runtime.git   \
@@ -100,9 +99,9 @@ RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
 RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
    &&  git clone https://github.com/gnowledge/qbank-lite.git   \
    &&  cd qbank-lite   \
-   &&  pip install -r /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/requirements.txt  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+#   &&  pip install -r /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/requirements.txt   \
    &&  git submodule update --init --recursive   
-#  &&  python main.py &
+#   &&  python main.py
 
 # Clone OpenAssessmentsClient repos at gstudio level
 RUN cd /home/docker/code/   \
@@ -183,6 +182,7 @@ RUN apt-get update \
 RUN apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 492EAFE8CD016A07919F1D2B9ECBEC467F0CEB10  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
 # Mrunal : 12012016 : Changed the source for mongodb from "http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.1 multiverse" to "http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse" 
+# install uwsgi now because it takes a little while
 RUN echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse" > /etc/apt/sources.list.d/mongodb-org.list  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
 # Mrunal : 12012016 : Get the stable packages instead of unstable eg.- "mongodb-org-unstable" to "mongodb-org" 
@@ -213,6 +213,11 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime  | sed -e "s/^/$(date
    &&  /home/docker/code/scripts/nltk-initialization.py  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
    &&  mkdir /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/ndf/management/commands/schema_files  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
+# Setting data directory for "collectstatic"
+RUN cd /data/   \
+   &&   wget http://clixplatform.tiss.edu/softwares/initial-schema-dump-clixplatform/clean-data-kedar-mrunal-20170324-clixplatform.tar.bz2   \
+   &&   tar xvjf clean-data-kedar-mrunal-20170324-clixplatform.tar.bz2 
+
 # Restore default postgres database
 RUN /etc/init.d/postgresql start   \
    &&  echo "psql -f /data/pgdata.sql;" | sudo su - postgres    \
@@ -228,6 +233,6 @@ RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
    &&  pip install Fabric==1.12.0
 
 # Perform collectstatic
-#RUN echo yes | /usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py collectstatic
+RUN echo yes | /usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py collectstatic
 
 CMD /home/docker/code/scripts/initialize.sh  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /"  2>&1 | tee -a ${LOG_INSTALL_DOCKER}
