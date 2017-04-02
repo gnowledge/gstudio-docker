@@ -30,6 +30,8 @@ GSTUDIO_SITE_LANDING_TEMPLATE = "ndf/landing_page_clix.html"
 GSTUDIO_SITE_LOGO = "/static/ndf/css/themes/clix/logo.svg"
 GSTUDIO_SITE_FAVICON = "/static/ndf/images/favicon/clix-favicon.png"
 GSTUDIO_SITE_HOME_PAGE = "/welcome"
+GSTUDIO_RESOURCES_EDUCATIONAL_LEVEL = ["Grade 8", "Grade 9"]
+GSTUDIO_RESOURCES_EDUCATIONAL_SUBJECT = ["English", "Mathematics", "Science"]
 
 GSTUDIO_CAPTCHA_VISIBLE = False
 
