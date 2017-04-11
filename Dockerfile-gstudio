@@ -1,0 +1,146 @@
+# set the base image to Ubuntu 14.04
+FROM ubuntu:14.04 
+
+# file Author / Maintainer to GN 
+MAINTAINER nagarjun@gnowledge.org, mrunal@gnowledge.org, satej@gnowledge.org
+
+
+# create code directory as it can't find dirctory while coping
+RUN mkdir -p /home/docker/code/   \
+   &&  mkdir -p /data/db   \
+   &&  mkdir -p /data/rcs-repo   \
+   &&  mkdir -p /data/media   \
+   &&  mkdir -p /data/benchmark-dump   \
+   &&  mkdir -p /data/heartbeats   \
+   &&  mkdir -p /backups/incremental   \
+   &&  mkdir -p /softwares   \
+   &&  echo "code, data, rcs-repo, media, benchmark-dump, heartbeats, backups and softwares driectories are created"  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+
+
+# install our code
+# ADD . /home/docker/code/ 
+
+# change the working directory to "/home/docker/code"
+WORKDIR "/home/docker/code/" 
+
+# install gstudio docker code
+RUN git clone https://743e4ddc106b7b2cf402bbf802cae683b0aa62de@github.com/mrunal4/gstudio-docker.git  
+RUN mv gstudio-docker/* . && rm -rf gstudio-docker
+
+# install gstudio app code
+RUN git clone -b dlkit https://743e4ddc106b7b2cf402bbf802cae683b0aa62de@github.com/gnowledge/gstudio.git 
+RUN cd gstudio && git reset --hard $commitid && cd ..
+
+RUN wget http://103.36.84.69:9001/static.tgz
+RUN tar -xvzf static.tgz  && rm -rf static.tgz
+
+# RUN pip install to install pip related required packages as per requirements.txt
+RUN pip install -r /home/docker/code/gstudio/requirements.txt  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+
+# Clone dlkit repos at manage.py level
+RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
+   &&  git clone https://bitbucket.org/cjshaw/dlkit_runtime.git   \
+   &&  git clone https://bitbucket.org/cjshaw/dlkit.git   \
+   &&  cd dlkit   \
+   &&  git submodule update --init --recursive
+
+# Clone qbank repos at manage.py level
+RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
+   &&  git clone https://github.com/gnowledge/qbank-lite.git   \
+   &&  cd qbank-lite   \
+#   &&  pip install -r /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/requirements.txt   \
+   &&  git submodule update --init --recursive   
+#   &&  python main.py
+
+# Clone OpenAssessmentsClient repos at gstudio level
+RUN cd /home/docker/code/   \
+   &&  git clone https://github.com/gnowledge/OpenAssessmentsClient.git   \
+   &&  cd OpenAssessmentsClient   \
+   &&  yarn   \
+   &&  yarn build   \
+   &&  mkdir /softwares/oac /softwares/oat   \
+   &&  cp -av /home/docker/code/OpenAssessmentsClient/build/prod/* /softwares/oac/   \
+   &&  cp -av /home/docker/code/OpenAssessmentsClient/build/prod/* /softwares/oat/   \
+   &&  cp -av /softwares/oat/author.html /softwares/oat/index.html
+
+#bower install
+RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
+   &&  bower install --allow-root  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+
+# backup all scripts, confs and restore schema dump (restore factory dump)
+RUN mkdir /root/.backup_defaults   \
+   &&  cp -av /home/docker/code/confs /root/.backup_defaults/   \
+   &&  cp -av /home/docker/code/scripts /root/.backup_defaults/   \
+   &&  cp -av /home/docker/code/Dockerfile /home/docker/code/AUTHORS /home/docker/code/README.md /root/.backup_defaults/   \
+   &&  rm -rf /data/db /data/media /data/rcs-repo   \
+   &&  cp -av /home/docker/code/schema_dump/data/* /data/   \
+   &&  rm -rf /home/docker/code/schema_dump/data
+   
+
+# checking the present working directory and copying of configfiles : {copying the '.emacs' file in /root/ } , {copying the 'maintenance' files in /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/ndf/templates/ } , {copying wsgi file to appropriate location}, {copying postgresql conf file to appropriate location} , 
+RUN pwd  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}    \
+   &&  cp -v /home/docker/code/confs/emacs /root/.emacs  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}    \
+   &&  cp -v /home/docker/code/maintenance/maintenance* /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/ndf/templates/  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}    \
+   &&  cp -v /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/wsgi.py /home/docker/code/gstudio/gnowsys-ndf/wsgi.py  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}    \
+   &&  rm /etc/postgresql/9.3/main/postgresql.conf  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}    \
+   &&  cp -v /home/docker/code/confs/local_settings.py.default /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py   \
+   && cat /home/docker/code/confs/bash_compl >> /root/.bashrc   | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}    
+   
+# setup all the configfiles (nginx, supervisord and postgresql)
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf   \
+   &&  rm /etc/nginx/sites-enabled/default  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+   &&  mv -v /etc/nginx/nginx.conf /tmp/  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+   &&  ln -s /home/docker/code/confs/nginx.conf /etc/nginx/  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+   &&  ln -s /home/docker/code/confs/nginx-app.conf /etc/nginx/sites-enabled/  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+   &&  ln -s /home/docker/code/confs/supervisor-app.conf /etc/supervisor/conf.d/  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+   &&  ln -s /home/docker/code/confs/postgresql.conf /etc/postgresql/9.3/main/  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}    \
+   &&  mv -v /etc/mailname /tmp/  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+   &&  ln -s /home/docker/code/confs/mailname /etc/mailname  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+   &&  mv -v /etc/postfix/main.cf /tmp/  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+   &&  ln -s /home/docker/code/confs/main.cf /etc/postfix/  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+   &&  ln -s /home/docker/code/confs/sasl_passwd /etc/postfix/  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+   &&  ln -s /home/docker/code/confs/sasl_passwd.db /etc/postfix/  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   
+
+RUN echo "Size of deb packages files : "  du -hs  /var/cache/apt/archives/   \
+   &&  ls -ltr  /var/cache/apt/archives/   \
+   &&  du -hs  /var/cache/apt/archives/*   \
+   &&  rm -rf /var/cache/apt/archives/*.deb
+
+
+
+RUN mkdir -p /data/db && chown -R mongodb:mongodb /data/db  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+VOLUME /data ["/data", "/backups", "/softwares"]
+
+# Exposing the ports - {ssh} , {smtp} , {https (with ssl)} , {http} , {for developement user (Developer)} , {smtpd command (to test mail machanism locally)} , {imap : gnowledge} , {smtp : gnowledge} , {mongodb}
+RUN echo "EXPOSE  22  25  443  80  8000  1025  143  587"  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+EXPOSE  22  25  443  80  8000  1025  143  587  27017  8080 5555
+
+# {change this line for your timezone} and {nltk installation and building search base} and {creation of schema_files directory}
+RUN ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+   &&  pip install -U pyyaml nltk  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+   &&  /home/docker/code/scripts/nltk-initialization.py  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+   &&  mkdir /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/ndf/management/commands/schema_files  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+
+# Setting data directory for "collectstatic"
+RUN cd /data/   \
+   &&   wget http://clixplatform.tiss.edu/softwares/initial-schema-dump-clixplatform/clean-data-kedar-mrunal-20170324-clixplatform.tar.bz2   \
+   &&   tar xvjf clean-data-kedar-mrunal-20170324-clixplatform.tar.bz2 
+
+# Restore default postgres database
+RUN /etc/init.d/postgresql start   \
+   &&  echo "psql -f /data/pgdata.sql;" | sudo su - postgres    \
+   &&  crontab /home/docker/code/confs/mycron    \
+   &&  rm /etc/rc.local    \
+   &&  ln -s /home/docker/code/confs/rc.local /etc/    \
+   &&  /etc/init.d/rc.local start    \
+   &&  /etc/init.d/postgresql start
+
+# fab update
+RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
+   &&  pip install flower   \
+   &&  pip install Fabric==1.12.0
+
+# Perform collectstatic
+RUN echo yes | /usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py collectstatic
+
+CMD /home/docker/code/scripts/initialize.sh  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /"  2>&1 | tee -a ${LOG_INSTALL_DOCKER}

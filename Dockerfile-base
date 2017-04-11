@@ -1,0 +1,94 @@
+# set the base image to Ubuntu 14.04
+FROM ubuntu:14.04 
+
+# file Author / Maintainer to GN 
+MAINTAINER nagarjun@gnowledge.org, mrunal@gnowledge.org, satej@gnowledge.org
+
+# file adding auser "docker" 
+# -m : home directory
+# -s : shell (user's login shell)
+RUN useradd -ms /bin/bash docker
+
+RUN su docker
+
+# Setting the path for the installation directory
+RUN export DATE_LOG=`echo $(date "+%Y%m%d-%H%M%S")`
+ENV LOG_DIR_DOCKER="/root/DockerLogs"   
+ENV LOG_INSTALL_DOCKER="/root/DockerLogs/$(DATE_LOG)-gsd-install.log"
+
+RUN echo "PATH="$LOG_DIR_DOCKER   \
+   &&  mkdir -p $LOG_DIR_DOCKER   \
+   &&  touch ${LOG_INSTALL_DOCKER}   \
+   &&  ls ${LOG_INSTALL_DOCKER}   \
+   &&  echo "Logs driectory and file created"  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}    
+
+# update the repository sources list
+RUN apt-get update  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+
+# install nginx
+# add all the repositories (nginx, ffmpeg and ffmpeg2theora, nodejs{bower} and yarn)
+RUN apt-get install -y python-software-properties  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+   &&  apt-get install -y software-properties-common python-software-properties  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+   &&  add-apt-repository -y ppa:nginx/stable  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+   &&  add-apt-repository -y ppa:mc3man/trusty-media  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
+   &&  apt-get install -y curl   \
+   &&  curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -   \
+   &&  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -   \
+   &&  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list   \
+   &&  apt-get install apt-transport-https -y --force-yes
+
+
+# update the keys and repository sources list
+RUN apt-key update && apt-get update  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+
+# install packages related application and ( ssh, mail {for mailbox / mail relaying}, sqlite and postgresql, ffmpeg and ffmpeg2theora, bash {commands} auto completion and crontab, SCSS/SAAS stylesheets {ruby}, nodejs{bower}, wget, duplicity, rabbitmq-server, yarn and cffi dependency{libssl-dev and libffi-dev}, and lxml dependency {libxml2-dev and libxslt1-dev})
+RUN apt-get install -y dialog net-tools build-essential git python python-pip python-setuptools python-dev rcs emacs24 libjpeg-dev memcached libevent-dev libfreetype6-dev zlib1g-dev nginx supervisor curl g++ make     openssh-client openssh-server     mailutils postfix     sqlite3   libpq-dev postgresql postgresql-contrib python-psycopg2     ffmpeg gstreamer0.10-ffmpeg ffmpeg2theora     bash-completion cron     ruby ruby-dev     nodejs     wget     duplicity   rabbitmq-server   yarn   libssl-dev libffi-dev   libxml2-dev libxslt1-dev | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+
+RUN easy_install pip  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+
+# install uwsgi now because it takes a little while
+RUN pip install uwsgi nodeenv  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+
+# for editing SCSS/SAAS stylesheets {compass}
+RUN gem install compass  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+
+# for nodejs{bower}
+RUN npm install -g bower  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+
+
+
+# mongodb installation
+
+# add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
+RUN groupadd -r mongodb   \
+   &&  useradd -r -g mongodb mongodb  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+
+RUN apt-get update \
+   &&  apt-get install -y --no-install-recommends \
+                ca-certificates \
+                numactl  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+#       && rm -rf /var/lib/apt/lists/*
+
+
+# gpg: key 7F0CEB10: public key "Richard Kreuter <richard@10gen.com>" imported
+RUN apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 492EAFE8CD016A07919F1D2B9ECBEC467F0CEB10  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+
+# Mrunal : 12012016 : Changed the source for mongodb from "http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.1 multiverse" to "http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse" 
+# install uwsgi now because it takes a little while
+RUN echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse" > /etc/apt/sources.list.d/mongodb-org.list  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+
+# Mrunal : 12012016 : Get the stable packages instead of unstable eg.- "mongodb-org-unstable" to "mongodb-org" 
+# Mrunal : 01022016 : Install specific version of mongodb : apt-get install  mongodb-org-unstable=3.1.5 mongodb-org-unstable-shell=3.1.5 mongodb-org-unstable-mongos=3.1.5 mongodb-org-unstable-tools=3.1.5
+ 
+RUN set -x \
+        && apt-get update \
+        && apt-get install -y --force-yes\
+                mongodb-org=3.2.4 \
+                mongodb-org-server=3.2.4 \
+                mongodb-org-shell=3.2.4 \
+                mongodb-org-mongos=3.2.4 \
+                mongodb-org-tools=3.2.4 \
+#       && rm -rf /var/lib/apt/lists/* \
+        && rm -rf /var/lib/mongodb \
+        && mv /etc/mongod.conf /etc/mongod.conf.orig  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+
