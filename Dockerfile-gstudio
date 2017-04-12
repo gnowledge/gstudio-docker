@@ -1,5 +1,5 @@
 # set the base image to Ubuntu 14.04
-FROM ubuntu:14.04 
+FROM registry.tiss.edu/gstudiobase
 
 # file Author / Maintainer to GN 
 MAINTAINER nagarjun@gnowledge.org, mrunal@gnowledge.org, satej@gnowledge.org
