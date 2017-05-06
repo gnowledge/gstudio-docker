@@ -125,6 +125,9 @@ bash /home/docker/code/scripts/generate-self-certified-certificate-ssl.sh ; 		  
 echo "[run] school server gpg setup" ;
 bash /home/docker/code/scripts/ss-gpg-setup.sh
 
+echo "[run] start qbank-lite" ;							   # Mrunal M. Nachankar : Mon, 07-09-2015 12:15:AM 
+bash /home/docker/code/scripts/start-qbank.sh ; 						   # Mrunal M. Nachankar : Mon, 07-09-2015 12:15:AM 
+
 echo "[run] supervisord" ;
 supervisord -n ;
 
