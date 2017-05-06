@@ -26,8 +26,8 @@ Build the image by running "build-docker.sh" script from the project directory a
 Script details
 ---------------------
 
-	1. script name : build-docker.sh
-	   execution   : bash build-docker.sh
+	1. script name : build-docker-image.sh
+	   execution   : bash build-docker-image.sh
 	   use	       : used for the following -
 		    1. installing docker application
 		    2. building the images and starting the container

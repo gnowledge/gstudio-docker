@@ -1,8 +1,8 @@
-# set the base image to Ubuntu 14.04
+# set the base image to registry.tiss.edu/gstudiobase
 FROM registry.tiss.edu/gstudiobase
 
-# file Author / Maintainer to GN 
-MAINTAINER nagarjun@gnowledge.org, mrunal@gnowledge.org, satej@gnowledge.org
+# file Author / Maintainer to Mrunal 
+MAINTAINER mrunal@gnowledge.org
 
 
 # create code directory as it can't find dirctory while coping
@@ -25,7 +25,10 @@ WORKDIR "/home/docker/code/"
 
 # install gstudio docker code
 RUN git clone https://743e4ddc106b7b2cf402bbf802cae683b0aa62de@github.com/mrunal4/gstudio-docker.git  
-RUN mv gstudio-docker/* . && rm -rf gstudio-docker
+
+RUN mv gstudio-docker/* .   \ 
+	&& mv gstudio-docker/.git .   \ 
+	&& rm -rf gstudio-docker
 
 # install gstudio app code
 RUN git clone -b dlkit https://743e4ddc106b7b2cf402bbf802cae683b0aa62de@github.com/gnowledge/gstudio.git 
@@ -46,7 +49,7 @@ RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
 
 # Clone qbank repos at manage.py level
 RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
-   &&  git clone https://github.com/gnowledge/qbank-lite.git   \
+   &&  git clone -b clixserver https://github.com/gnowledge/qbank-lite.git   \
    &&  cd qbank-lite   \
 #   &&  pip install -r /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/requirements.txt   \
    &&  git submodule update --init --recursive   
@@ -54,8 +57,10 @@ RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
 
 # Clone OpenAssessmentsClient repos at gstudio level
 RUN cd /home/docker/code/   \
-   &&  git clone https://github.com/gnowledge/OpenAssessmentsClient.git   \
+   &&  git clone -b clixserver https://github.com/gnowledge/OpenAssessmentsClient.git   \
+   &&  mkdir -p /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/repository/AssetContent/   \
    &&  cd OpenAssessmentsClient   \
+#   &&  npm build node-sass   \
    &&  yarn   \
    &&  yarn build   \
    &&  mkdir /softwares/oac /softwares/oat   \
@@ -84,7 +89,7 @@ RUN pwd  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_
    &&  cp -v /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/wsgi.py /home/docker/code/gstudio/gnowsys-ndf/wsgi.py  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}    \
    &&  rm /etc/postgresql/9.3/main/postgresql.conf  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}    \
    &&  cp -v /home/docker/code/confs/local_settings.py.default /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py   \
-   && cat /home/docker/code/confs/bash_compl >> /root/.bashrc   | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}    
+   &&  cat /home/docker/code/confs/bash_compl >> /root/.bashrc   | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}    
    
 # setup all the configfiles (nginx, supervisord and postgresql)
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf   \
@@ -109,11 +114,11 @@ RUN echo "Size of deb packages files : "  du -hs  /var/cache/apt/archives/   \
 
 
 RUN mkdir -p /data/db && chown -R mongodb:mongodb /data/db  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
-VOLUME /data ["/data", "/backups", "/softwares"]
+VOLUME /data ["/data", "/backups", "/softwares", "/home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/repository/AssetContent"]
 
 # Exposing the ports - {ssh} , {smtp} , {https (with ssl)} , {http} , {for developement user (Developer)} , {smtpd command (to test mail machanism locally)} , {imap : gnowledge} , {smtp : gnowledge} , {mongodb}
 RUN echo "EXPOSE  22  25  443  80  8000  1025  143  587"  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
-EXPOSE  22  25  443  80  8000  1025  143  587  27017  8080 5555
+EXPOSE  22  25  443  80  8000  1025  143  587  27017  8080  5555
 
 # {change this line for your timezone} and {nltk installation and building search base} and {creation of schema_files directory}
 RUN ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \

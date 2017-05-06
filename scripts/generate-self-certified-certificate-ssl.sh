@@ -4,8 +4,8 @@
 
 
 # Specify where we will install
-# the gnowgi.net certificate
-GNAME="clix.sharing.net"
+# the clixserver certificate
+GNAME="clixserver"
 SSL_DIR="/etc/ssl/$GNAME"
 
 if [[ -d /etc/ssl/$GNAME && -f /etc/ssl/$GNAME/$GNAME.crt  && -f /etc/ssl/$GNAME/$GNAME.csr && -f /etc/ssl/$GNAME/$GNAME.key ]]; then
