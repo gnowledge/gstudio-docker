@@ -60,7 +60,7 @@ RUN cd /home/docker/code/   \
    &&  git clone -b clixserver https://github.com/gnowledge/OpenAssessmentsClient.git   \
    &&  mkdir -p /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/repository/AssetContent/   \
    &&  cd OpenAssessmentsClient   \
-#   &&  npm build node-sass   \
+#   &&  npm build    \
    &&  yarn   \
    &&  yarn build   \
    &&  mkdir /softwares/oac /softwares/oat   \
