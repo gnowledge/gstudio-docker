@@ -26,8 +26,8 @@ update_patch="${filename%.*.*}";
 
 # git offline update docker code - started
 
-#git_commit_no_docker="20c14df4325c2e419b552b6c749aeb09ce344e5b";             # Earlier commit no
-git_commit_no_docker="7a4eae5066fec4b7ebb55974d6c8643400e4b159";              # Commit on 13-01-2017
+#git_commit_no_docker="7a4eae5066fec4b7ebb55974d6c8643400e4b159";             # Earlier commit no
+git_commit_no_docker="2fdfc5d2d773531ddf42c3ec00aba75cf215205d";              # Commit on 24-05-2017
 
 echo -e "\n${cyan}change the directory to /home/docker/code/ ${reset}"
 cd /home/docker/code/
@@ -43,8 +43,8 @@ git merge $git_commit_no_docker
 
 # git offline update gstudio code - started
 
-#git_commit_no_gstudio="6651f64e922192459f128f44d953b2c1a44cd654";             # Earlier commit no
-git_commit_no_gstudio="7fc544830a8229931e01cf8841ad06d22f8cb6f6";              # Commit on 13-12-2016
+#git_commit_no_gstudio="7fc544830a8229931e01cf8841ad06d22f8cb6f6";             # Earlier commit no
+git_commit_no_gstudio="f0b3b9e38e2ad7bbac69509005a22f4f0e7ac1f4";              # Commit on 24-05-2017
 
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
 cd /home/docker/code/gstudio/
