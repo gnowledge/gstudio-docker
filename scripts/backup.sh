@@ -65,8 +65,11 @@ if [ ! -d /backups/rsync/$ss_id1 ]; then
     mkdir /backups/rsync/$ss_id1
 fi
 
-echo -e "\nBackup via rsync in process please be patient"
+echo -e "\nBackup Full - via rsync in process please be patient"
 rsync -avzPh  /data/media /data/rcs-repo /data/benchmark-dump /data/counters-dump /data/gstudio-exported-users-analytics-csvs  /backups/rsync/$ss_id1/
+
+echo -e "\nBackup user analytics - via rsync in process please be patient"
+rsync -avzPh  /data/gstudio-exported-users-analytics-csvs  /backups/syncthing/$ss_id1/
 
 cp -av /root/.gnupg /backups/rsync/$ss_id1/
 
@@ -80,3 +83,10 @@ chmod +x /root/Sync/*
 
 #chmod 644 /backups/incremental/*
 chmod +x /backups/rsync/*
+
+
+touch /backups/syncthing/$ss_id1/.stfolder
+touch /backups/syncthing/$ss_id1/.stignore
+
+#chmod 644 /backups/incremental/*
+chmod +x /backups/syncthing/*
