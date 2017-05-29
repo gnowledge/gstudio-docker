@@ -40,7 +40,7 @@ fi
 echo "pg_dumpall > pg_dump_all.sql;
 " | sudo su - postgres ;   
 
-mv /var/lib/postgresql/pg_dump_all.sql /data/postgres-dump
+mv /var/lib/postgresql/pg_dump_all.sql /data/postgres-dump/
 
 
 # if [[ "$(ls -ltr /backups/incremental/*full*.gpg | wc -l)" -le "2" ]]; then
@@ -58,24 +58,24 @@ mv /var/lib/postgresql/pg_dump_all.sql /data/postgres-dump
 cd /home/docker/code/gstudio/gnowsys-ndf/
 python manage.py fillCounter
 
-ss_id=`echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed 's/.*=//')`
-ss_id1=`echo $ss_id | sed "s/'//g"`
+# get server id (Remove single quote {'} and Remove double quote {"})
+ss_id=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
 
-if [ ! -d /backups/rsync/$ss_id1 ]; then
-    mkdir /backups/rsync/$ss_id1
+if [ ! -d /backups/rsync/$ss_id ]; then
+    mkdir /backups/rsync/$ss_id
 fi
 
 echo -e "\nBackup Full - via rsync in process please be patient"
-rsync -avzPh  /data/media /data/rcs-repo /data/benchmark-dump /data/counters-dump /data/gstudio-exported-users-analytics-csvs  /backups/rsync/$ss_id1/
+rsync -avzPh  /data/media /data/rcs-repo /data/benchmark-dump /data/counters-dump /data/gstudio-exported-users-analytics-csvs  /backups/rsync/$ss_id/
 
 echo -e "\nBackup user analytics - via rsync in process please be patient"
-rsync -avzPh  /data/gstudio-exported-users-analytics-csvs  /backups/syncthing/$ss_id1/
+rsync -avzPh  /data/gstudio-exported-users-analytics-csvs  /backups/syncthing/$ss_id/
 
-cp -av /root/.gnupg /backups/rsync/$ss_id1/
+cp -av /root/.gnupg /backups/rsync/$ss_id/
 
-touch /backups/$ss_id1/.stfolder
-touch /backups/rsync/$ss_id1/.stfolder
-touch /backups/rsync/$ss_id1/.stignore
+touch /backups/$ss_id/.stfolder
+touch /backups/rsync/$ss_id/.stfolder
+touch /backups/rsync/$ss_id/.stignore
 
 touch /root/Sync/.stfolder
 touch /root/Sync/.stignore
@@ -85,8 +85,8 @@ chmod +x /root/Sync/*
 chmod +x /backups/rsync/*
 
 
-touch /backups/syncthing/$ss_id1/.stfolder
-touch /backups/syncthing/$ss_id1/.stignore
+touch /backups/syncthing/$ss_id/.stfolder
+touch /backups/syncthing/$ss_id/.stignore
 
 #chmod 644 /backups/incremental/*
 chmod +x /backups/syncthing/*

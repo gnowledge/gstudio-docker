@@ -32,10 +32,10 @@ git_commit_no_docker="2fdfc5d2d773531ddf42c3ec00aba75cf215205d";              # 
 echo -e "\n${cyan}change the directory to /home/docker/code/ ${reset}"
 cd /home/docker/code/
 
-echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/gstudio-docker ${reset}"
-git fetch /home/docker/code/${update_patch}/gstudio-docker 
+echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/code-updates/gstudio-docker ${reset}"
+git fetch /home/docker/code/${update_patch}/code-updates/gstudio-docker 
 
-echo -e "\n${cyan}merging till specified commit number (${git_commit_no_docker}) from /home/docker/code/${update_patch}/gstudio-docker ${reset}"
+echo -e "\n${cyan}merging till specified commit number (${git_commit_no_docker}) from /home/docker/code/${update_patch}/code-updates/gstudio-docker ${reset}"
 git merge $git_commit_no_docker
 
 # git offline update docker code - ended
@@ -43,16 +43,16 @@ git merge $git_commit_no_docker
 
 # git offline update gstudio code - started
 
-#git_commit_no_gstudio="7fc544830a8229931e01cf8841ad06d22f8cb6f6";             # Earlier commit no
-git_commit_no_gstudio="f0b3b9e38e2ad7bbac69509005a22f4f0e7ac1f4";              # Commit on 24-05-2017
+#git_commit_no_gstudio="f0b3b9e38e2ad7bbac69509005a22f4f0e7ac1f4";             # Earlier commit no
+git_commit_no_gstudio="437665e586b010710e8844ae5511912904622a34";              # Commit on 26-05-2017
 
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
 cd /home/docker/code/gstudio/
 
-echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/gstudio ${reset}"
-git fetch /home/docker/code/${update_patch}/gstudio 
+echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/code-updates/gstudio ${reset}"
+git fetch /home/docker/code/${update_patch}/code-updates/gstudio 
 
-echo -e "\n${cyan}merging till specified commit number (${git-commit-no}) from /home/docker/code/${update_patch}/gstudio ${reset}"
+echo -e "\n${cyan}merging till specified commit number (${git-commit-no}) from /home/docker/code/${update_patch}/code-updates/gstudio ${reset}"
 git merge $git_commit_no_gstudio
 
 # git offline update gstudio code - ended
@@ -60,8 +60,8 @@ git merge $git_commit_no_gstudio
 
 # prefix and suffix double quotes " in server code - started
 
-# get server id 
-ss_id=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed 's/.*=//g')) | sed "s/'//g"`
+# get server id (Remove single quote {'} and Remove double quote {"})
+ss_id=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
 
 # update server id
 sed -e "/GSTUDIO_INSTITUTE_ID/ s/=.*/='${ss_id}'/" -i  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
@@ -73,6 +73,9 @@ sed -e "/GSTUDIO_INSTITUTE_ID/ s/=.*/='${ss_id}'/" -i  /home/docker/code/gstudio
 
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
 cd /home/docker/code/gstudio/gnowsys-ndf/
+
+echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
+fab update_data
 
 echo -e "\n${cyan}collectstatic ${reset}"
 echo yes | python manage.py collectstatic

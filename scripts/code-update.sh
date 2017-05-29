@@ -1,13 +1,6 @@
 #!/bin/bash
 
 # Following variables are used to store the color codes for displaying the content on terminal
-# red="\033[0;31m" ;
-# green="\033[0;32m" ;
-# brown="\033[0;33m" ;
-# blue="\033[0;34m" ;
-# cyan="\033[0;36m" ;
-# reset="\033[0m" ;
-
 black="\033[0;90m" ;
 red="\033[0;91m" ;
 green="\033[0;92m" ;
@@ -34,7 +27,7 @@ echo -e "\n${cyan}copy updated patch from /mnt/home/core/${update_patch} to /hom
 sudo docker cp /mnt/${update_patch} gstudio:/home/docker/code/;
 
 echo -e "\n${cyan}Update offline patch ${reset}";
-docker exec -it gstudio /bin/sh -c "/bin/bash /home/docker/code/${update_patch}/git-offline-update.sh";
+docker exec -it gstudio /bin/sh -c "/bin/bash /home/docker/code/${update_patch}/code-updates/git-offline-update.sh";
 
 echo -e "\n${cyan}Restart gstudio container ${reset}";
 sudo docker restart gstudio;
