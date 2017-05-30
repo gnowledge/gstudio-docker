@@ -26,8 +26,8 @@ update_patch="${filename%.*.*}";
 
 # git offline update docker code - started
 
-#git_commit_no_docker="2fdfc5d2d773531ddf42c3ec00aba75cf215205d";             # Earlier commit no
-git_commit_no_docker="173dc666efc203926415cb2a7d02eda9ab4d9171";              # Commit on 30-05-2017
+#git_commit_no_docker="173dc666efc203926415cb2a7d02eda9ab4d9171";             # Earlier commit no
+git_commit_no_docker="e72e9a0f64f73a92c06422ab0ea6ff3774326abd";              # Commit on 30-05-2017
 
 echo -e "\n${cyan}change the directory to /home/docker/code/ ${reset}"
 cd /home/docker/code/
