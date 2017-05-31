@@ -20,7 +20,7 @@ echo -e "${brown}It uses a terminal-console which may show many details during i
 echo -e "${brown}This is normal. Please let the installation proceed.${reset}\n" ;
 sleep 5
 
-filename=$(basename $(ls -t1 /mnt/update_* |  head -n 1));
+filename=$(basename $(ls -d /mnt/update_* |  head -n 1));
 update_patch="${filename%.*.*}";
 
 echo -e "\n${cyan}copy updated patch from /mnt/home/core/${update_patch} to /home/docker/code/ in gstudio container ${reset}";

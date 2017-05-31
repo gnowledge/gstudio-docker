@@ -58,21 +58,23 @@ update_patch="${filename%.*.*}";
 
 
 # Apply patches - change the directory till the patch location and apply the patches
-docker exec -it gstudio bash -c 'cp -rv /home/docker/code/${update_patch}/oac-and-oat-updates/oac.patch  /softwares/  &&  cd /softwares  &&  patch  -s -p0 <  oac.patch'
-docker exec -it gstudio bash -c 'cp -rv /home/docker/code/${update_patch}/oac-and-oat-updates/oat.patch  /softwares/  &&  cd /softwares  &&  patch  -s -p0 <  oat.patch'
+docker exec -it gstudio /bin/sh -c "cp -rv /home/docker/code/${update_patch}/oac-and-oat-updates/oac.patch  /softwares/  &&  cd /softwares  &&  patch  -s -p0 <  oac.patch"
+docker exec -it gstudio /bin/sh -c "cp -rv /home/docker/code/${update_patch}/oac-and-oat-updates/oat.patch  /softwares/  &&  cd /softwares  &&  patch  -s -p0 <  oat.patch"
 
 # Make directories to keep of patches
 mkdir /data/updates_archives
 
 
 # Copy patch files in old patches directory
-rsync -avzPh /mnt/${update_patch}.tar.gz /data/updates_archives
+rsync -avzPh /mnt/${update_patch}.tar.gz /home/core/data/updates_archives/
 
 # As the patches are applied we can remove it now (from host system)
 #rm -rf /tmp/*
-mv /mnt/${update_patch}.tar.gz /mnt/${update_patch} /softwares/oac.patch /softwares/oat.patch /tmp/
-rm -rf /mnt/update_2017_05_24*
+mv /mnt/${update_patch} /home/core/setup-softwares/oac.patch /home/core/setup-softwares/oat.patch /tmp/
+rm -rf /tmp/${update_patch} /tmp/oa*.patch
 
 # As the patches are applied we can remove it now (from docker container)
 #rm -rf /tmp/*
-docker exec -it gstudio bash -c 'mv /home/docker/code/${update_patch}.tar.gz /home/docker/code/${update_patch} /tmp/  &&  rm -rf /mnt/update_2017_05_24*'
+docker exec -it gstudio /bin/sh -c "mv /home/docker/code/${update_patch}.tar.gz /home/docker/code/${update_patch} /tmp/  &&  rm -rf /mnt/${update_patch}"
+
+exit
