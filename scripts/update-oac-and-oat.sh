@@ -62,7 +62,7 @@ docker exec -it gstudio /bin/sh -c "cp -rv /home/docker/code/${update_patch}/oac
 docker exec -it gstudio /bin/sh -c "cp -rv /home/docker/code/${update_patch}/oac-and-oat-updates/oat.patch  /softwares/  &&  cd /softwares  &&  patch  -s -p0 <  oat.patch"
 
 # Make directories to keep of patches
-mkdir /data/updates_archives
+sudo mkdir /home/core/data/updates_archives/
 
 
 # Copy patch files in old patches directory
@@ -70,7 +70,7 @@ rsync -avzPh /mnt/${update_patch}.tar.gz /home/core/data/updates_archives/
 
 # As the patches are applied we can remove it now (from host system)
 #rm -rf /tmp/*
-mv /mnt/${update_patch} /home/core/setup-softwares/oac.patch /home/core/setup-softwares/oat.patch /tmp/
+mv /mnt/${update_patch} /home/core/setup-software/oac.patch /home/core/setup-software/oat.patch /tmp/
 rm -rf /tmp/${update_patch} /tmp/oa*.patch
 
 # As the patches are applied we can remove it now (from docker container)
