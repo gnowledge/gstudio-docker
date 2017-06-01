@@ -74,8 +74,11 @@ sed -e "/GSTUDIO_INSTITUTE_ID/ s/=.*/='${ss_id}'/" -i  /home/docker/code/gstudio
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
 cd /home/docker/code/gstudio/gnowsys-ndf/
 
-echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
+echo -e "\n${cyan}apply fab update_data ${reset}"
 fab update_data
+
+echo -e "\n${cyan}updating interactions data ${reset}"
+echo "execfile('../doc/deployer/del_has_thread_update.py')" | python manage.py shell
 
 echo -e "\n${cyan}collectstatic ${reset}"
 echo yes | python manage.py collectstatic
