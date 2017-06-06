@@ -29,5 +29,8 @@ sudo docker cp /mnt/${update_patch} gstudio:/home/docker/code/;
 echo -e "\n${cyan}Update offline patch ${reset}";
 docker exec -it gstudio /bin/sh -c "/bin/bash /home/docker/code/${update_patch}/code-updates/git-offline-update.sh";
 
+echo -e "\n${cyan}Cleaning up qbank hardcoded file names - offline patch ${reset}";
+docker exec -it gstudio /bin/sh -c "/usr/bin/python /home/docker/code/${update_patch}/code-updates/gstudio-docker/scripts/cleaning-up-qbank-hardcoded-file-names.py";
+
 echo -e "\n${cyan}Restart gstudio container ${reset}";
 sudo docker restart gstudio;
