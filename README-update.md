@@ -22,12 +22,12 @@ This file will contain the details about the update patch. This file also includ
 	Long			: 	``` 5568dbbbdf0bda549aefbcf8fc6a9352046d7d29 ```
 
 ###qbank:
-	Short			:	``` 5568dbb ```
-	Long			: 	``` 5568dbbbdf0bda549aefbcf8fc6a9352046d7d29 ```
+	Short			:	``` cf7c138 ```
+	Long			: 	``` cf7c1382638c340b5665d6e7ce7e7f31626aed30 ```
 
 ###OpenAssessmentsClient:
-	Short			:	``` 5568dbb ```
-	Long			: 	``` 5568dbbbdf0bda549aefbcf8fc6a9352046d7d29 ```
+	Short			:	``` ed2f30d ```
+	Long			: 	``` ed2f30dc65be911ee8f1c80a964e159e289ffe0b ```
 
 
 
