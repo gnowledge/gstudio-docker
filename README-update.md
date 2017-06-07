@@ -5,8 +5,8 @@ This file will contain the details about the update patch. This file also includ
 
 
 ##Update-patch number: 
-	Syntax  		: 	``` update-patch-<gstudio-docker-commit-no>-r<release-no>-<yyyymmdd> ```
-	Exact Number 	: 	``` update-patch-<gstudio-docker-commit-no>-r<release-no>-20170605 ```
+	Syntax  		: 	``` update-patch-9de330e-r<release-no>-<yyyymmdd> ```
+	Exact Number 	: 	``` update-patch-9de330e-r<release-no>-20170605 ```
 
 
 ##Version number: r1
@@ -14,8 +14,8 @@ This file will contain the details about the update patch. This file also includ
 
 ##Commit number
 ###gstudio-docker:
-	Short			:	``` 5568dbb ```
-	Long			: 	``` 5568dbbbdf0bda549aefbcf8fc6a9352046d7d29 ```
+	Short			:	``` 9de330e ```
+	Long			: 	``` 9de330ec8dcce9a5e840e7eb237899035d34a5fb ```
 
 ###gstudio: 
 	Short			:	``` 5568dbb ```
@@ -33,11 +33,11 @@ This file will contain the details about the update patch. This file also includ
 
 ##Instruction to prepare the update patch
 
-mkdir update-patch-<gstudio-docker-commit-no>-r1-20170606
+mkdir update-patch-9de330e-r1-20170606
 
-mkdir -p update-patch-<gstudio-docker-commit-no>-r1-20170606/code-updates
+mkdir -p update-patch-9de330e-r1-20170606/code-updates
 
-cd update-patch-<gstudio-docker-commit-no>-r1-20170606/code-updates
+cd update-patch-9de330e-r1-20170606/code-updates
 
 git clone https://github.com/mrunal4/gstudio-docker.git
 
@@ -48,9 +48,9 @@ rsync -avzPh gstudio-docker/scripts/git-offline-update.sh gstudio-docker/scripts
 cd ../../
 
 
-mkdir -p update-patch-<gstudio-docker-commit-no>-r1-20170606/oac-and-oat-updates
+mkdir -p update-patch-9de330e-r1-20170606/oac-and-oat-updates
 
-cd update-patch-<gstudio-docker-commit-no>-r1-20170606/oac-and-oat-updates
+cd update-patch-9de330e-r1-20170606/oac-and-oat-updates
 
 rsync -avzPh ../code-updates/gstudio-docker/scripts/update-oac-and-oat.sh .
 
@@ -60,7 +60,7 @@ wget https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates-raw-mater
 
 cd ../../
 
-tar cvzf update-patch-<gstudio-docker-commit-no>-r1-20170606.tar.gz update-patch-<gstudio-docker-commit-no>-r1-20170606/
+tar cvzf update-patch-9de330e-r1-20170606.tar.gz update-patch-9de330e-r1-20170606/
 
 
 
@@ -69,7 +69,7 @@ tar cvzf update-patch-<gstudio-docker-commit-no>-r1-20170606.tar.gz update-patch
 ###Download the update tar file:
 	
 	updates dt 01-06-2017 (all updates in single tar file):
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_2017_06_01.tar.gz
+		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update-patch-9de330e-r1-20170606.tar.gz
 
 
 ###Copy content (downloaded tar file) in Pendrive (not inside any directory please - directly inside the pendrive {root of pendrive})
@@ -111,12 +111,12 @@ tar cvzf update-patch-<gstudio-docker-commit-no>-r1-20170606.tar.gz update-patch
 ###Update procedure			(Following commands should be processed in this order only)
 	####code-updates:
 		Extract the content from tar file
-			Command : ``` sudo tar xvzf update_2017_06_01.tar.gz ```
+			Command : ``` sudo tar xvzf update-patch-9de330e-r1-20170606.tar.gz ```
 		Apply code update patch
-			Command : ``` sudo bash update_2017_06_01/code-updates/code-update.sh ```
+			Command : ``` sudo bash update-patch-9de330e-r1-20170606/code-updates/code-update.sh ```
 
 	####oac and oat:
-		Command : ``` sudo bash update_2017_06_01/oac-and-oat-updates/update-oac-and-oat.sh ```
+		Command : ``` sudo bash update-patch-9de330e-r1-20170606/oac-and-oat-updates/update-oac-and-oat.sh ```
 
 ###Restart the system
 	Command : ``` sudo reboot ```
