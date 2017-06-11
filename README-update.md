@@ -113,9 +113,9 @@ wget https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates-raw-mater
 
 cd ../../
 
-tar cvzf update-patch-9de330e-r1-20170610.tar.gz update-patch-9de330e-r1-20170610/
+tar cvzf update_patch-9de330e-r1-20170610.tar.gz update_patch-9de330e-r1-20170610/
 
-rsync -avzPh update-patch-9de330e-r1-20170610/gstudio-docker/scripts/patch-r1.sh update-patch-9de330e-r1-20170610/gstudio-docker/README-update.sh .
+rsync -avzPh update_patch-9de330e-r1-20170610/gstudio-docker/scripts/patch-r1.sh update_patch-9de330e-r1-20170610/gstudio-docker/README-update.sh .
 
 ------------------------------------------------------------------------------------------------------
 
