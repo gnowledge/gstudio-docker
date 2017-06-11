@@ -115,7 +115,7 @@ cd ../../
 
 tar cvzf update_patch-9de330e-r1-20170610.tar.gz update_patch-9de330e-r1-20170610/
 
-rsync -avzPh update_patch-9de330e-r1-20170610/gstudio-docker/scripts/patch-r1.sh update_patch-9de330e-r1-20170610/gstudio-docker/README-update.sh .
+rsync -avzPh update_patch-9de330e-r1-20170610/code-updates/gstudio-docker/scripts/patch/patch-r1.sh update_patch-9de330e-r1-20170610/code-updates/gstudio-docker/README-update.md .
 
 ------------------------------------------------------------------------------------------------------
 
