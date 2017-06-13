@@ -18,7 +18,7 @@ function apply_patch() {
 	filename=$(basename $(ls -r /mnt/update_*.tar.gz |  head -n 1));
 	update_patch="${filename%.*.*}";
 
-	echo -e "\n${cyan}patch directory name : ${update_patch} and this update shell file name is ${readlink -f $0} ${reset}"
+	echo -e "\n${cyan}patch directory name : ${update_patch} and this update shell file name is $(readlink -f $0) ${reset}"
 
 	echo -e "\n${cyan}change directory /mnt/ ${reset}"
 	cd /mnt/
