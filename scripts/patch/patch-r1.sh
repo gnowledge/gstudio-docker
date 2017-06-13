@@ -15,7 +15,7 @@ reset="\033[0m" ;
 function apply_patch() {
 
 	# fetch the filename (patch name)
-	filename=$(basename $(ls -lt /mnt/update_* |  head -n 1));
+	filename=$(basename $(ls -r /mnt/update_*.tar.gz |  head -n 1));
 	update_patch="${filename%.*.*}";
 
 	echo -e "\n${cyan}patch directory name : ${update_patch} and this update shell file name is ${readlink -f $0} ${reset}"
