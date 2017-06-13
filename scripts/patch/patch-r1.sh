@@ -36,4 +36,6 @@ function apply_patch() {
 	sleep 10
 	sudo reboot
 
-}   |   tee patch-r1.log
+}   
+
+apply_patch |   tee patch-r1.log;
