@@ -23,14 +23,14 @@ function apply_patch() {
 	echo -e "\n${cyan}change directory /mnt/ ${reset}"
 	cd /mnt/
 
-	echo -e "\n${cyan}Extract the tar.gz file (update_patch-9de330e-r1-20170610.tar.gz) ${reset}"
-	sudo tar xvzf update_patch-9de330e-r1-20170610.tar.gz
+	echo -e "\n${cyan}Extract the tar.gz file (${update_patch}.tar.gz) ${reset}"
+	sudo tar xvzf ${update_patch}.tar.gz
 
 	echo -e "\n${cyan}Applying code updates ${reset}"
-	sudo bash update_patch-9de330e-r1-20170610/code-updates/code-update.sh
+	sudo bash ${update_patch}/code-updates/code-update.sh
 
 	echo -e "\n${cyan}Applying oac and oat updates ${reset}"
-	sudo bash update_patch-9de330e-r1-20170610/oac-and-oat-updates/update-oac-and-oat.sh
+	sudo bash ${update_patch}/oac-and-oat-updates/update-oac-and-oat.sh
 
 	echo -e "\n${cyan}School server will be restarting in 10sec ${reset}"
 	sleep 10

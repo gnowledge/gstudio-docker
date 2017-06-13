@@ -53,7 +53,7 @@
 #rsync -avzPh /mnt/oac.patch /mnt/oat.patch /home/core/setup-softwares/
 
 # fetch latest patch date and time stamp
-filename=$(basename $(ls -d /mnt/update_* |  head -n 1));
+filename=$(basename $(ls -r /mnt/update_*.tar.gz |  head -n 1));
 update_patch="${filename%.*.*}";
 
 
