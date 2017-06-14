@@ -94,7 +94,7 @@ cd update_patch-9de330e-r1-20170610/code-updates
 
 git clone https://github.com/mrunal4/gstudio-docker.git
 
-git clone https://github.com/gnowledge/gstudio.git
+git clone https://github.com/gnowledge/gstudio.git -b dlkit
 
 rsync -avzPh gstudio-docker/scripts/git-offline-update.sh gstudio-docker/scripts/code-update.sh .
 
