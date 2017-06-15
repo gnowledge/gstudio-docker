@@ -66,12 +66,12 @@ sudo mkdir /home/core/data/updates_archives/
 
 
 # Copy patch files in old patches directory
-rsync -avzPh /mnt/${update_patch}.tar.gz /home/core/data/updates_archives/
+sudo rsync -avzPh /mnt/${update_patch}.tar.gz /home/core/data/updates_archives/
 
 # As the patches are applied we can remove it now (from host system)
 #rm -rf /tmp/*
-mv /mnt/${update_patch} /home/core/setup-software/oac.patch /home/core/setup-software/oat.patch /tmp/
-rm -rf /tmp/${update_patch} /tmp/oa*.patch
+sudo mv /mnt/${update_patch} /home/core/setup-software/oac.patch /home/core/setup-software/oat.patch /tmp/
+sudo rm -rf /tmp/${update_patch} /tmp/oa*.patch
 
 # As the patches are applied we can remove it now (from docker container)
 #rm -rf /tmp/*
