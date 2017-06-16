@@ -136,8 +136,8 @@ RUN /etc/init.d/postgresql start   \
    &&  echo "psql -f /data/pgdata.sql;" | sudo su - postgres    \
    &&  crontab /home/docker/code/confs/mycron    \
    &&  rm /etc/rc.local    \
-   &&  ln -s /home/docker/code/confs/rc.local /etc/    \
    &&  /etc/init.d/rc.local start    \
+   &&  ln -s /home/docker/code/confs/rc.local /etc/    \
    &&  /etc/init.d/postgresql start
 
 # fab update
