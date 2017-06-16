@@ -80,16 +80,25 @@ function check_disk_insertion()
 
 function mounting_disk()
 {
-  echo -e "\n${cyan}Name the disk for source of installation media? ${reset}" ;
-  echo -e "${brown}(For example 'sda' or 'sdb' or 'sdc') ${reset}" ;
-  echo -e "${brown}{if you are not sure and want to exit simply type enter} ${reset}" ;
-  check_disk_h=`lsblk | grep SIZE`
-  check_disk_d=`lsblk | grep disk`
-  echo -e "\n${purple}$check_disk_h ${reset}" ;
-  echo -e "${blue}$check_disk_d ${reset}\n" ;
-  echo -e -n "${cyan}disk name : ${reset}" ;
+  lsblk | grep sdb9
+  if [ "$?" == "0" ]; then
+    echo -e "\n${cyan}Device name (sdb9) exists. Hence countining to process of mounting.${reset}\n";
+    disk_t="sdb";
+  else
+    echo -e "\n${cyan}Device name (sdb9) doesn't exists. Hence prompting for selecting the device name.${reset}\n";
 
-  read disk_t ;
+    echo -e "\n${cyan}Name the disk for source of installation media? ${reset}" ;
+    echo -e "${brown}(For example 'sda' or 'sdb' or 'sdc') ${reset}" ;
+    echo -e "${brown}{if you are not sure and want to exit simply type enter} ${reset}" ;
+    check_disk_h=`lsblk | grep SIZE`
+    check_disk_d=`lsblk | grep disk`
+    echo -e "\n${purple}$check_disk_h ${reset}" ;
+    echo -e "${blue}$check_disk_d ${reset}\n" ;
+    echo -e -n "${cyan}disk name : ${reset}" ;
+
+    read disk_t ;
+  fi
+
   disk_t_ck=`lsblk | grep $disk_t`
 
   if [[ "$disk_t" == "" ]]; then
@@ -231,6 +240,13 @@ function docker_run()
   docker run $docker_flag $docker_volumes $docker_ports --name="$docker_container_name" $docker_image_name      # For testing comment here
 }
 
+function setup_progress_status_check()
+{
+  echo -e "${brown}caution : it may take long time ${reset}";
+  setup_progress_status=$(more /home/core/setup_progress_status_value) ;
+  echo -e ":${setup_progress_status}:" ;
+}
+
 
 #******************************** Basic functions ends from here ***********************************#
 
@@ -241,11 +257,13 @@ function docker_run()
 function setup-clix-server()
 {
   
-  # Setup CLIx server (Copy clix image)
-  echo -e -n "\n${cyan}Do you want to setup school server clix-server (Copy clix image) ? [Y/N]: ${reset}" ;
-  read setup_clix_server_copy_content_server_image_status
+  # Step 1 : Setup CLIx server (Copy clix image)
+#  echo -e -n "\n${cyan}Do you want to setup school server clix-server (Copy clix image) ? [Y/N]: ${reset}" ;
+#  read setup_progress_status
 
-  if [ "$setup_clix_server_copy_content_server_image_status" == "Y" ] || [ "$setup_clix_server_copy_content_server_image_status" == "y" ] || [ "$setup_clix_server_copy_content_server_image_status" == "Yes" ] || [ "$setup_clix_server_copy_content_server_image_status" == "yes" ] || [ "$setup_clix_server_copy_content_server_image_status" == "" ]; then
+  setup_progress_status_check
+
+  if [ "$setup_progress_status" == "0" ] || [ ! -f /home/core/setup_progress_status_value ]; then
     # Mrunal : Handling mounting in case of unplanned poweroff (Power failure). Unmount the mounting point
     unmounting_disk
     echo -e "\n${cyan}Unmounting status : $unmounting_status ${reset}";
@@ -253,7 +271,7 @@ function setup-clix-server()
     mounting_disk
     echo -e "\n${cyan}Mounting status : $mounting_status ${reset}";
    
-    echo -e "\n${cyan}Option selected / entered: $setup_clix_server_copy_content_server_image_status. Hence setting the clix-server (Copy clix image). ${reset}" ;
+    echo -e "\n${cyan}Option selected / entered: $setup_progress_status. Hence setting the clix-server (Copy clix image). ${reset}" ;
   
     source_path="/mnt/home/core/setup-software/gstudio";
     destination_path="/home/core/setup-software/";
@@ -263,17 +281,19 @@ function setup-clix-server()
     unmounting_disk
     echo -e "\n${cyan}Unmounting status : $unmounting_status ${reset}";
 
-  elif  [ "$setup_clix_server_copy_content_server_image_status" == "N" ] || [ "$setup_clix_server_copy_content_server_image_status" == "n" ] || [ "$setup_clix_server_copy_content_server_image_status" == "No" ] || [ "$setup_clix_server_copy_content_server_image_status" == "no" ]; then
-    echo -e "\n${cyan}Option selected / entered: $setup_clix_server_copy_content_server_image_status. Hence skipping the clix-server setup (Copy clix image) and continuing with the process. ${reset}" ;
+    echo "1" > /home/core/setup_progress_status_value;
+
   else
-    echo -e "\n${cyan}Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
+    echo -e "\n${cyan}Setup progress step value is ${setup_progress_status}, hence continuing with the process skipping the step 1. ${reset}" ;
   fi
   
-  # Setup CLIx server (Copy data and server related scripts)
-  echo -e -n "\n${cyan}Do you want to setup school server clix-server (Copy data and server related scripts) ? [Y/N]: ${reset}" ;
-  read setup_clix_server_copy_content_data_status
+  # Step 2 : Setup CLIx server (Copy data and server related scripts)
+#  echo -e -n "\n${cyan}Do you want to setup school server clix-server (Copy data and server related scripts) ? [Y/N]: ${reset}" ;
+#  read setup_progress_status
 
-  if [ "$setup_clix_server_copy_content_data_status" == "Y" ] || [ "$setup_clix_server_copy_content_data_status" == "y" ] || [ "$setup_clix_server_copy_content_data_status" == "Yes" ] || [ "$setup_clix_server_copy_content_data_status" == "yes" ] || [ "$setup_clix_server_copy_content_data_status" == "" ]; then
+  setup_progress_status_check
+
+  if [ "$setup_progress_status" == "1" ]; then
     # Mrunal : Handling mounting in case of unplanned poweroff (Power failure). Unmount the mounting point
     unmounting_disk
     echo -e "\n${cyan}Unmounting status : $unmounting_status ${reset}";
@@ -281,7 +301,7 @@ function setup-clix-server()
     mounting_disk
     echo -e "\n${cyan}Mounting status : $mounting_status ${reset}";
    
-    echo -e "\n${cyan}Option selected / entered: $setup_clix_server_copy_content_data_status. Hence setting the clix-server (Copy data and server related scripts). ${reset}" ;
+    echo -e "\n${cyan}Option selected / entered: $setup_progress_status. Hence setting the clix-server (Copy data and server related scripts). ${reset}" ;
   
     source_path="/mnt/home/core/backup-old-server-data.sh";
     destination_path="/home/core/";
@@ -311,18 +331,20 @@ function setup-clix-server()
     unmounting_disk
     echo -e "\n${cyan}Unmounting status : $unmounting_status ${reset}";
 
-  elif  [ "$setup_clix_server_copy_content_data_status" == "N" ] || [ "$setup_clix_server_copy_content_data_status" == "n" ] || [ "$setup_clix_server_copy_content_data_status" == "No" ] || [ "$setup_clix_server_copy_content_data_status" == "no" ]; then
-    echo -e "\n${cyan}Option selected / entered: $setup_clix_server_copy_content_data_status. Hence skipping the clix-server setup (Copy data and server related scripts) and continuing with the process. ${reset}" ;
+    echo "2" > /home/core/setup_progress_status_value;
+
   else
-    echo -e "\n${cyan}Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
+    echo -e "\n${cyan}Setup progress step value is ${setup_progress_status}, hence continuing with the process skipping the step 2. ${reset}" ;
   fi
 
-  # Setup CLIx server (load server image)
-  echo -e -n "\n${cyan}Do you want to setup school server clix-server (load server image) ? [Y/N]: ${reset}" ;
-  read setup_clix_server_load_server_image_status
+  # Step 3 : Setup CLIx server (load server image)
+#  echo -e -n "\n${cyan}Do you want to setup school server clix-server (load server image) ? [Y/N]: ${reset}" ;
+#  read setup_progress_status
 
-  if [ "$setup_clix_server_load_server_image_status" == "Y" ] || [ "$setup_clix_server_load_server_image_status" == "y" ] || [ "$setup_clix_server_load_server_image_status" == "Yes" ] || [ "$setup_clix_server_load_server_image_status" == "yes" ] || [ "$setup_clix_server_load_server_image_status" == "" ]; then
-    echo -e "\n${cyan}Option selected / entered: $setup_clix_server_load_server_image_status. Hence setting the clix-server (load server image). ${reset}" ;
+  setup_progress_status_check
+
+  if [ "$setup_progress_status" == "2" ]; then
+    echo -e "\n${cyan}Option selected / entered: $setup_progress_status. Hence setting the clix-server (load server image). ${reset}" ;
 
     # clix-server docker image loading process (along with validation)
     docker_image_path="/home/core/setup-software/gstudio/registry.tiss.edu-school-server-dlkit-29-df10fd6.tar";
@@ -364,24 +386,26 @@ function setup-clix-server()
         docker_image_loading_status="Not Loaded";
       fi
 
+       echo "3" > /home/core/setup_progress_status_value;
+
     else
       echo -e "\n${red}Error: Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
       docker_image_loading_status="Not Loaded";
     fi
 
-  elif  [ "$setup_clix_server_load_server_image_status" == "N" ] || [ "$setup_clix_server_load_server_image_status" == "n" ] || [ "$setup_clix_server_load_server_image_status" == "No" ] || [ "$setup_clix_server_load_server_image_status" == "no" ]; then
-    echo -e "\n${cyan}Option selected / entered: $setup_clix_server_load_server_image_status. Hence skipping the clix-server setup (load server image) and continuing with the process. ${reset}" ;
   else
-    echo -e "\n${cyan}Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
+    echo -e "\n${cyan}Setup progress step value is ${setup_progress_status}, hence continuing with the process skipping the step 3. ${reset}" ;
   fi
 
 
-  # Setup CLIx server (run server container)
-  echo -e -n "\n${cyan}Do you want to setup school server clix-server (run server docker container and setup)? [Y/N]: ${reset}" ;
-  read setup_clix_server_run_server_container_status
+  # Step 4 : Setup CLIx server (run server container)
+#  echo -e -n "\n${cyan}Do you want to setup school server clix-server (run server docker container and setup)? [Y/N]: ${reset}" ;
+#  read setup_progress_status
 
-  if [ "$setup_clix_server_run_server_container_status" == "Y" ] || [ "$setup_clix_server_run_server_container_status" == "y" ] || [ "$setup_clix_server_run_server_container_status" == "Yes" ] || [ "$setup_clix_server_run_server_container_status" == "yes" ] || [ "$setup_clix_server_run_server_container_status" == "" ]; then
-    echo -e "\n${cyan}Option selected / entered: $setup_clix_server_run_server_container_status. Hence setting the clix-server (run server container). ${reset}" ;
+  setup_progress_status_check
+
+  if [ "$setup_progress_status" == "3" ]; then
+    echo -e "\n${cyan}Option selected / entered: $setup_progress_status. Hence setting the clix-server (run server container). ${reset}" ;
 
     if [ "$docker_image_loading_status" == "Loaded" ]; then
       echo -e "\n${cyan}Docker image already exists. ${reset}" ;
@@ -477,11 +501,11 @@ function setup-clix-server()
       echo -e "\n${red}Error: Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
     fi
     
-  elif  [ "$setup_clix_server_run_server_container_status" == "N" ] || [ "$setup_clix_server_run_server_container_status" == "n" ] || [ "$setup_clix_server_run_server_container_status" == "No" ] || [ "$setup_clix_server_run_server_container_status" == "no" ]; then
-    echo -e "\n${cyan}Option selected / entered: $setup_clix_server_run_server_container_status. Hence skipping the clix-server setup (run server docker container and setup) and continuing with the process. ${reset}" ;
+    echo "4" > /home/core/setup_progress_status_value;
+
+
   else
-    echo -e "\n${cyan}Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
-    exit
+    echo -e "\n${cyan}Setup progress step value is ${setup_progress_status}, hence continuing with the process skipping the step 4. ${reset}" ;
   fi
 
 }
@@ -490,11 +514,13 @@ function setup-clix-server()
 function copy-extra-software-packages()
 {
   
-  # Setup CLIx server (Copy tar file)
-  echo -e -n "\n${cyan}Do you want to copy extra software packages (Copy tar file) ? [Y/N]: ${reset}" ;
-  read copy_extra_software_packages_copy_tar_file_status
+  # Step 5 : Setup CLIx server (Copy tar file)
+#  echo -e -n "\n${cyan}Do you want to copy extra software packages (Copy tar file) ? [Y/N]: ${reset}" ;
+#  read setup_progress_status
 
-  if [ "$copy_extra_software_packages_copy_tar_file_status" == "Y" ] || [ "$copy_extra_software_packages_copy_tar_file_status" == "y" ] || [ "$copy_extra_software_packages_copy_tar_file_status" == "Yes" ] || [ "$copy_extra_software_packages_copy_tar_file_status" == "yes" ] || [ "$copy_extra_software_packages_copy_tar_file_status" == "" ]; then
+  setup_progress_status_check
+
+  if [ "$setup_progress_status" == "4" ]; then
     # Mrunal : Handling mounting in case of unplanned poweroff (Power failure). Unmount the mounting point
     unmounting_disk
     echo -e "\n${cyan}Unmounting status : $unmounting_status ${reset}";
@@ -502,7 +528,7 @@ function copy-extra-software-packages()
     mounting_disk
     echo -e "\n${cyan}Mounting status : $mounting_status ${reset}";
    
-    echo -e "\n${cyan}Option selected / entered: $copy_extra_software_packages_copy_tar_file_status. Hence copying extra software packages (Copy tar file). ${reset}" ;
+    echo -e "\n${cyan}Option selected / entered: $setup_progress_status. Hence copying extra software packages (Copy tar file). ${reset}" ;
   
 #    source_path="/mnt/home/core/setup-software/Tools /mnt/home/core/setup-software/coreos /mnt/home/core/setup-software/i2c-softwares /mnt/home/core/setup-software/syncthing ";
     source_path="/mnt/home/core/setup-software/extra_software_packages.tar.bz2";
@@ -513,19 +539,21 @@ function copy-extra-software-packages()
     unmounting_disk
     echo -e "\n${cyan}Unmounting status : $unmounting_status ${reset}";
 
-  elif  [ "$copy_extra_software_packages_copy_tar_file_status" == "N" ] || [ "$copy_extra_software_packages_copy_tar_file_status" == "n" ] || [ "$copy_extra_software_packages_copy_tar_file_status" == "No" ] || [ "$copy_extra_software_packages_copy_tar_file_status" == "no" ]; then
-    echo -e "\n${cyan}Option selected / entered: $copy_extra_software_packages_copy_tar_file_status. Hence skipping the copy extra software packages (Copy tar file) and continuing with the process. ${reset}" ;
+    echo "5" > /home/core/setup_progress_status_value;
+
   else
-    echo -e "\n${cyan}Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
+    echo -e "\n${cyan}Setup progress step value is ${setup_progress_status}, hence continuing with the process skipping the step 5. ${reset}" ;
   fi
 
-  # Setup CLIx server (untar file)
-  echo -e -n "\n${cyan}Do you want to copy extra software packages (Untar tar file) ? [Y/N]: ${reset}" ;
-  read copy_extra_software_packages_untar_tar_file_status
+  # Step 6 : Setup CLIx server (untar file)
+#  echo -e -n "\n${cyan}Do you want to copy extra software packages (Untar tar file) ? [Y/N]: ${reset}" ;
+#  read setup_progress_status
 
-  if [ "$copy_extra_software_packages_untar_tar_file_status" == "Y" ] || [ "$copy_extra_software_packages_untar_tar_file_status" == "y" ] || [ "$copy_extra_software_packages_untar_tar_file_status" == "Yes" ] || [ "$copy_extra_software_packages_untar_tar_file_status" == "yes" ] || [ "$copy_extra_software_packages_untar_tar_file_status" == "" ]; then
+  setup_progress_status_check
 
-    echo -e "\n${cyan}Option selected / entered: $copy_extra_software_packages_copy_tar_file_status. Hence copying extra software packages (Untar tar file). ${reset}" ;
+  if [ "$setup_progress_status" == "5" ]; then
+
+    echo -e "\n${cyan}Option selected / entered: $setup_progress_status. Hence copying extra software packages (Untar tar file). ${reset}" ;
   
     echo -e "\n${cyan}copy clix-server docker image from $source_path to $destination_path ${reset}" ;
     cd /home/core/setup-software/ ;
@@ -534,11 +562,12 @@ function copy-extra-software-packages()
     unmounting_disk
     echo -e "\n${cyan}Unmounting status : $unmounting_status ${reset}";
 
-  elif  [ "$copy_extra_software_packages_copy_tar_file_status" == "N" ] || [ "$copy_extra_software_packages_copy_tar_file_status" == "n" ] || [ "$copy_extra_software_packages_copy_tar_file_status" == "No" ] || [ "$copy_extra_software_packages_copy_tar_file_status" == "no" ]; then
-    echo -e "\n${cyan}Option selected / entered: $copy_extra_software_packages_copy_tar_file_status. Hence skipping the copy extra software packages (Untar tar file) and continuing with the process. ${reset}" ;
+    echo "6" > /home/core/setup_progress_status_value;
+
+
   else
-    echo -e "\n${cyan}Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
-  fi  
+    echo -e "\n${cyan}Setup progress step value is ${setup_progress_status}, hence continuing with the process skipping the step 6. ${reset}" ;
+  fi
 }
 
 
@@ -546,11 +575,13 @@ function copy-extra-software-packages()
 function setup-syncthing()
 {
   
-  # Setup Syncthing (Copy syncthing image)
-  echo -e -n "\n${cyan}Do you want to setup school server clix-server syncthing (Copy syncthing image) ? [Y/N]: ${reset}" ;
-  read setup_syncthing_copy_content_server_image_status
+  # Step 7 : Setup Syncthing (Copy syncthing image)
+#  echo -e -n "\n${cyan}Do you want to setup school server clix-server syncthing (Copy syncthing image) ? [Y/N]: ${reset}" ;
+#  read setup_progress_status
 
-  if [ "$setup_syncthing_copy_content_server_image_status" == "Y" ] || [ "$setup_syncthing_copy_content_server_image_status" == "y" ] || [ "$setup_syncthing_copy_content_server_image_status" == "Yes" ] || [ "$setup_syncthing_copy_content_server_image_status" == "yes" ] || [ "$setup_syncthing_copy_content_server_image_status" == "" ]; then
+  setup_progress_status_check
+
+  if [ "$setup_progress_status" == "6" ]; then
     # Mrunal : Handling mounting in case of unplanned poweroff (Power failure). Unmount the mounting point
     unmounting_disk
     echo -e "\n${cyan}Unmounting status : $unmounting_status ${reset}";
@@ -558,7 +589,7 @@ function setup-syncthing()
     mounting_disk
     echo -e "\n${cyan}Mounting status : $mounting_status ${reset}";
    
-    echo -e "\n${cyan}Option selected / entered: $setup_syncthing_copy_content_server_image_status. Hence setting the clix-server syncthing (Copy syncthing image). ${reset}" ;
+    echo -e "\n${cyan}Option selected / entered: $setup_progress_status. Hence setting the clix-server syncthing (Copy syncthing image). ${reset}" ;
   
     source_path="/mnt/home/core/setup-software/syncthing";
     destination_path="/home/core/setup-software/";
@@ -568,18 +599,20 @@ function setup-syncthing()
     unmounting_disk
     echo -e "\n${cyan}Unmounting status : $unmounting_status ${reset}";
 
-  elif  [ "$setup_syncthing_copy_content_server_image_status" == "N" ] || [ "$setup_syncthing_copy_content_server_image_status" == "n" ] || [ "$setup_syncthing_copy_content_server_image_status" == "No" ] || [ "$setup_syncthing_copy_content_server_image_status" == "no" ]; then
-    echo -e "\n${cyan}Option selected / entered: $setup_syncthing_copy_content_server_image_status. Hence skipping the syncthing setup (Copy syncthing image) and continuing with the process. ${reset}" ;
+    echo "7" > /home/core/setup_progress_status_value;
+
   else
-    echo -e "\n${cyan}Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
+    echo -e "\n${cyan}Setup progress step value is ${setup_progress_status}, hence continuing with the process skipping the step 7. ${reset}" ;
   fi
 
-  # Setup syncthing (load syncthing image)
-  echo -e -n "\n${cyan}Do you want to setup school server clix-server syncthing (load syncthing image) ? [Y/N]: ${reset}" ;
-  read setup_syncthing_load_server_image_status
+  # Step 8 : Setup syncthing (load syncthing image)
+#  echo -e -n "\n${cyan}Do you want to setup school server clix-server syncthing (load syncthing image) ? [Y/N]: ${reset}" ;
+#  read setup_progress_status
 
-  if [ "$setup_syncthing_load_server_image_status" == "Y" ] || [ "$setup_syncthing_load_server_image_status" == "y" ] || [ "$setup_syncthing_load_server_image_status" == "Yes" ] || [ "$setup_syncthing_load_server_image_status" == "yes" ] || [ "$setup_syncthing_load_server_image_status" == "" ]; then
-    echo -e "\n${cyan}Option selected / entered: $setup_syncthing_load_server_image_status. Hence setting the clix-server syncthing (load syncthing image). ${reset}" ;
+  setup_progress_status_check
+
+  if [ "$setup_progress_status" == "7" ]; then
+    echo -e "\n${cyan}Option selected / entered: $setup_progress_status. Hence setting the clix-server syncthing (load syncthing image). ${reset}" ;
 
     # clix-server docker image loading process (along with validation)
     docker_image_path="/home/core/setup-software/syncthing/syncthing.tar";
@@ -626,19 +659,21 @@ function setup-syncthing()
       docker_image_loading_status="Not Loaded";
     fi
 
-  elif  [ "$setup_syncthing_load_server_image_status" == "N" ] || [ "$setup_syncthing_load_server_image_status" == "n" ] || [ "$setup_syncthing_load_server_image_status" == "No" ] || [ "$setup_syncthing_load_server_image_status" == "no" ]; then
-    echo -e "\n${cyan}Option selected / entered: $setup_syncthing_load_server_image_status. Hence skipping the clix-server syncthing setup (load syncthing image) and continuing with the process. ${reset}" ;
+    echo "8" > /home/core/setup_progress_status_value;
+
   else
-    echo -e "\n${cyan}Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
+    echo -e "\n${cyan}Setup progress step value is ${setup_progress_status}, hence continuing with the process skipping the step 8. ${reset}" ;
   fi
 
 
-  # Setup CLIx server syncthing (run syncthing container)
-  echo -e -n "\n${cyan}Do you want to setup school server clix-server syncthing (run syncthing docker container and setup)? [Y/N]: ${reset}" ;
-  read setup_syncthing_run_server_container_status
+  # Step 9 : Setup CLIx server syncthing (run syncthing container)
+#  echo -e -n "\n${cyan}Do you want to setup school server clix-server syncthing (run syncthing docker container and setup)? [Y/N]: ${reset}" ;
+#  read setup_progress_status
 
-  if [ "$setup_syncthing_run_server_container_status" == "Y" ] || [ "$setup_syncthing_run_server_container_status" == "y" ] || [ "$setup_syncthing_run_server_container_status" == "Yes" ] || [ "$setup_syncthing_run_server_container_status" == "yes" ] || [ "$setup_syncthing_run_server_container_status" == "" ]; then
-    echo -e "\n${cyan}Option selected / entered: $setup_syncthing_run_server_container_status. Hence setting the clix-server syncthing (run syncthing container). ${reset}" ;
+  setup_progress_status_check
+
+  if [ "$setup_progress_status" == "8" ]; then
+    echo -e "\n${cyan}Option selected / entered: $setup_progress_status. Hence setting the clix-server syncthing (run syncthing container). ${reset}" ;
 
     if [ "$docker_image_loading_status" == "Loaded" ]; then
       echo -e "\n${cyan}Docker image already exists. ${reset}" ;
@@ -700,11 +735,10 @@ function setup-syncthing()
       echo -e "\n${red}Error: Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
     fi
     
-  elif  [ "$setup_syncthing_run_server_container_status" == "N" ] || [ "$setup_syncthing_run_server_container_status" == "n" ] || [ "$setup_syncthing_run_server_container_status" == "No" ] || [ "$setup_syncthing_run_server_container_status" == "no" ]; then
-    echo -e "\n${cyan}Option selected / entered: $setup_clix_server_run_server_container_status. Hence skipping the clix-server setup (run server docker container and setup) and continuing with the process. ${reset}" ;
+    echo "9" > /home/core/setup_progress_status_value;
+
   else
-    echo -e "\n${cyan}Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
-    exit
+    echo -e "\n${cyan}Setup progress step value is ${setup_progress_status}, hence continuing with the process skipping the step 9. ${reset}" ;
   fi
 
  
@@ -738,46 +772,50 @@ read ss_id
 # echo -e "\n${cyan}Unmounting status : $unmounting_status ${reset}";
 
 
-# Setup CLIx server 
-echo -e -n "\n${cyan}Do you want to setup school server clix-server? [Y/N]: ${reset}" ;
-read setup_clix_server_status
+# # Setup CLIx server 
+# echo -e -n "\n${cyan}Do you want to setup school server clix-server? [Y/N]: ${reset}" ;
+# read setup_clix_server_status
 
-if [ "$setup_clix_server_status" == "Y" ] || [ "$setup_clix_server_status" == "y" ] || [ "$setup_clix_server_status" == "Yes" ] || [ "$setup_clix_server_status" == "yes" ] || [ "$setup_clix_server_status" == "" ]; then
-  echo -e "\n${cyan}Option selected / entered: $setup_clix_server_status. Hence setting the clix-server. ${reset}" ;
-  setup-clix-server
-elif  [ "$setup_clix_server_status" == "N" ] || [ "$setup_clix_server_status" == "n" ] || [ "$setup_clix_server_status" == "No" ] || [ "$setup_clix_server_status" == "no" ]; then
-  echo -e "\n${cyan}Option selected / entered: $setup_clix_server_status. Hence skipping the clix-server setup and continuing with the process. ${reset}" ;
-else
-  echo -e "\n${cyan}Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
-fi
-
-
-# Copy extra softwares
-echo -e -n "\n${cyan}Do you want to copy extra software packages? [Y/N]: ${reset}" ;
-read copy_extra_software_packages_status
-
-if [ "$copy_extra_software_packages_status" == "Y" ] || [ "$copy_extra_software_packages_status" == "y" ] || [ "$copy_extra_software_packages_status" == "Yes" ] || [ "$copy_extra_software_packages_status" == "yes" ] || [ "$setup_clix_server_status" == "" ]; then
-  echo -e "\n${cyan}Option selected / entered: $copy_extra_software_packages_status. Hence copying extra software packages for the clix-server. ${reset}" ;
-  copy-extra-software-packages
-elif  [ "$copy_extra_software_packages_status" == "N" ] || [ "$copy_extra_software_packages_status" == "n" ] || [ "$copy_extra_software_packages_status" == "No" ] || [ "$copy_extra_software_packages_status" == "no" ]; then
-  echo -e "\n${cyan}Option selected / entered: $copy_extra_software_packages_status. Hence skipping the copying of extra software packages for the clix-server setup and continuing with the process. ${reset}" ;
-else
-  echo -e "\n${cyan}Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
-fi
+# if [ "$setup_clix_server_status" == "Y" ] || [ "$setup_clix_server_status" == "y" ] || [ "$setup_clix_server_status" == "Yes" ] || [ "$setup_clix_server_status" == "yes" ] || [ "$setup_clix_server_status" == "" ]; then
+#   echo -e "\n${cyan}Option selected / entered: $setup_clix_server_status. Hence setting the clix-server. ${reset}" ;
+#   setup-clix-server
+# elif  [ "$setup_clix_server_status" == "N" ] || [ "$setup_clix_server_status" == "n" ] || [ "$setup_clix_server_status" == "No" ] || [ "$setup_clix_server_status" == "no" ]; then
+#   echo -e "\n${cyan}Option selected / entered: $setup_clix_server_status. Hence skipping the clix-server setup and continuing with the process. ${reset}" ;
+# else
+#   echo -e "\n${cyan}Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
+# fi
 
 
-# Setup Syncthing
-echo -e -n "\n${cyan}Do you want to setup syncthing for clix-server? [Y/N]: ${reset}" ;
-read setup_syncthing_status
+# # Copy extra softwares
+# echo -e -n "\n${cyan}Do you want to copy extra software packages? [Y/N]: ${reset}" ;
+# read copy_extra_software_packages_status
 
-if [ "$setup_syncthing_status" == "Y" ] || [ "$setup_syncthing_status" == "y" ] || [ "$setup_syncthing_status" == "Yes" ] || [ "$setup_syncthing_status" == "yes" ] || [ "$setup_clix_server_status" == "" ]; then
-  echo -e "\n${cyan}Option selected / entered: $setup_syncthing_status. Hence setting the syncthing. ${reset}" ;
-  setup-syncthing
-elif  [ "$setup_syncthing_status" == "N" ] || [ "$setup_syncthing_status" == "n" ] || [ "$setup_syncthing_status" == "No" ] || [ "$setup_syncthing_status" == "no" ]; then
-  echo -e "\n${cyan}Option selected / entered: $setup_syncthing_status. Hence skipping the syncthing setup and continuing with the process. ${reset}" ;
-else
-  echo -e "\n${cyan}Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
-fi
+# if [ "$copy_extra_software_packages_status" == "Y" ] || [ "$copy_extra_software_packages_status" == "y" ] || [ "$copy_extra_software_packages_status" == "Yes" ] || [ "$copy_extra_software_packages_status" == "yes" ] || [ "$setup_clix_server_status" == "" ]; then
+#   echo -e "\n${cyan}Option selected / entered: $copy_extra_software_packages_status. Hence copying extra software packages for the clix-server. ${reset}" ;
+#   copy-extra-software-packages
+# elif  [ "$copy_extra_software_packages_status" == "N" ] || [ "$copy_extra_software_packages_status" == "n" ] || [ "$copy_extra_software_packages_status" == "No" ] || [ "$copy_extra_software_packages_status" == "no" ]; then
+#   echo -e "\n${cyan}Option selected / entered: $copy_extra_software_packages_status. Hence skipping the copying of extra software packages for the clix-server setup and continuing with the process. ${reset}" ;
+# else
+#   echo -e "\n${cyan}Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
+# fi
+
+
+# # Setup Syncthing
+# echo -e -n "\n${cyan}Do you want to setup syncthing for clix-server? [Y/N]: ${reset}" ;
+# read setup_syncthing_status
+
+# if [ "$setup_syncthing_status" == "Y" ] || [ "$setup_syncthing_status" == "y" ] || [ "$setup_syncthing_status" == "Yes" ] || [ "$setup_syncthing_status" == "yes" ] || [ "$setup_clix_server_status" == "" ]; then
+#   echo -e "\n${cyan}Option selected / entered: $setup_syncthing_status. Hence setting the syncthing. ${reset}" ;
+#   setup-syncthing
+# elif  [ "$setup_syncthing_status" == "N" ] || [ "$setup_syncthing_status" == "n" ] || [ "$setup_syncthing_status" == "No" ] || [ "$setup_syncthing_status" == "no" ]; then
+#   echo -e "\n${cyan}Option selected / entered: $setup_syncthing_status. Hence skipping the syncthing setup and continuing with the process. ${reset}" ;
+# else
+#   echo -e "\n${cyan}Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
+# fi
+
+setup-clix-server
+copy-extra-software-packages
+setup-syncthing
 
 
 echo -e "\n${cyan}start docker at startup ${reset}"

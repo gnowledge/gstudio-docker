@@ -371,7 +371,7 @@ fi
 # if the version is "current", resolve the actual version number
 if [[ "${VERSION_ID}" == "current" ]]; then
     VERSIONTXT_URL="${BASE_URL}/${VERSION_ID}/version.txt"
-    VERSION_ID=$(wget --quiet -O - "${VERSIONTXT_URL}" | \
+    VERSION_ID=$(wget --no-check-certificate --quiet -O - "${VERSIONTXT_URL}" | \
         gawk --field-separator '=' '/COREOS_VERSION=/ { print $2 }' ||:)
     if [[ -z "${VERSION_ID}" ]]; then
         echo "$0: version.txt unavailable: ${VERSIONTXT_URL}" >&2
@@ -384,12 +384,12 @@ IMAGE_URL="${BASE_URL}/${VERSION_ID}/${IMAGE_NAME}"
 SIG_NAME="${IMAGE_NAME}.sig"
 SIG_URL="${BASE_URL}/${VERSION_ID}/${SIG_NAME}"
 
-if ! wget --spider --quiet "${IMAGE_URL}"; then
+if ! wget --no-check-certificate --spider --quiet "${IMAGE_URL}"; then
     echo "$0: Image URL unavailable: $IMAGE_URL" >&2
     exit 1
 fi
 
-if ! wget --spider --quiet "${SIG_URL}"; then
+if ! wget --no-check-certificate --spider --quiet "${SIG_URL}"; then
     echo "$0: Image signature unavailable: $SIG_URL" >&2
     exit 1
 fi
@@ -404,7 +404,7 @@ mkdir "${GNUPGHOME}"
 gpg --batch --quiet --import <<<"$GPG_KEY"
 
 echo "Downloading the signature for ${IMAGE_URL}..."
-wget --no-verbose -O "${WORKDIR}/${SIG_NAME}" "${SIG_URL}"
+wget --no-check-certificate --no-verbose -O "${WORKDIR}/${SIG_NAME}" "${SIG_URL}"
 
 # We are at the point of no return, so wipe disk labels that are missed below.
 # In particular, ZFS writes labels in the last half-MiB of the disk.
@@ -413,7 +413,7 @@ dd if=/dev/zero of="${DEVICE}" count=1024 2>/dev/null \
 
 echo "Downloading, writing and verifying ${IMAGE_NAME}..."
 declare -a EEND
-if ! wget --no-verbose -O - "${IMAGE_URL}" \
+if ! wget --no-check-certificate --no-verbose -O - "${IMAGE_URL}" \
     | tee >(bunzip2 --stdout >"${DEVICE}") \
     | gpg --batch --trusted-key "${GPG_LONG_ID}" \
         --verify "${WORKDIR}/${SIG_NAME}" -
