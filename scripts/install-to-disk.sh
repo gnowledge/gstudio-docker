@@ -1,5 +1,6 @@
 #!/bin/bash
 
+function install-to-disk(){
 
 # Following variables are used to store the color codes for displaying the content on terminal
 # red="\033[0;31m" ;
@@ -89,5 +90,9 @@ fi
 
 echo -e "\n${cyan}Installing coreos, the host operating system to /dev/$disk_i ${reset}\n"
 sudo /home/core/setup-software/coreos/coreos-install -d /dev/$disk_i -C stable -c /home/core/setup-software/coreos/cloud-config.yaml -V 1010.5.0 -b http://localhost/softwares/coreos/mirror 
+
+}
+
+install-to-disk  |   tee install-to-disk.log;
 
 exit
