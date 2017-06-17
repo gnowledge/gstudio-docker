@@ -114,11 +114,14 @@ RUN echo "Size of deb packages files : "  du -hs  /var/cache/apt/archives/   \
 
 
 RUN mkdir -p /data/db && chown -R mongodb:mongodb /data/db  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
-VOLUME /data ["/data", "/backups", "/softwares", "/home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/repository/AssetContent"]
+VOLUME /data 
+VOLUME /backups
+VOLUME /softwares
+VOLUME /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/repository/AssetContent
 
 # Exposing the ports - {ssh} , {smtp} , {https (with ssl)} , {http} , {for developement user (Developer)} , {smtpd command (to test mail machanism locally)} , {imap : gnowledge} , {smtp : gnowledge} , {mongodb}
-RUN echo "EXPOSE  22  25  443  80  8000  1025  143  587"  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
-EXPOSE  22  25  443  80  8000  1025  143  587  27017  8080  5555
+RUN echo "EXPOSE  22  25  80  443  8000  8080  1025  143  587  27017  5555"  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+EXPOSE  22  25  80  443  8000  8080  1025  143  587  27017  5555
 
 # {change this line for your timezone} and {nltk installation and building search base} and {creation of schema_files directory}
 RUN ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
