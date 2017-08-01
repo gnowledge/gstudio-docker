@@ -371,8 +371,8 @@ function setup(){
       echo -e "\n${cyan}Setup progress status value: $setup_progress_status. Hence setting the clix-server (load server image). ${reset}" ;
 
       # clix-server docker image loading process (along with validation)
-      docker_image_path="/home/core/setup-software/gstudio/registry.tiss.edu-school-server-dlkit-40-3ee0af8.tar";
-      docker_image_name="registry.tiss.edu/school-server-dlkit:40-3ee0af8";
+      docker_image_path="/home/core/setup-software/gstudio/registry.tiss.edu-school-server-dlkit-43-7b32cc4.tar";
+      docker_image_name="registry.tiss.edu/school-server-dlkit:43-7b32cc4";
       docker_image_grep_name="school-server-dlkit";
       docker_load_validation 
       docker_image_loading_status="Not Loaded";
@@ -435,8 +435,8 @@ function setup(){
         echo -e "\n${cyan}Docker image already exists. ${reset}" ;
 
         # clix-server docker contianer running process (along with validation)
-        docker_image_path="/home/core/setup-software/gstudio/registry.tiss.edu-school-server-dlkit-40-3ee0af8.tar";
-        docker_image_name="registry.tiss.edu/school-server-dlkit:40-3ee0af8";
+        docker_image_path="/home/core/setup-software/gstudio/registry.tiss.edu-school-server-dlkit-43-7b32cc4.tar";
+        docker_image_name="registry.tiss.edu/school-server-dlkit:43-7b32cc4";
         docker_container_name="gstudio";
         docker_flag=" -itd -h $ss_id --restart=always ";
         docker_volumes="-v /home/core/data:/data -v /home/core/backups:/backups -v /home/core/setup-software:/softwares ";
@@ -487,7 +487,7 @@ function setup(){
           
           echo -e "\n${cyan}school server instance config - setting server name/id ${reset}"
           docker exec -it gstudio /bin/sh -c "/bin/echo GSTUDIO_INSTITUTE_ID = \'${ss_id}\' > /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py"
-          docker exec -it testing /bin/sh -c "sed -e \"/GSTUDIO_PRIMARY_COURSE_LANGUAGE/ s/=.*/= u'${language}'/\" -i /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py"
+          docker exec -it gstudio /bin/sh -c "sed -e \"/GSTUDIO_PRIMARY_COURSE_LANGUAGE/ s/=.*/= u'${language}'/\" -i /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py"
           #sed_cmd="/GSTUDIO_INSTITUTE_ID/ s/=.*/='${ss_id}'/"
           #docker exec -it gstudio /bin/sh -c "sed -e '${sed_cmd}' -i /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;"
 
