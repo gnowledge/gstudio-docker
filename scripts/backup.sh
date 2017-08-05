@@ -62,7 +62,19 @@ python manage.py fillCounter
 ss_id=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
 
 if [ ! -d /backups/rsync/$ss_id ]; then
-    mkdir /backups/rsync/$ss_id
+    mkdir -p /backups/rsync/$ss_id
+fi
+
+if [ ! -d /backups/syncthing/$ss_id ]; then
+    mkdir -p /backups/syncthing/$ss_id
+fi
+
+if [ ! -d /backups/$ss_id ]; then
+    mkdir -p /backups/$ss_id
+fi
+
+if [ ! -d /root/Sync ]; then
+    mkdir -p /root/Sync
 fi
 
 echo -e "\nBackup Full - via rsync in process please be patient"
