@@ -12,16 +12,9 @@ grey="\033[0;97m" ;
 white="\033[0;98m" ;
 reset="\033[0m" ;
 
-# Mrunal : 20161123 : below part is added by Mrunal as suggested by Nagarjuna
-echo -e "\n${cyan}***   Learning Studio - DOER Edition (August 2017 update patch)   ***${reset}\n" ;
-echo -e "${cyan}      school server installation      ${reset}\n" ;
-echo -e "\n${brown}Note : \nThis installation is a one-time used process.${reset}" ;
-echo -e "${brown}It uses a terminal-console which may show many details during updations.${reset}" ;
-echo -e "${brown}This is normal. Please let the updation proceed.${reset}\n" ;
-sleep 5
-
-filename=$(basename $(ls -r /mnt/update_*.tar.gz |  head -n 1));
+filename=$(basename $(ls  /mnt/update_*.tar.gz |  head -n 1));
 update_patch="${filename%.*.*}";
+update_patch="update_patch-8b77e56-r2-20170805"
 
 echo -e "\n${cyan}copy updated patch from /mnt/home/core/${update_patch} to /home/docker/code/ in gstudio container ${reset}";
 sudo docker cp /mnt/${update_patch} gstudio:/home/docker/code/;

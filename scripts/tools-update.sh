@@ -13,8 +13,9 @@ white="\033[0;98m" ;
 reset="\033[0m" ;
 
 
-filename=$(basename $(ls -r /mnt/update_*.tar.gz |  head -n 1));
+filename=$(basename $(ls  /mnt/update_*.tar.gz |  head -n 1));
 update_patch="${filename%.*.*}";
+update_patch="update_patch-8b77e56-r2-20170805"
 
 echo -e "\n${cyan}copy updated patch from /mnt/${update_patch}/tools-updates/setup-software/Tools to /home/core/setup-software/  ${reset}";
 sudo rsync -avzPh /mnt/${update_patch}/tools-updates/setup-software/Tools  /home/core/setup-software/;
