@@ -80,6 +80,6 @@ sudo rsync -avzPh /mnt/${update_patch}.tar.gz /home/core/data/updates_archives/
 
 # As the patches are applied we can remove it now (from docker container)
 #rm -rf /tmp/*
-docker exec -it gstudio /bin/sh -c "mv /home/docker/code/${update_patch} /tmp/  &&  mv /home/docker/code/${update_patch}.tar.gz /tmp/  &&  rm -rf /tmp/${update_patch} /tmp/${update_patch}.tar.gz"
+docker exec -it gstudio /bin/sh -c "mv /home/docker/code/${update_patch} /tmp/  &&  rm -rf /tmp/${update_patch}"
 
 exit

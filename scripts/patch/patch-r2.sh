@@ -44,4 +44,4 @@ function apply_patch() {
 
 }   
 
-apply_patch |   tee patch-r1.log;
+apply_patch |   tee patch-r2.log;

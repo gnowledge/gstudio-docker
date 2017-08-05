@@ -26,11 +26,11 @@ update_patch="${filename%.*.*}";
 echo -e "\n${cyan}copy updated patch from /mnt/home/core/${update_patch} to /home/docker/code/ in gstudio container ${reset}";
 sudo docker cp /mnt/${update_patch} gstudio:/home/docker/code/;
 
-echo -e "\n${cyan}copy updated patch from /mnt/home/core/${update_patch}/data-updates/* to /data/ in gstudio container ${reset}";
-docker exec -it gstudio /bin/sh -c "rsync -avzPh /mnt/home/core/${update_patch}/data-updates/* /data/data_export/";
+echo -e "\n${cyan}copy updated patch from /home/docker/code./${update_patch}/data-updates/* to /data/ in gstudio container ${reset}";
+docker exec -it gstudio /bin/sh -c "rsync -avzPh /home/docker/code/${update_patch}/data-updates/* /data/data_export/";
 
 echo -e "\n${cyan}Update offline patch ${reset}";
-docker exec -it gstudio /bin/sh -c "/bin/bash /home/docker/code/${update_patch}/code-updates/course-import-and-export-update.sh";
+docker exec -it gstudio /bin/sh -c "/bin/bash /home/docker/code/${update_patch}/data-updates/course-import-and-export-update.sh";
 
 echo -e "\n${cyan}Restart gstudio container ${reset}";
 sudo docker restart gstudio;

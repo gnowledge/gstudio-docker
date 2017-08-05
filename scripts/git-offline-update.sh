@@ -60,8 +60,8 @@ git merge $git_commit_no_gstudio
 
 # git offline update qbank-lite code - started
 
-#git_commit_no_qbank-lite="";             # Earlier commit no
-git_commit_no_qbank-lite="536f212ff033a6a011ac28070451994f83a65954";              # Commit on 05-08-2017
+#git_commit_no_qbank_lite="";             # Earlier commit no
+git_commit_no_qbank_lite="536f212ff033a6a011ac28070451994f83a65954";              # Commit on 05-08-2017
 
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio/gnowsys-ndf/qbank-lite ${reset}"
 cd /home/docker/code/gstudio/gnowsys-ndf/qbank-lite
@@ -70,7 +70,7 @@ echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/co
 git fetch /home/docker/code/${update_patch}/code-updates/qbank-lite 
 
 echo -e "\n${cyan}merging till specified commit number (${git-commit-no}) from /home/docker/code/${update_patch}/code-updates/qbank-lite ${reset}"
-git merge $git_commit_no_qbank-lite
+git merge $git_commit_no_qbank_lite
 
 # git offline update qbank-lite code - ended
 
