@@ -57,7 +57,7 @@
 # This file will contain the details about the update patch. This file also includes how the update patch is prepared.
 
 
-## Update-patch number: 
+## Update-patch number: (One commit no back of gstudio-docker)
 	Syntax  		: 	``` update_patch-99dc927-r<release-no>-<yyyymmdd> ```
 	Exact Number 	: 	``` update_patch-99dc927-r2-20170805``
 
@@ -65,8 +65,8 @@
 
 ## Commit number
 ### gstudio-docker:			(https://github.com/mrunal4/gstudio-docker.git - master)
-	Short			:	``` 99dc927 ```
-	Long			: 	``` 99dc927bf820aa8f9fb650286229606a650d594e ```
+	Short			:	``` 32e07c0 ```
+	Long			: 	``` 32e07c03534282899ffb5d54d380eadefeb63ec6 ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - dlkit)
 	Short			:	``` 536f212 ```
