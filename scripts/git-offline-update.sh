@@ -44,7 +44,7 @@ git merge $git_commit_no_docker
 # git offline update gstudio code - started
 
 #git_commit_no_gstudio="4a07703cd23b4af2b947f531b2a5932fbbabf650";             # Earlier commit no
-git_commit_no_gstudio="5568dbbbdf0bda549aefbcf8fc6a9352046d7d29";              # Commit on 01-06-2017
+git_commit_no_gstudio="536f212ff033a6a011ac28070451994f83a65954";              # Commit on 05-08-2017
 
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
 cd /home/docker/code/gstudio/
@@ -58,13 +58,47 @@ git merge $git_commit_no_gstudio
 # git offline update gstudio code - ended
 
 
+# git offline update qbank-lite code - started
+
+#git_commit_no_qbank-lite="";             # Earlier commit no
+git_commit_no_qbank-lite="536f212ff033a6a011ac28070451994f83a65954";              # Commit on 05-08-2017
+
+echo -e "\n${cyan}change the directory to /home/docker/code/gstudio/gnowsys-ndf/qbank-lite ${reset}"
+cd /home/docker/code/gstudio/gnowsys-ndf/qbank-lite
+
+echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/code-updates/qbank-lite ${reset}"
+git fetch /home/docker/code/${update_patch}/code-updates/qbank-lite 
+
+echo -e "\n${cyan}merging till specified commit number (${git-commit-no}) from /home/docker/code/${update_patch}/code-updates/qbank-lite ${reset}"
+git merge $git_commit_no_qbank-lite
+
+# git offline update qbank-lite code - ended
+
+
+# git offline update OpenAssessmentsClient code - started
+
+#git_commit_no_OpenAssessmentsClient="";             # Earlier commit no
+git_commit_no_OpenAssessmentsClient="462ba9c29e6e8874386c5e76138909193e90240e";              # Commit on 05-08-2017
+
+echo -e "\n${cyan}change the directory to /home/docker/code/OpenAssessmentsClient ${reset}"
+cd /home/docker/code/OpenAssessmentsClient/
+
+echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/code-updates/OpenAssessmentsClient ${reset}"
+git fetch /home/docker/code/${update_patch}/code-updates/OpenAssessmentsClient 
+
+echo -e "\n${cyan}merging till specified commit number (${git-commit-no}) from /home/docker/code/${update_patch}/code-updates/OpenAssessmentsClient ${reset}"
+git merge $git_commit_no_OpenAssessmentsClient
+
+# git offline update OpenAssessmentsClient code - ended
+
+
 # prefix and suffix double quotes " in server code - started
 
 # get server id (Remove single quote {'} and Remove double quote {"})
-ss_id=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
+#ss_id=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
 
 # update server id
-sed -e "/GSTUDIO_INSTITUTE_ID/ s/=.*/='${ss_id}'/" -i  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
+#sed -e "/GSTUDIO_INSTITUTE_ID/ s/=.*/='${ss_id}'/" -i  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
 
 # prefix and suffix double quotes " in server code - ended
 
@@ -77,8 +111,11 @@ cd /home/docker/code/gstudio/gnowsys-ndf/
 echo -e "\n${cyan}apply fab update_data ${reset}"
 fab update_data
 
-echo -e "\n${cyan}updating interactions data ${reset}"
-echo "execfile('../doc/deployer/del_has_thread_update.py')" | python manage.py shell
+echo -e "\n${cyan}apply bower components - datatables-rowsgroup ${reset}"
+rsync -avzPh /home/docker/code/${update_patch}/code-updates/datatables-rowsgroup /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/ndf/static/ndf/bower_components/
+
+echo -e "\n${cyan}updating teacher' s agency type ${reset}"
+python manage.py teacher_agency_type_update
 
 echo -e "\n${cyan}collectstatic ${reset}"
 echo yes | python manage.py collectstatic

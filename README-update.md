@@ -3,9 +3,9 @@
 
 ## Download the update tar file:
 	
-	updates dt 01-06-2017 (all updates in single tar file):
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update-patch-9de330e-r1-20170610.tar.gz
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r1.sh
+	updates dt 05-08-2017 (all updates in single tar file):
+		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update-patch-9de330e-r2-20170805.tar.gz
+		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r2.sh
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/README-update.md
 
 
@@ -48,7 +48,7 @@
 
 
 ## Update command			(After the patch is applied it will reboot the system)
-	Command : ``` sudo bash patch-r1.sh ```
+	Command : ``` sudo bash patch-r2.sh ```
 
 
 ======================================================================================================# Update details
@@ -59,26 +59,26 @@
 
 ## Update-patch number: 
 	Syntax  		: 	``` update-patch-9de330e-r<release-no>-<yyyymmdd> ```
-	Exact Number 	: 	``` update-patch-9de330e-r1-20170610``
+	Exact Number 	: 	``` update-patch-9de330e-r2-20170805``
 
 ## Version number: r1
 
 ## Commit number
-### gstudio-docker:
+### gstudio-docker:			(https://github.com/mrunal4/gstudio-docker.git - master)
 	Short			:	``` 9de330e ```
 	Long			: 	``` 9de330ec8dcce9a5e840e7eb237899035d34a5fb ```
 
-### gstudio: 
-	Short			:	``` 5568dbb ```
-	Long			: 	``` 5568dbbbdf0bda549aefbcf8fc6a9352046d7d29 ```
+### gstudio:    			(https://github.com/gnowledge/gstudio.git - dlkit)
+	Short			:	``` 536f212 ```
+	Long			: 	``` 536f212ff033a6a011ac28070451994f83a65954 ```
 
-### qbank:
-	Short			:	``` cf7c138 ```
-	Long			: 	``` cf7c1382638c340b5665d6e7ce7e7f31626aed30 ```
+### qbank-lite:				(https://github.com/gnowledge/qbank-lite.git - clixserver)
+	Short			:	``` 43be004 ```
+	Long			: 	``` 43be0040267e652b1c9e625e3a08d8a4710d5d4e ```
 
-### OpenAssessmentsClient:
-	Short			:	``` ed2f30d ```
-	Long			: 	``` ed2f30dc65be911ee8f1c80a964e159e289ffe0b ```
+### OpenAssessmentsClient:	(https://github.com/gnowledge/OpenAssessmentsClient.git - clixserver)
+	Short			:	``` 462ba9c ```
+	Long			: 	``` 462ba9c29e6e8874386c5e76138909193e90240e ```
 
 
 ------------------------------------------------------------------------------------------------------
@@ -86,11 +86,11 @@
 
 # Instruction to prepare the update patch
 
-mkdir update_patch-9de330e-r1-20170610
+mkdir update_patch-9de330e-r2-20170805
 
-mkdir -p update_patch-9de330e-r1-20170610/code-updates
+mkdir -p update_patch-9de330e-r2-20170805/code-updates
 
-cd update_patch-9de330e-r1-20170610/code-updates
+cd update_patch-9de330e-r2-20170805/code-updates
 
 git clone https://github.com/mrunal4/gstudio-docker.git
 
@@ -101,21 +101,21 @@ rsync -avzPh gstudio-docker/scripts/git-offline-update.sh gstudio-docker/scripts
 cd ../../
 
 
-mkdir -p update_patch-9de330e-r1-20170610/oac-and-oat-updates
+mkdir -p update_patch-9de330e-r2-20170805/oac-and-oat-updates
 
-cd update_patch-9de330e-r1-20170610/oac-and-oat-updates
+cd update_patch-9de330e-r2-20170805/oac-and-oat-updates
 
 rsync -avzPh ../code-updates/gstudio-docker/scripts/update-oac-and-oat.sh .
 
-wget https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates-raw-material/20170610/oac.patch
+wget https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates-raw-material/20170805/oac.patch
 
-wget https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates-raw-material/20170610/oat.patch
+wget https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates-raw-material/20170805/oat.patch
 
 cd ../../
 
-tar cvzf update_patch-9de330e-r1-20170610.tar.gz update_patch-9de330e-r1-20170610/
+tar cvzf update_patch-9de330e-r2-20170805.tar.gz update_patch-9de330e-r2-20170805/
 
-rsync -avzPh update_patch-9de330e-r1-20170610/code-updates/gstudio-docker/scripts/patch/patch-r1.sh update_patch-9de330e-r1-20170610/code-updates/gstudio-docker/README-update.md .
+rsync -avzPh update_patch-9de330e-r2-20170805/code-updates/gstudio-docker/scripts/patch/patch-r2.sh update_patch-9de330e-r2-20170805/code-updates/gstudio-docker/README-update.md .
 
 ------------------------------------------------------------------------------------------------------
 

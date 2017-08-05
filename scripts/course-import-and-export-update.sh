@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Following variables are used to store the color codes for displaying the content on terminal
+black="\033[0;90m" ;
+red="\033[0;91m" ;
+green="\033[0;92m" ;
+brown="\033[0;93m" ;
+blue="\033[0;94m" ;
+purple="\033[0;95m" ;
+cyan="\033[0;96m" ;
+grey="\033[0;97m" ;
+white="\033[0;98m" ;
+reset="\033[0m" ;
+
+cd /home/docker/code/gstudio/gnowsys-ndf/
+
+echo -e "\n${cyan}Purge module : 590c048ea31c74012efaddb4 ${reset}";
+python manage.py purge_node 590c048ea31c74012efaddb4 y
+
+echo -e "\n${cyan}Import module(s) or unit(s)${reset}";
+module_and_units=('english-beginner_2017-08-04_22-37' 'geometric-reasoning-part-i_2017-08-04_22-32' 'geometric-reasoning-part-ii_2017-08-04_22-35' 'english-elementary_2017-08-05_00-03' 'proportional-reasoning_2017-08-04_22-28' 'help-topics_17062017_2017-08-05_15-39' 'english-elementary_2017-08-05_14-47' 'health-and-disease_2017-08-05_14-22' 'english-beginner_2017-08-05_14-50')
+for m_or_u_name in "${module_and_units[@]}"
+do
+    echo -e "\n${cyan}Import module/unit: ${m_or_u_name} ${reset}";
+    python manage.py group_import /data/data_export/${m_or_u_name} y y y
+    rm /home/docker/code/gstudio/gnowsys-ndf/5*
+done

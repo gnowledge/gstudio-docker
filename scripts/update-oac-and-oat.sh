@@ -58,11 +58,16 @@ update_patch="${filename%.*.*}";
 
 
 # Apply patches - change the directory till the patch location and apply the patches
-docker exec -it gstudio /bin/sh -c "cp -rv /home/docker/code/${update_patch}/oac-and-oat-updates/oac.patch  /softwares/  &&  cd /softwares  &&  patch  -s -p0 <  oac.patch"
-docker exec -it gstudio /bin/sh -c "cp -rv /home/docker/code/${update_patch}/oac-and-oat-updates/oat.patch  /softwares/  &&  cd /softwares  &&  patch  -s -p0 <  oat.patch"
+#docker exec -it gstudio /bin/sh -c "cp -rv /home/docker/code/${update_patch}/oac-and-oat-updates/oac.patch  /softwares/  &&  cd /softwares  &&  patch  -s -p0 <  oac.patch"
+#docker exec -it gstudio /bin/sh -c "cp -rv /home/docker/code/${update_patch}/oac-and-oat-updates/oat.patch  /softwares/  &&  cd /softwares  &&  patch  -s -p0 <  oat.patch"
+
+docker exec -it gstudio /bin/sh -c "rsync -avzPh /home/docker/code/${update_patch}/oac-and-oat-updates/oac /home/docker/code/${update_patch}/oac-and-oat-updates/oat  /softwares/"
+docker exec -it gstudio /bin/sh -c "rsync -avzPh /home/docker/code/${update_patch}/oac-and-oat-updates/CLIx/datastore/AssetContent/* /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/repository/AssetContent/"
+docker exec -it gstudio /bin/sh -c "cd /home/docker/code/${update_patch}/oac-and-oat-updates/CLIx/ && mongorestore --drop mongodump "
+
 
 # Make directories to keep of patches
-sudo mkdir /home/core/data/updates_archives/
+sudo mkdir -p /home/core/data/updates_archives/
 
 
 # Copy patch files in old patches directory
@@ -70,11 +75,11 @@ sudo rsync -avzPh /mnt/${update_patch}.tar.gz /home/core/data/updates_archives/
 
 # As the patches are applied we can remove it now (from host system)
 #rm -rf /tmp/*
-sudo mv /mnt/${update_patch} /home/core/setup-software/oac.patch /home/core/setup-software/oat.patch /tmp/
-sudo rm -rf /tmp/${update_patch} /tmp/oa*.patch
+#sudo mv /mnt/${update_patch} /home/core/setup-software/oac.patch /home/core/setup-software/oat.patch /tmp/
+#sudo rm -rf /tmp/${update_patch} /tmp/oa*.patch
 
 # As the patches are applied we can remove it now (from docker container)
 #rm -rf /tmp/*
-docker exec -it gstudio /bin/sh -c "mv /home/docker/code/${update_patch}.tar.gz /home/docker/code/${update_patch} /tmp/  &&  rm -rf /mnt/${update_patch}"
+docker exec -it gstudio /bin/sh -c "mv /home/docker/code/${update_patch} /tmp/  &&  mv /home/docker/code/${update_patch}.tar.gz /tmp/  &&  rm -rf /tmp/${update_patch} /tmp/${update_patch}.tar.gz"
 
 exit

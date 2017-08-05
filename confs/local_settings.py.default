@@ -28,6 +28,7 @@ PASSWORD_COMPLEXITY = {  # You can ommit any or all of these for no limit for th
 GSTUDIO_SITE_NAME = "clix"
 GSTUDIO_SITE_LANDING_TEMPLATE = "ndf/landing_page_clix.html"
 GSTUDIO_SITE_LOGO = "/static/ndf/css/themes/clix/logo.svg"
+GSTUDIO_SITE_SECONDARY_LOGO = "/static/ndf/images/clix-header-icon.png"
 GSTUDIO_SITE_FAVICON = "/static/ndf/images/favicon/clix-favicon.png"
 GSTUDIO_SITE_HOME_PAGE = "/welcome"
 GSTUDIO_RESOURCES_EDUCATIONAL_LEVEL = ["Grade 8", "Grade 9"]
@@ -48,7 +49,7 @@ GSTUDIO_EDUCATIONAL_SUBJECTS_AS_GROUPS = True
 GSTUDIO_SOCIAL_SHARE_RESOURCE = False
 GSTUDIO_REGISTRATION = False
 
-GSTUDIO_PRIMARY_COURSE_LANGUAGE = u'hi'
+GSTUDIO_PRIMARY_COURSE_LANGUAGE = u'en'
 
 # SESSION_COOKIE_AGE = 30 * 60
 # SESSION_SAVE_EVERY_REQUEST = True
