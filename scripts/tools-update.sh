@@ -16,8 +16,10 @@ reset="\033[0m" ;
 filename=$(basename $(ls -r /mnt/update_*.tar.gz |  head -n 1));
 update_patch="${filename%.*.*}";
 
-echo -e "\n${cyan}copy updated patch from /mnt/home/core/${update_patch} to /home/docker/code/ in gstudio container ${reset}";
-sudo rsync -avzPh /mnt/${update_patch}/tools-update/setup-software-new/Tools  /home/core/setup-software/Tools;
+echo -e "\n${cyan}copy updated patch from /mnt/${update_patch}/tools-update/setup-software/Tools to /home/core/setup-software/  ${reset}";
+sudo rsync -avzPh /mnt/${update_patch}/tools-update/setup-software/Tools  /home/core/setup-software/;
+
+echo -e "\n${cyan}remove /home/core/setup-software/Tools/biomechanic ${reset}";
 sudo rm -rf /home/core/setup-software/Tools/biomechanic;
 
 

@@ -12,6 +12,7 @@ grey="\033[0;97m" ;
 white="\033[0;98m" ;
 reset="\033[0m" ;
 
+echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
 cd /home/docker/code/gstudio/gnowsys-ndf/
 
 echo -e "\n${cyan}Purge module : 590c048ea31c74012efaddb4 ${reset}";
@@ -25,3 +26,21 @@ do
     python manage.py group_import /data/data_export/${m_or_u_name} y y y
     rm /home/docker/code/gstudio/gnowsys-ndf/5*
 done
+
+# Code - schema update scripts - started
+echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
+cd /home/docker/code/gstudio/gnowsys-ndf/
+
+echo -e "\n${cyan}apply fab update_data ${reset}"
+fab update_data
+
+echo -e "\n${cyan}apply bower components - datatables-rowsgroup ${reset}"
+rsync -avzPh /home/docker/code/${update_patch}/code-updates/datatables-rowsgroup /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/ndf/static/ndf/bower_components/
+
+echo -e "\n${cyan}updating teacher' s agency type ${reset}"
+python manage.py teacher_agency_type_update
+
+echo -e "\n${cyan}collectstatic ${reset}"
+echo yes | python manage.py collectstatic
+
+# Code - schema update scripts - ended
