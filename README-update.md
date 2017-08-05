@@ -4,7 +4,7 @@
 ## Download the update tar file:
 	
 	updates dt 05-08-2017 (all updates in single tar file):
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update-patch-8b77e56-r2-20170805.tar.gz
+		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-99dc927-r2-20170805.tar.gz
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r2.sh
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/README-update.md
 
@@ -58,15 +58,15 @@
 
 
 ## Update-patch number: 
-	Syntax  		: 	``` update-patch-8b77e56-r<release-no>-<yyyymmdd> ```
-	Exact Number 	: 	``` update-patch-8b77e56-r2-20170805``
+	Syntax  		: 	``` update_patch-99dc927-r<release-no>-<yyyymmdd> ```
+	Exact Number 	: 	``` update_patch-99dc927-r2-20170805``
 
 ## Version number: r1
 
 ## Commit number
 ### gstudio-docker:			(https://github.com/mrunal4/gstudio-docker.git - master)
-	Short			:	``` 8b77e56 ```
-	Long			: 	``` 8b77e56c96d4fcc23a7f892e68e563e849cf689c ```
+	Short			:	``` 99dc927 ```
+	Long			: 	``` 99dc927bf820aa8f9fb650286229606a650d594e ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - dlkit)
 	Short			:	``` 536f212 ```
