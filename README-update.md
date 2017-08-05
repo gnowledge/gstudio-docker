@@ -4,7 +4,7 @@
 ## Download the update tar file:
 	
 	updates dt 05-08-2017 (all updates in single tar file):
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update-patch-7698c0a-r2-20170805.tar.gz
+		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update-patch-8b77e56-r2-20170805.tar.gz
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r2.sh
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/README-update.md
 
@@ -58,15 +58,15 @@
 
 
 ## Update-patch number: 
-	Syntax  		: 	``` update-patch-7698c0a-r<release-no>-<yyyymmdd> ```
-	Exact Number 	: 	``` update-patch-7698c0a-r2-20170805``
+	Syntax  		: 	``` update-patch-8b77e56-r<release-no>-<yyyymmdd> ```
+	Exact Number 	: 	``` update-patch-8b77e56-r2-20170805``
 
 ## Version number: r1
 
 ## Commit number
 ### gstudio-docker:			(https://github.com/mrunal4/gstudio-docker.git - master)
-	Short			:	``` 7698c0a ```
-	Long			: 	``` 7698c0a9c420404b98284c3eecbd731a960c3d81 ```
+	Short			:	``` 8b77e56 ```
+	Long			: 	``` 8b77e56c96d4fcc23a7f892e68e563e849cf689c ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - dlkit)
 	Short			:	``` 536f212 ```
@@ -81,41 +81,6 @@
 	Long			: 	``` 462ba9c29e6e8874386c5e76138909193e90240e ```
 
 
-------------------------------------------------------------------------------------------------------
-
-
-# Instruction to prepare the update patch
-
-mkdir update_patch-7698c0a-r2-20170805
-
-mkdir -p update_patch-7698c0a-r2-20170805/code-updates
-
-cd update_patch-7698c0a-r2-20170805/code-updates
-
-git clone https://github.com/mrunal4/gstudio-docker.git
-
-git clone https://github.com/gnowledge/gstudio.git -b dlkit
-
-rsync -avzPh gstudio-docker/scripts/git-offline-update.sh gstudio-docker/scripts/code-update.sh .
-
-cd ../../
-
-
-mkdir -p update_patch-7698c0a-r2-20170805/oac-and-oat-updates
-
-cd update_patch-7698c0a-r2-20170805/oac-and-oat-updates
-
-rsync -avzPh ../code-updates/gstudio-docker/scripts/update-oac-and-oat.sh .
-
-wget https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates-raw-material/20170805/oac.patch
-
-wget https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates-raw-material/20170805/oat.patch
-
-cd ../../
-
-tar cvzf update_patch-7698c0a-r2-20170805.tar.gz update_patch-7698c0a-r2-20170805/
-
-rsync -avzPh update_patch-7698c0a-r2-20170805/code-updates/gstudio-docker/scripts/patch/patch-r2.sh update_patch-7698c0a-r2-20170805/code-updates/gstudio-docker/README-update.md .
 
 ------------------------------------------------------------------------------------------------------
 
