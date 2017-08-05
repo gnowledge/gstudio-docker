@@ -65,8 +65,8 @@
 
 ## Commit number
 ### gstudio-docker:			(https://github.com/mrunal4/gstudio-docker.git - master)
-	Short			:	``` 32e07c0 ```
-	Long			: 	``` 32e07c03534282899ffb5d54d380eadefeb63ec6 ```
+	Short			:	``` 7dc73c2 ```
+	Long			: 	``` 7dc73c2e963e68263275aa57edb95bee8e765192 ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - dlkit)
 	Short			:	``` 536f212 ```
