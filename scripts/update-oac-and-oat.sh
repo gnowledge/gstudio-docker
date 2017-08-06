@@ -55,7 +55,7 @@
 # fetch latest patch date and time stamp
 filename=$(basename $(ls  /mnt/update_*.tar.gz |  head -n 1));
 update_patch="${filename%.*.*}";
-update_patch="update_patch-0bc4478-r2-20170806"
+update_patch="update_patch-5f257fe-r2-20170806"
 
 # Apply patches - change the directory till the patch location and apply the patches
 #docker exec -it gstudio /bin/sh -c "cp -rv /home/docker/code/${update_patch}/oac-and-oat-updates/oac.patch  /softwares/  &&  cd /softwares  &&  patch  -s -p0 <  oac.patch"
