@@ -72,6 +72,12 @@ git fetch /home/docker/code/${update_patch}/code-updates/qbank-lite
 echo -e "\n${cyan}merging till specified commit number (${git-commit-no}) from /home/docker/code/${update_patch}/code-updates/qbank-lite ${reset}"
 git merge $git_commit_no_qbank_lite
 
+echo -e "\n${cyan}remove all the file and sub-driectories in directory (/home/docker/code/gstudio/gnowsys-ndf/qbank-lite/*) ${reset}"
+rm -rf /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/*
+
+echo -e "\n${cyan}rsync /home/docker/code/${update_patch}/code-updates/qbank-lite/* in /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/ ${reset}"
+rsync -avzPh /home/docker/code/${update_patch}/code-updates/qbank-lite/* /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/
+
 # git offline update qbank-lite code - ended
 
 

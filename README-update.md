@@ -9,8 +9,6 @@
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/README-update.md
 
 
-
-
 ## Copy content (downloaded tar file) in Pendrive (not inside any directory please - directly inside the pendrive {root of pendrive})
 
 ## Now we have files in pendrive. Insert pendrive in the School server
@@ -84,3 +82,80 @@
 
 ------------------------------------------------------------------------------------------------------
 
+# CLIx Platform release 2, version 17.08.r1, Notes (for Mizoram)
+Release date: 7th August 2017
+State: Mizoram
+
+This release note pertains to the Connected Learning Initiative (CLIx) student platform aka CLIx platform release 2 (henceforth only release 2). 
+The release 2 patch-r2 should be applied on the CLIx platform ver 17.05.r1 > patch-r1 only. Please find below details of release 2 features:
+
+**Key features**:
+- Courses
+	- English Beginner unit 0.1, unit 0.2, unit 1
+	- English Elementary unit 1 & unit 2
+	- Proportional Reasoning (unit0-unit5)
+	- Health & Disease (one unit)
+	- GR I (unit0-unit3)
+	- GR II (unit4-unit5)
+- Tools and interactives:
+	- Updated Police Quad (with data logging feature)
+	- Food Sharing Tool
+	- Ratios & Patterns
+	- Ice Cubes in Lemonade
+	- Geogebra_Geometric_Reasoning
+	- Geogebra_Geometric_Reasoning1
+	- Geogebra_Geometric_Reasoning2
+	- StarLogoNova
+	- Find-the-rate-Proportional-Reasoning
+	- PhET
+- Updated Help section for teachers and students
+- Code:
+	- Multi-lingual feature to access course content in English, Hindi & Telugu
+	- Improved UI
+	- All element user ids as course admin
+
+For any further details please contact Clix-india-tech@clix.tiss.edu
+
+
+Technical Details
+
+**Features and Fixes**:
+
+- Added a script to mark user with element's username as a teacher.
+    - Author with `agency_type` Teacher will have admin privileges over units.
+- Tools:
+    - Added new tool *Star Logo*.
+    - Capturing activity-log/analytics for *Police Quad*.
+- UI changes:
+    - Interaction settings UI modifications
+    - Actionables behind buddy bar modified
+    - Showing Assessments without vertical scrollbar (height of assessment player adjusted).
+- Draft Unit:
+    - Showing Draft Units based on group-membership and/or admin access.
+    - Course content links activated in Draft Units (`BaseCourseGroup`).
+- Discussion/Interaction:
+    - Provision to list all replies of a particular user in a group.
+    - Bug-fix: Only if `release-response` is true, show comments count and alert about new comments.
+- Quiz:
+    - provision to add `quizitemevent` and `quizitems` in course authoring.
+    - Bug-fix: Rendering of `quizitem` HTML content issue fixed.
+    - Added quiz tab in i2c (`courseeventgroup`) courses for Displaying user quiz submissions.
+    - quiz-player updated to use fields : `quizitem_max_attempts`, `quizitem_show_correct_ans`
+    - Load quizplayer only for authenticated users else display login message.
+- Dump and restore:
+    - Module dump and restore functionality added.
+
+**gStudio code changes**:
+- `purge_group` command renamed to `purge_node`. Functionality upgraded to fine granular node level.
+- Updated `sync_users` to assign *Teacher* `agency_type` depending on element name in username.
+- Added a script/command `teacher_agency_type_update` to fetch all `Author`'s with element username and add `Teacher` in `agency_type` field.
+- Dev utilities:
+    - Moved all admin urls to `gstudio_admin`
+    - Added git urls to work with (safe) git commands
+    - Updated `query_doc` function to take `nbh`/`NBH`/`get_neighbourhood` input and render NBH of node
+    - Updated `dev_query_doc` template to show HTML and text view of node.
+- Made provision to add another version of site logo (e.g: LHS of top header) with `GSTUDIO_SITE_SECONDARY_LOGO` config var.
+- Discussion:
+    - Added new configurable variable: `DEFAULT_DISCUSSION_LABEL`
+
+------------------------------------------------------------------------------------------------------
