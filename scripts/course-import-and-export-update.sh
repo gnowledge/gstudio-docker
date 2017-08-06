@@ -19,7 +19,7 @@ echo -e "\n${cyan}Purge module : 590c048ea31c74012efaddb4 ${reset}";
 python manage.py purge_node 590c048ea31c74012efaddb4 y
 
 echo -e "\n${cyan}Import module(s) or unit(s)${reset}";
-module_and_units=('english-beginner_2017-08-04_22-37' 'geometric-reasoning-part-i_2017-08-04_22-32' 'geometric-reasoning-part-ii_2017-08-04_22-35' 'english-elementary_2017-08-05_00-03' 'proportional-reasoning_2017-08-04_22-28' 'help-topics_17062017_2017-08-05_15-39' 'english-elementary_2017-08-05_14-47' 'health-and-disease_2017-08-05_14-22' 'english-beginner_2017-08-05_14-50')
+module_and_units=('english-beginner_2017-08-06_17-30' 'geometric-reasoning-part-i_2017-08-04_22-32' 'geometric-reasoning-part-ii_2017-08-04_22-35' 'english-elementary_2017-08-05_00-03' 'proportional-reasoning_2017-08-04_22-28' 'help-topics_17062017_2017-08-05_15-39' 'english-elementary_2017-08-06_17-17' 'health-and-disease_2017-08-05_14-22' 'english-beginner_2017-08-06_17-13')
 for m_or_u_name in "${module_and_units[@]}"
 do
     echo -e "\n${cyan}Import module/unit: ${m_or_u_name} ${reset}";
