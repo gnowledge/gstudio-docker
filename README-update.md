@@ -3,8 +3,8 @@
 
 ## Download the update tar file:
 	
-	updates dt 05-08-2017 (all updates in single tar file):
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-99dc927-r2-20170805.tar.gz
+	updates dt 06-08-2017 (all updates in single tar file):
+		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-0bc4478-r2-20170806.tar.gz
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r2.sh
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/README-update.md
 
@@ -58,23 +58,23 @@
 
 
 ## Update-patch number: (One commit no back of gstudio-docker)
-	Syntax  		: 	``` update_patch-99dc927-r<release-no>-<yyyymmdd> ```
-	Exact Number 	: 	``` update_patch-99dc927-r2-20170805``
+	Syntax  		: 	``` update_patch-0bc4478-r<release-no>-<yyyymmdd> ```
+	Exact Number 	: 	``` update_patch-0bc4478-r2-20170806``
 
 ## Version number: r1
 
 ## Commit number
 ### gstudio-docker:			(https://github.com/mrunal4/gstudio-docker.git - master)
-	Short			:	``` 7dc73c2 ```
-	Long			: 	``` 7dc73c2e963e68263275aa57edb95bee8e765192 ```
+	Short			:	``` 0bc4478 ```
+	Long			: 	``` 0bc4478e856b55be10ffc7931830f4d89593ef7f ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - dlkit)
-	Short			:	``` 536f212 ```
-	Long			: 	``` 536f212ff033a6a011ac28070451994f83a65954 ```
+	Short			:	``` 2849c7f ```
+	Long			: 	``` 2849c7f3fad5c4c25f02a4194d2354da3c25e054 ```
 
 ### qbank-lite:				(https://github.com/gnowledge/qbank-lite.git - clixserver)
-	Short			:	``` 43be004 ```
-	Long			: 	``` 43be0040267e652b1c9e625e3a08d8a4710d5d4e ```
+	Short			:	``` 1b48892 ```
+	Long			: 	``` 1b488926a4d609dcde017e4fe7a47b8a4b541339 ```
 
 ### OpenAssessmentsClient:	(https://github.com/gnowledge/OpenAssessmentsClient.git - clixserver)
 	Short			:	``` 462ba9c ```
