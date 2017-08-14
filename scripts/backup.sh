@@ -77,24 +77,35 @@ if [ ! -d /root/Sync ]; then
     mkdir -p /root/Sync
 fi
 
-echo -e "\nBackup Full - via rsync in process please be patient"
-rsync -avzPh  /data/media /data/rcs-repo /data/benchmark-dump /data/counters-dump /data/gstudio-exported-users-analytics-csvs  /backups/rsync/$ss_id/
 
-echo -e "\nBackup user analytics - via rsync in process please be patient"
-rsync -avzPh  /data/gstudio-exported-users-analytics-csvs  /backups/syncthing/$ss_id/
+mkdir /tmp/$ss_id/
+rsync -avzPh  /data/gstudio-exported-users-analytics-csvs/*  /tmp/$ss_id/
+
+cd /tmp/
+
+echo -e "\nCreate tar file of the analytics csvs"
+tar -cvzf ${ss_id}.tar.gz ${ss_id}
+
+echo -e "\nBackup gstudio-exported-users-analytics-csvs (Qunatitative research data / analytics data) - via rsync in process please be patient"
+#rsync -avzPh  /data/media /data/rcs-repo /data/benchmark-dump /data/counters-dump /data/gstudio-exported-users-analytics-csvs  /backups/rsync/$ss_id/
+rsync -avzPh  /tmp/${ss_id}.tar.gz  /backups/rsync/$ss_id/
+
+#echo -e "\nBackup user analytics - via rsync in process please be patient"
+#rsync -avzPh  /data/gstudio-exported-users-analytics-csvs  /backups/syncthing/$ss_id/
 
 cp -av /root/.gnupg /backups/rsync/$ss_id/
 
 touch /backups/$ss_id/.stfolder
+touch /backups/$ss_id/.stignore
 touch /backups/rsync/$ss_id/.stfolder
 touch /backups/rsync/$ss_id/.stignore
 
 touch /root/Sync/.stfolder
 touch /root/Sync/.stignore
-chmod +x /root/Sync/*
+chmod +rx /root/Sync/*
 
 #chmod 644 /backups/incremental/*
-chmod +x /backups/rsync/*
+chmod +rx /backups/rsync/*
 
 
 touch /backups/syncthing/$ss_id/.stfolder
@@ -102,3 +113,7 @@ touch /backups/syncthing/$ss_id/.stignore
 
 #chmod 644 /backups/incremental/*
 chmod +x /backups/syncthing/*
+
+if [ ! -L /backups/rsync/${ss_id}/${ss_id}.tar.gz ]; then
+    ln -s /backups/rsync/${ss_id}/${ss_id}.tar.gz  /softwares/${ss_id}.tar.gz
+fi
