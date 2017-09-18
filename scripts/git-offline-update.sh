@@ -33,7 +33,7 @@ echo -e "\n${cyan}change the directory to /home/docker/code/ ${reset}"
 cd /home/docker/code/
 
 echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/code-updates/gstudio-docker ${reset}"
-git fetch /home/docker/code/${update_patch}/code-updates/gstudio-docker 
+echo "\n" | echo :wq  | git fetch /home/docker/code/${update_patch}/code-updates/gstudio-docker 
 
 echo -e "\n${cyan}merging till specified commit number (${git_commit_no_docker}) from /home/docker/code/${update_patch}/code-updates/gstudio-docker ${reset}"
 git merge $git_commit_no_docker
@@ -61,7 +61,7 @@ echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
 cd /home/docker/code/gstudio/
 
 echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/code-updates/gstudio ${reset}"
-git fetch /home/docker/code/${update_patch}/code-updates/gstudio 
+echo "\n" | echo :wq  | git fetch /home/docker/code/${update_patch}/code-updates/gstudio 
 
 echo -e "\n${cyan}merging till specified commit number (${git-commit-no}) from /home/docker/code/${update_patch}/code-updates/gstudio ${reset}"
 git merge $git_commit_no_gstudio
@@ -81,7 +81,7 @@ echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/co
 git fetch /home/docker/code/${update_patch}/code-updates/qbank-lite 
 
 echo -e "\n${cyan}merging till specified commit number (${git-commit-no}) from /home/docker/code/${update_patch}/code-updates/qbank-lite ${reset}"
-git merge $git_commit_no_qbank_lite
+echo "\n" | echo :wq  | git merge $git_commit_no_qbank_lite
 
 echo -e "\n${cyan}remove all the file and sub-driectories in directory (/home/docker/code/gstudio/gnowsys-ndf/qbank-lite/*) ${reset}"
 rm -rf /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/*
@@ -151,6 +151,9 @@ fi
 
 
 # extra scripts - started
+
+echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
+cd /home/docker/code/gstudio/gnowsys-ndf/
 
 echo -e "\n${cyan}apply fab update_data ${reset}"
 fab update_data
