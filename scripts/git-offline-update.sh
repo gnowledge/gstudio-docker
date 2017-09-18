@@ -23,7 +23,7 @@ reset="\033[0m" ;
 
 filename=$(basename $(ls -dr /home/docker/code/update_*/ |  head -n 1));
 update_patch="${filename%.*.*}";
-update_patch="update_patch-9c41f74-r2-20170814"
+update_patch="update_patch-4d460c6-r2-20170918"
 
 # git offline update docker code - started6
 #git_commit_no_docker="9c41f747cd6d0235a32d0351f99d9208e6f83bfb";             # Earlier commit no
@@ -43,8 +43,8 @@ git merge $git_commit_no_docker
 
 # git offline update gstudio code - started
 
-#git_commit_no_gstudio="536f212ff033a6a011ac28070451994f83a65954";             # Earlier commit no
-git_commit_no_gstudio="2849c7f3fad5c4c25f02a4194d2354da3c25e054";              # Commit on 05-08-2017
+#git_commit_no_gstudio="2849c7f3fad5c4c25f02a4194d2354da3c25e054";             # Earlier commit no
+git_commit_no_gstudio="7a0adae693bc10523dc3152a9e3735d286efa176";              # Commit on 18-09-2017
 
 #--- One time for 20170912 update - started
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
@@ -94,8 +94,8 @@ rsync -avzPh /home/docker/code/${update_patch}/code-updates/qbank-lite/* /home/d
 
 # git offline update OpenAssessmentsClient code - started
 
-#git_commit_no_OpenAssessmentsClient="";             # Earlier commit no
-git_commit_no_OpenAssessmentsClient="462ba9c29e6e8874386c5e76138909193e90240e";              # Commit on 05-08-2017
+#git_commit_no_OpenAssessmentsClient="462ba9c29e6e8874386c5e76138909193e90240e";             # Earlier commit no
+git_commit_no_OpenAssessmentsClient="acfed44c30b421a49fa2ec43b361ff11653e9d31";              # Commit on 18-09-2017
 
 echo -e "\n${cyan}change the directory to /home/docker/code/OpenAssessmentsClient ${reset}"
 cd /home/docker/code/OpenAssessmentsClient/
