@@ -117,3 +117,85 @@ chmod +x /backups/syncthing/*
 if [ ! -L /backups/rsync/${ss_id}/${ss_id}.tar.gz ]; then
     ln -s /backups/rsync/${ss_id}/${ss_id}.tar.gz  /softwares/${ss_id}.tar.gz
 fi
+
+# log commit details - in /data/git-commit-details.log - started
+echo -e "\nDate : $date \n" > /data/git-commit-details.log
+
+echo -e "\n\nDetails of gstudio-docker \n" 2>&1 | tee -a /data/git-commit-details.log
+cd /home/docker/code/
+
+echo -e "\ngstudio-docker : pwd \n" 2>&1 | tee -a /data/git-commit-details.log
+pwd
+
+echo -e "\ngstudio-docker : git branch \n" 2>&1 | tee -a /data/git-commit-details.log
+git branch 2>&1 | tee -a /data/git-commit-details.log
+
+echo -e "\ngstudio-docker : git log - latest 5 commits \n" 2>&1 | tee -a /data/git-commit-details.log
+git log -n 5 2>&1 | tee -a /data/git-commit-details.log
+
+echo -e "\ngstudio-docker : git status \n" 2>&1 | tee -a /data/git-commit-details.log
+git status 2>&1 | tee -a /data/git-commit-details.log
+
+echo -e "\ngstudio-docker : git diff \n" 2>&1 | tee -a /data/git-commit-details.log
+git diff 2>&1 | tee -a /data/git-commit-details.log
+
+
+echo -e "\n\nDetails of gstudio \n" 2>&1 | tee -a /data/git-commit-details.log
+cd /home/docker/code/gstudio/
+
+echo -e "\ngstudio : pwd \n" 2>&1 | tee -a /data/git-commit-details.log
+pwd
+
+echo -e "\ngstudio : git branch \n" 2>&1 | tee -a /data/git-commit-details.log
+git branch 2>&1 | tee -a /data/git-commit-details.log
+
+echo -e "\ngstudio : git log - latest 5 commits \n" 2>&1 | tee -a /data/git-commit-details.log
+git log -n 5 2>&1 | tee -a /data/git-commit-details.log
+
+echo -e "\ngstudio : git status \n" 2>&1 | tee -a /data/git-commit-details.log
+git status 2>&1 | tee -a /data/git-commit-details.log
+
+echo -e "\ngstudio : git diff \n" 2>&1 | tee -a /data/git-commit-details.log
+git diff 2>&1 | tee -a /data/git-commit-details.log
+
+
+echo -e "\n\nDetails of OpenAssessmentsClient \n" 2>&1 | tee -a /data/git-commit-details.log
+cd /home/docker/code/OpenAssessmentsClient/
+
+echo -e "\nOpenAssessmentsClient : pwd \n" 2>&1 | tee -a /data/git-commit-details.log
+pwd
+
+echo -e "\nOpenAssessmentsClient : git branch \n" 2>&1 | tee -a /data/git-commit-details.log
+git branch 2>&1 | tee -a /data/git-commit-details.log
+
+echo -e "\nOpenAssessmentsClient : git log - latest 5 commits \n" 2>&1 | tee -a /data/git-commit-details.log
+git log -n 5 2>&1 | tee -a /data/git-commit-details.log
+
+echo -e "\nOpenAssessmentsClient : git status \n" 2>&1 | tee -a /data/git-commit-details.log
+git status 2>&1 | tee -a /data/git-commit-details.log
+
+echo -e "\nOpenAssessmentsClient : git diff \n" 2>&1 | tee -a /data/git-commit-details.log
+git diff 2>&1 | tee -a /data/git-commit-details.log
+
+
+echo -e "\n\nDetails of qbank-lite \n" 2>&1 | tee -a /data/git-commit-details.log
+cd /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/
+
+echo -e "\nqbank-lite : pwd \n" 2>&1 | tee -a /data/git-commit-details.log
+pwd
+
+echo -e "\nqbank-lite : git branch \n" 2>&1 | tee -a /data/git-commit-details.log
+git branch 2>&1 | tee -a /data/git-commit-details.log
+
+echo -e "\nqbank-lite : git log - latest 5 commits \n" 2>&1 | tee -a /data/git-commit-details.log
+git log -n 5 2>&1 | tee -a /data/git-commit-details.log
+
+echo -e "\nqbank-lite : git status \n" 2>&1 | tee -a /data/git-commit-details.log
+git status 2>&1 | tee -a /data/git-commit-details.log
+
+echo -e "\nqbank-lite : git diff \n" 2>&1 | tee -a /data/git-commit-details.log
+git diff 2>&1 | tee -a /data/git-commit-details.log
+
+
+echo -e "\nDate : $date \n" >> /data/git-commit-details.log
+# log commit details - in /data/git-commit-details.log - ended

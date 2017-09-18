@@ -1,0 +1,301 @@
+State code,Old District Name,Old District code,New District Name,New District Code,CLIx Code,School Name,Full CLIx School Code,Server id 
+04,Warangal,10,Jangaon,13,1001,ZPHS ZAFFARGADH,04131001,tg101
+04,Warangal,10,Jangaon,13,1002,ZPHS MACHUPHAD,04131002,tg102
+04,Warangal,10,Jangaon,13,1003,ZPPSS Nawabpet,04131003,tg103
+04,Warangal,10,Jangaon,13,1004,ZPHS Narmetta,04131004,tg104
+04,Warangal,10,Jangaon,13,1005,Zphs Veldanda,04131005,tg105
+04,Warangal,10,Jangaon,13,1006,ZPHS Cheeturu,04131006,tg106
+04,Warangal,10,Jangaon,13,1007,ZPHS Kunoor,04131007,tg107
+04,Warangal,10,Jayashankar,14,1008,ZPHS Pidisilla,04141008,tg108
+04,Warangal,10,Jayashankar,14,1009,ZPHS Motlapally,04141009,tg109
+04,Warangal,10,warangal(R),22,1010,ZPHS Alankhanipet,04221010,tg110
+04,Warangal,10,warangal(R),22,1011,ZPHS Pedakorpole,04221011,tg111
+04,Warangal,10,Jayashankar,14,1012,ZPHS Mogullapally,04141012,tg112
+04,Warangal,10,warangal(R),22,1013,ZPHS ASHOKNAGAR,04221013,tg113
+04,Warangal,10,warangal(R),22,1014,ZPHS BUDHARAOPET,04221014,tg114
+04,Warangal,10,warangal(R),22,1015,ZPHS Dharmaraopet,04221015,tg115
+04,Warangal,10,Mahabubabad,16,1016,ZPHS OTAI,04161016,tg116
+04,Warangal,10,warangal(R),22,1017,ZPHS DHARMARAM,04221017,tg117
+04,Warangal,10,warangal(R),22,1018,ZPHS ELUKURTHY,04221018,tg118
+04,Warangal,10,warangal(U),23,1019,GHS rangasaipet g,04231019,tg119
+04,Warangal,10,Jangaon,13,1020,ZPPSS PEDDAMADUR,04131020,tg120
+04,Warangal,10,warangal(R),22,1021,ZPHS PARVATHAGIRI,04221021,tg121
+04,Warangal,10,Siddipet,19,1022,ZPHS Dhoolmitta,04191022,tg122
+04,Warangal,10,warangal(U),23,1023,GHS krishnacolony,04231023,tg123
+04,Warangal,10,warangal(R),22,1024,ZPHS KONKAPAKA,04221024,tg124
+04,Warangal,10,Mahabubabad,16,1025,ZPHS Girls mahabubabad,04161025,tg125
+04,Warangal,10,warangal(R),22,1026,ZPHS Pulukurthy,04221026,tg126
+04,Warangal,10,warangal(U),23,1027,GHS orus,04231027,tg127
+04,Warangal,10,Jayashankar,14,1028,ZPHS DEVAGIRIPATNAM,04141028,tg128
+04,Warangal,10,warangal(U),23,1029,GHS Karimabad,04231029,tg129
+04,Warangal,10,warangal(R),22,1030,ZPHS Atmakur,04221030,tg130
+04,Warangal,10,warangal(R),22,1031,ZPHS GUNTURPALLY,04221031,tg131
+04,Warangal,10,Mahabubabad,16,1032,ZPHS edulapusapally,04161032,tg132
+04,Warangal,10,warangal(U),23,1033,GHS g middlefort,04231033,tg133
+04,Warangal,10,warangal(R),22,1034,ZPHS Akkampet,04221034,tg134
+04,Warangal,10,Jayashankar,14,1035,ZPHS GIRLS MULUG,04141035,tg135
+04,Warangal,10,warangal(U),23,1036,Zppss Paidipally,04231036,tg136
+04,Warangal,10,warangal(R),22,1037,ZPHS Damera,04221037,tg137
+04,Warangal,10,Jayashankar,14,1038,ZPHS ABBAPOOR,04141038,tg138
+04,Warangal,10,Jangaon,13,1039,ZPPSS CHINNAMADUR,04131039,tg139
+04,Warangal,10,warangal(R),22,1040,ZPSS Neerukulla,04221040,tg140
+04,Warangal,10,warangal(U),23,1041,Tswrms/jr.college madikonda,04231041,tg141
+04,Warangal,10,warangal(R),22,1042,ZPHS Pakhal Road Model,04221042,tg142
+04,Warangal,10,warangal(U),23,1043,GHS railwaygate,04231043,tg143
+04,Warangal,10,Mahabubabad,16,1044,TSTWREIS HS KOTHAGUDA,04161044,tg144
+04,Warangal,10,Jayashankar,14,1045,ZPHS CHALVAI,04141045,tg145
+04,Warangal,10,warangal(U),23,1046,Zphs siddapur,04231046,tg146
+04,Warangal,10,warangal(U),23,1047,Zphs mucharla,04231047,tg147
+04,Warangal,10,warangal(R),22,1048,ZPHS ELLANDA,04221048,tg148
+04,Warangal,10,warangal(R),22,1049,ZPHS KONDAPUR,04221049,tg149
+04,Warangal,10,warangal(U),23,1050,GGHS lashkarbazar,04231050,tg150
+04,Warangal,10,warangal(U),23,1051,zppss sundaraiah nagar,04231051,tg151
+04,Warangal,10,Jangaon,13,1052,ZPHS Obul Keshvapur,04131052,tg152
+04,Warangal,10,Jangaon,13,1053,ZPHS PEDDAPAHAD,04131053,tg153
+04,Warangal,10,Mahabubabad,16,1054,ZPHS MULKALAPALLY,04161054,tg154
+04,Warangal,10,Mahabubabad,16,1055,ZPHS DORNAKAL,04161055,tg155
+04,Warangal,10,warangal(R),22,1056,ZPHS Konduru,04221056,tg156
+04,Warangal,10,warangal(U),23,1057,ZPHS(Girls)Dharmasagar,04231057,tg157
+04,Warangal,10,warangal(U),23,1058,ZPHS Saipet,04231058,tg158
+04,Warangal,10,warangal(U),23,1059,ZPHS Peddapendial,04231059,tg159
+04,Warangal,10,Mahabubabad,16,1060,ZPHS UPPARAPALLY,04161060,tg160
+04,Warangal,10,Mahabubabad,16,1061,ZPHS PENUGONDA,04161061,tg161
+04,Warangal,10,Mahabubabad,16,1062,ZPHS KALWALA,04161062,tg162
+04,Warangal,10,Mahabubabad,16,1063,Zphs kambalapally,04161063,tg163
+04,Warangal,10,warangal(U),23,1064,Hanamkonda,04231064,tg164
+04,Warangal,10,warangal(U),23,1065,GHS Waddepalli,04231065,tg165
+04,Warangal,10,Mahabubabad,16,1066,Zphs v s laxmipuram,04161066,tg166
+04,Warangal,10,warangal(R),22,1067,ZPHS GORREKUNTA,04221067,tg167
+04,Warangal,10,warangal(R),22,1068,ZPHS KOMMALA,04221068,tg168
+04,Warangal,10,warangal(U),23,1069,GHS (boys) kazipet,04231069,tg169
+04,Warangal,10,warangal(U),23,1070,ZPHS Kadipikonda,04231070,tg170
+04,Warangal,10,warangal(U),23,1071,Zphs Hasanparthy (G),04231071,tg171
+04,Warangal,10,Jayashankar,14,1072,TSTWREIS HS AK Ghanpur,04141072,tg172
+04,Warangal,10,warangal(R),22,1073,ZphS MEDAPALLY,04221073,tg173
+04,Warangal,10,warangal(R),22,1074,ZPHS RUDRAGUDEM,04221074,tg174
+04,Warangal,10,warangal(R),22,1075,ZPHS NANDIGAMA,04221075,tg175
+04,Warangal,10,Mahabubabad,16,1076,ZPHS ALAIR,04161076,tg176
+04,Warangal,10,warangal(U),23,1077,GHS Basithnagar,04231077,tg177
+04,Warangal,10,warangal(U),23,1078,GHS Markaji,04231078,tg178
+04,Warangal,10,warangal(U),23,1079,ZPHS mamnoor camp,04231079,tg179
+04,Warangal,10,warangal(U),23,1080,ZPHS madikonda,04231080,tg180
+04,Warangal,10,Mahabubabad,16,1081,ZPHS MECHARAJPALLY,04161081,tg181
+04,Warangal,10,warangal(U),23,1082,ZPHS Kondaparthy,04231082,tg182
+04,Warangal,10,warangal(U),23,1083,Ghs Somidi,04231083,tg183
+04,Warangal,10,warangal(U),23,1084,ZPHS Tharalapally,04231084,tg184
+04,Warangal,10,Siddipet,19,1085,Zphs Salakpur,04191085,tg185
+04,Warangal,10,Siddipet,19,1086,Zphs Bairanpally,04191086,tg186
+04,Warangal,10,Siddipet,19,1087,ZPHS Maddur,04191087,tg187
+04,Warangal,10,Jayashankar,14,1088,ZPHS TEKUMATLA,04141088,tg188
+04,Warangal,10,Jayashankar,14,1089,Zphs nainpaka,04141089,tg189
+04,Warangal,10,Jayashankar,14,1090,Zphs CHITYAL,04141090,tg190
+04,Warangal,10,Jayashankar,14,1091,ZPHS CHELPUR,04141091,tg191
+04,Warangal,10,Jayashankar,14,1092,ZPHS BUDDARAM,04141092,tg192
+04,Warangal,10,Jayashankar,14,1093,ZPHS GHANPUR (M),04141093,tg193
+04,Warangal,10,warangal(R),22,1094,zphs nadikuda,04221094,tg194
+04,Warangal,10,warangal(R),22,1095,ZPHS VARIKOLE,04221095,tg195
+04,Warangal,10,Jangaon,13,1096,ZPHS KODAKANDLA,04131096,tg196
+04,Warangal,10,warangal(R),22,1097,GOVT HS NARSAMPET,04221097,tg197
+04,Warangal,10,warangal(R),22,1098,ZPHS BOYS NARSAMPET,04221098,tg198
+04,Warangal,10,warangal(R),22,1099,ZPHS GIRLS NARSAMPET,04221099,tg199
+04,Warangal,10,warangal(R),22,1100,ZPHS LAKNEPALLY,04221100,tg200
+04,Karimnagar,08,Karimnagar,15,2001,ZPHS  (BOYS) MANAKONDUR,04152001,tg201
+04,Karimnagar,08,Karimnagar,15,2002,ZPHS Ramadugu,04152002,tg202
+04,Karimnagar,08,Siricilla Rajanna,20,2003,Zphs Peddalingapoor,04202003,tg203
+04,Karimnagar,08,Siricilla Rajanna,20,2004,Zphs Galipally,04202004,tg204
+04,Karimnagar,08,Peddapally,11,2005,Zphs kanagarthi,04112005,tg205
+04,Karimnagar,08,Peddapally,11,2006,Zphs Pothakapally,04112006,tg206
+04,Karimnagar,08,Siricilla Rajanna,20,2007,ZPHS Bandalingampally,04202007,tg207
+04,Karimnagar,08,Karimnagar,15,2008,ZPHS Gopalraopeta,04152008,tg208
+04,Karimnagar,08,Siricilla Rajanna,20,2009,ZPHS KOREM,04202009,tg209
+04,Karimnagar,08,Siricilla Rajanna,20,2010,Zphs NOOKALAMARRY,04202010,tg210
+04,Karimnagar,08,Siricilla Rajanna,20,2011,Zphs Dacharam,04202011,tg211
+04,Karimnagar,08,Karimnagar,15,2012,ZPHS KATNAPALLY,04152012,tg212
+04,Karimnagar,08,Karimnagar,15,2013,ZPHS METPALLY,04152013,tg213
+04,Karimnagar,08,Siricilla Rajanna,20,2014,Govt High school Vemulawada,04202014,tg214
+04,Karimnagar,08,Karimnagar,15,2015,Zphs Gannervaram,04152015,tg215
+04,Karimnagar,08,Siricilla Rajanna,20,2016,ZPHS Lingannapet,04202016,tg216
+04,Karimnagar,08,Karimnagar,15,2017,Zphs ellandakunta,04152017,tg217
+04,Karimnagar,08,Siricilla Rajanna,20,2018,ZPHS  (boys) GAMBHIRAOPET,04202018,tg218
+04,Karimnagar,08,Siricilla Rajanna,20,2019,ZPHS RacharlaBoppapur,04202019,tg219
+04,Karimnagar,08,Siricilla Rajanna,20,2020,TTWR SCHOOL(Girls)Dumala,04202020,tg220
+04,Karimnagar,08,Siricilla Rajanna,20,2021,ZPHS Narsingapur,04202021,tg221
+04,Karimnagar,08,Siddipet,19,2022,ZPHS Baswapur,04192022,tg222
+04,Karimnagar,08,Karimnagar,15,2023,Zphs Tssw boys jammikunta,04152023,tg223
+04,Karimnagar,08,Karimnagar,15,2024,ZPHS ARNAKONDA,04152024,tg224
+04,Karimnagar,08,Siricilla Rajanna,20,2025,ZPHS RUDRAVARAM,04202025,tg225
+04,Karimnagar,08,Karimnagar,15,2026,ZPHS Molangur,04152026,tg226
+04,Karimnagar,08,Jagitial,12,2027,ZPHS (Girls)Kodimial,04122027,tg227
+04,Karimnagar,08,Siricilla Rajanna,20,2028,Zphs g vemulawada,04202028,tg228
+04,Karimnagar,08,Siricilla Rajanna,20,2029,ZPHS VILASAGAR,04202029,tg229
+04,Karimnagar,08,Karimnagar,15,2030,GHS(G) Mukarampura,04152030,tg230
+04,Karimnagar,08,Karimnagar,15,2031,ZPHS Kannapur,04152031,tg231
+04,Karimnagar,08,Siricilla Rajanna,20,2032,ZPHS Boinpalli,04202032,tg232
+04,Karimnagar,08,Karimnagar,15,2033,Zphs Janagapally,04152033,tg233
+04,Karimnagar,08,Siricilla Rajanna,20,2034,ZPHS KODURUPAKA,04202034,tg234
+04,Karimnagar,08,Karimnagar,15,2035,Zphs lmd colony t/m,04152035,tg235
+04,Karimnagar,08,Karimnagar,15,2036,Zphs nustulapur,04152036,tg236
+04,Karimnagar,08,Siricilla Rajanna,20,2037,Zphs Vallampatla,04202037,tg237
+04,Karimnagar,08,Karimnagar,15,2038,ZPHS SIRSAPALLY,04152038,tg238
+04,Karimnagar,08,Karimnagar,15,2039,GHS HUZURABAD,04152039,tg239
+04,Karimnagar,08,Peddapally,11,2040,Zphs kolanor,04112040,tg240
+04,Karimnagar,08,Karimnagar,15,2041,ZPHS BORNAPALLY,04152041,tg241
+04,Karimnagar,08,Karimnagar,15,2042,Zphs girls jammikunta,04152042,tg242
+04,Karimnagar,08,Peddapally,11,2043,Zphs.eligaid,04112043,tg243
+04,Karimnagar,08,Warangal Urban,23,2044,ZPHS (B) UPPAL,04232044,tg244
+04,Karimnagar,08,Warangal Urban,23,2045,ZPHS (G) UPPAL,04232045,tg245
+04,Karimnagar,08,Karimnagar,15,2046,ZpHS Challur,04152046,tg246
+04,Karimnagar,08,Siricilla Rajanna,20,2047,ZPHS Gajasingavaram,04202047,tg247
+04,Karimnagar,08,Warangal Urban,23,2048,ZPHS MARRIPALLYGUDEM,04232048,tg248
+04,Karimnagar,08,Karimnagar,15,2049,Zphs rachapalli,04152049,tg249
+04,Karimnagar,08,Karimnagar,15,2050,ZPHS Kothapally,04152050,tg250
+04,Karimnagar,08,Peddapally,11,2051,ZPHS(B) Peddapalli,04112051,tg251
+04,Karimnagar,08,Siricilla Rajanna,20,2052,ZPHS Moodapally,04202052,tg252
+04,Karimnagar,08,Peddapally,11,2053,Zphs basanthnagar,04112053,tg253
+04,Karimnagar,08,Peddapally,11,2054,Zphs jayyaram,04112054,tg254
+04,Karimnagar,08,Siricilla Rajanna,20,2055,ZPHS Racharla Gollapally ,04202055,tg255
+04,Karimnagar,08,Siricilla Rajanna,20,2056,ZPHS Yellareddypet,04202056,tg256
+04,Karimnagar,08,Siricilla Rajanna,20,2057,ZPHS Mallial,04202057,tg257
+04,Karimnagar,08,Siricilla Rajanna,20,2058,ZPHS DHARMARAM,04202058,tg258
+04,Karimnagar,08,Siricilla Rajanna,20,2059,ZPHS NIMMAPALLY,04202059,tg259
+04,Karimnagar,08,Peddapally,11,2060,Zphs NTPC jyothinagar,04112060,tg260
+04,Karimnagar,08,Peddapally,11,2061,Zphs girls godavarikani,04112061,tg261
+04,Karimnagar,08,Peddapally,11,2062,ZPHS Wadkapur,04112062,tg262
+04,Karimnagar,08,Peddapally,11,2063,ZPHS Peddapur,04112063,tg263
+04,Karimnagar,08,Karimnagar,15,2064,GHS Old High School Karimnagar,04152064,tg264
+04,Karimnagar,08,Jagitial,12,2065,ZPHS ALLIPUR,04122065,tg265
+04,Karimnagar,08,Jagitial,12,2066,ZPHS (G) RAIKAL,04122066,tg266
+04,Karimnagar,08,Jagitial,12,2067,ZPHS CHILVAKODUR,04122067,tg267
+04,Karimnagar,08,Jagitial,12,2068,ZPHS Bhupathipur,04122068,tg268
+04,Karimnagar,08,Siricilla Rajanna,20,2069,Zphs Kandikatkoor,04202069,tg269
+04,Karimnagar,08,Siddipet,19,2070,Zphs sriramulapally,04192070,tg270
+04,Karimnagar,08,Karimnagar,15,2071,ZPHS PACHUNUR,04152071,tg271
+04,Karimnagar,08,Karimnagar,15,2072,ZPHS VELDHI,04152072,tg272
+04,Karimnagar,08,Siricilla Rajanna,20,2073,ZPHS Mallareddypet,04202073,tg273
+04,Karimnagar,08,Siricilla Rajanna,20,2074,Zphs Hanmajipet,04202074,tg274
+04,Karimnagar,08,Peddapally,11,2075,Zphs ODELA,04112075,tg275
+04,Karimnagar,08,Warangal Urban,23,2076,ZPHS SHANIGARAM,04232076,tg276
+04,Karimnagar,08,Karimnagar,15,2077,ZPHS GANGIPALLY,04152077,tg277
+04,Karimnagar,08,Karimnagar,15,2078,Zphs vavilala,04152078,tg278
+04,Karimnagar,08,Jagitial,12,2079,ZPHS VARSHAKONDA,04122079,tg279
+04,Karimnagar,08,Karimnagar,15,2080,GHS DHANGARWADI,04152080,tg280
+04,Karimnagar,08,Siddipet,19,2081,Zphs gundaram,04192081,tg281
+04,Karimnagar,08,Karimnagar,15,2082,Zphs Nagunnor,04152082,tg282
+04,Karimnagar,08,Siricilla Rajanna,20,2083,ZPHS Venkatapur ,04202083,tg283
+04,Karimnagar,08,Peddapally,11,2084,Zphs.dhoolikatt,04112084,tg284
+04,Karimnagar,08,Peddapally,11,2085,Zphs.sulthanpur,04112085,tg285
+04,Karimnagar,08,Warangal Urban,23,2086,ZPHS (G) KAMALAPUR,04232086,tg286
+04,Karimnagar,08,Karimnagar,15,2087,ZPHS Ghanmukla,04152087,tg287
+04,Karimnagar,08,Siricilla Rajanna,20,2088,ZPHS Kothapally,04202088,tg288
+04,Karimnagar,08,Peddapally,11,2089,ZPHS ANTHERGOAM,04112089,tg289
+04,Karimnagar,08,Peddapally,11,2090,ZPHS POTYALA,04112090,tg290
+04,Karimnagar,08,Karimnagar,15,2091,Zphs korapally,04152091,tg291
+04,Karimnagar,08,Karimnagar,15,2092,Zphs kurikyal,04152092,tg292
+04,Karimnagar,08,Jagitial,12,2093,ZPHS THATLAWAI,04122093,tg293
+04,Karimnagar,08,Karimnagar,15,2094,ZPHS (G) CHOPPADANDI,04152094,tg294
+04,Karimnagar,08,Peddapally,11,2095,Zphs peddabonkoor,04112095,tg295
+04,Karimnagar,08,Peddapally,11,2096,ZPHS Potharam,04112096,tg296
+04,Karimnagar,08,Warangal Urban,23,2097,ZPHS GUDUR,04232097,tg297
+04,Karimnagar,08,Siricilla Rajanna,20,2098,ZPHS Sanugula,04202098,tg298
+04,Karimnagar,08,Siddipet,19,2099,Zphs Thotapally,04192099,tg299
+04,Karimnagar,08,Jagitial,12,2100,ZPHS Thippaipally,04122100,tg300
+04,Rangareddy,09,RANGA REDDY,18,3001,T.S.W.R.M School,04183001,tg1
+04,Rangareddy,09,RANGA REDDY,18,3002,ZPHS KANDAWADA,04183002,tg2
+04,Rangareddy,09,RANGA REDDY,18,3003,ZPHS Mall,04183003,tg3
+04,Rangareddy,09,RANGA REDDY,18,3004,Zphs Janwada,04183004,tg4
+04,Rangareddy,09,RANGA REDDY,18,3005,Zphs sardar nagar,04183005,tg5
+04,Rangareddy,09,Medchal,17,3006,ZPHS GHATKESAR G,04173006,tg6
+04,Rangareddy,09,RANGA REDDY,18,3007,ZPHS URELLA,04183007,tg7
+04,Rangareddy,09,RANGA REDDY,18,3008,ZPHS MIRKHANPET,04183008,tg8
+04,Rangareddy,09,RANGA REDDY,18,3009,ZPHS B MANCHAL,04183009,tg9
+04,Rangareddy,09,RANGA REDDY,18,3010,ZPHS Chilkoor,04183010,tg10
+04,Rangareddy,09,RANGA REDDY,18,3011,ZPHS THIMMAPOOR,04183011,tg11
+04,Rangareddy,09,RANGA REDDY,18,3012,ZPHS Himayatnagar,04183012,tg12
+04,Rangareddy,09,RANGA REDDY,18,3013,ZPHS Nandiwanaparthy,04183013,tg13
+04,Rangareddy,09,RANGA REDDY,18,3014,ZPHS Venkatapur,04183014,tg14
+04,Rangareddy,09,RANGA REDDY,18,3015,ZPHS Maharajpet,04183015,tg15
+04,Rangareddy,09,RANGA REDDY,18,3016,ZPHS MALKAPUR,04183016,tg16
+04,Rangareddy,09,RANGA REDDY,18,3017,ZPHS Chinnathundla,04183017,tg17
+04,Rangareddy,09,Medchal,17,3018,ZPHS EDULABAD,04173018,tg18
+04,Rangareddy,09,RANGA REDDY,18,3019,Zphs thallapally,04183019,tg19
+04,Rangareddy,09,Vikarabad,21,3020,ZPHS MANCHANPALLY,04213020,tg20
+04,Rangareddy,09,Vikarabad,21,3021,ZPHS PEDDA UMMENTHAL,04213021,tg21
+04,Rangareddy,09,RANGA REDDY,18,3022,ZPHS Medipally Nakkartha,04183022,tg22
+04,Rangareddy,09,RANGA REDDY,18,3023,ZPHS Yacharam,04183023,tg23
+04,Rangareddy,09,RANGA REDDY,18,3024,Zphs shabad boys,04183024,tg24
+04,Rangareddy,09,Vikarabad,21,3025,Zphs naskal,04213025,tg25
+04,Rangareddy,09,Vikarabad,21,3026,ZPHS ANGADICHITTEMPALLY,04213026,tg26
+04,Rangareddy,09,Medchal,17,3027,ZPHS Korremul,04173027,tg27
+04,Rangareddy,09,RANGA REDDY,18,3028,ZPHS NEDUNOOR,04183028,tg28
+04,Rangareddy,09,RANGA REDDY,18,3029,Zphs hythabad,04183029,tg29
+04,Rangareddy,09,RANGA REDDY,18,3030,ZPHS RANGAPUR,04183030,tg30
+04,Rangareddy,09,Vikarabad,21,3031,ZPHS MARPALLY UM,04213031,tg31
+04,Rangareddy,09,RANGA REDDY,18,3032,ZPHS Aziznagar,04183032,tg32
+04,Rangareddy,09,RANGA REDDY,18,3033,ZPHS LEMOOR,04183033,tg33
+04,Rangareddy,09,RANGA REDDY,18,3034,ZPHS ALOOR(G),04183034,tg34
+04,Rangareddy,09,Vikarabad,21,3035,ZPHS.Mothkur,04213035,tg35
+04,Rangareddy,09,RANGA REDDY,18,3036,ZPHS ARUTLA,04183036,tg36
+04,Rangareddy,09,Vikarabad,21,3037,TS MODEL SCHOOL,04213037,tg37
+04,Rangareddy,09,RANGA REDDY,18,3038,ZPHS (B) THUKKUGUDA,04183038,tg38
+04,Rangareddy,09,Mahabubnagar,,3039,ZPHS G GANDEED,,tg39
+04,Rangareddy,09,RANGA REDDY,18,3040,ZPHS SAROORNAGAR,04183040,tg40
+04,Rangareddy,09,Vikarabad,21,3041,ZPHS KANDANELLY,04213041,tg41
+04,Rangareddy,09,RANGA REDDY,18,3042,ZPHS PULIMAMIDI,04183042,tg42
+04,Rangareddy,09,RANGA REDDY,18,3043,Zphs shabad girls,04183043,tg43
+04,Rangareddy,09,RANGA REDDY,18,3044,ZPHS SHERIGUDA,04183044,tg44
+04,Rangareddy,09,Vikarabad,21,3045,ZPHS PUDUR,04213045,tg45
+04,Rangareddy,09,RANGA REDDY,18,3046,Zphs regadi doswada,04183046,tg46
+04,Rangareddy,09,RANGA REDDY,18,3047,Zphs Badangpet,04183047,tg47
+04,Rangareddy,09,RANGA REDDY,18,3048,Zphs parveda,04183048,tg48
+04,Rangareddy,09,Vikarabad,21,3049,ZPHS MANNEGUDA,04213049,tg49
+04,Rangareddy,09,RANGA REDDY,18,3050,ZPHS (B)MAHESHWARAM,04183050,tg50
+04,Rangareddy,09,RANGA REDDY,18,3051,ZPHS KANAKAMAMIDI,04183051,tg51
+04,Rangareddy,09,RANGA REDDY,18,3052,ZPHS CHEVELLA G,04183052,tg52
+04,Rangareddy,09,RANGA REDDY,18,3053,ZPHS(G) SHANKERPALLY,04183053,tg53
+04,Rangareddy,09,Medchal,17,3054,ZPHS PEERAJADIGUDA,04173054,tg54
+04,Rangareddy,09,RANGA REDDY,18,3055,ZPHS (B) KANDUKUR,04183055,tg55
+04,Rangareddy,09,Vikarabad,21,3056,ZPHS CHENGOMUL,04213056,tg56
+04,Rangareddy,09,Vikarabad,21,3057,ZPHS SOMAGURTHY,04213057,tg57
+04,Rangareddy,09,Vikarabad,21,3058,ZPHS KANKAL,04213058,tg58
+04,Rangareddy,09,Vikarabad,21,3059,ZPHS PATLOOR T/M,04213059,tg59
+04,Rangareddy,09,Vikarabad,21,3060,ZPHS MARPALLY T/M,04213060,tg60
+04,Rangareddy,09,Vikarabad,21,3061,ZPHS KISTAPUR,04213061,tg61
+04,Rangareddy,09,Vikarabad,21,3062,ZPHS DOMA,04213062,tg62
+04,Rangareddy,09,RANGA REDDY,18,3063,ZPHS NAGARAM,04183063,tg63
+04,Rangareddy,09,RANGA REDDY,18,3064,ZPHS(G) MAHESHWARAM,04183064,tg64
+04,Rangareddy,09,RANGA REDDY,18,3065,ZPHS RAJIVGANDHI NAGAR,04183065,tg65
+04,Rangareddy,09,Vikarabad,21,3066,ZPHS (B) PEEDEMUL,04213066,tg66
+04,Rangareddy,09,RANGA REDDY,18,3067,ZPHS KONGARKALAN,04183067,tg67
+04,Rangareddy,09,RANGA REDDY,18,3068,GHS IBRAHIMPATANAM,04183068,tg68
+04,Rangareddy,09,Vikarabad,21,3069,ZPHS MOMINPET(BOYS),04213069,tg69
+04,Rangareddy,09,Vikarabad,21,3070,ZPHS MOMIPET (G),04213070,tg70
+04,Rangareddy,09,Vikarabad,21,3071,ZPHS PULMAMIDI,04213071,tg71
+04,Rangareddy,09,Vikarabad,21,3072,ZPHS NAWABPET,04213072,tg72
+04,Rangareddy,09,RANGA REDDY,18,3073,ZPHS MIYAPUR,04183073,tg73
+04,Rangareddy,09,Medchal,17,3074,ZPHS KUKATPALLY,04173074,tg74
+04,Rangareddy,09,Medchal,17,3075,ZPHS SHAMSHIGUDA,04173075,tg75
+04,Rangareddy,09,Medchal,17,3076,ZPHS JAGATHGIRI NAGAR,04173076,tg76
+04,Rangareddy,09,Medchal,17,3077,ZPHS (B) Medchal,04173077,tg77
+04,Rangareddy,09,Medchal,17,3078,ZPHS BALAJINAGAR,04173078,tg78
+04,Rangareddy,09,Medchal,17,3079,ZPHS(B) MALAKAJGIRI,04173079,tg79
+04,Rangareddy,09,Medchal,17,3080,ZPHS NAGAWARAM,04173080,tg80
+04,Rangareddy,09,Medchal,17,3081,ZPHS HABSIGUDA,04173081,tg81
+04,Rangareddy,09,RANGA REDDY,18,3082,ZPHS HAYATHNAGAR,04183082,tg82
+04,Rangareddy,09,RANGA REDDY,18,3083,GHS RAJENDRANAGAR,04183083,tg83
+04,Rangareddy,09,Vikarabad,21,3084,ZPHS ANANTHAGIRI PALLY,04213084,tg84
+04,Rangareddy,09,Vikarabad,21,3085,ZPHS GIRLS DHARUR,04213085,tg85
+04,Rangareddy,09,Vikarabad,21,3086,ZPHS NAGARAM,04213086,tg86
+04,Rangareddy,09,Vikarabad,21,3087,ZPHS BANTWARAM,04213087,tg87
+04,Rangareddy,09,Vikarabad,21,3088,ZPHS MOTHUKUPALLY,04213088,tg88
+04,Rangareddy,09,Vikarabad,21,3089,ZPHS CHENGOLE,04213089,tg89
+04,Rangareddy,09,Vikarabad,21,3090,ZPHS(b) BASHEERABAD,04213090,tg90
+04,Rangareddy,09,Vikarabad,21,3091,ZPHS NAVALGA,04213091,tg91
+04,Rangareddy,09,Vikarabad,21,3092,ZPHS AGGANOOR,04213092,tg92
+04,Rangareddy,09,Vikarabad,21,3093,ZPHS KOKAT,04213093,tg93
+04,Rangareddy,09,Vikarabad,21,3094,ZPHS BANDAVELKICHERLA,04213094,tg94
+04,Rangareddy,09,Vikarabad,21,3095,ZPHS PUTTAPAHAD,04213095,tg95
+04,Rangareddy,09,Vikarabad,21,3096,ZPHS (B) KULAKACHERLA,04213096,tg96
+04,Rangareddy,09,RANGA REDDY,18,3097,ZPHS NARKHODA,04183097,tg97
+04,Rangareddy,09,RANGA REDDY,18,3098,ZPHS SHAMSHABAD(G),04183098,tg98
+04,Rangareddy,09,Mahabubnagar,,3099,ZPHS VEENCHED,,tg99
+04,Rangareddy,09,Mahabubnagar,,3100,ZPHS (G) MOHAMADABAD,,tg100

@@ -46,6 +46,17 @@ git merge $git_commit_no_docker
 #git_commit_no_gstudio="536f212ff033a6a011ac28070451994f83a65954";             # Earlier commit no
 git_commit_no_gstudio="2849c7f3fad5c4c25f02a4194d2354da3c25e054";              # Commit on 05-08-2017
 
+#--- One time for 20170912 update - started
+echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
+cd /home/docker/code/gstudio/gnowsys-ndf/
+
+echo -e "\n${cyan}change branch to master ${reset}"
+git checkout master
+
+# echo -e "\n${cyan}pulling the latest code from master ${reset}"
+# git pull origin master
+#--- One time for 20170912 update - ended
+
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
 cd /home/docker/code/gstudio/
 
@@ -102,20 +113,53 @@ git merge $git_commit_no_OpenAssessmentsClient
 
 # get server id (Remove single quote {'} and Remove double quote {"})
 #ss_id=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
+ss_id=$(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed -n '/.*=/{p;q;}' | sed 's/.*= //g' | sed "s/'//g" | sed 's/"//g')
 
 # update server id
-#sed -e "/GSTUDIO_INSTITUTE_ID/ s/=.*/='${ss_id}'/" -i  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
+if grep -Fq "GSTUDIO_INSTITUTE_ID" /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py
+then
+    # code if found
+    sed -e "/GSTUDIO_INSTITUTE_ID/ s/=.*/='${ss_id}'/" -i  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
+else
+    # code if not found
+    echo -e "/GSTUDIO_INSTITUTE_ID/ s/=.*/='${ss_id}'/" >>  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
+fi
+
+# update school code
+ss_code=$(grep -irw "$ss_id" /home/docker/code/All_States_School_CLIx_Code_+_School_server_Code_-_TS_Intervention_Schools.csv | awk -F ',' '{print $8}')
+if grep -Fq "GSTUDIO_INSTITUTE_ID_SECONDARY" /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py
+then
+    # code if found
+    sed -e "/GSTUDIO_INSTITUTE_ID_SECONDARY/ s/=.*/='${ss_code}'/" -i  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
+else
+    # code if not found
+    echo -e "/GSTUDIO_INSTITUTE_ID_SECONDARY/ s/=.*/='${ss_code}'/" >>  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
+fi
+
+# update school name
+ss_name=$(grep -irw "$ss_id" /home/docker/code/All_States_School_CLIx_Code_+_School_server_Code_-_TS_Intervention_Schools.csv | awk -F ',' '{print $7}')
+if grep -Fq "GSTUDIO_INSTITUTE_NAME" /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py
+then
+    # code if found
+    sed -e "/GSTUDIO_INSTITUTE_NAME/ s/=.*/='${ss_name}'/" -i  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
+else
+    # code if not found
+    echo -e "/GSTUDIO_INSTITUTE_NAME/ s/=.*/='${ss_name}'/" >>  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
+fi
 
 # prefix and suffix double quotes " in server code - ended
 
 
 # extra scripts - started
 
-echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
-cd /home/docker/code/gstudio/gnowsys-ndf/
-
 echo -e "\n${cyan}apply fab update_data ${reset}"
 fab update_data
+
+echo -e "\n${cyan}execute python manage.py unit_assessments <https://clixserver> y ${reset}"
+python manage.py unit_assessments <https://clixserver> y
+
+echo -e "\n${cyan}execute release2_sept17.py ${reset}"
+echo "execfile('../doc/deployer/release2_sept17.py')" | python manage.py shell
 
 echo -e "\n${cyan}apply bower components - datatables-rowsgroup ${reset}"
 rsync -avzPh /home/docker/code/${update_patch}/code-updates/datatables-rowsgroup /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/ndf/static/ndf/bower_components/
