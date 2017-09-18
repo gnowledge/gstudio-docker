@@ -61,10 +61,10 @@ echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
 cd /home/docker/code/gstudio/
 
 echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/code-updates/gstudio ${reset}"
-echo "\n" | echo :wq  | git fetch /home/docker/code/${update_patch}/code-updates/gstudio 
+git fetch /home/docker/code/${update_patch}/code-updates/gstudio 
 
 echo -e "\n${cyan}merging till specified commit number (${git-commit-no}) from /home/docker/code/${update_patch}/code-updates/gstudio ${reset}"
-git merge $git_commit_no_gstudio
+echo "\n" | echo :wq  | git merge $git_commit_no_gstudio
 
 # git offline update gstudio code - ended
 
@@ -104,7 +104,7 @@ echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/co
 git fetch /home/docker/code/${update_patch}/code-updates/OpenAssessmentsClient 
 
 echo -e "\n${cyan}merging till specified commit number (${git-commit-no}) from /home/docker/code/${update_patch}/code-updates/OpenAssessmentsClient ${reset}"
-git merge $git_commit_no_OpenAssessmentsClient
+echo "\n" | echo :wq  | git merge $git_commit_no_OpenAssessmentsClient
 
 # git offline update OpenAssessmentsClient code - ended
 
