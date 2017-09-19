@@ -23,7 +23,7 @@ reset="\033[0m" ;
 
 filename=$(basename $(ls -dr /home/docker/code/update_*/ |  head -n 1));
 update_patch="${filename%.*.*}";
-update_patch="update_patch-d548468-r2-20170918"
+update_patch="update_patch-fd4d3d1-r2-20170920"
 
 # git offline update docker code - started6
 #git_commit_no_docker="d75dee54a35d3c2b7840b03c7ee52f911c6ae3e7";             # Earlier commit no

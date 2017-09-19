@@ -2,8 +2,8 @@
 
 ## Download the update tar file:
 	
-	updates dt 06-08-2017 (all updates in single tar file):
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-d548468-r2-20170918.tar.gz
+	updates dt 20-09-2017 (all updates in single tar file):
+		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-fd4d3d1-r2-20170920.tar.gz
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r2.sh
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/README-update.md
 
@@ -27,8 +27,14 @@
 		|-sda1   8:1    0   128M  0 part /boot
 		`-sda6   8:6    0   128M  0 part /usr/share/oem
 		NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-		sdb      8:0    0 931.5G  0 disk 
-		|-sdb1   8:4    0     1G  0 part 
+		sdb      8:0    0 931.7G  0 disk 
+		|-sdb4   8:4    0     1G  0 part 
+		|-sdb2   8:2    0     2M  0 part 
+		|-sdb9   8:9    0 929.5G  0 part 
+		|-sdb7   8:7    0    64M  0 part 
+		|-sdb3   8:3    0     1G  0 part 
+		|-sdb1   8:1    0   128M  0 part 
+		`-sdb6   8:6    0   128M  0 part 
 		```
 
 ## Mount the pendrive:
@@ -56,14 +62,14 @@
 
 ## Update-patch number: (One commit no back of gstudio-docker)
 	Syntax  		: 	``` update_patch-<gstudio-docker-repo-commit-no>-r<release-no>-<yyyymmdd> ```
-	Exact Number 	: 	``` update_patch-d548468-r2-20170918``
+	Exact Number 	: 	``` update_patch-fd4d3d1-r2-20170920``
 
 ## Version number: r1
 
 ## Commit number
 ### gstudio-docker:			(https://github.com/mrunal4/gstudio-docker.git - master)
-	Short			:	``` d548468 ```
-	Long			: 	``` d54846822c43359be3ace2b9f79430385c403c26 ```
+	Short			:	``` fd4d3d1 ```
+	Long			: 	``` fd4d3d1bfcea17ff57bfb845a55964c76d0bbe75 ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - master)
 	Short			:	``` 7a0adae ```
@@ -83,7 +89,7 @@
 
 CLIx Platform release 2, version 17.09.r1, Notes (for RJ/CG/TS)
 State: Rajasthan, Chhattisgarh and Telangana 
-Release date: 19th September 2017
+Release date: 20th September 2017
 
 This release note pertains to the Connected Learning Initiative (CLIx) student platform aka CLIx platform release 2 (henceforth, release 2). 
 The release 2 patch-r2 should be applied on the CLIx platform ver 17.06.r1 only. Please find below details of release 2 features:
