@@ -77,6 +77,9 @@ git_commit_no_qbank_lite="1b488926a4d609dcde017e4fe7a47b8a4b541339";            
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio/gnowsys-ndf/qbank-lite ${reset}"
 cd /home/docker/code/gstudio/gnowsys-ndf/qbank-lite
 
+echo -e "\n${cyan}change branch to clixserver ${reset}"
+git checkout clixserver
+
 echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/code-updates/qbank-lite ${reset}"
 git fetch /home/docker/code/${update_patch}/code-updates/qbank-lite 
 
@@ -99,6 +102,9 @@ git_commit_no_OpenAssessmentsClient="acfed44c30b421a49fa2ec43b361ff11653e9d31"; 
 
 echo -e "\n${cyan}change the directory to /home/docker/code/OpenAssessmentsClient ${reset}"
 cd /home/docker/code/OpenAssessmentsClient/
+
+echo -e "\n${cyan}change branch to clixserver ${reset}"
+git checkout clixserver
 
 echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/code-updates/OpenAssessmentsClient ${reset}"
 git fetch /home/docker/code/${update_patch}/code-updates/OpenAssessmentsClient 
@@ -158,12 +164,6 @@ cd /home/docker/code/gstudio/gnowsys-ndf/
 echo -e "\n${cyan}apply fab update_data ${reset}"
 fab update_data
 
-echo -e "\n${cyan}execute python manage.py unit_assessments <https://clixserver> y ${reset}"
-python manage.py unit_assessments <https://clixserver> y
-
-echo -e "\n${cyan}execute release2_sept17.py ${reset}"
-echo "execfile('../doc/deployer/release2_sept17.py')" | python manage.py shell
-
 echo -e "\n${cyan}apply bower components - datatables-rowsgroup ${reset}"
 rsync -avzPh /home/docker/code/${update_patch}/code-updates/datatables-rowsgroup /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/ndf/static/ndf/bower_components/
 
@@ -171,7 +171,12 @@ echo -e "\n${cyan}add few variables and there value so replace the same - local_
 rsync -avzPh /home/docker/code/${update_patch}/code-updates/gstudio-docker/confs/local_settings.py.default /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py
 
 echo -e "\n${cyan}apply requirements - copying dlkit dist-packages ${reset}"
-rsync -avzPh /home/docker/code/${update_patch}/code-updates/dist-packages/dlkit* /usr/local/lib/python2.7/dist-packages/
+if [[ -d /usr/local/lib/python2.7/dist-packages-old ]]; then
+    mv -v /usr/local/lib/python2.7/dist-packages-old /tmp/
+    rm -rf /tmp/dist-packages-old
+fi
+mv -v /usr/local/lib/python2.7/dist-packages /usr/local/lib/python2.7/dist-packages-old    
+rsync -avzPh /home/docker/code/${update_patch}/code-updates/dist-packages /usr/local/lib/python2.7/
 
 echo -e "\n${cyan}updating teacher' s agency type ${reset}"
 python manage.py teacher_agency_type_update
