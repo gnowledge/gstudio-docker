@@ -2,8 +2,8 @@
 
 ## Download the update tar file:
 	
-	updates dt 20-09-2017 (all updates in single tar file):
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-fd4d3d1-r2-20170920.tar.gz
+	updates dt 21-09-2017 (all updates in single tar file):
+		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-3ef7821-r2-20170921.tar.gz
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r2.sh
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/README-update.md
 
@@ -37,9 +37,12 @@
 		`-sdb6   8:6    0   128M  0 part 
 		```
 
+## Became root user:
+	Command : ``` sudo su ```
+
 ## Mount the pendrive:
 	Command : ``` mount <device> /mnt/ ```
-	Example : ``` mount /dev/sdb1 /mnt/ ```
+	Example : ``` mount /dev/sdb9 /mnt/ ```
 
 ## Change the directory to /mnt
 	Command : ``` cd /mnt ```
@@ -49,9 +52,8 @@
 		core@clixserver /mnt $ 
 		```
 
-
 ## Update command			(After the patch is applied it will reboot the system)
-	Command : ``` sudo bash patch-r2.sh ```
+	Command : ``` bash patch-r2.sh ```
 
 
 ======================================================================================================# Update details
@@ -62,14 +64,14 @@
 
 ## Update-patch number: (One commit no back of gstudio-docker)
 	Syntax  		: 	``` update_patch-<gstudio-docker-repo-commit-no>-r<release-no>-<yyyymmdd> ```
-	Exact Number 	: 	``` update_patch-fd4d3d1-r2-20170920``
+	Exact Number 	: 	``` update_patch-3ef7821-r2-20170921``
 
 ## Version number: r1
 
 ## Commit number
 ### gstudio-docker:			(https://github.com/mrunal4/gstudio-docker.git - master)
-	Short			:	``` fd4d3d1 ```
-	Long			: 	``` fd4d3d1bfcea17ff57bfb845a55964c76d0bbe75 ```
+	Short			:	``` 3ef7821 ```
+	Long			: 	``` 3ef782189282bae2e455e5d1167ee5a85bd07ee8 ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - master)
 	Short			:	``` 7a0adae ```
@@ -89,7 +91,7 @@
 
 CLIx Platform release 2, version 17.09.r1, Notes (for RJ/CG/TS)
 State: Rajasthan, Chhattisgarh and Telangana 
-Release date: 20th September 2017
+Release date: 21st September 2017
 
 This release note pertains to the Connected Learning Initiative (CLIx) student platform aka CLIx platform release 2 (henceforth, release 2). 
 The release 2 patch-r2 should be applied on the CLIx platform ver 17.06.r1 only. Please find below details of release 2 features:
