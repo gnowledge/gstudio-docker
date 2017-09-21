@@ -97,20 +97,20 @@ rsync -avzPh /home/docker/code/${update_patch}/code-updates/qbank-lite/* /home/d
 
 # git offline update OpenAssessmentsClient code - started
 
-#git_commit_no_OpenAssessmentsClient="462ba9c29e6e8874386c5e76138909193e90240e";             # Earlier commit no
-git_commit_no_OpenAssessmentsClient="acfed44c30b421a49fa2ec43b361ff11653e9d31";              # Commit on 18-09-2017
+# #git_commit_no_OpenAssessmentsClient="462ba9c29e6e8874386c5e76138909193e90240e";             # Earlier commit no
+# git_commit_no_OpenAssessmentsClient="acfed44c30b421a49fa2ec43b361ff11653e9d31";              # Commit on 18-09-2017
 
-echo -e "\n${cyan}change the directory to /home/docker/code/OpenAssessmentsClient ${reset}"
-cd /home/docker/code/OpenAssessmentsClient/
+# echo -e "\n${cyan}change the directory to /home/docker/code/OpenAssessmentsClient ${reset}"
+# cd /home/docker/code/OpenAssessmentsClient/
 
-echo -e "\n${cyan}change branch to clixserver ${reset}"
-git checkout clixserver
+# echo -e "\n${cyan}change branch to clixserver ${reset}"
+# git checkout clixserver
 
-echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/code-updates/OpenAssessmentsClient ${reset}"
-git fetch /home/docker/code/${update_patch}/code-updates/OpenAssessmentsClient 
+# echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/code-updates/OpenAssessmentsClient ${reset}"
+# git fetch /home/docker/code/${update_patch}/code-updates/OpenAssessmentsClient 
 
-echo -e "\n${cyan}merging till specified commit number (${git-commit-no}) from /home/docker/code/${update_patch}/code-updates/OpenAssessmentsClient ${reset}"
-git merge $git_commit_no_OpenAssessmentsClient
+# echo -e "\n${cyan}merging till specified commit number (${git-commit-no}) from /home/docker/code/${update_patch}/code-updates/OpenAssessmentsClient ${reset}"
+# git merge $git_commit_no_OpenAssessmentsClient
 
 # git offline update OpenAssessmentsClient code - ended
 
@@ -120,8 +120,8 @@ sudo docker restart gstudio;
 # prefix and suffix double quotes " in server code - started
 
 # get server id (Remove single quote {'} and Remove double quote {"})
-#ss_id=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
-ss_id=$(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed -n '/.*=/{p;q;}' | sed 's/.*= //g' | sed "s/'//g" | sed 's/"//g')
+ss_id=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
+#ss_id=$(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed -n '/.*=/{p;q;}' | sed 's/.*= //g' | sed "s/'//g" | sed 's/"//g')
 
 # update server id
 if grep -Fq "GSTUDIO_INSTITUTE_ID" /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py
@@ -130,29 +130,29 @@ then
     sed -e "/GSTUDIO_INSTITUTE_ID/ s/=.*/='${ss_id}'/" -i  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
 else
     # code if not found
-    echo -e "/GSTUDIO_INSTITUTE_ID/ s/=.*/='${ss_id}'/" >>  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
+    echo -e "GSTUDIO_INSTITUTE_ID ='${ss_id}'" >>  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
 fi
 
 # update school code
-ss_code=$(grep -irw "$ss_id" /home/docker/code/All_States_School_CLIx_Code_+_School_server_Code_-_TS_Intervention_Schools.csv | awk -F ',' '{print $8}')
+ss_code=$(grep -irw "$ss_id" /tmp/gstudio-docker/All_States_School_CLIx_Code_+_School_server_Code_-_TS_Intervention_Schools.csv | awk -F ';' '{print $3}')
 if grep -Fq "GSTUDIO_INSTITUTE_ID_SECONDARY" /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py
 then
     # code if found
     sed -e "/GSTUDIO_INSTITUTE_ID_SECONDARY/ s/=.*/='${ss_code}'/" -i  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
 else
     # code if not found
-    echo -e "/GSTUDIO_INSTITUTE_ID_SECONDARY/ s/=.*/='${ss_code}'/" >>  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
+    echo -e "GSTUDIO_INSTITUTE_ID_SECONDARY ='${ss_code}'" >>  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
 fi
 
 # update school name
-ss_name=$(grep -irw "$ss_id" /home/docker/code/All_States_School_CLIx_Code_+_School_server_Code_-_TS_Intervention_Schools.csv | awk -F ',' '{print $7}')
+ss_name=$(grep -irw "$ss_id" /tmp/gstudio-docker/All_States_School_CLIx_Code_+_School_server_Code_-_TS_Intervention_Schools.csv | awk -F ';' '{print $2}' | sed 's/"//g')
 if grep -Fq "GSTUDIO_INSTITUTE_NAME" /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py
 then
     # code if found
     sed -e "/GSTUDIO_INSTITUTE_NAME/ s/=.*/='${ss_name}'/" -i  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
 else
     # code if not found
-    echo -e "/GSTUDIO_INSTITUTE_NAME/ s/=.*/='${ss_name}'/" >>  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
+    echo -e "GSTUDIO_INSTITUTE_NAME ='${ss_name}'" >>  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
 fi
 
 # prefix and suffix double quotes " in server code - ended
@@ -171,6 +171,23 @@ rsync -avzPh /home/docker/code/${update_patch}/code-updates/datatables-rowsgroup
 
 echo -e "\n${cyan}add few variables and there value so replace the same - local_settings ${reset}"
 rsync -avzPh /home/docker/code/${update_patch}/code-updates/gstudio-docker/confs/local_settings.py.default /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py
+
+# Variables related to "set_language" function (setting default language)
+state_code=${ss_id:0:2};
+language="Not Idea";
+if [ ${state_code} == "ct" ] || [ ${state_code} == "rj" ]; then
+    echo -e "\n${cyan}State code is ${state_code}. Hence setting hi as language.${reset}"
+    language="hi";
+elif [ ${state_code} == "mz" ]; then
+    echo -e "\n${cyan}State code is ${state_code}. Hence setting en as language.${reset}"
+    language="en";
+elif [ ${state_code} == "tg" ]; then
+    echo -e "\n${cyan}State code is ${state_code}. Hence setting te as language.${reset}"
+    language="te";
+else
+    echo -e "\n${red}Error: Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ($directoryname)${reset}" ;
+fi  
+sed -e "/GSTUDIO_PRIMARY_COURSE_LANGUAGE/ s/=.*/= u'${language}'/" -i /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py
 
 echo -e "\n${cyan}apply requirements - copying dlkit dist-packages ${reset}"
 if [[ -d /usr/local/lib/python2.7/dist-packages-old ]]; then
