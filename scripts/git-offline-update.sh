@@ -33,7 +33,7 @@ echo -e "\n${cyan}change the directory to /home/docker/code/ ${reset}"
 cd /home/docker/code/
 
 echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/code-updates/gstudio-docker ${reset}"
-echo "\n" | echo :wq  | git fetch /home/docker/code/${update_patch}/code-updates/gstudio-docker 
+git fetch /home/docker/code/${update_patch}/code-updates/gstudio-docker 
 
 echo -e "\n${cyan}merging till specified commit number (${git_commit_no_docker}) from /home/docker/code/${update_patch}/code-updates/gstudio-docker ${reset}"
 git merge $git_commit_no_docker
@@ -44,7 +44,7 @@ git merge $git_commit_no_docker
 # git offline update gstudio code - started
 
 #git_commit_no_gstudio="7a0adae693bc10523dc3152a9e3735d286efa176";             # Earlier commit no
-git_commit_no_gstudio="d54846822c43359be3ace2b9f79430385c403c26";              # Commit on 18-09-2017
+git_commit_no_gstudio="7a0adae693bc10523dc3152a9e3735d286efa176";              # Commit on 18-09-2017
 
 #--- One time for 20170912 update - started
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
@@ -64,7 +64,7 @@ echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/co
 git fetch /home/docker/code/${update_patch}/code-updates/gstudio 
 
 echo -e "\n${cyan}merging till specified commit number (${git-commit-no}) from /home/docker/code/${update_patch}/code-updates/gstudio ${reset}"
-echo "\n" | echo :wq  | git merge $git_commit_no_gstudio
+git merge $git_commit_no_gstudio
 
 # git offline update gstudio code - ended
 
@@ -84,7 +84,7 @@ echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/co
 git fetch /home/docker/code/${update_patch}/code-updates/qbank-lite 
 
 echo -e "\n${cyan}merging till specified commit number (${git-commit-no}) from /home/docker/code/${update_patch}/code-updates/qbank-lite ${reset}"
-echo "\n" | echo :wq  | git merge $git_commit_no_qbank_lite
+git merge $git_commit_no_qbank_lite
 
 echo -e "\n${cyan}remove all the file and sub-driectories in directory (/home/docker/code/gstudio/gnowsys-ndf/qbank-lite/*) ${reset}"
 rm -rf /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/*
@@ -110,10 +110,12 @@ echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/co
 git fetch /home/docker/code/${update_patch}/code-updates/OpenAssessmentsClient 
 
 echo -e "\n${cyan}merging till specified commit number (${git-commit-no}) from /home/docker/code/${update_patch}/code-updates/OpenAssessmentsClient ${reset}"
-echo "\n" | echo :wq  | git merge $git_commit_no_OpenAssessmentsClient
+git merge $git_commit_no_OpenAssessmentsClient
 
 # git offline update OpenAssessmentsClient code - ended
 
+echo -e "\n${cyan}Restart gstudio container ${reset}";
+sudo docker restart gstudio;
 
 # prefix and suffix double quotes " in server code - started
 
@@ -193,3 +195,6 @@ echo -e "\n${cyan}Applying newly updated cron jobs in crontab ${reset}"
 crontab /home/docker/code/confs/mycron
 
 # set newly updated crontab - ended
+
+echo -e "\n${cyan}Restart gstudio container ${reset}";
+sudo docker restart gstudio;
