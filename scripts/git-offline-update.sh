@@ -190,12 +190,16 @@ fi
 sed -e "/GSTUDIO_PRIMARY_COURSE_LANGUAGE/ s/=.*/= u'${language}'/" -i /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py
 
 echo -e "\n${cyan}apply requirements - copying dlkit dist-packages ${reset}"
-if [[ -d /usr/local/lib/python2.7/dist-packages-old ]]; then
-    mv -v /usr/local/lib/python2.7/dist-packages-old /tmp/
-    rm -rf /tmp/dist-packages-old
-fi
-mv -v /usr/local/lib/python2.7/dist-packages /usr/local/lib/python2.7/dist-packages-old    
-rsync -avzPh /home/docker/code/${update_patch}/code-updates/dist-packages /usr/local/lib/python2.7/
+# if [[ -d /usr/local/lib/python2.7/dist-packages-old ]]; then
+#     mv -v /usr/local/lib/python2.7/dist-packages-old /tmp/
+#     rm -rf /tmp/dist-packages-old
+# fi
+# mv -v /usr/local/lib/python2.7/dist-packages /usr/local/lib/python2.7/dist-packages-old
+# rsync -avzPh /home/docker/code/${update_patch}/code-updates/dist-packages /usr/local/lib/python2.7/
+mv -v /usr/local/lib/python2.7/dist-packages/dlkit* /tmp/
+rm -rf /tmp/dlkit*
+rsync -avzPh /home/docker/code/${update_patch}/code-updates/dist-packages/dlkit* /usr/local/lib/python2.7/dist-packages/
+
 
 echo -e "\n${cyan}updating teacher' s agency type ${reset}"
 python manage.py teacher_agency_type_update

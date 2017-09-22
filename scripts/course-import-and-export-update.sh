@@ -34,7 +34,7 @@ cd /home/docker/code/gstudio/gnowsys-ndf/
 echo -e "\n${cyan}apply fab update_data ${reset}"
 fab update_data
 
-echo -e "\n${cyan}execute python manage.py unit_assessments <https://clixserver> y ${reset}"
+echo -e "\n${cyan}execute python manage.py unit_assessments https://clixserver y ${reset}"
 python manage.py unit_assessments https://clixserver y
 
 echo -e "\n${cyan}execute release2_sept17.py ${reset}"
