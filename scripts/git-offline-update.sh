@@ -114,8 +114,6 @@ rsync -avzPh /home/docker/code/${update_patch}/code-updates/qbank-lite/* /home/d
 
 # git offline update OpenAssessmentsClient code - ended
 
-echo -e "\n${cyan}Restart gstudio container ${reset}";
-sudo docker restart gstudio;
 
 # prefix and suffix double quotes " in server code - started
 
@@ -216,6 +214,3 @@ echo -e "\n${cyan}Applying newly updated cron jobs in crontab ${reset}"
 crontab /home/docker/code/confs/mycron
 
 # set newly updated crontab - ended
-
-echo -e "\n${cyan}Restart gstudio container ${reset}";
-sudo docker restart gstudio;
