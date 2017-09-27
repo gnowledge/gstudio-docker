@@ -16,11 +16,11 @@ filename=$(basename $(ls  /mnt/update_*.tar.gz |  head -n 1));
 update_patch="${filename%.*.*}";
 update_patch="update_patch-fa65971-r2-20170927"
 
-echo -e "\n${cyan}copy updated patch from /mnt/home/core/${update_patch} to /home/docker/code/ in gstudio container ${reset}";
-sudo docker cp /mnt/${update_patch} gstudio:/home/docker/code/;
+# echo -e "\n${cyan}copy updated patch from /mnt/home/core/${update_patch} to /home/docker/code/ in gstudio container ${reset}";
+# sudo docker cp /mnt/${update_patch} gstudio:/home/docker/code/;
 
 echo -e "\n${cyan}copy updated patch from /home/docker/code./${update_patch}/data-updates/* to /data/ in gstudio container ${reset}";
-docker exec -it gstudio /bin/sh -c "rsync -avzPh /home/docker/code/${update_patch}/data-updates/* /data/data_export/";
+docker exec -it gstudio /bin/sh -c "rm -rf /data/data_export/*   &&   rsync -avzPh /home/docker/code/${update_patch}/data-updates/* /data/data_export/   &&   rm -rf /data/data_export/*";
 
 echo -e "\n${cyan}Update offline patch ${reset}";
 docker exec -it gstudio /bin/sh -c "/bin/bash /home/docker/code/${update_patch}/data-updates/course-import-and-export-update.sh";
