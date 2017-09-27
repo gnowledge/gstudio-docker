@@ -118,6 +118,9 @@ if [ ! -L /backups/rsync/${ss_id}/${ss_id}.tar.gz ]; then
     ln -s /backups/rsync/${ss_id}/${ss_id}.tar.gz  /softwares/${ss_id}.tar.gz
 fi
 
+echo -e "\nBackup local_settings.py(/home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py) and server_settings.py(/home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py) in /data/ \n" 
+rsync -avzPh /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py  /data/
+
 # log commit details - in /data/git-commit-details.log - started
 echo -e "\nDate : $date \n" > /data/git-commit-details.log
 
