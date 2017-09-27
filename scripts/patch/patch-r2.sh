@@ -17,7 +17,7 @@ function apply_patch() {
 	# fetch the filename (patch name)
 	filename=$(basename $(ls  /mnt/update_*.tar.gz |  head -n 1));
 	update_patch="${filename%.*.*}";
-	update_patch="update_patch-ab4e6f6-r2-20170927"
+	update_patch="update_patch-3d91de0-r2-20170927"
 
 	echo -e "\n${cyan}patch directory name : ${update_patch} and this update shell file name is $(readlink -f $0) ${reset}"
 
