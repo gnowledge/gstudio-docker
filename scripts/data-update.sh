@@ -20,10 +20,12 @@ update_patch="update_patch-ab4e6f6-r2-20170927"
 # sudo docker cp /mnt/${update_patch} gstudio:/home/docker/code/;
 
 echo -e "\n${cyan}copy updated patch from /home/docker/code./${update_patch}/data-updates/* to /data/ in gstudio container ${reset}";
-docker exec -it gstudio /bin/sh -c "rm -rf /data/data_export/*   &&   rsync -avzPh /home/docker/code/${update_patch}/data-updates/* /data/data_export/   &&   rm -rf /data/data_export/*";
+docker exec -it gstudio /bin/sh -c "rm -rf /data/data_export/*   &&   rsync -avzPh /home/docker/code/${update_patch}/data-updates/* /data/data_export/";
 
 echo -e "\n${cyan}Update offline patch ${reset}";
 docker exec -it gstudio /bin/sh -c "/bin/bash /home/docker/code/${update_patch}/data-updates/course-import-and-export-update.sh";
+
+docker exec -it gstudio /bin/sh -c "rm -rf /data/data_export/*";
 
 echo -e "\n${cyan}Restart gstudio container ${reset}";
 sudo docker restart gstudio;
