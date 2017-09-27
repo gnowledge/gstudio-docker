@@ -2,8 +2,8 @@
 
 ## Download the update tar file:
 	
-	updates dt 21-09-2017 (all updates in single tar file):
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-7cf4a5f-r2-20170921.tar.gz
+	updates dt 27-09-2017 (all updates in single tar file):
+		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-fa65971-r2-20170927.tar.gz
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r2.sh
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/README-update.md
 
@@ -64,14 +64,14 @@
 
 ## Update-patch number: (One commit no back of gstudio-docker)
 	Syntax  		: 	``` update_patch-<gstudio-docker-repo-commit-no>-r<release-no>-<yyyymmdd> ```
-	Exact Number 	: 	``` update_patch-7cf4a5f-r2-20170921``
+	Exact Number 	: 	``` update_patch-fa65971-r2-20170927``
 
 ## Version number: r1
 
 ## Commit number
 ### gstudio-docker:			(https://github.com/mrunal4/gstudio-docker.git - master)
-	Short			:	``` 7cf4a5f ```
-	Long			: 	``` 7cf4a5fa1dcdc6f737c4d765343a6b44c41c6a71 ```
+	Short			:	``` fa65971 ```
+	Long			: 	``` fa65971cc627be20c8605a85fc955730a1ebe260 ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - master)
 	Short			:	``` 7a0adae ```
@@ -91,7 +91,7 @@
 
 CLIx Platform release 2, version 17.09.r1, Notes (for RJ/CG/TS)
 State: Rajasthan, Chhattisgarh and Telangana 
-Release date: 21st September 2017
+Release date: 27st September 2017
 
 This release note pertains to the Connected Learning Initiative (CLIx) student platform aka CLIx platform release 2 (henceforth, release 2). 
 The release 2 patch-r2 should be applied on the CLIx platform ver 17.06.r1 only. Please find below details of release 2 features:
