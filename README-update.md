@@ -74,8 +74,8 @@
 	Long			: 	``` fa65971cc627be20c8605a85fc955730a1ebe260 ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - master)
-	Short			:	``` 7a0adae ```
-	Long			: 	``` 7a0adae693bc10523dc3152a9e3735d286efa176 ```
+	Short			:	``` 84457e9 ```
+	Long			: 	``` 84457e980ae4133245bfa5c6970fb6969dd0dab1 ```
 
 ### qbank-lite:				(https://github.com/gnowledge/qbank-lite.git - clixserver)
 	Short			:	``` 1b48892 ```
