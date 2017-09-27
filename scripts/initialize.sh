@@ -131,7 +131,8 @@ bash /home/docker/code/scripts/start-qbank.sh ; 						   # Mrunal M. Nachankar :
 # applying host entry (clixserver)
 rsync -avzPh /etc/hosts /tmp/
 sed -i ' 1 s/.*/& clixserver/' /tmp/hosts
-rsync -avzPh /tmp/hosts /etc/
+#rsync -avzPh /tmp/hosts /etc/
+cat /tmp/hosts > /etc/hosts
 
 echo "[run] supervisord" ;
 supervisord -n ;
