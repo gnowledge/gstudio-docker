@@ -284,10 +284,10 @@ if [ "$backup_old_clix_platform_status" == "Y" ] || [ "$backup_old_clix_platform
   mounting_disk
   echo -e "\n${cyan}Mounting status : $mounting_status ${reset}";
    
-  source_path="/home/core/data/benchmark-dump";
-  destination_path="/mnt/home/core/${ss_id}/";
-  echo -e "\n${cyan}copy clix-platform data and necessary files except media directory from $source_path to $destination_path ${reset}"
-  copy_content "$source_path" "$destination_path"
+  # source_path="/home/core/data/benchmark-dump";
+  # destination_path="/mnt/home/core/${ss_id}/";
+  # echo -e "\n${cyan}copy clix-platform data and necessary files except media directory from $source_path to $destination_path ${reset}"
+  # copy_content "$source_path" "$destination_path"
 
   source_path="/home/core/data/counters-dump";
   destination_path="/mnt/home/core/${ss_id}/";
@@ -296,35 +296,45 @@ if [ "$backup_old_clix_platform_status" == "Y" ] || [ "$backup_old_clix_platform
 
   source_path="/home/core/data/db";
   destination_path="/mnt/home/core/${ss_id}/";
-  echo -e "\n${cyan}copy clix-platform data and necessary files except media directory from $source_path to $destination_path ${reset}"
+  echo -e "\n${cyan}copy clix-platform db from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path"
 
   source_path="/home/core/data/gstudio-exported-users-analytics-csvs";
   destination_path="/mnt/home/core/${ss_id}/";
-  echo -e "\n${cyan}copy clix-platform data and necessary files except media directory from $source_path to $destination_path ${reset}"
+  echo -e "\n${cyan}copy clix-platform gstudio-exported-users-analytics-csvs from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path"
 
   source_path="/home/core/data/gstudio-logs";
   destination_path="/mnt/home/core/${ss_id}/";
-  echo -e "\n${cyan}copy clix-platform data and necessary files except media directory from $source_path to $destination_path ${reset}"
+  echo -e "\n${cyan}copy clix-platform gstudio-logs from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path"
 
   source_path="/home/core/data/postgres-dump";
   destination_path="/mnt/home/core/${ss_id}/";
-  echo -e "\n${cyan}copy clix-platform data and necessary files except media directory from $source_path to $destination_path ${reset}"
+  echo -e "\n${cyan}copy clix-platform postgres-dump from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path"
 
   source_path="/home/core/data/rcs-repo";
   destination_path="/mnt/home/core/${ss_id}/";
-  echo -e "\n${cyan}copy clix-platform data and necessary files except media directory from $source_path to $destination_path ${reset}"
+  echo -e "\n${cyan}copy clix-platform rcs-repo from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path"
 
   source_path="/home/core/data/local_settings.py";
   destination_path="/mnt/home/core/${ss_id}/";
-  echo -e "\n${cyan}copy clix-platform data and necessary files except media directory from $source_path to $destination_path ${reset}"
+  echo -e "\n${cyan}copy clix-platform local_settings.py from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path"
 
   source_path="/home/core/data/server_settings.py";
+  destination_path="/mnt/home/core/${ss_id}/";
+  echo -e "\n${cyan}copy clix-platform server_settings.py from $source_path to $destination_path ${reset}"
+  copy_content "$source_path" "$destination_path"
+
+  source_path="/home/core/data/git-commit-details.log";
+  destination_path="/mnt/home/core/${ss_id}/";
+  echo -e "\n${cyan}copy clix-platform git-commit-details from $source_path to $destination_path ${reset}"
+  copy_content "$source_path" "$destination_path"
+
+  source_path="/home/core/data/assessment-media";
   destination_path="/mnt/home/core/${ss_id}/";
   echo -e "\n${cyan}copy clix-platform data and necessary files except media directory from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path"
@@ -342,6 +352,10 @@ if [ "$backup_old_clix_platform_status" == "Y" ] || [ "$backup_old_clix_platform
   sudo du -hs /home/core/data/gstudio-logs /mnt/home/core/${ss_id}/gstudio-logs
   sudo du -hs /home/core/data/postgres-dump /mnt/home/core/${ss_id}/postgres-dump
   sudo du -hs /home/core/data/rcs-repo /mnt/home/core/${ss_id}/rcs-repo
+  sudo du -hs /home/core/data/local_settings.py /mnt/home/core/${ss_id}/local_settings.py
+  sudo du -hs /home/core/data/server_settings.py /mnt/home/core/${ss_id}/server_settings.py
+  sudo du -hs /home/core/data/git-commit-details.log /mnt/home/core/${ss_id}/git-commit-details.log
+  sudo du -hs /home/core/data/assessment-media /mnt/home/core/${ss_id}/assessment-media
   sudo du -hs /home/core/data/media /mnt/home/core/${ss_id}/media
 
   sudo du -hc $(find /home/core/data/media -type f -size +30M)

@@ -26,5 +26,8 @@ docker exec -it gstudio /bin/sh -c "/bin/bash /home/docker/code/${update_patch}/
 # echo -e "\n${cyan}Cleaning up qbank hardcoded file names - offline patch ${reset}";
 # docker exec -it gstudio /bin/sh -c "/usr/bin/python /home/docker/code/${update_patch}/code-updates/gstudio-docker/scripts/cleaning-up-qbank-hardcoded-file-names.py";
 
+echo -e "\n${cyan}copy updated patch from /mnt/${update_patch}/code-updates/backup-old-server-data.sh to /home/core/ ${reset}";
+sudo cp /mnt/${update_patch}/code-updates/backup-old-server-data.sh /home/core/;
+
 echo -e "\n${cyan}Restart gstudio container ${reset}";
-sudo docker restart gstudio;
+sudo dockr

@@ -118,6 +118,8 @@ if [ ! -L /backups/rsync/${ss_id}/${ss_id}.tar.gz ]; then
     ln -s /backups/rsync/${ss_id}/${ss_id}.tar.gz  /softwares/${ss_id}.tar.gz
 fi
 
+rsync -avzPh   /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/*  /data/assessment-media
+
 echo -e "\nBackup local_settings.py(/home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py) and server_settings.py(/home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py) in /data/ \n" 
 rsync -avzPh /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py  /data/
 
@@ -165,20 +167,22 @@ git diff 2>&1 | tee -a /data/git-commit-details.log
 echo -e "\n\nDetails of OpenAssessmentsClient \n" 2>&1 | tee -a /data/git-commit-details.log
 cd /home/docker/code/OpenAssessmentsClient/
 
-echo -e "\nOpenAssessmentsClient : pwd \n" 2>&1 | tee -a /data/git-commit-details.log
-pwd
+echo -e "\nOpenAssessmentsClient : We are not updating code in OpenAssessmentsClient local repository. We are compiling it on other system and we are placing oac and oat directories in /softwares of docker container \n" 2>&1 | tee -a /data/git-commit-details.log
 
-echo -e "\nOpenAssessmentsClient : git branch \n" 2>&1 | tee -a /data/git-commit-details.log
-git branch 2>&1 | tee -a /data/git-commit-details.log
+# echo -e "\nOpenAssessmentsClient : pwd \n" 2>&1 | tee -a /data/git-commit-details.log
+# pwd
 
-echo -e "\nOpenAssessmentsClient : git log - latest 5 commits \n" 2>&1 | tee -a /data/git-commit-details.log
-git log -n 5 2>&1 | tee -a /data/git-commit-details.log
+# echo -e "\nOpenAssessmentsClient : git branch \n" 2>&1 | tee -a /data/git-commit-details.log
+# git branch 2>&1 | tee -a /data/git-commit-details.log
 
-echo -e "\nOpenAssessmentsClient : git status \n" 2>&1 | tee -a /data/git-commit-details.log
-git status 2>&1 | tee -a /data/git-commit-details.log
+# echo -e "\nOpenAssessmentsClient : git log - latest 5 commits \n" 2>&1 | tee -a /data/git-commit-details.log
+# git log -n 5 2>&1 | tee -a /data/git-commit-details.log
 
-echo -e "\nOpenAssessmentsClient : git diff \n" 2>&1 | tee -a /data/git-commit-details.log
-git diff 2>&1 | tee -a /data/git-commit-details.log
+# echo -e "\nOpenAssessmentsClient : git status \n" 2>&1 | tee -a /data/git-commit-details.log
+# git status 2>&1 | tee -a /data/git-commit-details.log
+
+# echo -e "\nOpenAssessmentsClient : git diff \n" 2>&1 | tee -a /data/git-commit-details.log
+# git diff 2>&1 | tee -a /data/git-commit-details.log
 
 
 echo -e "\n\nDetails of qbank-lite \n" 2>&1 | tee -a /data/git-commit-details.log

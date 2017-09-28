@@ -121,6 +121,11 @@ rsync -avzPh /home/docker/code/${update_patch}/code-updates/qbank-lite/* /home/d
 ss_id=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
 #ss_id=$(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed -n '/.*=/{p;q;}' | sed 's/.*= //g' | sed "s/'//g" | sed 's/"//g')
 
+# Trim leading  whitespaces 
+ss_id=$(echo ${ss_id##*( )})
+# Trim trailing  whitespaces 
+ss_id=$(echo ${ss_id%%*( )})
+
 # update server id
 if grep -Fq "GSTUDIO_INSTITUTE_ID" /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py
 then
@@ -132,7 +137,13 @@ else
 fi
 
 # update school code
-ss_code=$(grep -irw "$ss_id" /tmp/gstudio-docker/All_States_School_CLIx_Code_+_School_server_Code_-_TS_Intervention_Schools.csv | awk -F ';' '{print $3}')
+ss_code=$(grep -irw "$ss_id" /home/docker/code/All_States_School_CLIx_Code_+_School_server_Code_-_TS_Intervention_Schools.csv | awk -F ';' '{print $3}')
+
+# Trim leading  whitespaces 
+ss_code=$(echo ${ss_code##*( )})
+# Trim trailing  whitespaces 
+ss_code=$(echo ${ss_code%%*( )})
+
 if grep -Fq "GSTUDIO_INSTITUTE_ID_SECONDARY" /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py
 then
     # code if found
@@ -143,7 +154,13 @@ else
 fi
 
 # update school name
-ss_name=$(grep -irw "$ss_id" /tmp/gstudio-docker/All_States_School_CLIx_Code_+_School_server_Code_-_TS_Intervention_Schools.csv | awk -F ';' '{print $2}' | sed 's/"//g')
+ss_name=$(grep -irw "$ss_id" /home/docker/code/All_States_School_CLIx_Code_+_School_server_Code_-_TS_Intervention_Schools.csv | awk -F ';' '{print $2}' | sed 's/"//g')
+
+# Trim leading  whitespaces 
+ss_name=$(echo ${ss_name##*( )})
+# Trim trailing  whitespaces 
+ss_name=$(echo ${ss_name%%*( )})
+
 if grep -Fq "GSTUDIO_INSTITUTE_NAME" /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py
 then
     # code if found
