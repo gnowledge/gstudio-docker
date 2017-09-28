@@ -23,11 +23,11 @@ reset="\033[0m" ;
 
 filename=$(basename $(ls -dr /home/docker/code/update_*/ |  head -n 1));
 update_patch="${filename%.*.*}";
-update_patch="update_patch-3d91de0-r2-20170927"
+update_patch="update_patch-50452a1-r2-20170927"
 
 # git offline update docker code - started6
-#git_commit_no_docker="ab4e6f64d5c9bd4c1f88e171b90aefb5493b9531";             # Earlier commit no
-git_commit_no_docker="3d91de0b7394ee1c9403120fe7c06be5b7fd34f3";              # Commit on 27-09-2017
+#git_commit_no_docker="3d91de0b7394ee1c9403120fe7c06be5b7fd34f3";             # Earlier commit no
+git_commit_no_docker="50452a1b31569305ae97287b02402ba67f644225";              # Commit on 28-09-2017
 
 echo -e "\n${cyan}change the directory to /home/docker/code/ ${reset}"
 cd /home/docker/code/

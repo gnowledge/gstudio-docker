@@ -3,8 +3,8 @@
 ## Download the update tar file:
 	
 	updates dt 27-09-2017 (all updates in single tar file):
-        https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-3d91de0-r2-20170927.tar.gz
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-3d91de0-r2-20170927.tar.gz.md5sum
+        https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-50452a1-r2-20170927.tar.gz
+		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-50452a1-r2-20170927.tar.gz.md5sum
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r2.sh
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/README-update.md
 
@@ -12,8 +12,8 @@
 ## Copy content (downloaded tar file) in Pendrive (not inside any directory please - directly inside the pendrive {root of pendrive})
 
 ## Check md5sum for file checksum:
-	Command : ``` md5sum update_patch-3d91de0-r2-20170927.tar.gz ```
-    Ensure that the alphanumeric code (output of the above command) is matching with the content of update_patch-3d91de0-r2-20170927.tar.gz.md5sum (which you have downloaded from the server)
+	Command : ``` md5sum update_patch-50452a1-r2-20170927.tar.gz ```
+    Ensure that the alphanumeric code (output of the above command) is matching with the content of update_patch-50452a1-r2-20170927.tar.gz.md5sum (which you have downloaded from the server)
 
 ## Now we have files in pendrive. Insert pendrive in the School server
 
@@ -69,14 +69,14 @@
 
 ## Update-patch number: (One commit no back of gstudio-docker)
 	Syntax  		: 	``` update_patch-<gstudio-docker-repo-commit-no>-r<release-no>-<yyyymmdd> ```
-	Exact Number 	: 	``` update_patch-3d91de0-r2-20170927 ``
+	Exact Number 	: 	``` update_patch-50452a1-r2-20170927 ``
 
 ## Version number: r1
 
 ## Commit number
 ### gstudio-docker:			(https://github.com/mrunal4/gstudio-docker.git - master)
-	Short			:	``` 3d91de0 ```
-	Long			: 	``` 3d91de0b7394ee1c9403120fe7c06be5b7fd34f3 ```
+	Short			:	``` 50452a1 ```
+	Long			: 	``` 50452a1b31569305ae97287b02402ba67f644225 ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - master)
 	Short			:	``` 84457e9 ```
