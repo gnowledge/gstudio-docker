@@ -59,46 +59,63 @@ cd /home/docker/code/gstudio/gnowsys-ndf/
 python manage.py fillCounter
 
 # get server id (Remove single quote {'} and Remove double quote {"})
-ss_id=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
+ss_id=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | grep -w GSTUDIO_INSTITUTE_ID | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
 
-if [ ! -d /backups/rsync/$ss_id ]; then
-    mkdir -p /backups/rsync/$ss_id
+# get server code (Remove single quote {'} and Remove double quote {"})
+ss_code=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | grep -w GSTUDIO_INSTITUTE_ID_SECONDARY | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
+
+# get server name (Remove single quote {'} and Remove double quote {"})
+ss_name=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | grep -w GSTUDIO_INSTITUTE_NAME | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
+
+if [[ -d /backups/rsync/$ss_id ]]; then
+    mv -v /backups/rsync/$ss_id /backups/rsync/${ss_code}-${ss_id}
+elif [[ ! -d /backups/rsync/${ss_code}-${ss_id} ]]; then
+    mkdir -p /backups/rsync/${ss_code}-${ss_id}
 fi
 
-if [ ! -d /backups/syncthing/$ss_id ]; then
-    mkdir -p /backups/syncthing/$ss_id
+if [[ -d /backups/syncthing/$ss_id ]]; then
+    mv -v /backups/syncthing/$ss_id /backups/syncthing/${ss_code}-${ss_id}
+elif [[ ! -d /backups/syncthing/${ss_code}-${ss_id} ]]; then
+    mkdir -p /backups/syncthing/${ss_code}-${ss_id}
 fi
 
-if [ ! -d /backups/$ss_id ]; then
-    mkdir -p /backups/$ss_id
+if [[ -d /backups/$ss_id ]]; then
+    mv -v /backups/$ss_id /backups/${ss_code}-${ss_id}
+elif [[ ! -d /backups/${ss_code}-${ss_id} ]]; then
+    mkdir -p /backups/${ss_code}-${ss_id}
 fi
 
-if [ ! -d /root/Sync ]; then
+if [[ ! -d /root/Sync ]]; then
     mkdir -p /root/Sync
 fi
 
 
-mkdir /tmp/$ss_id/
-rsync -avzPh  /data/gstudio-exported-users-analytics-csvs/*  /tmp/$ss_id/
+if [[ -d /tmp/$ss_id ]]; then
+    mv -v /tmp/$ss_id /tmp/${ss_code}-${ss_id}
+elif [[ ! -d /tmp/${ss_code}-${ss_id} ]]; then
+    mkdir -p /tmp/${ss_code}-${ss_id}
+fi
+# mkdir /tmp/$ss_id/
+rsync -avzPh  /data/gstudio-exported-users-analytics-csvs/*  /tmp/${ss_code}-${ss_id}/
 
 cd /tmp/
 
 echo -e "\nCreate tar file of the analytics csvs"
-tar -cvzf ${ss_id}.tar.gz ${ss_id}
+tar -cvzf ${ss_code}-${ss_id}.tar.gz ${ss_code}-${ss_id}
 
 echo -e "\nBackup gstudio-exported-users-analytics-csvs (Qunatitative research data / analytics data) - via rsync in process please be patient"
 #rsync -avzPh  /data/media /data/rcs-repo /data/benchmark-dump /data/counters-dump /data/gstudio-exported-users-analytics-csvs  /backups/rsync/$ss_id/
-rsync -avzPh  /tmp/${ss_id}.tar.gz  /backups/rsync/$ss_id/
+rsync -avzPh  /tmp/${ss_code}-${ss_id}.tar.gz  /backups/rsync/${ss_code}-${ss_id}/
 
 #echo -e "\nBackup user analytics - via rsync in process please be patient"
 #rsync -avzPh  /data/gstudio-exported-users-analytics-csvs  /backups/syncthing/$ss_id/
 
-cp -av /root/.gnupg /backups/rsync/$ss_id/
+cp -av /root/.gnupg /backups/rsync/${ss_code}-${ss_id}/
 
-touch /backups/$ss_id/.stfolder
-touch /backups/$ss_id/.stignore
-touch /backups/rsync/$ss_id/.stfolder
-touch /backups/rsync/$ss_id/.stignore
+touch /backups/${ss_code}-${ss_id}/.stfolder
+touch /backups/${ss_code}-${ss_id}/.stignore
+touch /backups/rsync/${ss_code}-${ss_id}/.stfolder
+touch /backups/rsync/${ss_code}-${ss_id}/.stignore
 
 touch /root/Sync/.stfolder
 touch /root/Sync/.stignore
@@ -108,17 +125,18 @@ chmod +rx /root/Sync/*
 chmod +rx /backups/rsync/*
 
 
-touch /backups/syncthing/$ss_id/.stfolder
-touch /backups/syncthing/$ss_id/.stignore
+touch /backups/syncthing/${ss_code}-${ss_id}/.stfolder
+touch /backups/syncthing/${ss_code}-${ss_id}/.stignore
 
 #chmod 644 /backups/incremental/*
 chmod +x /backups/syncthing/*
 
-if [ ! -L /backups/rsync/${ss_id}/${ss_id}.tar.gz ]; then
-    ln -s /backups/rsync/${ss_id}/${ss_id}.tar.gz  /softwares/${ss_id}.tar.gz
+if [[ ! -L /backups/rsync/${ss_id}/${ss_id}.tar.gz ]]; then
+    ln -s /backups/rsync/${ss_id}/${ss_id}.tar.gz  /softwares/${ss_code}-${ss_id}.tar.gz
 fi
 
-rsync -avzPh   /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/*  /data/assessment-media
+echo -e "\nBackup /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/* in /data/assessment-media/ \n" 
+rsync -avzPh   /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/*  /data/assessment-media/
 
 echo -e "\nBackup local_settings.py(/home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py) and server_settings.py(/home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py) in /data/ \n" 
 rsync -avzPh /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py  /data/
@@ -167,7 +185,10 @@ git diff 2>&1 | tee -a /data/git-commit-details.log
 echo -e "\n\nDetails of OpenAssessmentsClient \n" 2>&1 | tee -a /data/git-commit-details.log
 cd /home/docker/code/OpenAssessmentsClient/
 
-echo -e "\nOpenAssessmentsClient : We are not updating code in OpenAssessmentsClient local repository. We are compiling it on other system and we are placing oac and oat directories in /softwares of docker container \n" 2>&1 | tee -a /data/git-commit-details.log
+echo -e "\n'OpenAssessmentsClient' - strategy adopted for updating oac and oat is as follows: \n
+- Building 'oac' and 'oat' locally from 'gnowledge/OpenAssessmentsClient' with 'clixserver' branch. \n
+- Testing it locally and packaging oac, oat as a replacement. \n
+- This decision is taken because building oac and oat is network dependent operation and sometimes build doesn't happen smoothly. \n\n" 2>&1 | tee -a /data/git-commit-details.log
 
 # echo -e "\nOpenAssessmentsClient : pwd \n" 2>&1 | tee -a /data/git-commit-details.log
 # pwd

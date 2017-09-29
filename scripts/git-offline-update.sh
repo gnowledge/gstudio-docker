@@ -118,7 +118,7 @@ rsync -avzPh /home/docker/code/${update_patch}/code-updates/qbank-lite/* /home/d
 # prefix and suffix double quotes " in server code - started
 
 # get server id (Remove single quote {'} and Remove double quote {"})
-ss_id=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
+ss_id=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | grep -w GSTUDIO_INSTITUTE_ID | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
 #ss_id=$(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed -n '/.*=/{p;q;}' | sed 's/.*= //g' | sed "s/'//g" | sed 's/"//g')
 
 # Trim leading  whitespaces 
