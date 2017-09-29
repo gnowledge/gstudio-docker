@@ -129,10 +129,10 @@ echo "[run] start qbank-lite" ;							   # Mrunal M. Nachankar : Mon, 07-09-2015
 bash /home/docker/code/scripts/start-qbank.sh ; 						   # Mrunal M. Nachankar : Mon, 07-09-2015 12:15:AM 
 
 # applying host entry (clixserver)
-rsync -avzPh /etc/hosts /tmp/
-sed -i ' 1 s/.*/& clixserver/' /tmp/hosts
-#rsync -avzPh /tmp/hosts /etc/
-cat /tmp/hosts > /etc/hosts
+/usr/bin/rsync -avzPh /etc/hosts /tmp/
+/bin/sed -i ' 1 s/.*/& clixserver/' /tmp/hosts
+#/usr/bin/rsync -avzPh /tmp/hosts /etc/
+/bin/cp /tmp/hosts /etc/
 
 echo "[run] supervisord" ;
 supervisord -n ;

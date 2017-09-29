@@ -30,4 +30,4 @@ echo -e "\n${cyan}copy updated patch from /mnt/${update_patch}/code-updates/back
 sudo cp /mnt/${update_patch}/code-updates/backup-old-server-data.sh /home/core/;
 
 echo -e "\n${cyan}Restart gstudio container ${reset}";
-sudo dockr
+sudo docker restart gstudio;
