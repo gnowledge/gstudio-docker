@@ -55,8 +55,8 @@ mv /var/lib/postgresql/pg_dump_all.sql /data/postgres-dump/
 
 
 # change directory and fillcounter
-cd /home/docker/code/gstudio/gnowsys-ndf/
-python manage.py fillCounter
+# cd /home/docker/code/gstudio/gnowsys-ndf/
+# python manage.py fillCounter
 
 # get server id (Remove single quote {'} and Remove double quote {"})
 ss_id=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | grep -w GSTUDIO_INSTITUTE_ID | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
@@ -131,8 +131,18 @@ touch /backups/syncthing/${ss_code}-${ss_id}/.stignore
 #chmod 644 /backups/incremental/*
 chmod +x /backups/syncthing/*
 
-if [[ ! -L /backups/rsync/${ss_id}/${ss_id}.tar.gz ]]; then
-    ln -s /backups/rsync/${ss_id}/${ss_id}.tar.gz  /softwares/${ss_code}-${ss_id}.tar.gz
+# Remove old analytics tar.gz file
+if [[ -f /backups/rsync/${ss_id}/${ss_id}.tar.gz ]]; then
+    rm /backups/rsync/${ss_id}/${ss_id}.tar.gz
+fi
+
+if [[ -L /softwares/${ss_id}/${ss_id}.tar.gz ]]; then
+    rm /softwares/${ss_id}/${ss_id}.tar.gz
+fi
+
+# Add soft link for analytics tar.gz file
+if [[ ! -L /backups/rsync/${ss_code}-${ss_id}/${ss_code}-${ss_id}.tar.gz ]]; then
+    ln -s /backups/rsync/${ss_code}-${ss_id}/${ss_code}-${ss_id}.tar.gz  /softwares/${ss_code}-${ss_id}.tar.gz
 fi
 
 echo -e "\nBackup /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/* in /data/assessment-media/ \n" 
