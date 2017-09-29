@@ -15,7 +15,7 @@ reset="\033[0m" ;
 
 filename=$(basename $(ls  /mnt/update_*.tar.gz |  head -n 1));
 update_patch="${filename%.*.*}";
-update_patch="update_patch-ebf0a9d-r2-20170929"
+update_patch="update_patch-a75c5dd-r2-20170929"
 
 echo -e "\n${cyan}copy updated patch from /mnt/home/core/${update_patch} to /home/docker/code/ in gstudio container ${reset}";
 sudo docker cp /mnt/${update_patch} gstudio:/home/docker/code/;
