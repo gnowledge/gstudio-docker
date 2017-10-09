@@ -270,15 +270,18 @@ platform="gstudio"
 
 # get server id (Remove single quote {'} and Remove double quote {"})
 ss_id=`docker exec -it gstudio bash -c "more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | grep -w GSTUDIO_INSTITUTE_ID | sed 's/.*=//g' | sed \"s/'//g\" | sed 's/\"//g'"`
+ss_id=`tr -dc '[[:print:]]' <<< "$ss_id"`
 
 # get state code
 state_code=${ss_id:0:2};
 
 # get server code (Remove single quote {'} and Remove double quote {"})
 ss_code=`docker exec -it gstudio bash -c "more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | grep -w GSTUDIO_INSTITUTE_ID_SECONDARY | sed 's/.*=//g' | sed \"s/'//g\" | sed 's/\"//g'"`
+ss_code=`tr -dc '[[:print:]]' <<< "$ss_code"`
 
 # get server name (Remove single quote {'} and Remove double quote {"})
 #ss_name=`docker exec -it gstudio bash -c "more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | grep -w GSTUDIO_INSTITUTE_NAME | sed 's/.*=//g' | sed \"s/'//g\" | sed 's/\"//g'"`
+ss_name=`tr -dc '[[:print:]]' <<< "$ss_name"`
 
 # For testing purpose
 # ls -ltrh /mnt/test
