@@ -1,26 +1,27 @@
 #!/bin/bash
-{
 
-    mkdir -p /data/heartbeats/
+function system-heartbeat() {
+
+#    mkdir -p /data/heartbeats/
     
     echo -e "Info-msg : hostname of server (hostname). \n"      
     hostname  
 
     echo -e " \n\n------------------------------------------------------------------------------------ \n\n"      
 
-    echo -e "Info-msg : School server name (from server settings). \n"      
-    more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py  
+    # echo -e "Info-msg : School server name (from server settings). \n"      
+    # more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py  
 
-    echo -e " \n\n------------------------------------------------------------------------------------ \n\n"      
+    # echo -e " \n\n------------------------------------------------------------------------------------ \n\n"      
 
     echo -e "Info-msg : internal ip addresses of the system (ip address). \n"      
     intfs=($(ifconfig -a | sed 's/[ \t].*//;/^\(\)$/d'));
     ips=($(ifconfig -a | awk '/inet addr/{print substr($2,6)}'));
     for (( a=0; a<${#ips[@]}; a++ ));
     do
-	if [[ ${intfs[$a]} != "lo" ]]; then
-	    echo "${intfs[$a]}- ${ips[$a]}"  ;
-	fi
+    if [[ ${intfs[$a]} != "lo" ]]; then
+        echo "${intfs[$a]}- ${ips[$a]}"  ;
+    fi
     done
 
     echo -e " \n\n------------------------------------------------------------------------------------ \n\n"      
@@ -39,6 +40,17 @@
     echo -e "Info-msg : HDD details (df -h). \n"      
     df -h  
     
+    echo -e " \n\n------------------------------------------------------------------------------------ \n\n"      
+
+    echo -e "Info-msg : Size description in '/data/'. \n"      
+    du -hs /data/*
+
+    echo -e " \n\n------------------------------------------------------------------------------------ \n\n"      
+
+    echo -e "Info-msg : No of directories and files in '/data/media/'. \n"      
+    echo -e "No of directories : $(find /data/media/ -type d | wc -l) \n"
+    echo -e "No of files       : $(find /data/media/ -type f | wc -l) \n"
+
     echo -e " \n\n------------------------------------------------------------------------------------ \n\n"      
 
     echo -e "Info-msg : uptime (uptime). \n"      
@@ -66,3 +78,5 @@
     
     # echo -e " \n\n------------------------------------------------------------------------------------ \n\n"      
 }    
+
+system-heartbeat |   tee /data/system-heartbeat.log;

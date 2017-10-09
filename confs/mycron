@@ -21,8 +21,8 @@
 # 
 # m h  dom mon dow   command
 
-01 *  * * * /home/docker/code/scripts/heartbeat.sh  >> /data/heartbeats/hb-$(date +\%Y\%m\%d-\%H\%M\%S).log
+01 *  * * * /home/docker/code/scripts/system-heartbeat.sh  >> /tmp/cron-system-heartbeat.log
 
-05 *  * * * /home/docker/code/scripts/backup.sh  >> /tmp/cron-bkp.log
+05 *  * * * /home/docker/code/scripts/analytics.sh  >> /tmp/cron-analytics.log
 
-10 *  * * * /home/docker/code/scripts/analytics.sh  >> /tmp/cron-analytics.log
+10 *  * * * /home/docker/code/scripts/backup.sh  >> /tmp/cron-bkp.log

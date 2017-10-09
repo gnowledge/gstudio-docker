@@ -26,19 +26,18 @@ sleep 60;     # To start mongo
 # cd /data/benchmark-dump
 # mongodump --db gstudio-mongodb --collection Benchmarks --out .
 
-echo -e "\nCounter backup file exist. So performing incremental backup \n".
-if [ ! -d /data/counters-dump ]; then
-    mkdir /data/counters-dump
-fi
-cd /data/counters-dump
-mongodump --db gstudio-mongodb --collection Counters --out .
+# echo -e "\nCounter backup file exist. So performing incremental backup \n".
+# if [ ! -d /data/counters-dump ]; then
+#     mkdir /data/counters-dump
+# fi
+# cd /data/counters-dump
+# mongodump --db gstudio-mongodb --collection Counters --out .
 
 echo -e "\nPostgres backup file exist. So performing incremental backup \n".
 if [ ! -d /data/postgres-dump ]; then
     mkdir /data/postgres-dump
 fi
-echo "pg_dumpall > pg_dump_all.sql;
-" | sudo su - postgres ;   
+echo "pg_dumpall > pg_dump_all.sql;" | sudo su - postgres ;   
 
 mv /var/lib/postgresql/pg_dump_all.sql /data/postgres-dump/
 
@@ -58,8 +57,17 @@ mv /var/lib/postgresql/pg_dump_all.sql /data/postgres-dump/
 # cd /home/docker/code/gstudio/gnowsys-ndf/
 # python manage.py fillCounter
 
+# get current year
+cur_year=`date +"%Y"`
+
+# platform name
+platform="gstudio"
+
 # get server id (Remove single quote {'} and Remove double quote {"})
 ss_id=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | grep -w GSTUDIO_INSTITUTE_ID | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
+
+# get state code
+state_code=${ss_id:0:2};
 
 # get server code (Remove single quote {'} and Remove double quote {"})
 ss_code=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | grep -w GSTUDIO_INSTITUTE_ID_SECONDARY | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
@@ -69,20 +77,26 @@ ss_name=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/s
 
 if [[ -d /backups/rsync/$ss_id ]]; then
     mv -v /backups/rsync/$ss_id /backups/rsync/${ss_code}-${ss_id}
-elif [[ ! -d /backups/rsync/${ss_code}-${ss_id} ]]; then
-    mkdir -p /backups/rsync/${ss_code}-${ss_id}
+elif [[ -d /backups/rsync/${ss_code}-${ss_id} ]]; then
+    mv -v /backups/rsync/${ss_code}-${ss_id}  /backups/rsync/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
+elif [[ ! -d /backups/rsync/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs ]]; then
+    mkdir -p /backups/rsync/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
 fi
 
 if [[ -d /backups/syncthing/$ss_id ]]; then
     mv -v /backups/syncthing/$ss_id /backups/syncthing/${ss_code}-${ss_id}
-elif [[ ! -d /backups/syncthing/${ss_code}-${ss_id} ]]; then
-    mkdir -p /backups/syncthing/${ss_code}-${ss_id}
+elif [[ -d /backups/syncthing/${ss_code}-${ss_id} ]]; then
+    mv -v /backups/syncthing/${ss_code}-${ss_id}  /backups/syncthing/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
+elif [[ ! -d /backups/syncthing/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs ]]; then
+    mkdir -p /backups/syncthing/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
 fi
 
 if [[ -d /backups/$ss_id ]]; then
     mv -v /backups/$ss_id /backups/${ss_code}-${ss_id}
-elif [[ ! -d /backups/${ss_code}-${ss_id} ]]; then
-    mkdir -p /backups/${ss_code}-${ss_id}
+elif [[ -d /backups/${ss_code}-${ss_id} ]]; then
+    mv -v /backups/${ss_code}-${ss_id}  /backups/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
+elif [[ ! -d /backups/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs ]]; then
+    mkdir -p /backups/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
 fi
 
 if [[ ! -d /root/Sync ]]; then
@@ -92,16 +106,18 @@ fi
 
 if [[ -d /tmp/$ss_id ]]; then
     mv -v /tmp/$ss_id /tmp/${ss_code}-${ss_id}
-elif [[ ! -d /tmp/${ss_code}-${ss_id} ]]; then
-    mkdir -p /tmp/${ss_code}-${ss_id}
+elif [[ -d /tmp/${ss_code}-${ss_id} ]]; then
+    mv -v /tmp/${ss_code}-${ss_id}  /tmp/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
+elif [[ ! -d /tmp/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs ]]; then
+    mkdir -p /tmp/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
 fi
-# mkdir /tmp/$ss_id/
-rsync -avzPh  /data/gstudio-exported-users-analytics-csvs/*  /tmp/${ss_code}-${ss_id}/
+# mkdir /tmp/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs/
+rsync -avzPh  /data/gstudio-exported-users-analytics-csvs  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py /data/git-commit-details.log /data/system-heartbeat.log  /tmp/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/
 
 cd /tmp/
 
 echo -e "\nCreate tar file of the analytics csvs"
-tar -cvzf ${ss_code}-${ss_id}.tar.gz ${ss_code}-${ss_id}
+tar -cvzf ${ss_code}-${ss_id}.tar.gz ${cur_year} 
 
 echo -e "\nBackup gstudio-exported-users-analytics-csvs (Qunatitative research data / analytics data) - via rsync in process please be patient"
 #rsync -avzPh  /data/media /data/rcs-repo /data/benchmark-dump /data/counters-dump /data/gstudio-exported-users-analytics-csvs  /backups/rsync/$ss_id/
@@ -110,12 +126,12 @@ rsync -avzPh  /tmp/${ss_code}-${ss_id}.tar.gz  /backups/rsync/${ss_code}-${ss_id
 #echo -e "\nBackup user analytics - via rsync in process please be patient"
 #rsync -avzPh  /data/gstudio-exported-users-analytics-csvs  /backups/syncthing/$ss_id/
 
-cp -av /root/.gnupg /backups/rsync/${ss_code}-${ss_id}/
+cp -av /root/.gnupg /backups/rsync/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs/
 
-touch /backups/${ss_code}-${ss_id}/.stfolder
-touch /backups/${ss_code}-${ss_id}/.stignore
-touch /backups/rsync/${ss_code}-${ss_id}/.stfolder
-touch /backups/rsync/${ss_code}-${ss_id}/.stignore
+touch /backups/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs/.stfolder
+touch /backups/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs/.stignore
+touch /backups/rsync/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs/.stfolder
+touch /backups/rsync/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs/.stignore
 
 touch /root/Sync/.stfolder
 touch /root/Sync/.stignore
@@ -125,8 +141,8 @@ chmod +rx /root/Sync/*
 chmod +rx /backups/rsync/*
 
 
-touch /backups/syncthing/${ss_code}-${ss_id}/.stfolder
-touch /backups/syncthing/${ss_code}-${ss_id}/.stignore
+touch /backups/syncthing${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs/.stfolder
+touch /backups/syncthing${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs/.stignore
 
 #chmod 644 /backups/incremental/*
 chmod +x /backups/syncthing/*
@@ -141,7 +157,7 @@ if [[ -L /softwares/${ss_id}/${ss_id}.tar.gz ]]; then
 fi
 
 # Add soft link for analytics tar.gz file
-if [[ ! -L /backups/rsync/${ss_code}-${ss_id}/${ss_code}-${ss_id}.tar.gz ]]; then
+if [[ ! -L /softwares/${ss_code}-${ss_id}.tar.gz ]]; then
     ln -s /backups/rsync/${ss_code}-${ss_id}/${ss_code}-${ss_id}.tar.gz  /softwares/${ss_code}-${ss_id}.tar.gz
 fi
 
@@ -152,13 +168,13 @@ echo -e "\nBackup local_settings.py(/home/docker/code/gstudio/gnowsys-ndf/gnowsy
 rsync -avzPh /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py  /data/
 
 # log commit details - in /data/git-commit-details.log - started
-echo -e "\nDate : $date \n" > /data/git-commit-details.log
+echo -e "\nDate : $(date) \n" > /data/git-commit-details.log
 
 echo -e "\n\nDetails of gstudio-docker \n" 2>&1 | tee -a /data/git-commit-details.log
 cd /home/docker/code/
 
-echo -e "\ngstudio-docker : pwd \n" 2>&1 | tee -a /data/git-commit-details.log
-pwd
+echo -e "\ngstudio-docker : $(pwd) \n" 2>&1 | tee -a /data/git-commit-details.log
+$(pwd)
 
 echo -e "\ngstudio-docker : git branch \n" 2>&1 | tee -a /data/git-commit-details.log
 git branch 2>&1 | tee -a /data/git-commit-details.log
@@ -176,8 +192,8 @@ git diff 2>&1 | tee -a /data/git-commit-details.log
 echo -e "\n\nDetails of gstudio \n" 2>&1 | tee -a /data/git-commit-details.log
 cd /home/docker/code/gstudio/
 
-echo -e "\ngstudio : pwd \n" 2>&1 | tee -a /data/git-commit-details.log
-pwd
+echo -e "\ngstudio : $(pwd) \n" 2>&1 | tee -a /data/git-commit-details.log
+$(pwd)
 
 echo -e "\ngstudio : git branch \n" 2>&1 | tee -a /data/git-commit-details.log
 git branch 2>&1 | tee -a /data/git-commit-details.log
@@ -200,8 +216,8 @@ echo -e "\n'OpenAssessmentsClient' - strategy adopted for updating oac and oat i
 - Testing it locally and packaging oac, oat as a replacement. \n
 - This decision is taken because building oac and oat is network dependent operation and sometimes build doesn't happen smoothly. \n\n" 2>&1 | tee -a /data/git-commit-details.log
 
-# echo -e "\nOpenAssessmentsClient : pwd \n" 2>&1 | tee -a /data/git-commit-details.log
-# pwd
+# echo -e "\nOpenAssessmentsClient : $(pwd) \n" 2>&1 | tee -a /data/git-commit-details.log
+# $(pwd)
 
 # echo -e "\nOpenAssessmentsClient : git branch \n" 2>&1 | tee -a /data/git-commit-details.log
 # git branch 2>&1 | tee -a /data/git-commit-details.log
@@ -219,8 +235,8 @@ echo -e "\n'OpenAssessmentsClient' - strategy adopted for updating oac and oat i
 echo -e "\n\nDetails of qbank-lite \n" 2>&1 | tee -a /data/git-commit-details.log
 cd /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/
 
-echo -e "\nqbank-lite : pwd \n" 2>&1 | tee -a /data/git-commit-details.log
-pwd
+echo -e "\nqbank-lite : $(pwd) \n" 2>&1 | tee -a /data/git-commit-details.log
+$(pwd)
 
 echo -e "\nqbank-lite : git branch \n" 2>&1 | tee -a /data/git-commit-details.log
 git branch 2>&1 | tee -a /data/git-commit-details.log
@@ -235,5 +251,5 @@ echo -e "\nqbank-lite : git diff \n" 2>&1 | tee -a /data/git-commit-details.log
 git diff 2>&1 | tee -a /data/git-commit-details.log
 
 
-echo -e "\nDate : $date \n" >> /data/git-commit-details.log
+echo -e "\nDate : $(date) \n" >> /data/git-commit-details.log
 # log commit details - in /data/git-commit-details.log - ended

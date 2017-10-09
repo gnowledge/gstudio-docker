@@ -258,9 +258,27 @@ sleep 5
 check_disk_insertion
 echo -e "\n${cyan}Disk status : $disk_status ${reset}";
 
-echo -e "\n${cyan}Please provide the School server id? (Example Mizoram school 23 will have mz23 and Telangana 24 school - tg24) ${reset}" ;
-echo -e -n "School server id: "
-read ss_id
+# echo -e "\n${cyan}Please provide the School server id? (Example Mizoram school 23 will have mz23 and Telangana 24 school - tg24) ${reset}" ;
+# echo -e -n "School server id: "
+# read ss_id
+
+# get current year
+cur_year=`date +"%Y"`
+
+# platform name
+platform="gstudio"
+
+# get server id (Remove single quote {'} and Remove double quote {"})
+ss_id=`docker exec -it gstudio bash -c "more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | grep -w GSTUDIO_INSTITUTE_ID | sed 's/.*=//g' | sed \"s/'//g\" | sed 's/\"//g'"`
+
+# get state code
+state_code=${ss_id:0:2};
+
+# get server code (Remove single quote {'} and Remove double quote {"})
+ss_code=`docker exec -it gstudio bash -c "more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | grep -w GSTUDIO_INSTITUTE_ID_SECONDARY | sed 's/.*=//g' | sed \"s/'//g\" | sed 's/\"//g'"`
+
+# get server name (Remove single quote {'} and Remove double quote {"})
+#ss_name=`docker exec -it gstudio bash -c "more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | grep -w GSTUDIO_INSTITUTE_NAME | sed 's/.*=//g' | sed \"s/'//g\" | sed 's/\"//g'"`
 
 # For testing purpose
 # ls -ltrh /mnt/test
@@ -285,82 +303,92 @@ if [ "$backup_old_clix_platform_status" == "Y" ] || [ "$backup_old_clix_platform
   echo -e "\n${cyan}Mounting status : $mounting_status ${reset}";
    
   # source_path="/home/core/data/benchmark-dump";
-  # destination_path="/mnt/home/core/${ss_id}/";
+  # destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
   # echo -e "\n${cyan}copy clix-platform data and necessary files except media directory from $source_path to $destination_path ${reset}"
   # copy_content "$source_path" "$destination_path"
 
-  source_path="/home/core/data/counters-dump";
-  destination_path="/mnt/home/core/${ss_id}/";
-  echo -e "\n${cyan}copy clix-platform data and necessary files except media directory from $source_path to $destination_path ${reset}"
-  copy_content "$source_path" "$destination_path"
+  # source_path="/home/core/data/counters-dump";
+  # destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
+  # echo -e "\n${cyan}copy clix-platform data and necessary files except media directory from $source_path to $destination_path ${reset}"
+  # copy_content "$source_path" "$destination_path"
+
+  if [[ ! -d /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/ ]]; then
+      mkdir -p /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/
+  fi
 
   source_path="/home/core/data/db";
-  destination_path="/mnt/home/core/${ss_id}/";
+  destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
   echo -e "\n${cyan}copy clix-platform db from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path"
 
   source_path="/home/core/data/gstudio-exported-users-analytics-csvs";
-  destination_path="/mnt/home/core/${ss_id}/";
+  destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
   echo -e "\n${cyan}copy clix-platform gstudio-exported-users-analytics-csvs from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path"
 
   source_path="/home/core/data/gstudio-logs";
-  destination_path="/mnt/home/core/${ss_id}/";
+  destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
   echo -e "\n${cyan}copy clix-platform gstudio-logs from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path"
 
   source_path="/home/core/data/postgres-dump";
-  destination_path="/mnt/home/core/${ss_id}/";
+  destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
   echo -e "\n${cyan}copy clix-platform postgres-dump from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path"
 
   source_path="/home/core/data/rcs-repo";
-  destination_path="/mnt/home/core/${ss_id}/";
+  destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
   echo -e "\n${cyan}copy clix-platform rcs-repo from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path"
 
   source_path="/home/core/data/local_settings.py";
-  destination_path="/mnt/home/core/${ss_id}/";
+  destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
   echo -e "\n${cyan}copy clix-platform local_settings.py from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path"
 
   source_path="/home/core/data/server_settings.py";
-  destination_path="/mnt/home/core/${ss_id}/";
+  destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
   echo -e "\n${cyan}copy clix-platform server_settings.py from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path"
 
+  source_path="/home/core/data/system-heartbeat.log";
+  destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
+  echo -e "\n${cyan}copy clix-platform system-heartbeat from $source_path to $destination_path ${reset}"
+  copy_content "$source_path" "$destination_path"
+
   source_path="/home/core/data/git-commit-details.log";
-  destination_path="/mnt/home/core/${ss_id}/";
+  destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
   echo -e "\n${cyan}copy clix-platform git-commit-details from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path"
 
   source_path="/home/core/data/assessment-media";
-  destination_path="/mnt/home/core/${ss_id}/";
+  destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
   echo -e "\n${cyan}copy clix-platform data and necessary files except media directory from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path"
 
   source_path="/home/core/data/media";
-  destination_path="/mnt/home/core/${ss_id}/";
+  destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
   echo -e "\n${cyan}copy clix-platform media directory of data from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path" "max-size" 
 
   echo -e "\n${cyan}Size of directories: ${reset}"
-  sudo du -hs /home/core/data/benchmark-dump /mnt/home/core/${ss_id}/benchmark-dump
-  sudo du -hs /home/core/data/counters-dump /mnt/home/core/${ss_id}/counters-dump
-  sudo du -hs /home/core/data/db /mnt/home/core/${ss_id}/db
-  sudo du -hs /home/core/data/gstudio-exported-users-analytics-csvs /mnt/home/core/${ss_id}/gstudio-exported-users-analytics-csvs
-  sudo du -hs /home/core/data/gstudio-logs /mnt/home/core/${ss_id}/gstudio-logs
-  sudo du -hs /home/core/data/postgres-dump /mnt/home/core/${ss_id}/postgres-dump
-  sudo du -hs /home/core/data/rcs-repo /mnt/home/core/${ss_id}/rcs-repo
-  sudo du -hs /home/core/data/local_settings.py /mnt/home/core/${ss_id}/local_settings.py
-  sudo du -hs /home/core/data/server_settings.py /mnt/home/core/${ss_id}/server_settings.py
-  sudo du -hs /home/core/data/git-commit-details.log /mnt/home/core/${ss_id}/git-commit-details.log
-  sudo du -hs /home/core/data/assessment-media /mnt/home/core/${ss_id}/assessment-media
-  sudo du -hs /home/core/data/media /mnt/home/core/${ss_id}/media
+  # sudo du -hs /home/core/data/benchmark-dump /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/benchmark-dump
+  # sudo du -hs /home/core/data/counters-dump /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/counters-dump
+  sudo du -hs /home/core/data/db /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/db
+  sudo du -hs /home/core/data/gstudio-exported-users-analytics-csvs /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
+  sudo du -hs /home/core/data/gstudio-logs /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-logs
+  sudo du -hs /home/core/data/postgres-dump /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/postgres-dump
+  sudo du -hs /home/core/data/rcs-repo /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/rcs-repo
+  sudo du -hs /home/core/data/local_settings.py /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/local_settings.py
+  sudo du -hs /home/core/data/server_settings.py /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/server_settings.py
+  sudo du -hs /home/core/data/system-heartbeat.log /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/system-heartbeat.log
+  sudo du -hs /home/core/data/git-commit-details.log /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/git-commit-details.log
+  sudo du -hs /home/core/data/assessment-media /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/assessment-media
+  sudo du -hs /home/core/data/media /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/media
 
   sudo du -hc $(find /home/core/data/media -type f -size +30M)
   echo -e "\n${cyan}Size of directories: ${reset}"
-  sudo du -hs /home/core/data/ /mnt/home/core/${ss_id}/
+  sudo du -hs /home/core/data/ /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/
 
   echo -e "\n${cyan}Size of directories: ${reset}"
 
