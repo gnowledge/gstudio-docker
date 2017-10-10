@@ -79,4 +79,4 @@ function system-heartbeat() {
     # echo -e " \n\n------------------------------------------------------------------------------------ \n\n"      
 }    
 
-system-heartbeat |   tee /data/system-heartbeat.log;
+system-heartbeat |   tee /data/system-heartbeat/system-heartbeat-$(date +\%Y\%m\%d-\%H\%M\%S).log;

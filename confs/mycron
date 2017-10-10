@@ -21,8 +21,10 @@
 # 
 # m h  dom mon dow   command
 
-01 *  * * * /home/docker/code/scripts/system-heartbeat.sh  >> /tmp/cron-system-heartbeat.log
+01 *  * * * /home/docker/code/scripts/system-heartbeat.sh  > /tmp/cron-system-heartbeat.log
 
-05 *  * * * /home/docker/code/scripts/analytics.sh  >> /tmp/cron-analytics.log
+05 *  * * * /home/docker/code/scripts/analytics.sh  > /tmp/cron-analytics.log
 
-10 *  * * * /home/docker/code/scripts/backup.sh  >> /tmp/cron-bkp.log
+10 *  * * * /home/docker/code/scripts/backup.sh  > /tmp/cron-bkp.log
+
+15 *  * * * /usr/sbin/logrotate /etc/logrotate.d/nginx  > /tmp/cron-logrotate.log

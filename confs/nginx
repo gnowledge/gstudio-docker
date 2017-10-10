@@ -1,0 +1,18 @@
+/var/log/nginx/*.log {
+	daily
+	missingok
+	compress
+	delaycompress
+	notifempty
+	size=100M
+	create 0640 www-data adm
+	sharedscripts
+	prerotate
+		if [ -f /run/nginx.pid ]; then \
+			kill -USR1 `cat /run/nginx.pid`; \
+		fi \
+	endscript
+	postrotate
+		invoke-rc.d nginx rotate >/dev/null 2>&1
+	endscript
+}

@@ -112,7 +112,7 @@ elif [[ ! -d /tmp/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstu
     mkdir -p /tmp/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
 fi
 # mkdir /tmp/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs/
-rsync -avzPh  /data/gstudio-exported-users-analytics-csvs  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py /data/git-commit-details.log /data/system-heartbeat.log  /tmp/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/
+rsync -avzPh  /data/gstudio-exported-users-analytics-csvs  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py /data/git-commit-details.log /data/system-heartbeat  /tmp/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/
 
 cd /tmp/
 

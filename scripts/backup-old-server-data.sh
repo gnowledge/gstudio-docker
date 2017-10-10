@@ -354,7 +354,7 @@ if [ "$backup_old_clix_platform_status" == "Y" ] || [ "$backup_old_clix_platform
   echo -e "\n${cyan}copy clix-platform server_settings.py from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path"
 
-  source_path="/home/core/data/system-heartbeat.log";
+  source_path="/home/core/data/system-heartbeat";
   destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
   echo -e "\n${cyan}copy clix-platform system-heartbeat from $source_path to $destination_path ${reset}"
   copy_content "$source_path" "$destination_path"
@@ -384,7 +384,7 @@ if [ "$backup_old_clix_platform_status" == "Y" ] || [ "$backup_old_clix_platform
   sudo du -hs /home/core/data/rcs-repo /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/rcs-repo
   sudo du -hs /home/core/data/local_settings.py /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/local_settings.py
   sudo du -hs /home/core/data/server_settings.py /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/server_settings.py
-  sudo du -hs /home/core/data/system-heartbeat.log /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/system-heartbeat.log
+  sudo du -hs /home/core/data/system-heartbeat /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/system-heartbeat
   sudo du -hs /home/core/data/git-commit-details.log /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/git-commit-details.log
   sudo du -hs /home/core/data/assessment-media /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/assessment-media
   sudo du -hs /home/core/data/media /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/media
