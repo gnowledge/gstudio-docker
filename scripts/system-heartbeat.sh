@@ -2,8 +2,14 @@
 
 function system-heartbeat() {
 
-#    mkdir -p /data/heartbeats/
-    
+    echo -e "Info-msg : Checking directory existence. \n"      
+    if [[ -d /data/system-heartbeat/ ]]; then
+        echo "/data/system-heartbeat/ directory exists"
+    else
+        mkdir -p /data/system-heartbeat/
+        echo "/data/system-heartbeat/ directory created successfully"
+    fi
+
     echo -e "Info-msg : hostname of server (hostname). \n"      
     hostname  
 
