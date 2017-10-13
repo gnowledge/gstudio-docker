@@ -3,17 +3,17 @@
 ## Download the update tar file:
 	
 	updates dt 29-09-2017 (all updates in single tar file):
-        https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-15f7287-r3-20171010.tar.gz
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-15f7287-r3-20171010.tar.gz.md5sum
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r2.sh
+        https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-06a676e-r2.1-20171013.tar.gz
+		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-06a676e-r2.1-20171013.tar.gz.md5sum
+		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r2.1.sh
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/README-update.md
 
 
 ## Copy content (downloaded tar file) in Pendrive (not inside any directory please - directly inside the pendrive {root of pendrive})
 
 ## Check md5sum for file checksum:
-	Command : ``` md5sum update_patch-15f7287-r3-20171010.tar.gz ```
-    Ensure that the alphanumeric code (output of the above command) is matching with the content of update_patch-15f7287-r3-20171010.tar.gz.md5sum (which you have downloaded from the server)
+	Command : ``` md5sum update_patch-06a676e-r2.1-20171013.tar.gz ```
+    Ensure that the alphanumeric code (output of the above command) is matching with the content of update_patch-06a676e-r2.1-20171013.tar.gz.md5sum (which you have downloaded from the server)
 
 ## Now we have files in pendrive. Insert pendrive in the School server
 
@@ -58,7 +58,7 @@
 		```
 
 ## Update command			(After the patch is applied it will reboot the system)
-	Command : ``` bash patch-r2.sh ```
+	Command : ``` bash patch-r2.1.sh ```
 
 
 ======================================================================================================# Update details
@@ -69,14 +69,14 @@
 
 ## Update-patch number: (One commit no back of gstudio-docker)
 	Syntax  		: 	``` update_patch-<gstudio-docker-repo-commit-no>-r<release-no>-<yyyymmdd> ```
-	Exact Number 	: 	``` update_patch-15f7287-r3-20171010 ``
+	Exact Number 	: 	``` update_patch-06a676e-r2.1-20171013 ``
 
 ## Version number: r1
 
 ## Commit number
 ### gstudio-docker:			(https://github.com/mrunal4/gstudio-docker.git - master)
-	Short			:	``` 15f7287 ```
-	Long			: 	``` 15f7287ea2b6dfefd127038c732402aff293de16 ```
+	Short			:	``` 06a676e ```
+	Long			: 	``` 06a676e4998b444d0f8b818f668a08982daa218c ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - master)
 	Short			:	``` 84457e9 ```
