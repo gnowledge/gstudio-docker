@@ -19,7 +19,7 @@ cd /home/docker/code/gstudio/gnowsys-ndf/
 # python manage.py purge_node 590c048ea31c74012efaddb4 y
 
 echo -e "\n${cyan}Import module(s) or unit(s)${reset}";
-module_and_units=('pre-clix-survey_2017-09-15_13-13' 'english-beginner_2017-09-15_12-25' 'english-elementary_2017-09-15_12-28' 'basic-astronomy_2017-09-15_12-34' 'linear-equations_2017-09-15_12-53' 'health-and-disease_2017-09-15_12-57' 'sound_2017-09-15_13-03' 'ecosystem_2017-09-15_13-07' 'atomic-structure_2017-09-15_13-09' 'post-clix-survey_2017-09-15_13-15')
+module_and_units=('basic-astronomy_2017-09-15_12-34' 'linear-equations_2017-09-15_12-53' 'sound_2017-09-15_13-03' 'ecosystem_2017-09-15_13-07' 'atomic-structure_2017-09-15_13-09' 'pre-clix-survey_2017-09-15_13-13' 'post-clix-survey_2017-09-15_13-15')
 for m_or_u_name in "${module_and_units[@]}"
 do
     echo -e "\n${cyan}Import module/unit: ${m_or_u_name} ${reset}";
