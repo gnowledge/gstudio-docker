@@ -3,8 +3,8 @@
 ## Download the update tar file:
 	
 	updates dt 17-10-2017 (all updates in single tar file):
-        https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-9c847fb-r3-20171017.tar.gz
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-9c847fb-r3-20171017.tar.gz.md5sum
+        https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-c876de8-r3-20171017.tar.gz
+		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-c876de8-r3-20171017.tar.gz.md5sum
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r2.1.sh
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/README-update.md
 
@@ -12,8 +12,8 @@
 ## Copy content (downloaded tar file) in Pendrive (not inside any directory please - directly inside the pendrive {root of pendrive})
 
 ## Check md5sum for file checksum:
-	Command : ``` md5sum update_patch-9c847fb-r3-20171017.tar.gz ```
-    Ensure that the alphanumeric code (output of the above command) is matching with the content of update_patch-9c847fb-r3-20171017.tar.gz.md5sum (which you have downloaded from the server)
+	Command : ``` md5sum update_patch-c876de8-r3-20171017.tar.gz ```
+    Ensure that the alphanumeric code (output of the above command) is matching with the content of update_patch-c876de8-r3-20171017.tar.gz.md5sum (which you have downloaded from the server)
 
 ## Now we have files in pendrive. Insert pendrive in the School server
 
@@ -69,14 +69,14 @@
 
 ## Update-patch number: (One commit no back of gstudio-docker)
 	Syntax  		: 	``` update_patch-<gstudio-docker-repo-commit-no>-r<release-no>-<yyyymmdd> ```
-	Exact Number 	: 	``` update_patch-9c847fb-r3-20171017 ``
+	Exact Number 	: 	``` update_patch-c876de8-r3-20171017 ``
 
 ## Version number: r1
 
 ## Commit number
 ### gstudio-docker:			(https://github.com/mrunal4/gstudio-docker.git - master)
-	Short			:	``` 9c847fb ```
-	Long			: 	``` 9c847fbf20ce7d9ccb4fa690839afa8c261e21bd ```
+	Short			:	``` c876de8 ```
+	Long			: 	``` c876de8afa130e1a5c09b91d7a5d2f861ef98c97 ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - master)
 	Short			:	``` 84457e9 ```
@@ -98,7 +98,7 @@
 ```
 CLIx Platform release 3, version 17.09.r1, Notes (for MZ)
 State: Mizoram 
-Release date: 29st October 2017
+Release date: 17th October 2017
 
 This release note pertains to the Connected Learning Initiative (CLIx) student platform aka CLIx platform release 3 (henceforth, release 3). 
 The release 3 patch-r3 should be applied on the CLIx platform ver 17.06.r1 only. Please find below details of release 3 features:
