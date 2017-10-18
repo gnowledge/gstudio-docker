@@ -69,7 +69,7 @@
 
 ## Update-patch number: (One commit no back of gstudio-docker)
 	Syntax  		: 	``` update_patch-<gstudio-docker-repo-commit-no>-r<release-no>-<yyyymmdd> ```
-	Exact Number 	: 	``` update_patch-c876de8-r3-20171017 ``
+	Exact Number 	: 	``` update_patch-c876de8-r3-20171018 ``
 
 ## Version number: r1
 
@@ -79,8 +79,8 @@
 	Long			: 	``` c876de8afa130e1a5c09b91d7a5d2f861ef98c97 ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - master)
-	Short			:	``` 84457e9 ```
-	Long			: 	``` 84457e980ae4133245bfa5c6970fb6969dd0dab1 ```
+	Short			:	``` cd2f435 ```
+	Long			: 	``` cd2f43546647b0b89f8d02265aaeea82bb2216b1 ```
 
 ### qbank-lite:				(https://github.com/gnowledge/qbank-lite.git - clixserver)
 	Short			:	``` 1b48892 ```

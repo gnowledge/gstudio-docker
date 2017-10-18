@@ -37,8 +37,11 @@ fab update_data
 echo -e "\n${cyan}execute python manage.py unit_assessments https://clixserver y ${reset}"
 python manage.py unit_assessments https://clixserver y
 
-echo -e "\n${cyan}execute release2_sept17.py ${reset}"
-echo "execfile('../doc/deployer/release2_sept17.py')" | python manage.py shell
+# echo -e "\n${cyan}execute release2_sept17.py ${reset}"
+# echo "execfile('../doc/deployer/release2_sept17.py')" | python manage.py shell
+
+echo -e "\n${cyan}execute release3_oct17.py ${reset}"
+echo "execfile('../doc/deployer/release3_oct17.py')" | python manage.py shell
 
 echo -e "\n${cyan}updating teacher' s agency type ${reset}"
 python manage.py teacher_agency_type_update
