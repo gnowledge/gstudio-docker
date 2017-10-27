@@ -8,8 +8,8 @@ Release date: 27th October 2017
 ## Download the update file:
 	
 	updates dt 27-10-2017 (all updates in single tar file):
-        https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-1597e41-r4-20171027.tar.gz
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-1597e41-r4-20171027.tar.gz.md5sum
+        https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-c173f95-r4-20171027.tar.gz
+		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-c173f95-r4-20171027.tar.gz.md5sum
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r4.sh
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/README-update.md
 
@@ -17,8 +17,8 @@ Release date: 27th October 2017
 ## Copy content (above downloaded files) in Pendrive (not inside any directory please - directly inside the pendrive {root of pendrive})
 
 ## Check md5sum for file checksum:
-	Command : ``` md5sum update_patch-1597e41-r4-20171027.tar.gz ```
-    Ensure that the alphanumeric code (output of the above command) is matching with the content of update_patch-1597e41-r4-20171027.tar.gz.md5sum (which you have downloaded from the server)
+	Command : ``` md5sum update_patch-c173f95-r4-20171027.tar.gz ```
+    Ensure that the alphanumeric code (output of the above command) is matching with the content of update_patch-c173f95-r4-20171027.tar.gz.md5sum (which you have downloaded from the server)
 
 ## Now we have files in pendrive. Insert pendrive in the School server
 
@@ -68,14 +68,14 @@ Release date: 27th October 2017
 
 ## Update-patch number: (One commit no back of gstudio-docker)
 	Syntax  		: 	``` update_patch-<gstudio-docker-repo-commit-no>-r<release-no>-<yyyymmdd> ```
-	Exact Number 	: 	``` update_patch-1597e41-r4-20171027 ``
+	Exact Number 	: 	``` update_patch-c173f95-r4-20171027 ``
 
 ## Version number: r1
 
 ## Commit number
 ### gstudio-docker:			(https://github.com/mrunal4/gstudio-docker.git - master)
-	Short			:	``` 1597e41 ```
-	Long			: 	``` 1597e41f22bcd6e57402656dd32b1c3e20932bf8 ```
+	Short			:	``` c173f95 ```
+	Long			: 	``` c173f95002bd50fbf8cde40a532015cec1a472e7 ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - master)
 	Short			:	``` 5d5ed8a ```

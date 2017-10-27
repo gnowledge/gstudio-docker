@@ -15,7 +15,7 @@ reset="\033[0m" ;
 
 filename=$(basename $(ls  /mnt/update_*.tar.gz |  head -n 1));
 update_patch="${filename%.*.*}";
-update_patch="update_patch-e8ce1ce-r3-20171018"
+update_patch="update_patch-c173f95-r4-20171027"
 
 echo -e "\n${cyan}copy updated patch from /mnt/${update_patch}/tools-updates/setup-software/* to /home/core/setup-software/  ${reset}";
 sudo rsync -avzPh /mnt/${update_patch}/tools-updates/setup-software/*  /home/core/setup-software/;
