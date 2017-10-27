@@ -17,7 +17,7 @@ function apply_patch() {
 	# fetch the filename (patch name)
 	filename=$(basename $(ls  /mnt/update_*.tar.gz |  head -n 1));
 	update_patch="${filename%.*.*}";
-	update_patch="update_patch-06a676e-r2.1-20171013"
+	update_patch="update_patch-1597e41-r2-20170929"
 
 	echo -e "\n${cyan}patch directory name : ${update_patch} and this update shell file name is $(readlink -f $0) ${reset}"
 
@@ -36,8 +36,21 @@ function apply_patch() {
 	echo -e "\n${cyan}Applying code updates ${reset}"
 	sudo bash ${update_patch}/code-updates/code-update.sh
 
-	echo -e "\n${cyan}Patch 2.1 update finished ${reset}"
+	echo -e "\n${cyan}Applying data updates ${reset}"
+	sudo bash ${update_patch}/data-updates/data-update.sh
+
+	echo -e "\n${cyan}Applying tools updates ${reset}"
+	sudo bash ${update_patch}/tools-updates/tools-update.sh
+
+	echo -e "\n${cyan}Applying oac and oat updates ${reset}"
+	sudo bash ${update_patch}/oac-and-oat-updates/update-oac-and-oat.sh
+
+	echo -e "\n${cyan}Patch 4 update finished. ${reset}"
+
+	#echo -e "\n${cyan}School server will be restarting in 10sec ${reset}"
+	#sleep 10
+	#sudo reboot
 
 }   
 
-apply_patch |   tee patch-r3.log;
+apply_patch |   tee /mnt/patch-r4.log;

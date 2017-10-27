@@ -21,6 +21,12 @@ function apply_patch() {
 
 	echo -e "\n${cyan}patch directory name : ${update_patch} and this update shell file name is $(readlink -f $0) ${reset}"
 
+	echo -e "\n${cyan}change directory /mnt/pd ${reset}"
+	cd /mnt/pd
+
+	echo -e "\n${cyan}copy from /mnt/pd/${update_patch}.tar.gz to /mnt/ ${reset}"
+	rsync -avzPh /mnt/pd/${update_patch}.tar.gz /mnt/
+
 	echo -e "\n${cyan}change directory /mnt/ ${reset}"
 	cd /mnt/
 
@@ -39,10 +45,12 @@ function apply_patch() {
 	echo -e "\n${cyan}Applying oac and oat updates ${reset}"
 	sudo bash ${update_patch}/oac-and-oat-updates/update-oac-and-oat.sh
 
-	echo -e "\n${cyan}School server will be restarting in 10sec ${reset}"
-	sleep 10
-	sudo reboot
+	echo -e "\n${cyan}Patch 2 update finished. ${reset}"
+
+	#echo -e "\n${cyan}School server will be restarting in 10sec ${reset}"
+	#sleep 10
+	#sudo reboot
 
 }   
 
-apply_patch |   tee patch-r2.log;
+apply_patch |   tee /mnt/patch-r2.log;

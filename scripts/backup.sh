@@ -76,25 +76,25 @@ ss_code=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/s
 ss_name=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | grep -w GSTUDIO_INSTITUTE_NAME | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
 
 if [[ -d /backups/rsync/$ss_id ]]; then
-    mv -v /backups/rsync/$ss_id /backups/rsync/${ss_code}-${ss_id}
+    rm -rf /backups/rsync/$ss_id
 elif [[ -d /backups/rsync/${ss_code}-${ss_id} ]]; then
-    mv -v /backups/rsync/${ss_code}-${ss_id}  /backups/rsync/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
+    rm -rf /backups/rsync/${ss_code}-${ss_id}
 elif [[ ! -d /backups/rsync/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs ]]; then
     mkdir -p /backups/rsync/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
 fi
 
 if [[ -d /backups/syncthing/$ss_id ]]; then
-    mv -v /backups/syncthing/$ss_id /backups/syncthing/${ss_code}-${ss_id}
+    rm -rf /backups/syncthing/$ss_id /tmp/
 elif [[ -d /backups/syncthing/${ss_code}-${ss_id} ]]; then
-    mv -v /backups/syncthing/${ss_code}-${ss_id}  /backups/syncthing/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
+    rm -rf /backups/syncthing/${ss_code}-${ss_id}
 elif [[ ! -d /backups/syncthing/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs ]]; then
     mkdir -p /backups/syncthing/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
 fi
 
 if [[ -d /backups/$ss_id ]]; then
-    mv -v /backups/$ss_id /backups/${ss_code}-${ss_id}
+    rm -rf /backups/$ss_id
 elif [[ -d /backups/${ss_code}-${ss_id} ]]; then
-    mv -v /backups/${ss_code}-${ss_id}  /backups/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
+    rm -rf /backups/${ss_code}-${ss_id}
 elif [[ ! -d /backups/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs ]]; then
     mkdir -p /backups/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
 fi
@@ -105,9 +105,9 @@ fi
 
 
 if [[ -d /tmp/$ss_id ]]; then
-    mv -v /tmp/$ss_id /tmp/${ss_code}-${ss_id}
+    rm -rf /tmp/$ss_id 
 elif [[ -d /tmp/${ss_code}-${ss_id} ]]; then
-    mv -v /tmp/${ss_code}-${ss_id}  /tmp/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
+    rm -rf /tmp/${ss_code}-${ss_id}
 elif [[ ! -d /tmp/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs ]]; then
     mkdir -p /tmp/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
 fi
@@ -160,12 +160,6 @@ fi
 if [[ ! -L /softwares/${ss_code}-${ss_id}.tar.gz ]]; then
     ln -s /backups/rsync/${ss_code}-${ss_id}/${ss_code}-${ss_id}.tar.gz  /softwares/${ss_code}-${ss_id}.tar.gz
 fi
-
-echo -e "\nBackup /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/* in /data/assessment-media/ \n" 
-rsync -avzPh   /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/*  /data/assessment-media/
-
-echo -e "\nBackup local_settings.py(/home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py) and server_settings.py(/home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py) in /data/ \n" 
-rsync -avzPh /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py  /data/
 
 # log commit details - in /data/git-commit-details.log - started
 echo -e "\nDate : $(date) \n" > /data/git-commit-details.log
@@ -253,3 +247,11 @@ git diff 2>&1 | tee -a /data/git-commit-details.log
 
 echo -e "\nDate : $(date) \n" >> /data/git-commit-details.log
 # log commit details - in /data/git-commit-details.log - ended
+
+
+
+echo -e "\nBackup /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/* in /data/assessment-media/ \n" 
+rsync -avzPh   /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/*  /data/assessment-media/
+
+echo -e "\nBackup local_settings.py(/home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py) and server_settings.py(/home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py) in /data/ \n" 
+rsync -avzPh /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py  /data/

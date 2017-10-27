@@ -1,19 +1,24 @@
+
+CLIx Platform release 4, version 17.09.r1, Notes (for RJ/CG/TS)
+State: Rajasthan, Chhattisgarh and Telangana 
+Release date: 27th October 2017
+
 # Instruction to apply the update patch
 
-## Download the update tar file:
+## Download the update file:
 	
-	updates dt 17-10-2017 (all updates in single tar file):
-        https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-e8ce1ce-r3-20171018.tar.gz
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-e8ce1ce-r3-20171018.tar.gz.md5sum
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r2.1.sh
+	updates dt 27-10-2017 (all updates in single tar file):
+        https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-1597e41-r4-20171027.tar.gz
+		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-1597e41-r4-20171027.tar.gz.md5sum
+		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r4.sh
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/README-update.md
 
 
-## Copy content (downloaded tar file) in Pendrive (not inside any directory please - directly inside the pendrive {root of pendrive})
+## Copy content (above downloaded files) in Pendrive (not inside any directory please - directly inside the pendrive {root of pendrive})
 
 ## Check md5sum for file checksum:
-	Command : ``` md5sum update_patch-e8ce1ce-r3-20171018.tar.gz ```
-    Ensure that the alphanumeric code (output of the above command) is matching with the content of update_patch-e8ce1ce-r3-20171018.tar.gz.md5sum (which you have downloaded from the server)
+	Command : ``` md5sum update_patch-1597e41-r4-20171027.tar.gz ```
+    Ensure that the alphanumeric code (output of the above command) is matching with the content of update_patch-1597e41-r4-20171027.tar.gz.md5sum (which you have downloaded from the server)
 
 ## Now we have files in pendrive. Insert pendrive in the School server
 
@@ -33,32 +38,26 @@
 		`-sda6   8:6    0   128M  0 part /usr/share/oem
 		NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 		sdb      8:0    0 931.7G  0 disk 
-		|-sdb4   8:4    0     1G  0 part 
-		|-sdb2   8:2    0     2M  0 part 
-		|-sdb9   8:9    0 929.5G  0 part 
-		|-sdb7   8:7    0    64M  0 part 
-		|-sdb3   8:3    0     1G  0 part 
-		|-sdb1   8:1    0   128M  0 part 
-		`-sdb6   8:6    0   128M  0 part 
+		`-sdb1   8:1    0   16G  0 part 
 		```
 
 ## Became root user:
 	Command : ``` sudo su ```
 
 ## Mount the pendrive:
-	Command : ``` mount <device> /mnt/ ```
-	Example : ``` mount /dev/sdb9 /mnt/ ```
+	Command : ``` mount <device> /mnt/pd ```
+	Example : ``` mount /dev/sdb1 /mnt/pd ```
 
 ## Change the directory to /mnt
 	Command : ``` cd /mnt ```
 	Expected output:
 		```
-		core@clixserver ~ $ cd /mnt/
-		core@clixserver /mnt $ 
+		core@clixserver ~ $ cd /mnt/pd
+		core@clixserver /mnt/pd $ 
 		```
 
 ## Update command			(After the patch is applied it will reboot the system)
-	Command : ``` bash patch-r3.sh ```
+	Command : ``` bash patch-r4.sh ```
 
 
 ======================================================================================================# Update details
@@ -69,18 +68,18 @@
 
 ## Update-patch number: (One commit no back of gstudio-docker)
 	Syntax  		: 	``` update_patch-<gstudio-docker-repo-commit-no>-r<release-no>-<yyyymmdd> ```
-	Exact Number 	: 	``` update_patch-e8ce1ce-r3-20171018 ``
+	Exact Number 	: 	``` update_patch-1597e41-r4-20171027 ``
 
 ## Version number: r1
 
 ## Commit number
 ### gstudio-docker:			(https://github.com/mrunal4/gstudio-docker.git - master)
-	Short			:	``` e8ce1ce ```
-	Long			: 	``` e8ce1ce40a8a3aee84cf3e23561013834992c2c1 ```
+	Short			:	``` 1597e41 ```
+	Long			: 	``` 1597e41f22bcd6e57402656dd32b1c3e20932bf8 ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - master)
-	Short			:	``` cd2f435 ```
-	Long			: 	``` cd2f43546647b0b89f8d02265aaeea82bb2216b1 ```
+	Short			:	``` 5d5ed8a ```
+	Long			: 	``` 5d5ed8acd48950f9eb850590bef068f853a42fb5 ```
 
 ### qbank-lite:				(https://github.com/gnowledge/qbank-lite.git - clixserver)
 	Short			:	``` 1b48892 ```
@@ -95,25 +94,22 @@
 ------------------------------------------------------------------------------------------------------
 
 
-```
-CLIx Platform release 3, version 17.09.r1, Notes (for MZ)
-State: Mizoram 
-Release date: 18th October 2017
-
-This release note pertains to the Connected Learning Initiative (CLIx) student platform aka CLIx platform release 3 (henceforth, release 3). 
-The release 3 patch-r3 should be applied on the CLIx platform ver 17.06.r1 only. Please find below details of release 3 features:
+This release note pertains to the Connected Learning Initiative (CLIx) student platform aka CLIx platform release 4 (henceforth, release 4). 
+The release 4 patch-r4 should be applied on the CLIx platform ver 17.06.r1 only. Please find below details of release 4 features:
 
 Key features
     1.  Courses
-        a. Linear Equations (unit1-unit4) - linear-equations_2017-09-15_12-53
-        b. Atomic Structure (one unit) - atomic-structure_2017-09-15_13-09
-        c. Basic Astronomy (unit1-unit4) - basic-astronomy_2017-09-15_12-34
-        d. Ecosystem & Biodiversity (one unit) - ecosystem_2017-09-15_13-07
-        e. Health & Disease (one unit)
-        f. Sound (one unit) - sound_2017-09-15_13-03
+        a. English Beginner unit 0.2
+        b. English Elementary unit 2
+        c. Linear Equations (unit1-unit4)
+        d. Atomic Structure (one unit)
+        e. Basic Astronomy (unit1-unit4)
+        f. Ecosystem & Biodiversity (one unit)
+        g. Health & Disease (one unit)
+        h. Sound (one unit)
     2.  Surveys
-        a. Pre survey - pre-clix-survey_2017-09-15_13-13
-        b. Post survey - post-clix-survey_2017-09-15_13-15
+        a. Pre survey
+        b. Post survey
     3.  Tools and interactives:
         a. PoliceQuad with data logging feature (en, hi, te)
         b. Astronomy interactives (en, hi, te)
@@ -197,6 +193,27 @@ Features:
         a. Topic/Tree map widget added under workspace.
         b. Showing UI text's according to group context(workspace/announced-unit etc.)
         c. Projects tab renamed to workspaces.
+    14. System heartbeat related changes
+    15. Backup hierarchy related changes
+        Year (YYYY)                                                 [ LEVEL 0 ]
+            State (State Code)                                      [ LEVEL 1 ]
+                - School (School Code + Server ID)                  [ LEVEL 2 ]
+                    - gstudio (Clix Platform)                       [ LEVEL 3 ]
+                        - db                                        [ LEVEL 4 ]
+                        - media                                     [ LEVEL 4 ]
+                        - rcs-repo                                  [ LEVEL 4 ]
+                        - postgres-dump                             [ LEVEL 4 ]
+                        - local_settings.py                         [ LEVEL 4 ]
+                        - server_settings.py                        [ LEVEL 4 ]
+                        - gstudio-logs                              [ LEVEL 4 ]
+                        - system-heartbeat.log                      [ LEVEL 4 ]
+                        - system-heartbeat.log                      [ LEVEL 4 ]
+                        - gstudio-exported-users-analytics-csvs     [ LEVEL 4 ]
+                        - git-commit.log                            [ LEVEL 4 ]
+                        - assessment-media                          [ LEVEL 4 ]
+                            - repository                            [ LEVEL 5 ]
+                            - studentResponseFiles                  [ LEVEL 5 ]
+                    - unplatform (Optional)                         [ LEVEL 3 ]
 
 gStudio backend updates/fixes:
     1.  script to update gattr of units wrt assessments: doc/deployer/unit_assessments.py
@@ -231,26 +248,28 @@ Scripts to process after taking pull:
     3. fab update:master
     4. python manage.py unit_assessments <https://domain_name> y
 
-Key features related to backup
-    -  Backup and System heartbeat related changes
-        Year (YYYY)                                                 [ LEVEL 0 ]
-            State (State Code)                                      [ LEVEL 1 ]
-                - School (School Code + Server ID)                  [ LEVEL 2 ]
-                    - gstudio (Clix Platform)                       [ LEVEL 3 ]
-                        - db                                        [ LEVEL 4 ]
-                        - media                                     [ LEVEL 4 ]
-                        - rcs-repo                                  [ LEVEL 4 ]
-                        - postgres-dump                             [ LEVEL 4 ]
-                        - local_settings.py                         [ LEVEL 4 ]
-                        - server_settings.py                        [ LEVEL 4 ]
-                        - gstudio-logs                              [ LEVEL 4 ]
-                        - system-heartbeat.log                      [ LEVEL 4 ]
-                        - system-heartbeat.log                      [ LEVEL 4 ]
-                        - gstudio-exported-users-analytics-csvs     [ LEVEL 4 ]
-                        - git-commit.log                            [ LEVEL 4 ]
-                        - assessment-media                          [ LEVEL 4 ]
-                            - repository                            [ LEVEL 5 ]
-                            - studentResponseFiles                  [ LEVEL 5 ]
-                    - unplatform (Optional)                         [ LEVEL 3 ]
-```
+
+Git commit and file summary: 17.08.r1...master
+
+*Following are details of repositories, versions for CLIx Platform release 4: RJ/CG/TS:*
+
+    1. *OpenAssessmentClient*:
+        a. Repository : https://github.com/gnowledge/OpenAssessmentsClient/tree/clixserver
+        b. Version/Tag: 17.09.r1 (https://github.com/gnowledge/OpenAssessmentsClient/releases/tag/17.09.r1)
+        c. Branch: `clixserver`
+
+    2. *qbank*:
+        a. Repository : https://github.com/gnowledge/qbank-lite/tree/clixserver
+        b. Version/Tag: 17.06.r1 (https://github.com/gnowledge/qbank-lite/releases/tag/17.06.r1)
+        c. Branch: `clixserver`
+
+    3. *gStudio*:
+        a. Repository : https://github.com/gnowledge/gstudio
+        b. Version/Tag: 17.09.r1 (currently in draft, will post release note URL soon)
+        c. Branch: `master`
+
+    4.  Dependencies* [pip installables]: https://github.com/gnowledge/gstudio/blob/master/requirements.txt
+        a. `dlkit` updated to `0.5.13` (https://github.com/gnowledge/gstudio/blob/master/requirements.txt#L36)
+
+
 ------------------------------------------------------------------------------------------------------
