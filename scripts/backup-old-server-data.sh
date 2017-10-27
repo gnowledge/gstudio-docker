@@ -405,5 +405,5 @@ function backup_completely() {
     echo -e "\n${cyan}Oops something went wrong. Contact system administator or CLIx technical team - Mumbai. ${reset}" ;
   fi
 }
-backup_completely() |   tee /mnt/backup_completely.log;
+backup_completely |   tee /mnt/backup_completely.log;
 exit

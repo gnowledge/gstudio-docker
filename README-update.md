@@ -44,21 +44,26 @@ Release date: 27th October 2017
 ## Became root user:
 	Command : ``` sudo su ```
 
+## create /mnt/pd:
+	Command : ``` mkdir /mnt/pd ```
+
 ## Mount the pendrive:
 	Command : ``` mount <device> /mnt/pd ```
 	Example : ``` mount /dev/sdb1 /mnt/pd ```
 
 ## Change the directory to /mnt
-	Command : ``` cd /mnt ```
+	Command : ``` cd /mnt/pd ```
 	Expected output:
 		```
 		core@clixserver ~ $ cd /mnt/pd
 		core@clixserver /mnt/pd $ 
 		```
 
-## Update command			(After the patch is applied it will reboot the system)
+## Update command			(After the patch is applied it will display the message "Patch 4 update finished.")
 	Command : ``` bash patch-r4.sh ```
 
+## Shutdown command			(After the patch is finished. Shutdown the system with following command")
+	Command : ``` shutdown now ```
 
 ======================================================================================================# Update details
 
