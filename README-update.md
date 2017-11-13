@@ -1,15 +1,15 @@
 
 CLIx Platform release patch 2.1, version 17.09.r1, Notes (for RJ/CG/TS)
 State: Rajasthan, Chhattisgarh and Telangana 
-Release date: 07th november 2017
+Release date: 13th november 2017
 
 # Instruction to apply the update patch
 
 ## Download the update file:
 	
-	updates dt 07-11-2017 (all updates in single tar file):
-        https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-ffe433b-r2.1-20171107.tar.gz
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-ffe433b-r2.1-20171107.tar.gz.md5sum
+	updates dt 13-11-2017 (all updates in single tar file):
+        https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-520d9ed-r2.1-20171113.tar.gz
+		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-520d9ed-r2.1-20171113.tar.gz.md5sum
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r4.sh
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/README-update.md
 
@@ -17,8 +17,8 @@ Release date: 07th november 2017
 ## Copy content (above downloaded files) in Pendrive (not inside any directory please - directly inside the pendrive {root of pendrive})
 
 ## Check md5sum for file checksum:
-	Command : ``` md5sum update_patch-ffe433b-r2.1-20171107.tar.gz ```
-    Ensure that the alphanumeric code (output of the above command) is matching with the content of update_patch-ffe433b-r2.1-20171107.tar.gz.md5sum (which you have downloaded from the server)
+	Command : ``` md5sum update_patch-520d9ed-r2.1-20171113.tar.gz ```
+    Ensure that the alphanumeric code (output of the above command) is matching with the content of update_patch-520d9ed-r2.1-20171113.tar.gz.md5sum (which you have downloaded from the server)
 
 ## Now we have files in pendrive. Insert pendrive in the School server
 
@@ -65,7 +65,7 @@ Release date: 07th november 2017
 ## Shutdown command			(After the patch is finished. Shutdown the system with following command")
 	Command : ``` shutdown now ```
 
-======================================================================================================# Update details
+======================================================================================================# 
 
 
 # This file will contain the details about the update patch. This file also includes how the update patch is prepared.
@@ -73,14 +73,14 @@ Release date: 07th november 2017
 
 ## Update-patch number: (One commit no back of gstudio-docker)
 	Syntax  		: 	``` update_patch-<gstudio-docker-repo-commit-no>-r<release-no>-<yyyymmdd> ```
-	Exact Number 	: 	``` update_patch-ffe433b-r2.1-20171107 ``
+	Exact Number 	: 	``` update_patch-520d9ed-r2.1-20171113 ``
 
 ## Version number: r1
 
 ## Commit number
 ### gstudio-docker:			(https://github.com/mrunal4/gstudio-docker.git - master)
-	Short			:	``` ffe433b ```
-	Long			: 	``` ffe433bbab609baa9e67c0926c8f1e0b44784fd7 ```
+	Short			:	``` 520d9ed ```
+	Long			: 	``` 520d9ed489fba752fa3843ccb98c0c9ad70329e3 ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - master)
 	Short			:	``` 5d5ed8a ```
@@ -99,7 +99,7 @@ Release date: 07th november 2017
 ------------------------------------------------------------------------------------------------------
 
 
-This release note pertains to the Connected Learning Initiative (CLIx) student platform aka CLIx platform release 4 (henceforth, release 4). 
+This release note pertains to the Connected Learning Initiative (CLIx) student platform aka CLIx platform release 2.1 (henceforth, release 2.1). 
 The release patch 2.1 patch-r2.1 should be applied on the CLIx platform ver 17.06.r1 only. Please find below details of release patch 2.1 features:
 
 
