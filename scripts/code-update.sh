@@ -31,3 +31,6 @@ sudo cp /mnt/${update_patch}/code-updates/backup-old-server-data.sh /home/core/;
 
 echo -e "\n${cyan}Restart gstudio container ${reset}";
 sudo docker restart gstudio;
+
+echo -e "\n${cyan}set timezone as IST (Asia/Kolkata) ${reset}";
+sudo timedatectl set-timezone Asia/Kolkata

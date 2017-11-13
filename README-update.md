@@ -106,8 +106,9 @@ The release patch 2.1 patch-r2.1 should be applied on the CLIx platform ver 17.0
 Technical Details
 
 Features:
-    1.  System heartbeat related changes
-    2. Backup hierarchy related changes
+    1. System heartbeat related changes
+    2. Set timezone as IST (Asia/Kolkata)
+	3. Backup hierarchy related changes
         Year (YYYY)                                                 [ LEVEL 0 ]
             State (State Code)                                      [ LEVEL 1 ]
                 - School (School Code + Server ID)                  [ LEVEL 2 ]
