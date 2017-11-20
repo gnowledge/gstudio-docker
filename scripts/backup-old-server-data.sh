@@ -372,6 +372,11 @@ function backup_completely() {
     echo -e "\n${cyan}copy clix-platform data and necessary files except media directory from $source_path to $destination_path ${reset}"
     copy_content "$source_path" "$destination_path"
 
+    source_path="/home/core/data/nginx-logs";
+    destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
+    echo -e "\n${cyan}copy clix-platform nginx-logs from $source_path to $destination_path ${reset}"
+    copy_content "$source_path" "$destination_path"
+
     source_path="/home/core/data/media";
     destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
     echo -e "\n${cyan}copy clix-platform media directory of data from $source_path to $destination_path ${reset}"
