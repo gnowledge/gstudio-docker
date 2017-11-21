@@ -10,7 +10,6 @@ RUN mkdir -p /home/docker/code/   \
    &&  mkdir -p /data/db   \
    &&  mkdir -p /data/rcs-repo   \
    &&  mkdir -p /data/media   \
-   &&  mkdir -p /data/benchmark-dump   \
    &&  mkdir -p /data/heartbeats   \
    &&  mkdir -p /backups/incremental   \
    &&  mkdir -p /softwares   \

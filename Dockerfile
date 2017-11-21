@@ -61,7 +61,6 @@ RUN mkdir -p /home/docker/code/   \
    &&  mkdir -p /data/db   \
    &&  mkdir -p /data/rcs-repo   \
    &&  mkdir -p /data/media   \
-   &&  mkdir -p /data/benchmark-dump   \
    &&  mkdir -p /data/heartbeats   \
    &&  mkdir -p /backups/incremental   \
    &&  mkdir -p /softwares   \
@@ -201,7 +200,10 @@ RUN set -x \
         && mv /etc/mongod.conf /etc/mongod.conf.orig  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
 RUN mkdir -p /data/db && chown -R mongodb:mongodb /data/db  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
-VOLUME /data ["/data", "/backups", "/softwares"]
+VOLUME /data 
+VOLUME /backups
+VOLUME /softwares
+VOLUME /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/repository/AssetContent
 
 # Exposing the ports - {ssh} , {smtp} , {https (with ssl)} , {http} , {for developement user (Developer)} , {smtpd command (to test mail machanism locally)} , {imap : gnowledge} , {smtp : gnowledge} , {mongodb}
 RUN echo "EXPOSE  22  25  443  80  8000  1025  143  587"  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
@@ -220,12 +222,12 @@ RUN cd /data/   \
 
 # Restore default postgres database
 RUN /etc/init.d/postgresql start   \
-   &&  echo "psql -f /data/pgdata.sql;" | sudo su - postgres    \
-   &&  crontab /home/docker/code/confs/mycron    \
-   &&  rm /etc/rc.local    \
-   &&  ln -s /home/docker/code/confs/rc.local /etc/    \
-   &&  /etc/init.d/rc.local start    \
-   &&  /etc/init.d/postgresql start
+        &&  echo "psql -f /data/pgdata.sql;" | sudo su - postgres    \
+        &&  crontab /home/docker/code/confs/mycron    \
+        &&  rm /etc/rc.local    \
+        &&  /etc/init.d/rc.local start    \
+        &&  ln -s /home/docker/code/confs/rc.local /etc/    \
+        &&  /etc/init.d/postgresql start
 
 # fab update
 RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \

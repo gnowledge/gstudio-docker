@@ -23,6 +23,8 @@
 #				Replaced username='admin' with username='administrator' 
 #				git pull
 #				smtpd - localhost
+# Last Modification : Mrunal M. Nachankar : Mon, 20-11-2017 12:15:PM 
+#				move the places of logs
 #--------------------------------------------------------------------------------------------------------------#
 
 # Executing script as sourcing because we need to set GNUM_ARC variable from /home/docker/code/scripts/numa-arch-check.sh. Soc that we can use it here
