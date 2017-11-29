@@ -122,7 +122,8 @@ RUN curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/dow
 RUN apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 492EAFE8CD016A07919F1D2B9ECBEC467F0CEB10  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
 # Mrunal : 12012016 : Changed the source for mongodb from "http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.1 multiverse" to "http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/stable multiverse" 
-RUN echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/stable multiverse" > /etc/apt/sources.list.d/mongodb-org.list  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+# CyberOrg : Changed "stable" to "3.2" as stable is 404
+RUN echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse" > /etc/apt/sources.list.d/mongodb-org.list  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
 # Mrunal : 12012016 : Get the stable packages instead of unstable eg.- "mongodb-org-unstable" to "mongodb-org" 
 # Mrunal : 01022016 : Install specific version of mongodb : apt-get install  mongodb-org-unstable=3.1.5 mongodb-org-unstable-shell=3.1.5 mongodb-org-unstable-mongos=3.1.5 mongodb-org-unstable-tools=3.1.5
