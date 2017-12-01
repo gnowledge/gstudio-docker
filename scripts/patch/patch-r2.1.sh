@@ -36,6 +36,9 @@ function apply_patch() {
 	echo -e "\n${cyan}Applying code updates ${reset}"
 	sudo bash ${update_patch}/code-updates/code-update.sh
 
+	echo -e "\n${cyan}Applying oac and oat updates ${reset}"
+	sudo bash ${update_patch}/oac-and-oat-updates/update-oac-and-oat.sh
+
 	echo -e "\n${cyan}Patch 2.1 update finished ${reset}"
 
 }   

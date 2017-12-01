@@ -43,8 +43,8 @@ git merge $git_commit_no_docker
 
 # git offline update gstudio code - started
 
-#git_commit_no_gstudio="84457e980ae4133245bfa5c6970fb6969dd0dab1";             # Earlier commit no
-git_commit_no_gstudio="5d5ed8acd48950f9eb850590bef068f853a42fb5";              # Commit on 29-09-2017
+#git_commit_no_gstudio="5d5ed8acd48950f9eb850590bef068f853a42fb5";             # Earlier commit no
+git_commit_no_gstudio="cf1765f15f0ff62c4068e89a0d28620875469c29";              # Commit on 01-12-2017
 
 #--- One time for 20170912 update - started
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
@@ -71,14 +71,17 @@ git merge $git_commit_no_gstudio
 
 # git offline update qbank-lite code - started
 
-#git_commit_no_qbank_lite="";             # Earlier commit no
-git_commit_no_qbank_lite="1b488926a4d609dcde017e4fe7a47b8a4b541339";              # Commit on 06-08-2017
+#git_commit_no_qbank_lite="1b488926a4d609dcde017e4fe7a47b8a4b541339";             # Earlier commit no
+git_commit_no_qbank_lite="23e21133c51be72534868e6b1f29f5c38ad217ef";              # Commit on 01-12-2017
 
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio/gnowsys-ndf/qbank-lite ${reset}"
 cd /home/docker/code/gstudio/gnowsys-ndf/qbank-lite
 
+echo -e "\n${cyan}fetch all ${reset}"
+git fetch --all /home/docker/code/${update_patch}/code-updates/qbank-lite
+
 echo -e "\n${cyan}change branch to clixserver ${reset}"
-git checkout clixserver
+git checkout clixserver.tiss.edu
 
 echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/code-updates/qbank-lite ${reset}"
 git fetch /home/docker/code/${update_patch}/code-updates/qbank-lite 
@@ -181,8 +184,8 @@ cd /home/docker/code/gstudio/gnowsys-ndf/
 echo -e "\n${cyan}apply fab update_data ${reset}"
 fab update_data
 
-echo -e "\n${cyan}apply bower components - datatables-rowsgroup ${reset}"
-rsync -avzPh /home/docker/code/${update_patch}/code-updates/datatables-rowsgroup /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/ndf/static/ndf/bower_components/
+echo -e "\n${cyan}apply bower components - datatables  datatables-plugins  datatables-rowsgroup  datatables.net  datatables.net-buttons  datatables.net-buttons-dt  jszip  pdfmake ${reset}"
+rsync -avzPh /home/docker/code/${update_patch}/code-updates/bower_components/datatables   /home/docker/code/${update_patch}/code-updates/bower_components/datatables-plugins    /home/docker/code/${update_patch}/code-updates/bower_components/datatables-rowsgroup    /home/docker/code/${update_patch}/code-updates/bower_components/datatables.net    /home/docker/code/${update_patch}/code-updates/bower_components/datatables.net-buttons    /home/docker/code/${update_patch}/code-updates/bower_components/datatables.net-buttons-dt   /home/docker/code/${update_patch}/code-updates/bower_components/jszip    /home/docker/code/${update_patch}/code-updates/bower_components/pdfmake        /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/ndf/static/ndf/bower_components/
 
 echo -e "\n${cyan}add few variables and there value so replace the same - local_settings ${reset}"
 rsync -avzPh /home/docker/code/${update_patch}/code-updates/gstudio-docker/confs/local_settings.py.default /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py
@@ -211,8 +214,8 @@ echo -e "\n${cyan}apply requirements - copying dlkit dist-packages ${reset}"
 # fi
 # mv -v /usr/local/lib/python2.7/dist-packages /usr/local/lib/python2.7/dist-packages-old
 # rsync -avzPh /home/docker/code/${update_patch}/code-updates/dist-packages /usr/local/lib/python2.7/
-mv -v /usr/local/lib/python2.7/dist-packages/dlkit* /tmp/
-rm -rf /tmp/dlkit*
+mv -v /usr/local/lib/python2.7/dist-packages/Sphinx-1.6.5.dist-info   /usr/local/lib/python2.7/dist-packages/sphinx     /usr/local/lib/python2.7/dist-packages/sphinxcontrib     /usr/local/lib/python2.7/dist-packages/sphinxcontrib_websupport-1.0.1-py3.6-nspkg.pth      /usr/local/lib/python2.7/dist-packages/sphinxcontrib_websupport-1.0.1.dist-info          /tmp/
+rm -rf /tmp/Sphinx-1.6.5.dist-info  /tmp/sphinx  /tmp/sphinxcontrib  /tmp/sphinxcontrib_websupport-1.0.1-py3.6-nspkg.pth  /tmp/sphinxcontrib_websupport-1.0.1.dist-info
 rsync -avzPh /home/docker/code/${update_patch}/code-updates/dist-packages/dlkit* /usr/local/lib/python2.7/dist-packages/
 
 
@@ -222,10 +225,16 @@ python manage.py teacher_agency_type_update
 echo -e "\n${cyan}collectstatic ${reset}"
 echo yes | python manage.py collectstatic
 
+echo -e "\n${cyan}execute release2-1_nov17.py ${reset}"
+echo "execfile('../doc/deployer/release2-1_nov17.py')" | python manage.py shell
+
 # extra scripts - ended
 
 # modify logrotate for nginx
 rsync -avzPh /home/docker/code/${update_patch}/code-updates/nginx /etc/logrotate.d/
+
+# copy ssl crt and key files for nginx
+rsync -avzPh /home/docker/code/${update_patch}/code-updates/clixserver.tiss.edu /etc/ssl/
 
 # set newly updated crontab - started
 

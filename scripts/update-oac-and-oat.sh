@@ -62,8 +62,8 @@ update_patch="update_patch-520d9ed-r2.1-20171113"
 #docker exec -it gstudio /bin/sh -c "cp -rv /home/docker/code/${update_patch}/oac-and-oat-updates/oat.patch  /softwares/  &&  cd /softwares  &&  patch  -s -p0 <  oat.patch"
 
 docker exec -it gstudio /bin/sh -c "rsync -avzPh /home/docker/code/${update_patch}/oac-and-oat-updates/oac /home/docker/code/${update_patch}/oac-and-oat-updates/oat  /softwares/"
-docker exec -it gstudio /bin/sh -c "rsync -avzPh /home/docker/code/${update_patch}/oac-and-oat-updates/CLIx/datastore/AssetContent/* /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/repository/AssetContent/"
-docker exec -it gstudio /bin/sh -c "cd /home/docker/code/${update_patch}/oac-and-oat-updates/CLIx/ && mongorestore --drop mongodump "
+#docker exec -it gstudio /bin/sh -c "rsync -avzPh /home/docker/code/${update_patch}/oac-and-oat-updates/CLIx/datastore/AssetContent/* /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/repository/AssetContent/"
+#docker exec -it gstudio /bin/sh -c "cd /home/docker/code/${update_patch}/oac-and-oat-updates/CLIx/ && mongorestore --drop mongodump "
 
 
 # Make directories to keep of patches

@@ -83,12 +83,12 @@ Release date: 13th november 2017
 	Long			: 	``` 520d9ed489fba752fa3843ccb98c0c9ad70329e3 ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - master)
-	Short			:	``` 5d5ed8a ```
-	Long			: 	``` 5d5ed8acd48950f9eb850590bef068f853a42fb5 ```
+	Short			:	``` cf1765f ```
+	Long			: 	``` cf1765f15f0ff62c4068e89a0d28620875469c29 ```
 
 ### qbank-lite:				(https://github.com/gnowledge/qbank-lite.git - clixserver)
-	Short			:	``` 1b48892 ```
-	Long			: 	``` 1b488926a4d609dcde017e4fe7a47b8a4b541339 ```
+	Short			:	``` 23e2113 ```
+	Long			: 	``` 23e21133c51be72534868e6b1f29f5c38ad217ef ```
 
 ### OpenAssessmentsClient:	(https://github.com/gnowledge/OpenAssessmentsClient.git - clixserver)
 	Short			:	``` acfed44 ```

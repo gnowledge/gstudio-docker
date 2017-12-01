@@ -2,7 +2,6 @@
 	daily
 	size=100M
 	missingok
-	rotate 3
 	compress
 	delaycompress
 	notifempty
