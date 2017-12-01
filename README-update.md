@@ -7,7 +7,7 @@ Release date: 1st December 2017
 
 ## Download the update file:
 	
-	updates dt 13-11-2017 (all updates in single tar file):
+	updates dt 01-12-2017 (all updates in single tar file):
         https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-687c96e-r2.1-20171201.tar.gz
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-687c96e-r2.1-20171201.tar.gz.md5sum
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r4.sh
