@@ -7,9 +7,9 @@ Release date: 1st December 2017
 
 ## Download the update file:
 	
-	updates dt 01-12-2017 (all updates in single tar file):
-        https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-687c96e-r2.1-20171201.tar.gz
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-687c96e-r2.1-20171201.tar.gz.md5sum
+	updates dt 01-12-2017 (all updates files):
+        https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-3a12a65-r2.1-20171201.tar.gz
+		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-3a12a65-r2.1-20171201.tar.gz.md5sum
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r4.sh
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/README-update.md
 
@@ -17,8 +17,8 @@ Release date: 1st December 2017
 ## Copy content (above downloaded files) in Pendrive (not inside any directory please - directly inside the pendrive {root of pendrive})
 
 ## Check md5sum for file checksum:
-	Command : ``` md5sum update_patch-687c96e-r2.1-20171201.tar.gz ```
-    Ensure that the alphanumeric code (output of the above command) is matching with the content of update_patch-687c96e-r2.1-20171201.tar.gz.md5sum (which you have downloaded from the server)
+	Command : ``` md5sum update_patch-3a12a65-r2.1-20171201.tar.gz ```
+    Ensure that the alphanumeric code (output of the above command) is matching with the content of update_patch-3a12a65-r2.1-20171201.tar.gz.md5sum (which you have downloaded from the server)
 
 ## Now we have files in pendrive. Insert pendrive in the School server
 
@@ -73,14 +73,14 @@ Release date: 1st December 2017
 
 ## Update-patch number: (One commit no back of gstudio-docker)
 	Syntax  		: 	``` update_patch-<gstudio-docker-repo-commit-no>-r<release-no>-<yyyymmdd> ```
-	Exact Number 	: 	``` update_patch-687c96e-r2.1-20171201 ``
+	Exact Number 	: 	``` update_patch-3a12a65-r2.1-20171201 ``
 
 ## Version number: r1
 
 ## Commit number
 ### gstudio-docker:			(https://github.com/mrunal4/gstudio-docker.git - master)
-	Short			:	``` 687c96e ```
-	Long			: 	``` 687c96ea80f188d8da240ac6424e0e6feacea8ce ```
+	Short			:	``` 3a12a65 ```
+	Long			: 	``` 3a12a65e161c7a13ebfe528fa0dd00359bd7f9c0 ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - master)
 	Short			:	``` cf1765f ```
