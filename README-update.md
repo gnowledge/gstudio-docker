@@ -7,7 +7,7 @@ Release date: 1st December 2017
 
 ## Download the update file:
 	
-	updates dt 01-12-2017 (all updates files):
+	updates dt 28-12-2017 (all updates files):
         https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-3a12a65-r2.1-20171201.tar.gz
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-3a12a65-r2.1-20171201.tar.gz.md5sum
 		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r4.sh
@@ -83,16 +83,16 @@ Release date: 1st December 2017
 	Long			: 	``` 3a12a65e161c7a13ebfe528fa0dd00359bd7f9c0 ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - master)
-	Short			:	``` cf1765f ```
-	Long			: 	``` cf1765f15f0ff62c4068e89a0d28620875469c29 ```
+	Short			:	``` bd76512 ```
+	Long			: 	``` bd765125dcf5d87d7a7abfd0a2bf165a671c4b2b```
 
 ### qbank-lite:				(https://github.com/gnowledge/qbank-lite.git - clixserver)
 	Short			:	``` 23e2113 ```
 	Long			: 	``` 23e21133c51be72534868e6b1f29f5c38ad217ef ```
 
 ### OpenAssessmentsClient:	(https://github.com/gnowledge/OpenAssessmentsClient.git - clixserver)
-	Short			:	``` acfed44 ```
-	Long			: 	``` acfed44c30b421a49fa2ec43b361ff11653e9d31 ```
+	Short			:	``` 976b5fc ```
+	Long			: 	``` 976b5fca5a3cf1f058b242b897024e13d67b7c58 ```
 
 
 

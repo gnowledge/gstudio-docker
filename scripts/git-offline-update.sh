@@ -44,7 +44,8 @@ git merge $git_commit_no_docker
 # git offline update gstudio code - started
 
 #git_commit_no_gstudio="5d5ed8acd48950f9eb850590bef068f853a42fb5";             # Earlier commit no
-git_commit_no_gstudio="cf1765f15f0ff62c4068e89a0d28620875469c29";              # Commit on 01-12-2017
+#git_commit_no_gstudio="cf1765f15f0ff62c4068e89a0d28620875469c29";              # Commit on 01-12-2017
+git_commit_no_gstudio="bd765125dcf5d87d7a7abfd0a2bf165a671c4b2b";              # Commit on 28-12-2017 
 
 #--- One time for 20170912 update - started
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
@@ -72,7 +73,7 @@ git merge $git_commit_no_gstudio
 # git offline update qbank-lite code - started
 
 #git_commit_no_qbank_lite="1b488926a4d609dcde017e4fe7a47b8a4b541339";             # Earlier commit no
-git_commit_no_qbank_lite="23e21133c51be72534868e6b1f29f5c38ad217ef";              # Commit on 01-12-2017
+git_commit_no_qbank_lite="23e21133c51be72534868e6b1f29f5c38ad217ef";              # Commit on 28-12-2017
 
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio/gnowsys-ndf/qbank-lite ${reset}"
 cd /home/docker/code/gstudio/gnowsys-ndf/qbank-lite
