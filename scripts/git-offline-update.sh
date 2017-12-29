@@ -79,23 +79,26 @@ git_commit_no_qbank_lite="23e21133c51be72534868e6b1f29f5c38ad217ef";            
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio/gnowsys-ndf/qbank-lite ${reset}"
 cd /home/docker/code/gstudio/gnowsys-ndf/qbank-lite
 
+echo -e "\n${cyan}creating new branch clixserver.tiss.edu in qbank-lite repo ${reset}" 
+git checkout -b clixserver.tiss.edu                            
+
 echo -e "\n${cyan}fetch all ${reset}"
-git fetch --all /home/docker/code/${update_patch}/code-updates/qbank-lite
+git fetch /home/docker/code/${update_patch}/code-updates/qbank-lite origin/clixserver.tiss.edu
 
-echo -e "\n${cyan}change branch to clixserver ${reset}"
-git checkout clixserver.tiss.edu
+#echo -e "\n${cyan}change branch to clixserver ${reset}"
+#git checkout clixserver.tiss.edu
 
-echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/code-updates/qbank-lite ${reset}"
-git fetch /home/docker/code/${update_patch}/code-updates/qbank-lite 
+#echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/code-updates/qbank-lite ${reset}"
+#git fetch /home/docker/code/${update_patch}/code-updates/qbank-lite 
 
 echo -e "\n${cyan}merging till specified commit number (${git-commit-no}) from /home/docker/code/${update_patch}/code-updates/qbank-lite ${reset}"
 git merge $git_commit_no_qbank_lite
 
-echo -e "\n${cyan}remove all the file and sub-driectories in directory (/home/docker/code/gstudio/gnowsys-ndf/qbank-lite/*) ${reset}"
-rm -rf /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/*
+#echo -e "\n${cyan}remove all the file and sub-driectories in directory (/home/docker/code/gstudio/gnowsys-ndf/qbank-lite/*) ${reset}"
+#rm -rf /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/*
 
-echo -e "\n${cyan}rsync /home/docker/code/${update_patch}/code-updates/qbank-lite/* in /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/ ${reset}"
-rsync -avzPh /home/docker/code/${update_patch}/code-updates/qbank-lite/* /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/
+#echo -e "\n${cyan}rsync /home/docker/code/${update_patch}/code-updates/qbank-lite/* in /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/ ${reset}"
+#rsync -avzPh /home/docker/code/${update_patch}/code-updates/qbank-lite/* /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/
 
 # git offline update qbank-lite code - ended
 
