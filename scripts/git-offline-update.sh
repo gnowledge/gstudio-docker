@@ -23,12 +23,12 @@ reset="\033[0m" ;
 
 filename=$(basename $(ls -dr /home/docker/code/update_*/ |  head -n 1));
 update_patch="${filename%.*.*}";
-update_patch="update_patch-76f5381-r2.1-20171201"
+update_patch="update_patch-c203bdb-r2.1-20171229"
 
 # git offline update docker code - started
 # git_commit_no_docker="520d9ed489fba752fa3843ccb98c0c9ad70329e3";             # Earlier commit no
 # git_commit_no_docker="3a12a65e161c7a13ebfe528fa0dd00359bd7f9c0";             # Commit on 13-11-2017
-git_commit_no_docker="76f53817dda2256d0190dd1200a81d15b4e7db16";               # Commit on 28-12-2017
+git_commit_no_docker="c203bdbc4278c6f256e18b3c034bdeb32797e771";               # Commit on 29-12-2017
 
 echo -e "\n${cyan}change the directory to /home/docker/code/ ${reset}"
 cd /home/docker/code/
@@ -46,7 +46,7 @@ git merge $git_commit_no_docker
 
 #git_commit_no_gstudio="5d5ed8acd48950f9eb850590bef068f853a42fb5";             # Earlier commit no
 #git_commit_no_gstudio="cf1765f15f0ff62c4068e89a0d28620875469c29";             # Commit on 01-12-2017
-git_commit_no_gstudio="bd765125dcf5d87d7a7abfd0a2bf165a671c4b2b";              # Commit on 28-12-2017 
+git_commit_no_gstudio="bd765125dcf5d87d7a7abfd0a2bf165a671c4b2b";              # Commit on 29-12-2017 
 
 #--- One time for 20170912 update - started
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
@@ -74,7 +74,7 @@ git merge $git_commit_no_gstudio
 # git offline update qbank-lite code - started
 
 #git_commit_no_qbank_lite="1b488926a4d609dcde017e4fe7a47b8a4b541339";             # Earlier commit no
-git_commit_no_qbank_lite="23e21133c51be72534868e6b1f29f5c38ad217ef";              # Commit on 28-12-2017
+git_commit_no_qbank_lite="23e21133c51be72534868e6b1f29f5c38ad217ef";              # Commit on 29-12-2017
 
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio/gnowsys-ndf/qbank-lite ${reset}"
 cd /home/docker/code/gstudio/gnowsys-ndf/qbank-lite
