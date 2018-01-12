@@ -5,8 +5,8 @@ Release date: 29 December 2017
 # Instruction to apply the update patch
 
 ## Download following files:
-1. https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-16a40fc-r2.1-20171229.tar.gz
-2. https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-16a40fc-r2.1-20171229.tar.gz.md5sum
+1. https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-beb6af2-r2.1-20171229.tar.gz
+2. https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-beb6af2-r2.1-20171229.tar.gz.md5sum
 3. https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r2.1.sh
 4. https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/README-update.md
 
@@ -14,8 +14,8 @@ Release date: 29 December 2017
 ## Copy content (above downloaded files) in Pendrive (not inside any directory please - directly inside the pendrive {root of pendrive})
 
 ## Check md5sum for file checksum:
-	Command : ``` md5sum update_patch-16a40fc-r2.1-20171229.tar.gz ```
-    Ensure that the alphanumeric code (output of the above command) is matching with the content of update_patch-16a40fc-r2.1-20171229.tar.gz.md5sum (which you have downloaded from the server)
+	Command : ``` md5sum update_patch-beb6af2-r2.1-20171229.tar.gz ```
+    Ensure that the alphanumeric code (output of the above command) is matching with the content of update_patch-beb6af2-r2.1-20171229.tar.gz.md5sum (which you have downloaded from the server)
 
 ## Now we have files in pendrive. Insert pendrive in the School server
 
@@ -70,14 +70,14 @@ Release date: 29 December 2017
 
 ## Update-patch number: (One commit no back of gstudio-docker)
 	Syntax  		: 	``` update_patch-<gstudio-docker-repo-commit-no>-r<release-no>-<yyyymmdd> ```
-	Exact Number 	: 	``` update_patch-16a40fc-r2.1-20171229 ``
+	Exact Number 	: 	``` update_patch-beb6af2-r2.1-20171229 ``
 
 ## Version number: r1
 
 ## Commit number
 ### gstudio-docker:			(https://github.com/mrunal4/gstudio-docker.git - master)
-	Short			:	``` 16a40fc ```
-	Long			: 	``` 16a40fc0b1e86eb584ee70009bc91236b27c0bd7 ```
+	Short			:	``` beb6af2 ```
+	Long			: 	``` beb6af265bd62b6dc34bb0acdfcdcedb6b2bccd0 ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - master)
 	Short			:	``` 225cf7b ```
