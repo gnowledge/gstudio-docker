@@ -45,8 +45,7 @@ git merge $git_commit_no_docker
 # git offline update gstudio code - started
 
 #git_commit_no_gstudio="5d5ed8acd48950f9eb850590bef068f853a42fb5";             # Earlier commit no
-#git_commit_no_gstudio="cf1765f15f0ff62c4068e89a0d28620875469c29";             # Commit on 01-12-2017
-git_commit_no_gstudio="bd765125dcf5d87d7a7abfd0a2bf165a671c4b2b";              # Commit on 29-12-2017 
+git_commit_no_gstudio="225cf7b5b8c11b916ee33488c5fc2e82ceaffa5d";              # Commit on 05-01-2018 
 
 #--- One time for 20170912 update - started
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"

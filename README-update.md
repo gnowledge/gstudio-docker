@@ -80,8 +80,8 @@ Release date: 29 December 2017
 	Long			: 	``` 16a40fc0b1e86eb584ee70009bc91236b27c0bd7 ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - master)
-	Short			:	``` bd76512 ```
-	Long			: 	``` bd765125dcf5d87d7a7abfd0a2bf165a671c4b2b```
+	Short			:	``` 225cf7b ```
+	Long			: 	``` 225cf7b5b8c11b916ee33488c5fc2e82ceaffa5d```
 
 ### qbank-lite:				(https://github.com/gnowledge/qbank-lite.git - clixserver)
 	Short			:	``` 23e2113 ```
