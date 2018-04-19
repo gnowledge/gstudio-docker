@@ -23,11 +23,12 @@ reset="\033[0m" ;
 
 filename=$(basename $(ls -dr /home/docker/code/update_*/ |  head -n 1));
 update_patch="${filename%.*.*}";
-update_patch="update_patch-3a12a65-r2.1-20171201"
+update_patch="update_patch-beb6af2-r2.1-20171229"
 
 # git offline update docker code - started
-#git_commit_no_docker="520d9ed489fba752fa3843ccb98c0c9ad70329e3";             # Earlier commit no
-git_commit_no_docker="3a12a65e161c7a13ebfe528fa0dd00359bd7f9c0";              # Commit on 13-11-2017
+# git_commit_no_docker="520d9ed489fba752fa3843ccb98c0c9ad70329e3";             # Earlier commit no
+# git_commit_no_docker="3a12a65e161c7a13ebfe528fa0dd00359bd7f9c0";             # Commit on 13-11-2017
+git_commit_no_docker="beb6af265bd62b6dc34bb0acdfcdcedb6b2bccd0";               # Commit on 29-12-2017
 
 echo -e "\n${cyan}change the directory to /home/docker/code/ ${reset}"
 cd /home/docker/code/
@@ -44,7 +45,7 @@ git merge $git_commit_no_docker
 # git offline update gstudio code - started
 
 #git_commit_no_gstudio="5d5ed8acd48950f9eb850590bef068f853a42fb5";             # Earlier commit no
-git_commit_no_gstudio="cf1765f15f0ff62c4068e89a0d28620875469c29";              # Commit on 01-12-2017
+git_commit_no_gstudio="225cf7b5b8c11b916ee33488c5fc2e82ceaffa5d";              # Commit on 05-01-2018 
 
 #--- One time for 20170912 update - started
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
@@ -72,28 +73,31 @@ git merge $git_commit_no_gstudio
 # git offline update qbank-lite code - started
 
 #git_commit_no_qbank_lite="1b488926a4d609dcde017e4fe7a47b8a4b541339";             # Earlier commit no
-git_commit_no_qbank_lite="23e21133c51be72534868e6b1f29f5c38ad217ef";              # Commit on 01-12-2017
+git_commit_no_qbank_lite="23e21133c51be72534868e6b1f29f5c38ad217ef";              # Commit on 29-12-2017
 
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio/gnowsys-ndf/qbank-lite ${reset}"
 cd /home/docker/code/gstudio/gnowsys-ndf/qbank-lite
 
+echo -e "\n${cyan}creating new branch clixserver.tiss.edu in qbank-lite repo ${reset}" 
+git checkout -b clixserver.tiss.edu                            
+
 echo -e "\n${cyan}fetch all ${reset}"
-git fetch --all /home/docker/code/${update_patch}/code-updates/qbank-lite
+git fetch /home/docker/code/${update_patch}/code-updates/qbank-lite origin/clixserver.tiss.edu
 
-echo -e "\n${cyan}change branch to clixserver ${reset}"
-git checkout clixserver.tiss.edu
+#echo -e "\n${cyan}change branch to clixserver ${reset}"
+#git checkout clixserver.tiss.edu
 
-echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/code-updates/qbank-lite ${reset}"
-git fetch /home/docker/code/${update_patch}/code-updates/qbank-lite 
+#echo -e "\n${cyan}fetching git details from /home/docker/code/${update_patch}/code-updates/qbank-lite ${reset}"
+#git fetch /home/docker/code/${update_patch}/code-updates/qbank-lite 
 
 echo -e "\n${cyan}merging till specified commit number (${git-commit-no}) from /home/docker/code/${update_patch}/code-updates/qbank-lite ${reset}"
 git merge $git_commit_no_qbank_lite
 
-echo -e "\n${cyan}remove all the file and sub-driectories in directory (/home/docker/code/gstudio/gnowsys-ndf/qbank-lite/*) ${reset}"
-rm -rf /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/*
+#echo -e "\n${cyan}remove all the file and sub-driectories in directory (/home/docker/code/gstudio/gnowsys-ndf/qbank-lite/*) ${reset}"
+#rm -rf /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/*
 
-echo -e "\n${cyan}rsync /home/docker/code/${update_patch}/code-updates/qbank-lite/* in /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/ ${reset}"
-rsync -avzPh /home/docker/code/${update_patch}/code-updates/qbank-lite/* /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/
+#echo -e "\n${cyan}rsync /home/docker/code/${update_patch}/code-updates/qbank-lite/* in /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/ ${reset}"
+#rsync -avzPh /home/docker/code/${update_patch}/code-updates/qbank-lite/* /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/
 
 # git offline update qbank-lite code - ended
 

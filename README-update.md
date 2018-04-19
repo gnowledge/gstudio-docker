@@ -1,24 +1,21 @@
-
-CLIx Platform release patch 2.1, version 17.09.r1, Notes (for CG/MZ/RJ/TS)
-State: Chhattisgarh, Mizoram, Rajasthan and Telangana 
-Release date: 1st December 2017
+CLIx Platform release patch 2.1, version 17.12.r1, Notes (for CG/RJ/TS)
+State: Chhattisgarh, Rajasthan and Telangana 
+Release date: 29 December 2017
 
 # Instruction to apply the update patch
 
-## Download the update file:
-	
-	updates dt 01-12-2017 (all updates files):
-        https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-3a12a65-r2.1-20171201.tar.gz
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-3a12a65-r2.1-20171201.tar.gz.md5sum
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r4.sh
-		https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/README-update.md
+## Download following files:
+1. https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-beb6af2-r2.1-20171229.tar.gz
+2. https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/update_patch-beb6af2-r2.1-20171229.tar.gz.md5sum
+3. https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/patch-r2.1.sh
+4. https://clixplatform.tiss.edu/softwares/clix-schoolserver-updates/README-update.md
 
 
 ## Copy content (above downloaded files) in Pendrive (not inside any directory please - directly inside the pendrive {root of pendrive})
 
 ## Check md5sum for file checksum:
-	Command : ``` md5sum update_patch-3a12a65-r2.1-20171201.tar.gz ```
-    Ensure that the alphanumeric code (output of the above command) is matching with the content of update_patch-3a12a65-r2.1-20171201.tar.gz.md5sum (which you have downloaded from the server)
+	Command : ``` md5sum update_patch-beb6af2-r2.1-20171229.tar.gz ```
+    Ensure that the alphanumeric code (output of the above command) is matching with the content of update_patch-beb6af2-r2.1-20171229.tar.gz.md5sum (which you have downloaded from the server)
 
 ## Now we have files in pendrive. Insert pendrive in the School server
 
@@ -73,26 +70,26 @@ Release date: 1st December 2017
 
 ## Update-patch number: (One commit no back of gstudio-docker)
 	Syntax  		: 	``` update_patch-<gstudio-docker-repo-commit-no>-r<release-no>-<yyyymmdd> ```
-	Exact Number 	: 	``` update_patch-3a12a65-r2.1-20171201 ``
+	Exact Number 	: 	``` update_patch-beb6af2-r2.1-20171229 ``
 
 ## Version number: r1
 
 ## Commit number
 ### gstudio-docker:			(https://github.com/mrunal4/gstudio-docker.git - master)
-	Short			:	``` 3a12a65 ```
-	Long			: 	``` 3a12a65e161c7a13ebfe528fa0dd00359bd7f9c0 ```
+	Short			:	``` beb6af2 ```
+	Long			: 	``` beb6af265bd62b6dc34bb0acdfcdcedb6b2bccd0 ```
 
 ### gstudio:    			(https://github.com/gnowledge/gstudio.git - master)
-	Short			:	``` cf1765f ```
-	Long			: 	``` cf1765f15f0ff62c4068e89a0d28620875469c29 ```
+	Short			:	``` 225cf7b ```
+	Long			: 	``` 225cf7b5b8c11b916ee33488c5fc2e82ceaffa5d```
 
 ### qbank-lite:				(https://github.com/gnowledge/qbank-lite.git - clixserver)
 	Short			:	``` 23e2113 ```
 	Long			: 	``` 23e21133c51be72534868e6b1f29f5c38ad217ef ```
 
 ### OpenAssessmentsClient:	(https://github.com/gnowledge/OpenAssessmentsClient.git - clixserver)
-	Short			:	``` acfed44 ```
-	Long			: 	``` acfed44c30b421a49fa2ec43b361ff11653e9d31 ```
+	Short			:	``` 976b5fc ```
+	Long			: 	``` 976b5fca5a3cf1f058b242b897024e13d67b7c58 ```
 
 
 
@@ -100,7 +97,7 @@ Release date: 1st December 2017
 
 Release notes: CLIx Platform patch 2.1 
 ver 17.12.r1
-Release date: 30th November 2017
+Release date: 29 December 2017
 
 ABOUT
 This release note pertains to the Connected Learning Initiative (CLIx) student platform aka CLIx platform patch 2.1 (henceforth, patch 2.1). 
@@ -120,59 +117,53 @@ DETAILS
 Please find below details of fixes and features included in patch 2.1:
 CLIx Platform patch 2.1: RJ/CG/TS
 
-**Features:**
- LMS:
-Now there are three places that have *Enroll* button so that students never miss to enroll.
-On the module card
-On the unit card
-Inside the unit 
-Super Admin will not see the Enroll button.
-Module level Enrollment:
-Provision for enrollment at Module level (provided *Enroll* button on module card). Now with module level enrollment, user gets enrolled into all the units under that module.
-Handles use cases of with/without (varying) buddies.
-Provided *Enroll* button on unit card.
-Unit Player:
-Lesson state save:
-In Lessons listing, the state of content tree is saved when you leave the page and is retrieved till the next state change. Includes logout/browser close use cases also
-Keyboard support binded to traverse Lessons
-Changed position of settings wheel from the banner to secondary header
-Activity player:
-Added new button *Next Lesson*, *Previous Lesson* in the header.
-Added *Lesson* to go back to lessons listing with context preserved.
-Native(browser) Right click is allowed in Lessons listing
-My Desk:
-Show `Explore` button if no courses are enrolled.
-Progress Report:
-Display unit/group-name
-Buddy:
-Buddy selection widget: Arranged buddies to choose in alphabetical order
-Spell correction for *garpes to grapes*; *pegion to pigeon* and *beatle to beetle*.
-Mouse hover over buddy icon will now give the buddy name
-Tooltips added for main header, unit secondary header, activity player header and notebook.
-Data tables version updated:
-Group rows for Quiz Responses
-Export table content to csv and pdf formats
-Tar file gets updated with platform quantitative data CSVs on hourly basis
-Quantitative and qualitative data will now be in similar directory structure
-system-heartbeat directory will be created with details of RAM, HDD, Size description in data etc.
-Ngnix logs are enabled
-Ssl certificate is added: redirect clixserver to clixserver.tiss.edu in schools 
-Redirect :qbank8080 to 8080 port (no need to add exception for :8080 port for assessments to work)
+**Gstudio-Docker Features:**
+- Issue of multiple time SSL-certificate exception addition on client machines (browsers) is fixed.
+
+---
 
 
+**Gstudio Features:**
+
+- LMS:
+    - Module Enroll:
+        - Provision for enrollment at Module level. Now with module level enrollment, all the units under it gets enrolled.
+        - Handled use cases with/without (varying) buddies.
+    - Provided *Enroll* button on unit card.
+    - Activity player header:
+        - Added new button *Next Lesson*, *Previous Lesson*.
+        - Unit name: provided tooltip, truncating to 25 characters.
+        - Tooltips addedd for all actions and CSS updated.
+    - Activity Player:
+        - Made `Enroll` button more promient from visibility point of view.
+    - Lesson state save:
+        - In Lessons listing, the state of content tree is saved when you leave the page and is retrieved till the next state change. Includes logout/browser close use cases also
+        - Keyboard support binded to traverse Lessons
+- My Desk:
+    - Showing `Explore` button if no courses are enrolled.
+- Progress Report:
+    - Display unit/group-name
+- Buddy:
+    - Buddy selection widget: Arranged buddies to choose in alphabetical order
+- Datatables version updated:
+    - Group rows for Quz Responses
+    - Export table content to csv and pdf formats
+
+---
 
 **Bug Fixes:**
-LMS:
-Enabled browser/default context-menu(right-click event) in course content tree (which was earlier overridden by jqtree)
-Write Note to open editor in a new tab
-Banner image made full width without distorting aspect ratio.
-Tools: Policequad: data logging issue with buddies fixed.
-Text corrections in Progress Report (Update -> Refresh; Complete -> Visit)
-Accessibility issues:
-Unit header label colors modified
-Activity player header, including truncating Unit name
-Login: Trimming spaces in the username input field.
-Time zone inconsistency between inside and outside the docker is fixed to maintain IST time.
+- LMS:
+    - Enabled browser/default context-menu(right-click event) in course content tree (which was earlier overridden by jqtree)
+    - Write Note to open editor on redirection issue resolved.
+- Banner image made full width without distoring aspect ratio.
+- Tools: Policequad, logging issue with buddies fixed.
+- Accessibility issues:
+    - Unit header label colors modified
+    - Activiy player header, including trunctaing Unit name
+- Login: Trimming username input field.
+- Quiz: bug of not saving nos of attempts resolved.
+
+---
 
 **gstudio/technical updates:**
 - Added `fab` command to backup and restore sql db.
@@ -189,11 +180,15 @@ Time zone inconsistency between inside and outside the docker is fixed to mainta
     - Created necessary files and folders under `doc/`.
     - Added pip dependencies in `requirements.txt` for same.
 
+---
+
 **Scripts to process after taking pull:**
 - `pip install -r requirements.txt`
 - `bower install`
 - Execute following within python manage.py shell:
-    - `execfile('../doc/deployer/release2_sept17.py')`
+    - `execfile('../doc/deployer/release2-1_nov17.py')`
+
+---
 
 Git commit and file summary: https://github.com/gnowledge/gstudio/compare/17.10.r1...master
 In case of any queries or to report an issue please contact Clix-india-tech@clix.tiss.edu
