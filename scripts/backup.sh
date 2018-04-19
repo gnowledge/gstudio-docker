@@ -161,6 +161,16 @@ if [[ ! -L /softwares/${ss_code}-${ss_id}.tar.gz ]]; then
     ln -s /backups/rsync/${ss_code}-${ss_id}/${ss_code}-${ss_id}.tar.gz  /softwares/${ss_code}-${ss_id}.tar.gz
 fi
 
+# Add soft link for assessment-media file
+if [[ ! -L /softwares/assessment-media ]]; then
+    ln -s /data/assessment-media  /softwares/assessment-media
+fi
+
+# Add soft link for gstudio_tools_logs file
+if [[ ! -L /softwares/gstudio_tools_logs ]]; then
+    ln -s /data/gstudio_tools_logs  /softwares/gstudio_tools_logs
+fi
+
 # log commit details - in /data/git-commit-details.log - started
 echo -e "\nDate : $(date) \n" > /data/git-commit-details.log
 
