@@ -118,6 +118,9 @@ python manage.py celeryd -f /var/log/celeryd.log  -l INFO &
 # python manage.py sync_existing_documents ;				   # Mrunal M. Nachankar : Mon, 07-09-2015 12:15:AM 
 
 
+echo "[run] logout_all_users" ;							   # Mrunal M. Nachankar : Mon Apr  9 16:32:09 IST 2018 
+echo "execfile('../doc/deployer/logout_all_users.py')" | python manage.py shell ;	   # Mrunal M. Nachankar : Mon Apr  9 16:32:09 IST 2018 
+
 echo "[run] smtpd.sh" ;							   # Mrunal M. Nachankar : Mon, 07-09-2015 12:15:AM 
 bash /home/docker/code/scripts/smtpd.sh ; 						   # Mrunal M. Nachankar : Mon, 07-09-2015 12:15:AM 
 
