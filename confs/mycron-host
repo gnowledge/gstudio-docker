@@ -22,4 +22,4 @@
 # m h  dom mon dow   command
 
 # Trigger scripts at every reboot of host system
-@reboot     /bin/bash  /home/core/Execute-single_school_get_MIT_activity_data.sh  >  /tmp/Execute-single_school_get_MIT_activity_data.log  
+@reboot     /bin/bash  /home/core/Execute-get_all_users_activity_timestamp_csvs.sh  >  /tmp/Execute-get_all_users_activity_timestamp_csvs.log  
