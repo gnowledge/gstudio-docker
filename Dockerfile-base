@@ -32,7 +32,7 @@ RUN apt-get install -y python-software-properties  | sed -e "s/^/$(date +%Y%m%d-
    &&  add-apt-repository -y ppa:nginx/stable  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
    &&  add-apt-repository -y ppa:mc3man/trusty-media  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}   \
    &&  apt-get install -y curl   \
-   &&  curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -   \
+   &&  curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -   \
    &&  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -   \
    &&  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list   \
    &&  apt-get install apt-transport-https -y --force-yes
@@ -70,8 +70,8 @@ RUN apt-get update \
 #       && rm -rf /var/lib/apt/lists/*
 
 
-# gpg: key 7F0CEB10: public key "Richard Kreuter <richard@10gen.com>" imported
-RUN apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 492EAFE8CD016A07919F1D2B9ECBEC467F0CEB10  | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
+# gpg: key EA312927: public key "ernie.hershey Ernie Hershey added a comment - Oct 22 2015 09:22:32 PM GMT+0000" link (https://jira.mongodb.org/browse/DOCS-6090?page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel&showAll=true)
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv EA312927   | sed -e "s/^/$(date +%Y%m%d-%H%M%S) :  /" 2>&1 | tee -a ${LOG_INSTALL_DOCKER}
 
 # Mrunal : 12012016 : Changed the source for mongodb from "http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.1 multiverse" to "http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse" 
 # install uwsgi now because it takes a little while
