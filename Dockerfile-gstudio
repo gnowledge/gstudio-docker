@@ -129,6 +129,9 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime  | sed -e "s/^/$(date
 
 # Restore default postgres database
 RUN /etc/init.d/postgresql start   \
+   &&  cd /home/docker/code/schema_dump/    \
+   &&  tar xvjf schema-dump.tar     \
+   &&  rsync -avPh data/*  /data/   \
    &&  echo "psql -f /data/pgdata.sql;" | sudo su - postgres    \
    &&  crontab /home/docker/code/confs/mycron    \
    &&  rm /etc/rc.local    \
