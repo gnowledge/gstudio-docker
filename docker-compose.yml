@@ -1,0 +1,39 @@
+# gstudio with postgres+mongodb+rcs+fs-media
+#
+# Access via "http://localhost:80" (or "http://$(docker-machine ip):8080" if using docker-machine)
+#
+
+version: '2'
+
+services:
+
+  # Create gstudio container
+  gstudio:
+    image: registry.tiss.edu/school-server-dlkit:43-7b32cc4
+    container_name: gstudio
+    restart: always
+    environment:
+      - TERM=xterm
+    hostname: 'clixserver.tiss.edu'
+    ports:
+      - "80:80"             #http
+      - "443:443"           #https
+      - "8022:22"           #ssh
+      - "8025:25"           #smtp
+      - "8143:143"          #g-imap
+      - "8587:587"          #g-smtp
+      - "8432:5432"         #postgres
+      - "8000:8000"         #dev
+      - "8017:27017"        #mongodb
+      - "8080:8080"         #qbank
+      - "5555:5555"         #celery-flower
+      
+    volumes:
+      # requires proper authorizations, see rights.sh (incase of 403-forbidden error on web browser, please check /data/media permissions)
+      - /home/core/data:/data
+      - /home/core/code:/home/docker/code
+      - /home/core/setup-software:/softwares
+      - /home/core/assesment-datastore:/home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore
+      - /home/core/backups:/backups
+      - /home/core/static:/static
+ 

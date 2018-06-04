@@ -1,479 +1,696 @@
 Sr. No.;School Name;Full CLIx School Code;Server id
-;Dr.S.R.Dewangan Govt.H.S.SchoolDhamtari;01011001;ct1
-;Govt.Model Girls H.S.School Dhamtari;01011002;ct2
-;Govt.High School Gokulpur Ward Dhamatri;01011003;ct3
-;Govt.H.S.School Sambalpur;01011004;ct4
-;Govt.H.School Shankardah;01011005;ct5
-;Govt.High School Rudri;01011006;ct6
-;Govt.H.S.School Khathuli;01011007;ct7
-;Govt.H.S.School Aamdi;01011008;ct8
-;Govt.H.S.School Doma;01011009;ct9
-;Govt.H.S.School Kharenga;01011010;ct10
-;Govt.H.S.School Bagtarai;01011011;ct11
-;Govt.H.S.School Kurra;01011012;ct12
-;Govt.H.S.School Gopalpuri;01011013;ct13
-;Govt.H.S.School Maroud;01011014;ct14
-;Govt.H.S.School Darba;01011015;ct15
-;Govt.H.S.School Sivanikala;01011016;ct16
-;Govt.H.S.School Ji.Jamgoan;01011017;ct17
-;Govt.H.S.School Bhatagaon;01011018;ct18
-;Govt.H.S.School Sirri;01011019;ct19
-;Govt.H.S. School Charra;01011020;ct20
-;Govt.High School Thooha;01011021;ct21
-;Govt.H.S.School Atang;01011022;ct22
-;Govt.H.S.School Gatapar;01011023;ct23
-;Govt.High School Rampur;01011024;ct24
-;Govt.H.S.School Kachana;01011025;ct25
-;Govt.H.S.School Bhendara;01011026;ct26
-;Govt.H.S.School Joratarai;01011027;ct27
-;Govt.H.S.School Korra;01011028;ct28
-;Govt.H.S.School Nari;01011029;ct29
-;Govt.H.S.School Soram;01011030;ct30
-;JNV Kanker;01305009;ct251
-;JNV Koriya;01325011;ct252
-;JNV Mahasamund;01335012;ct253
-;JNV Janjgir;01275006;ct254
-;JNV Korba;01315010;ct255
-;JNV Surajpur;01385017;ct256
-;JNV Raigarh;01345013;ct257
-;JNV Kabirdham;01295008;ct258
-;JNV Dantewada;01255004;ct259
-;JNV Jashpur;01285007;ct260
-;JNV Raipur;01355014;ct261
-;JNV Rajnandgaon;01365015;ct262
-;JNV Sukma;01375016;ct263
-;JNV Dhamtari;01015001;ct264
-;JNV Bilaspur;01025002;ct265
-;JNV Durg;01265005;ct266
-;JNV Bastar;01245003;ct267
-;GOVT. MIZO HIGH SCHOOL;02031001;mz1
-;GOVT. CHAWNPUI HIGH SCHOOL;02031002;mz2
-;GOVT. K.M. HIGH SCHOOL;02031003;mz3
-;GOVT. SAKAWRTUICHHUN HIGH SCHOOL;02031004;mz4
-;GOVT. JL HIGH SCHOOL;02031005;mz5
-;GOVT. KULIKAWN HIGH SCHOOL;02031006;mz6
-;TUIKUAL SOUTH HIGH SCHOOL(ADHOC);02031007;mz7
-;GOVT. AIZAWL HIGH SCHOOL;02031008;mz8
-;GOVT. HRANGCHHUANA HIGH SCHOOL;02031009;mz9
-;GOVT. GORKHA HIGH SCHOOL;02031010;mz10
-;GOVT. BAWNGKAWN HIGH SCHOOL;02031011;mz11
-;GOVT. BUNGKAWN HIGH SCHOOL;02031012;mz12
-;GOVT. MELRIAT HIGH SCHOOL;02031013;mz13
-;GOVT. PIANGHLEIA HIGH SCHOOL;02031014;mz14
-;GOVT. ZEMABAWK HIGH SCHOOL;02031015;mz15
-;GOVT. MAMAWII HIGH SCHOOL;02031016;mz16
-;GOVT. BETHLEHEM VENGTHLANG HIGH SCHOOL;02031017;mz17
-;GOVT. COMPREHENSIVE MODEL HIGH SCHOOL;02031018;mz18
-;GOVT. CHALTLANG HIGH SCHOOL;02031019;mz19
-;GOVT. DINTHAR HIGH SCHOOL;02031020;mz20
-;GOVT. HRANGCHHUNGA HIGH SCHOOL;02031021;mz21
-;RAMHLUN SOUTH HIGH SCHOOL(ADHOC);02031022;mz22
-;GOVT. REPUBLIC HIGH SCHOOL;02031023;mz23
-;GOVT. TANHRIL HIGH SCHOOL;02031024;mz24
-;GOVT. DURTLANG HIGH SCHOOL;02031025;mz25
-;GOVT. KVM HIGH SCHOOL;02031026;mz26
-;GOVT. SIHPHIR HIGH SCHOOL;02031027;mz27
-;GOVT. CENTRAL HIGH SCHOOL;02031028;mz28
-;GOVT. MAUBAWK HIGH SCHOOL;02031029;mz29
-;GOVT. SAIRANG HIGH SCHOOL;02031030;mz30
-;Govt. Sr. Sec. School near tample, padampura;03051001;rj1
-;Govt. Sr. Sec. School, chaapradi;03051002;rj2
-;Govt. Sr. Sec. School, bhagawas chorsi;03051003;rj3
-;Govt. Sr. Sec. School, bhonawas;03051004;rj4
-;Govt. Adarsh Sr. Sec. School, taskola;03051005;rj5
-;Govt. Adarsh Sr. Sec. School, mohabbatpura;03051006;rj6
-;Govt. Adarsh Sr. Sec. School, harsolia;03051007;rj7
-;Govt. Adarsh Sr. Sec. School, Gohandi;03051008;rj8
-;Govt. Adarsh Sr. Sec. School, nevar, dhula via banshka;03051009;rj9
-;Govt. Sec. School, Dhaupura;03051010;rj10
-;Govt. Sr. Sec. School, Tholai;03051011;rj11
-;Govt. Sr. Sec. School, nidadh, jhotwara;03051012;rj12
-;Govt. Sr. Sec. School, Jawahar nagar;03051013;rj13
-;Govt. Sec. School, Mandi khatikan;03051014;rj14
-;Govt. Sec. School, Rajpur vaas tala;03051015;rj15
-;Govt. Sec. School, kunthada kalan, Bassi;03051016;rj16
-;Govt. Sec. School, hanutpura;03051017;rj17
-;Govt. Sr. Sec. School, labor colony, bani park;03051018;rj18
-;Govt. Girls Sr. Sec. School, nari ka naka, sastrinagar;03051019;rj19
-;Govt. Sr. Sec. School, charan nadi, dadi ka fatak;03051020;rj20
-;Govt. Adarsh Sr. Sec. School, rampura dabdi;03051021;rj21
-;Govt. Adarsh Sr. Sec. School, Khorashymdas,Jalsu;03051022;rj22
-;Govt. Sr. Sec. School, Nivaru road jaipur;03051023;rj23
-;Govt. girls Sr. Sec. School, raval ji ka bag;03051024;rj24
-;Govt. Sr. Sec. School, chakbasdi, Jhotwada;03051025;rj25
-;Govt. Sr. Sec. School, goukulpura;03051026;rj26
-;Govt. Sr. Sec. School, goliyawas;03051027;rj27
-;Govt. Adarsh Sr. Sec. School, mansarovar;03051028;rj28
-;Govt. Adarsh Sr. Sec. School,Barodiya Viratnagar;03051029;rj29
-;Govt. Sr. Sec. School, Rojdi via phulera, Dudu;03051030;rj30
-;Govt. Sr. Sec. School, sakuhooa, Hatupura, Dudu;03051031;rj31
-;Govt. Sec. School, Sunadiya,chhaparwada, Dudu;03051032;rj32
-;Govt. Sr. Sec. School, Kachroda, Dudu;03051033;rj33
-;Govt. Girls Sec. School, Shubash chok narayana;03051034;rj34
-;Govt. Sr. Sec. School, Garudwasi;03051035;rj35
-;Govt. Girl sec. school sheetala dungri;03051036;rj36
-;Govt. sr. Sec. School Radoli;03051037;rj37
-;Govt. Sec. School Mahadevpura;03051038;rj38
-;Govt. Sr. Sec. School, Ramnagar;03051039;rj39
-;Govt. Sr. Sec. School, Agra Road Paldi Meena;03051040;rj40
-;Govt. Adarsh Sr. Sec. School, Agra road Jhar;03051041;rj41
-;Govt. Adarsh Sr. Sec. School, Sambharia;03051042;rj42
-;Govt. Girl Sr. Sec. School, Goner, near Jagdish temple;03051043;rj43
-;Govt. Adarsh Sr. Sec. School, Vidhani;03051044;rj44
-;Govt. Girl Sr. Sec. School, Durgapura;03051045;rj45
-;Govt. Sr. Sec. School, Morija, Govindgarh;03051046;rj46
-;Govt. Adarsh Sr. Sec. School, Hadota;03051047;rj47
-;Govt. Maheshwari Sec. School, Chomu;03051048;rj48
-;Govt. Adarsh Sr. Sec. School, RadhaSwami ka Bag, Jayatpura;03051049;rj49
-;Govt. Sec. School, dabla bujurag;03051050;rj50
-;Govt. Sr. Sec. School, Sanjhariya;03051051;rj101
-;Govt.Girls Sr. School, Mandar;03072001;rj51
-;Govt. Girls Sec. school, jawal;03072002;rj52
-;Govt. sec. Sr. school, bhootgaon;03072003;rj53
-;Govt. Sr. Sec. school, haliwada;03072004;rj54
-;Govt. Sr. Sec. school, aamlari;03072005;rj55
-;Govt. Sr. Sec. school, mandwariya;03072006;rj56
-;Govt. Sr. Sec. school, fugni;03072007;rj57
-;Govt. Adarsh sr. sec. School, madiya;03072008;rj58
-;Govt. Sr. Se. school, Manora;03072009;rj59
-;Govt. Sr. sec. school, rukhada, shivganj;03072010;rj60
-;Govt. Sr. sec. school, sanpur;03072011;rj61
-;Govt. Sec. School, deldar, mandh;03072012;rj62
-;Govt. Adarsh sr. Sec. School, Sorda;03072013;rj63
-;Govt. Adarsh Sr. Sec. School, magriawada;03072014;rj64
-;Govt. Sr. Sec. school, Jeerawal;03072015;rj65
-;Govt. Sr.Sec school, Datrai;03072016;rj66
-;Govt. Sr.Sec School, Chiwagoan;03072017;rj67
-;Govt. Sr. sec. school, Jogapura(Purana);03072018;rj68
-;Govt. Sr.Sec school, Aalpa;03072019;rj69
-;Govt. Sec. school, chota lakmawa, shivganj, sirohi;03072020;rj70
-;Govt.Ser.school, keasrpura;03072021;rj71
-;Govt. Sec. school, shivganj;03072022;rj72
-;Shri shantinath Adarsh Govt. Sr. Sec. School, uud, sirohi;03072023;rj73
-;Govt. Sr.Sec. School, undra;03072024;rj74
-;Govt. Sr. Sec. School, vatera;03072025;rj75
-;Govt. Sr. Sec. School, Sindrath;03072026;rj76
-;Govt. Sec. School,Sirohi;03072027;rj77
-;Govt. Sr. Sec. School, Khambal;03072028;rj78
-;Govt. Sr. Sec. School, Dodua;03072029;rj79
-;Govt. Sr. Sec. School, Peshua;03072030;rj80
-;Govt. Sr. Sec. School, Bhimana;03072031;rj81
-;Govt. Sr. Sec. School, Sanwara R;03072032;rj82
-;Govt. Sr. Sec. School, Vasa;03072033;rj83
-;Govt. Adarsh Sr. Sec. School, Vaghsin;03072034;rj84
-;Govt. Sec. School, Khejariya;03072035;rj85
-;Govt. Sr. Sec. School, Pamera;03072036;rj86
-;Govt. Sr. Sec. School, Makawal;03072037;rj87
-;Govt. Adarsh Sr. Sec. School, Gulabganj;03072038;rj88
-;Govt. Sr. Sec. School, Marol;03072039;rj89
-;Govt. Sr. Sec. School, Uthman;03072040;rj90
-;Govt. Sr. Sec. School, Jhadoli Veer;03072041;rj91
-;Govt. Sr. Sec. School, Naradara;03072042;rj92
-;Govt. Sr. Sec. School, Andore;03072043;rj93
-;Govt. Sr. Sec. School, Lunol;03072044;rj94
-;Govt. Adarsh Sr. Sec. School, Morthala;03072045;rj95
-;Govt. Adarsh Sr. Sec. School, Deldar;03072046;rj96
-;Govt. Sec. School, Akrabhata;03072047;rj97
-;Govt. Adarsh Sr. Sec. School, Maval;03072048;rj98
-;Govt. Girls Sr. Sec. School, Mount Abu;03072049;rj99
-;Govt. Adarsh Sr. Sec. School,Tartoli;03072050;rj100
-;ZPHS ZAFFARGADH;04131001;tg101
-;ZPHS MACHUPHAD;04131002;tg102
-;ZPPSS Nawabpet;04131003;tg103
-;ZPHS Narmetta;04131004;tg104
-;Zphs Veldanda;04131005;tg105
-;ZPHS Cheeturu;04131006;tg106
-;ZPHS Kunoor;04131007;tg107
-;ZPHS Pidisilla;04141008;tg108
-;ZPHS Motlapally;04141009;tg109
-;ZPHS Alankhanipet;04221010;tg110
-;ZPHS Pedakorpole;04221011;tg111
-;ZPHS Mogullapally;04141012;tg112
-;ZPHS ASHOKNAGAR;04221013;tg113
-;ZPHS BUDHARAOPET;04221014;tg114
-;ZPHS Dharmaraopet;04221015;tg115
-;ZPHS OTAI;04161016;tg116
-;ZPHS DHARMARAM;04221017;tg117
-;ZPHS ELUKURTHY;04221018;tg118
-;GHS rangasaipet g;04231019;tg119
-;ZPPSS PEDDAMADUR;04131020;tg120
-;ZPHS PARVATHAGIRI;04221021;tg121
-;ZPHS Dhoolmitta;04191022;tg122
-;GHS krishnacolony;04231023;tg123
-;ZPHS KONKAPAKA;04221024;tg124
-;ZPHS Girls mahabubabad;04161025;tg125
-;ZPHS Pulukurthy;04221026;tg126
-;GHS orus;04231027;tg127
-;ZPHS DEVAGIRIPATNAM;04141028;tg128
-;GHS Karimabad;04231029;tg129
-;ZPHS Atmakur;04221030;tg130
-;ZPHS GUNTURPALLY;04221031;tg131
-;ZPHS edulapusapally;04161032;tg132
-;GHS g middlefort;04231033;tg133
-;ZPHS Akkampet;04221034;tg134
-;ZPHS GIRLS MULUG;04141035;tg135
-;Zppss Paidipally;04231036;tg136
-;ZPHS Damera;04221037;tg137
-;ZPHS ABBAPOOR;04141038;tg138
-;ZPPSS CHINNAMADUR;04131039;tg139
-;ZPSS Neerukulla;04221040;tg140
-;Tswrms/jr.college madikonda;04231041;tg141
-;ZPHS Pakhal Road Model;04221042;tg142
-;GHS railwaygate;04231043;tg143
-;TSTWREIS HS KOTHAGUDA;04161044;tg144
-;ZPHS CHALVAI;04141045;tg145
-;Zphs siddapur;04231046;tg146
-;Zphs mucharla;04231047;tg147
-;ZPHS ELLANDA;04221048;tg148
-;ZPHS KONDAPUR;04221049;tg149
-;GGHS lashkarbazar;04231050;tg150
-;zppss sundaraiah nagar;04231051;tg151
-;ZPHS Obul Keshvapur;04131052;tg152
-;ZPHS PEDDAPAHAD;04131053;tg153
-;ZPHS MULKALAPALLY;04161054;tg154
-;ZPHS DORNAKAL;04161055;tg155
-;ZPHS Konduru;04221056;tg156
-;ZPHS(Girls)Dharmasagar;04231057;tg157
-;ZPHS Saipet;04231058;tg158
-;ZPHS Peddapendial;04231059;tg159
-;ZPHS UPPARAPALLY;04161060;tg160
-;ZPHS PENUGONDA;04161061;tg161
-;ZPHS KALWALA;04161062;tg162
-;Zphs kambalapally;04161063;tg163
-;Hanamkonda;04231064;tg164
-;GHS Waddepalli;04231065;tg165
-;Zphs v s laxmipuram;04161066;tg166
-;ZPHS GORREKUNTA;04221067;tg167
-;ZPHS KOMMALA;04221068;tg168
-;GHS (boys) kazipet;04231069;tg169
-;ZPHS Kadipikonda;04231070;tg170
-;Zphs Hasanparthy (G);04231071;tg171
-;TSTWREIS HS AK Ghanpur;04141072;tg172
-;ZphS MEDAPALLY;04221073;tg173
-;ZPHS RUDRAGUDEM;04221074;tg174
-;ZPHS NANDIGAMA;04221075;tg175
-;ZPHS ALAIR;04161076;tg176
-;GHS Basithnagar;04231077;tg177
-;GHS Markaji;04231078;tg178
-;ZPHS mamnoor camp;04231079;tg179
-;ZPHS madikonda;04231080;tg180
-;ZPHS MECHARAJPALLY;04161081;tg181
-;ZPHS Kondaparthy;04231082;tg182
-;Ghs Somidi;04231083;tg183
-;ZPHS Tharalapally;04231084;tg184
-;Zphs Salakpur;04191085;tg185
-;Zphs Bairanpally;04191086;tg186
-;ZPHS Maddur;04191087;tg187
-;ZPHS TEKUMATLA;04141088;tg188
-;Zphs nainpaka;04141089;tg189
-;Zphs CHITYAL;04141090;tg190
-;ZPHS CHELPUR;04141091;tg191
-;ZPHS BUDDARAM;04141092;tg192
-;ZPHS GHANPUR (M);04141093;tg193
-;zphs nadikuda;04221094;tg194
-;ZPHS VARIKOLE;04221095;tg195
-;ZPHS KODAKANDLA;04131096;tg196
-;GOVT HS NARSAMPET;04221097;tg197
-;ZPHS BOYS NARSAMPET;04221098;tg198
-;ZPHS GIRLS NARSAMPET;04221099;tg199
-;ZPHS LAKNEPALLY;04221100;tg200
-;ZPHS (BOYS) MANAKONDUR;04152001;tg201
-;ZPHS Ramadugu;04152002;tg202
-;Zphs Peddalingapoor;04202003;tg203
-;Zphs Galipally;04202004;tg204
-;Zphs kanagarthi;04112005;tg205
-;Zphs Pothakapally;04112006;tg206
-;ZPHS Bandalingampally;04202007;tg207
-;ZPHS Gopalraopeta;04152008;tg208
-;ZPHS KOREM;04202009;tg209
-;Zphs NOOKALAMARRY;04202010;tg210
-;Zphs Dacharam;04202011;tg211
-;ZPHS KATNAPALLY;04152012;tg212
-;ZPHS METPALLY;04152013;tg213
-;Govt High school Vemulawada;04202014;tg214
-;Zphs Gannervaram;04152015;tg215
-;ZPHS Lingannapet;04202016;tg216
-;Zphs ellandakunta;04152017;tg217
-;ZPHS (boys) GAMBHIRAOPET;04202018;tg218
-;ZPHS RacharlaBoppapur;04202019;tg219
-;TTWR SCHOOL(Girls)Dumala;04202020;tg220
-;ZPHS Narsingapur;04202021;tg221
-;ZPHS Baswapur;04192022;tg222
-;Zphs Tssw boys jammikunta;04152023;tg223
-;ZPHS ARNAKONDA;04152024;tg224
-;ZPHS RUDRAVARAM;04202025;tg225
-;ZPHS Molangur;04152026;tg226
-;ZPHS (Girls)Kodimial;04122027;tg227
-;Zphs g vemulawada;04202028;tg228
-;ZPHS VILASAGAR;04202029;tg229
-;GHS(G) Mukarampura;04152030;tg230
-;ZPHS Kannapur;04152031;tg231
-;ZPHS Boinpalli;04202032;tg232
-;Zphs Janagapally;04152033;tg233
-;ZPHS KODURUPAKA;04202034;tg234
-;Zphs lmd colony t/m;04152035;tg235
-;Zphs nustulapur;04152036;tg236
-;Zphs Vallampatla;04202037;tg237
-;ZPHS SIRSAPALLY;04152038;tg238
-;GHS HUZURABAD;04152039;tg239
-;Zphs kolanor;04112040;tg240
-;ZPHS BORNAPALLY;04152041;tg241
-;Zphs girls jammikunta;04152042;tg242
-;Zphs.eligaid;04112043;tg243
-;ZPHS (B) UPPAL;04232044;tg244
-;ZPHS (G) UPPAL;04232045;tg245
-;ZpHS Challur;04152046;tg246
-;ZPHS Gajasingavaram;04202047;tg247
-;ZPHS MARRIPALLYGUDEM;04232048;tg248
-;Zphs rachapalli;04152049;tg249
-;ZPHS Kothapally;04152050;tg250
-;ZPHS(B) Peddapalli;04112051;tg251
-;ZPHS Moodapally;04202052;tg252
-;Zphs basanthnagar;04112053;tg253
-;Zphs jayyaram;04112054;tg254
-;ZPHS Racharla Gollapally;04202055;tg255
-;ZPHS Yellareddypet;04202056;tg256
-;ZPHS Mallial;04202057;tg257
-;ZPHS DHARMARAM;04202058;tg258
-;ZPHS NIMMAPALLY;04202059;tg259
-;Zphs NTPC jyothinagar;04112060;tg260
-;Zphs girls godavarikani;04112061;tg261
-;ZPHS Wadkapur;04112062;tg262
-;ZPHS Peddapur;04112063;tg263
-;GHS Old High School Karimnagar;04152064;tg264
-;ZPHS ALLIPUR;04122065;tg265
-;ZPHS (G) RAIKAL;04122066;tg266
-;ZPHS CHILVAKODUR;04122067;tg267
-;ZPHS Bhupathipur;04122068;tg268
-;Zphs Kandikatkoor;04202069;tg269
-;Zphs sriramulapally;04192070;tg270
-;ZPHS PACHUNUR;04152071;tg271
-;ZPHS VELDHI;04152072;tg272
-;ZPHS Mallareddypet;04202073;tg273
-;Zphs Hanmajipet;04202074;tg274
-;Zphs ODELA;04112075;tg275
-;ZPHS SHANIGARAM;04232076;tg276
-;ZPHS GANGIPALLY;04152077;tg277
-;Zphs vavilala;04152078;tg278
-;ZPHS VARSHAKONDA;04122079;tg279
-;GHS DHANGARWADI;04152080;tg280
-;Zphs gundaram;04192081;tg281
-;Zphs Nagunnor;04152082;tg282
-;ZPHS Venkatapur;04202083;tg283
-;Zphs.dhoolikatt;04112084;tg284
-;Zphs.sulthanpur;04112085;tg285
-;ZPHS (G) KAMALAPUR;04232086;tg286
-;ZPHS Ghanmukla;04152087;tg287
-;ZPHS Kothapally;04202088;tg288
-;ZPHS ANTHERGOAM;04112089;tg289
-;ZPHS POTYALA;04112090;tg290
-;Zphs korapally;04152091;tg291
-;Zphs kurikyal;04152092;tg292
-;ZPHS THATLAWAI;04122093;tg293
-;ZPHS (G) CHOPPADANDI;04152094;tg294
-;Zphs peddabonkoor;04112095;tg295
-;ZPHS Potharam;04112096;tg296
-;ZPHS GUDUR;04232097;tg297
-;ZPHS Sanugula;04202098;tg298
-;Zphs Thotapally;04192099;tg299
-;ZPHS Thippaipally;04122100;tg300
-;T.S.W.R.M School;04183001;tg1
-;ZPHS KANDAWADA;04183002;tg2
-;ZPHS Mall;04183003;tg3
-;Zphs Janwada;04183004;tg4
-;Zphs sardar nagar;04183005;tg5
-;ZPHS GHATKESAR G;04173006;tg6
-;ZPHS URELLA;04183007;tg7
-;ZPHS MIRKHANPET;04183008;tg8
-;ZPHS B MANCHAL;04183009;tg9
-;ZPHS Chilkoor;04183010;tg10
-;ZPHS THIMMAPOOR;04183011;tg11
-;ZPHS Himayatnagar;04183012;tg12
-;ZPHS Nandiwanaparthy;04183013;tg13
-;ZPHS Venkatapur;04183014;tg14
-;ZPHS Maharajpet;04183015;tg15
-;ZPHS MALKAPUR;04183016;tg16
-;ZPHS Chinnathundla;04183017;tg17
-;ZPHS EDULABAD;04173018;tg18
-;Zphs thallapally;04183019;tg19
-;ZPHS MANCHANPALLY;04213020;tg20
-;ZPHS PEDDA UMMENTHAL;04213021;tg21
-;ZPHS Medipally Nakkartha;04183022;tg22
-;ZPHS Yacharam;04183023;tg23
-;Zphs shabad boys;04183024;tg24
-;Zphs naskal;04213025;tg25
-;ZPHS ANGADICHITTEMPALLY;04213026;tg26
-;ZPHS Korremul;04173027;tg27
-;ZPHS NEDUNOOR;04183028;tg28
-;Zphs hythabad;04183029;tg29
-;ZPHS RANGAPUR;04183030;tg30
-;ZPHS MARPALLY UM;04213031;tg31
-;ZPHS Aziznagar;04183032;tg32
-;ZPHS LEMOOR;04183033;tg33
-;ZPHS ALOOR(G);04183034;tg34
-;ZPHS.Mothkur;04213035;tg35
-;ZPHS ARUTLA;04183036;tg36
-;TS MODEL SCHOOL;04213037;tg37
-;ZPHS (B) THUKKUGUDA;04183038;tg38
+;Dr.S.R.Dewangan Govt.H.S.SchoolDhamtari;1011001;ct1
+;Govt.Model Girls H.S.School Dhamtari;1011002;ct2
+;Govt.High School Gokulpur Ward Dhamatri;1011003;ct3
+;Govt.H.S.School Sambalpur;1011004;ct4
+;Govt.H.School Shankardah;1011005;ct5
+;Govt.High School Rudri;1011006;ct6
+;Govt.H.S.School Khathuli;1011007;ct7
+;Govt.H.S.School Aamdi;1011008;ct8
+;Govt.H.S.School Doma;1011009;ct9
+;Govt.H.S.School Kharenga;1011010;ct10
+;Govt.H.S.School Bagtarai;1011011;ct11
+;Govt.H.S.School Kurra;1011012;ct12
+;Govt.H.S.School Gopalpuri;1011013;ct13
+;Govt.H.S.School Maroud;1011014;ct14
+;Govt.H.S.School Darba;1011015;ct15
+;Govt.H.S.School Sivanikala;1011016;ct16
+;Govt.H.S.School Ji.Jamgoan;1011017;ct17
+;Govt.H.S.School Bhatagaon;1011018;ct18
+;Govt.H.S.School Sirri;1011019;ct19
+;Govt.H.S. School Charra;1011020;ct20
+;Govt.High School Thooha;1011021;ct21
+;Govt.H.S.School Atang;1011022;ct22
+;Govt.H.S.School Gatapar;1011023;ct23
+;Govt.High School Rampur;1011024;ct24
+;Govt.H.S.School Kachana;1011025;ct25
+;Govt.H.S.School Bhendara;1011026;ct26
+;Govt.H.S.School Joratarai;1011027;ct27
+;Govt.H.S.School Korra;1011028;ct28
+;Govt.H.S.School Nari;1011029;ct29
+;Govt.H.S.School Soram;1011030;ct30
+;JNV Kurud;1015001;ct251
+;JNV Bilaspur;1025002;ct252
+;JNV Bastar;1245003;ct253
+;JNV, Dantewada;1255004;ct254
+;JNV, Durg;1265005;ct255
+;JNV Jangir;1275006;ct256
+;JNV Jaspur;1285007;ct257
+;JNV Kabirdham;1295008;ct258
+;JNV Kanker;1305009;ct259
+;JNV Korba;1315010;ct260
+;JNV Koriya;1325011;ct261
+;JNV Mahasamund;1335012;ct262
+;JNV Raigarh;1345013;ct263
+;JNV Raipur;1355014;ct264
+;JNV Rajnandgaon;1365015;ct265
+;JNV Sukma;1375016;ct266
+;JNV Surajpur;1385017;ct267
+;GOVT. MIZO HIGH SCHOOL;2031001;mz1
+;GOVT. CHAWNPUI HIGH SCHOOL;2031002;mz2
+;GOVT. K.M. HIGH SCHOOL;2031003;mz3
+;GOVT. SAKAWRTUICHHUN HIGH SCHOOL;2031004;mz4
+;GOVT. JL HIGH SCHOOL;2031005;mz5
+;GOVT. KULIKAWN HIGH SCHOOL;2031006;mz6
+;TUIKUAL SOUTH HIGH SCHOOL(ADHOC);2031007;mz7
+;GOVT. AIZAWL HIGH SCHOOL;2031008;mz8
+;GOVT. HRANGCHHUANA HIGH SCHOOL;2031009;mz9
+;GOVT. GORKHA HIGH SCHOOL;2031010;mz10
+;GOVT. BAWNGKAWN HIGH SCHOOL;2031011;mz11
+;GOVT. BUNGKAWN HIGH SCHOOL;2031012;mz12
+;GOVT. MELRIAT HIGH SCHOOL;2031013;mz13
+;GOVT. PIANGHLEIA HIGH SCHOOL;2031014;mz14
+;GOVT. ZEMABAWK HIGH SCHOOL;2031015;mz15
+;GOVT. MAMAWII HIGH SCHOOL;2031016;mz16
+;GOVT. BETHLEHEM VENGTHLANG HIGH SCHOOL;2031017;mz17
+;GOVT. COMPREHENSIVE MODEL HIGH SCHOOL;2031018;mz18
+;GOVT. CHALTLANG HIGH SCHOOL;2031019;mz19
+;GOVT. DINTHAR HIGH SCHOOL;2031020;mz20
+;GOVT. HRANGCHHUNGA HIGH SCHOOL;2031021;mz21
+;RAMHLUN SOUTH HIGH SCHOOL(ADHOC);2031022;mz22
+;GOVT. REPUBLIC HIGH SCHOOL;2031023;mz23
+;GOVT. TANHRIL HIGH SCHOOL;2031024;mz24
+;GOVT. DURTLANG HIGH SCHOOL;2031025;mz25
+;GOVT. KVM HIGH SCHOOL;2031026;mz26
+;GOVT. SIHPHIR HIGH SCHOOL;2031027;mz27
+;GOVT. CENTRAL HIGH SCHOOL;2031028;mz28
+;GOVT. MAUBAWK HIGH SCHOOL;2031029;mz29
+;GOVT. SAIRANG HIGH SCHOOL;2031030;mz30
+;Govt. Keifang H/S;2031031;mz31
+;Govt. Saitual H/S;2031032;mz32
+;Govt. Thingsulthliah H/S;2031033;mz33
+;Govt. Seling H/S;2031034;mz34
+;Govt. Tlungvel H/S;2031035;mz35
+;Tej Singh Gorkha H/S;2031036;mz36
+;Modern English H/S;2031037;mz37
+;Synod HSS;2031038;mz38
+;Zuangtui H/S;2031039;mz39
+;Zemabawk North H/S;2031040;mz40
+;Sihphir Venghlun H/S;2031041;mz41
+;Govt. H/S Samlukhai;2031042;mz42
+;Helen Lowry H/S;2031043;mz43
+;Baptist H/S;2041001;mz44
+;Govt. Haulawng H/S;2041002;mz45
+;Govt. Pukpui H/S;2041003;mz46
+;Govt. Leitlangpui H/S;2041004;mz47
+;Govt. Venglai H/S;2041005;mz48
+;Sacred Heart H/S;2041006;mz49
+;Govt. Lunglei H/S;2041007;mz50
+;Govt. Bazar H/S;2041008;mz51
+;Govt. Hnathial H/S;2041009;mz52
+;Govt. Tawipui North - I H/S;2041010;mz53
+;Govt. Tawipui South H/S;2041011;mz54
+;Govt. Southern H/S Hnathial;2041012;mz55
+;Govt. Zobawk H/S;2041013;mz56
+;Govt. Theiriat H/S;2041014;mz57
+;Govt. Thiltlang H/S;2041015;mz58
+;Bethel H/S;2021001;mz59
+;Holy Cross H/S;2021002;mz60
+;Govt. Sialhawk H/S;2021003;mz61
+;Govt. Hnahlan H/S;2021004;mz62
+;Govt. Champhai H/S;2021005;mz63
+;Govt. H/S Chawngtlai;2021006;mz64
+;Govt. Ruantlang H/S;2021007;mz65
+;Govt. Kelkang H/S;2021008;mz66
+;Govt. Mizo H/S Khawhai;2021009;mz67
+;Tlangsam H/S;2021010;mz68
+;Govt. H/S Khawzawl;2021011;mz69
+;Govt. GM H/S;2021012;mz70
+;Govt. R. Hranga H/S;2021013;mz71
+;Govt. Eastern H/S;2021014;mz72
+;Pine Hill H/S;2021015;mz73
+;Govt. Kawlkulh H/S;2021016;mz74
+;North Khawbung H/S;2021017;mz75
+;Govt. Khawbung H/S;2021018;mz76
+;Govt. Khuangleng H/S;2021019;mz77
+;Govt. Diakkawn H/S;2011001;mz78
+;Govt. Kawnpui H/S;2011002;mz79
+;Govt. T Robert H/S;2011003;mz80
+;Govt. Vairengte H/S;2011004;mz81
+;Govt. Kolasib H/S;2011005;mz82
+;Green Hills H/S;2011006;mz83
+;H.T. H/S Kolasib;2011007;mz84
+;Vairengte H/S II;2011008;mz85
+;St.John's HSS;2011009;mz86
+;Govt. Bairabi H/S;2011010;mz87
+;Govt. E. Lungdar H/S;2051001;mz88
+;Govt. Serchhip H/S;2051002;mz89
+;Govt. Mualcheng H/S (Adhoc);2051003;mz90
+;Govt. PCR H/S, N Serchhip;2051004;mz91
+;Govt. Lallengvunga H/S;2051005;mz92
+;Govt. Keitum H/S;2051006;mz93
+;Govt. Khawlailung H/S;2051007;mz94
+;Govt. Chhiahtlang H/S;2051008;mz95
+;Govt. Bungtlang H/S;2051009;mz96
+;Govt. Baktawng H/S;2051010;mz97
+;Mariah H/S (Adhoc);2051011;mz98
+;Millenium H/S (Adhoc);2051012;mz99
+;St. Peter's H/S (Deficit);2051013;mz100
+;Govt. Sr. Sec. School near tample, padampura;3051001;rj1
+;Govt. Sr. Sec. School, chaapradi;3051002;rj2
+;Govt. Sr. Sec. School, bhagawas chorsi;3051003;rj3
+;Govt. Sr. Sec. School, bhonawas;3051004;rj4
+;Govt. Adarsh Sr. Sec. School, taskola;3051005;rj5
+;Govt. Adarsh Sr. Sec. School, mohabbatpura;3051006;rj6
+;Govt. Adarsh Sr. Sec. School, harsolia;3051007;rj7
+;Govt. Adarsh Sr. Sec. School, Gohandi;3051008;rj8
+;Govt. Adarsh Sr. Sec. School, nevar, dhula via banshka;3051009;rj9
+;Govt. Sec. School, Dhaupura;3051010;rj10
+;Govt. Sr. Sec. School, Tholai;3051011;rj11
+;Govt. Sr. Sec. School, nidadh, jhotwara;3051012;rj12
+;Govt. Sr. Sec. School, Jawahar nagar;3051013;rj13
+;Govt. Sec. School, Mandi khatikan;3051014;rj14
+;Govt. Sec. School, Rajpur vaas tala;3051015;rj15
+;Govt. Sec. School, kunthada kalan, Bassi;3051016;rj16
+;Govt. Sec. School, hanutpura;3051017;rj17
+;Govt. Sr. Sec. School, labor colony, bani park;3051018;rj18
+;Govt. Girls Sr. Sec. School, nari ka naka, sastrinagar;3051019;rj19
+;Govt. Sr. Sec. School, charan nadi, dadi ka fatak;3051020;rj20
+;Govt. Adarsh Sr. Sec. School, rampura dabdi;3051021;rj21
+;Govt. Adarsh Sr. Sec. School, Khorashymdas,Jalsu;3051022;rj22
+;Govt. Sr. Sec. School, Nivaru road jaipur;3051023;rj23
+;Govt. girls Sr. Sec. School, raval ji ka bag;3051024;rj24
+;Govt. Sr. Sec. School, chakbasdi, Jhotwada;3051025;rj25
+;Govt. Sr. Sec. School, goukulpura;3051026;rj26
+;Govt. Sr. Sec. School, goliyawas;3051027;rj27
+;Govt. Adarsh Sr. Sec. School, mansarovar;3051028;rj28
+;Govt. Adarsh Sr. Sec. School,Barodiya Viratnagar;3051029;rj29
+;Govt. Sr. Sec. School, Rojdi via phulera, Dudu;3051030;rj30
+;Govt. Sr. Sec. School, sakuhooa, Hatupura, Dudu;3051031;rj31
+;Govt. Sec. School, Sunadiya,chhaparwada, Dudu;3051032;rj32
+;Govt. Sr. Sec. School, Kachroda, Dudu;3051033;rj33
+;Govt. Girls Sec. School, Shubash chok narayana;3051034;rj34
+;Govt. Sr. Sec. School, Garudwasi;3051035;rj35
+;Govt. Girl sec. school sheetala dungri;3051036;rj36
+;Govt. sr. Sec. School Radoli;3051037;rj37
+;Govt. Sec. School Mahadevpura;3051038;rj38
+;Govt. Sr. Sec. School, Ramnagar;3051039;rj39
+;Govt. Sr. Sec. School, Agra Road Paldi Meena;3051040;rj40
+;Govt. Adarsh Sr. Sec. School, Agra road Jhar;3051041;rj41
+;Govt. Adarsh Sr. Sec. School, Sambharia;3051042;rj42
+;Govt. Girl Sr. Sec. School, Goner, near Jagdish temple;3051043;rj43
+;Govt. Adarsh Sr. Sec. School, Vidhani;3051044;rj44
+;Govt. Girl Sr. Sec. School, Durgapura;3051045;rj45
+;Govt. Sr. Sec. School, Morija, Govindgarh;3051046;rj46
+;Govt. Adarsh Sr. Sec. School, Hadota;3051047;rj47
+;Govt. Maheshwari Sec. School, Chomu;3051048;rj48
+;Govt. Adarsh Sr. Sec. School, RadhaSwami ka Bag, Jayatpura;3051049;rj49
+;Govt. Sec. School, dabla bujurag;3051050;rj50
+;Govt. Sr. Sec. School, Sanjhariya;3051051;rj101
+;Govt.Girls Sr. School, Mandar;3072001;rj51
+;Govt. Girls Sec. school, jawal;3072002;rj52
+;Govt. sec. Sr. school, bhootgaon;3072003;rj53
+;Govt. Sr. Sec. school, haliwada;3072004;rj54
+;Govt. Sr. Sec. school, aamlari;3072005;rj55
+;Govt. Sr. Sec. school, mandwariya;3072006;rj56
+;Govt. Sr. Sec. school, fugni;3072007;rj57
+;Govt. Adarsh sr. sec. School, madiya;3072008;rj58
+;Govt. Sr. Se. school, Manora;3072009;rj59
+;Govt. Sr. sec. school, rukhada, shivganj;3072010;rj60
+;Govt. Sr. sec. school, sanpur;3072011;rj61
+;Govt. Sec. School, deldar, mandh;3072012;rj62
+;Govt. Adarsh sr. Sec. School, Sorda;3072013;rj63
+;Govt. Adarsh Sr. Sec. School, magriawada;3072014;rj64
+;Govt. Sr. Sec. school, Jeerawal;3072015;rj65
+;Govt. Sr.Sec school, Datrai;3072016;rj66
+;Govt. Sr.Sec School, Chiwagoan;3072017;rj67
+;Govt. Sr. sec. school, Jogapura(Purana);3072018;rj68
+;Govt. Sr.Sec school, Aalpa;3072019;rj69
+;Govt. Sec. school, chota lakmawa, shivganj, sirohi;3072020;rj70
+;Govt.Ser.school, keasrpura;3072021;rj71
+;Govt. Sec. school, shivganj;3072022;rj72
+;Shri shantinath Adarsh Govt. Sr. Sec. School, uud, sirohi;3072023;rj73
+;Govt. Sr.Sec. School, undra;3072024;rj74
+;Govt. Sr. Sec. School, vatera;3072025;rj75
+;Govt. Sr. Sec. School, Sindrath;3072026;rj76
+;Govt. Sec. School,Sirohi;3072027;rj77
+;Govt. Sr. Sec. School, Khambal;3072028;rj78
+;Govt. Sr. Sec. School, Dodua;3072029;rj79
+;Govt. Sr. Sec. School, Peshua;3072030;rj80
+;Govt. Sr. Sec. School, Bhimana;3072031;rj81
+;Govt. Sr. Sec. School, Sanwara R;3072032;rj82
+;Govt. Sr. Sec. School, Vasa;3072033;rj83
+;Govt. Adarsh Sr. Sec. School, Vaghsin;3072034;rj84
+;Govt. Sec. School, Khejariya;3072035;rj85
+;Govt. Sr. Sec. School, Pamera;3072036;rj86
+;Govt. Sr. Sec. School, Makawal;3072037;rj87
+;Govt. Adarsh Sr. Sec. School, Gulabganj;3072038;rj88
+;Govt. Sr. Sec. School, Marol;3072039;rj89
+;Govt. Sr. Sec. School, Uthman;3072040;rj90
+;Govt. Sr. Sec. School, Jhadoli Veer;3072041;rj91
+;Govt. Sr. Sec. School, Naradara;3072042;rj92
+;Govt. Sr. Sec. School, Andore;3072043;rj93
+;Govt. Sr. Sec. School, Lunol;3072044;rj94
+;Govt. Adarsh Sr. Sec. School, Morthala;3072045;rj95
+;Govt. Adarsh Sr. Sec. School, Deldar;3072046;rj96
+;Govt. Sec. School, Akrabhata;3072047;rj97
+;Govt. Adarsh Sr. Sec. School, Maval;3072048;rj98
+;Govt. Girls Sr. Sec. School, Mount Abu;3072049;rj99
+;Govt. Adarsh Sr. Sec. School,Tartoli;3072050;rj100
+;G S S BHATAKARA SIROHI VARD NO. - 9, NAGARPARISHAD SIROHI;3072051;rj102
+;Sanwara (S);3072052;rj103
+;VPO.- CHANDELA, TEHSIL- ABUROAD, SIROHI;3072053;rj104
+;VILLAGE ARASANA POST NANDIAYA TEHSIL PINDWARA DIST.SIROHI RAJASTHAN 307022;3072054;rj105
+;VILLAGE THANDIVERI POST BINANIGRAM TEHSIL PINDWARA DISTRICT SIROHI;3072055;rj106
+;Village Valoriya Th. Pindwara Dist. Sirohi;3072056;rj107
+;POST- MANDAR, TEHSIL- REODAR, DISTT.- SIROHI,;3072057;rj108
+;SILDAR (SIROHI);3072058;rj109
+;VILLAGE- SARTARA, DISTT. & TEHSIL- SIROHI, (RAJ);3072059;rj110
+;GOVT. HR.SEC. SCHOOL, LACHHUDA (08240112505);3031001;rj111
+;GOVT. HR.SEC. SCHOOL AAMESAR (08240115001);3031002;rj112
+;GOVT. HR. SEC. SCHOOL CHATARPURA (08240118701);3031003;rj113
+;GOVT. HR.SEC. SCHOOL DANTRA BANDH (08240103201);3031004;rj114
+;GOVT. HR.SEC. SCHOOL BALDARKHA (08240401102);3031005;rj115
+;GOVT. SEC. SCHOOL JHANTAL (08240401202);3031006;rj116
+;GOVT. GIRLS HR.SEC. SCHOOL HURDA (08240203111);3031007;rj117
+;GOVT. HR.SEC. SCHOOL BHADWO KI KOTRI (08240203305);3031008;rj118
+;GOVERMENT HIGHER SECONDARY SCHOOL BIHADA (08241000504);3031009;rj119
+;GOVT. SEC. SCHOOL KUCHALWADA KALA (08241003002);3031010;rj120
+;SAHID OMPRAKASH PARIHAR GOVT.ADARSH HR.SEC. SCHOOL GADOLI (08241004101);3031011;rj121
+;GOVT. HR.SEC. SCHOOL KURADIYA (08241015602);3031012;rj122
+;GOVT. HR.SEC. SCHOOL TITHORA JAGIR (08241015901);3031013;rj123
+;GOVT. GIRLS HR.SEC. SCHOOL AMARWASI (08241017803);3031014;rj124
+;GOVT. HR.SEC. SCHOOL BISHNIYA (08240916403);3031015;rj125
+;GOVT. ADARSH SR.SEC. SCHOOL BAAVLAS (08240511601);3031016;rj126
+;GOVT. HR.SEC. SCHOOL GORKHYA (08240513803);3031017;rj127
+;GOVT. GIRLS SEC. SCHOOL KARERA (08240514610);3031018;rj128
+;GOVT. HR.SEC. SCHOOL KERIYA (08240517601);3031019;rj129
+;GOVT. HR.SEC. SCHOOL KHACHROL (08241109101);3031020;rj130
+;GOVT. HR.SEC. SCHOOL BORANA (08240600301);3031021;rj131
+;GOVT. HR.SEC. SCHOOL BAGOLIYA (08240604201);3031022;rj132
+;GOVT. HR.SEC. SCHOOL MAHENDRAGARH (08240700712);3031023;rj133
+;GOVT. GIRLS SEC. SCHOOL POTLAN (08240701505);3031024;rj134
+;GOVT. HR.SEC. SCHOOL SARGAON (08240703704);3031025;rj135
+;GOVT. HR.SEC. SCHOOL DHOSER (08240706805);3031026;rj136
+;GOVT. HR.SEC. SCHOOL ARNIYA GHODA (08240301103);3031027;rj137
+;GOVT. HR.SEC. SCHOOL MATA JI KA KHERA , SHAHPURA (BHILWARA) (08240302006);3031028;rj138
+;GOVT. SEC. SCHOOL RAJYAS NAI (08240310101);3031029;rj139
+;GOVT. GIRLS SEC. SCHOOL TEHANAL GATE SHAHPURA (08240327104);3031030;rj140
+;GOVERNMENT SECONDARY SCHOOL BHIMGANJ BHILWARA (08240847301);3031031;rj141
+;GOVT. GIRLS SEC. SCHOOL GANDHINAGAR BHILWARA (08240849511);3031032;rj142
+;GOVT. HR.SEC. SCHOOL LABOUR COLONY BHILWARA (08240849702);3031033;rj143
+;GOVT. GIRLS HR.SEC. SCHOOL BANERA (08240400111);3031034;rj144
+;GOVT. HR.SEC. SCHOOL BABRANA (08240405701);3031035;rj145
+;GOVERMENT ADARSH HIGHER SECONDARY SCHOOL TASWARIYA BAVARI (08241002204);3031036;rj146
+;GOVT. GIRLS SEC. SCHOOL PIPLUND (08241006404);3031037;rj147
+;GOVT. SEC. SCHOOL PACHHANPURA (08241008401);3031038;rj148
+;GOVT. GIRLS SEC. SCHOOL KHAJOORI (08241011202);3031039;rj149
+;GOVT. GIRLS SEC. SCHOOL PAROLI (08240915201);3031040;rj150
+;GOVT. GIRLS HR.SEC. SCHOOL RAIPUR (08240600106);3031041;rj151
+;GOVT. SR.SEC. SCHOOL MINDOLIYA (08240304202);3031042;rj152
+;G. SEC. S. GHODIGAWN (08310207201);3041001;rj153
+;GOVT.GIRLS SR. SEC. SCHOOL ANTA W-25 (08310219802);3041002;rj154
+;GOVT. SR. SEC.SCH. KHARKHADA RAMLOTHAN (08310300704);3041003;rj155
+;GOVT.ADARSH GIRLS SR.SEC.SCHOOL. ATRU (08310313204);3041004;rj156
+;G.SR. SEC. SCHOOL TISHAYA (08310100802);3041005;rj157
+;G.SR.SEC.SCHOOL KOTA ROAD BARAN (08310115312);3041006;rj158
+;G.SEC.SCH. KADAIYABAN (08310403601);3041007;rj159
+;G.Aadarsh SR.SEC.SEC. DEEGOD JAGEER (08310501807);3041008;rj160
+;GOVT. ADARSH SR. SEC. SCH. PEETHPUR (08310514404);3041009;rj161
+;G.G.SR.SEC. SCH. CHHIPABAROD (08310516257);3041010;rj162
+;GSSS SARDA (08320722806);3061001;rj163
+;GOVT. SR. SEC. SCHOOL, NASIRABAD (08320435602);3061002;rj164
+;GSSS, GURADIYA JOGA (08320805004);3061003;rj165
+;GOVT. SR.SEC.SCHOOL JHALAWAR ROAD (08320811401);3061004;rj166
+;GOVT. SER. SEC. SCH. PAGARIYA (08320809703);3061005;rj167
+;GASSS CHARDA (08320609802);3061006;rj168
+;G.A.S.S.S. DODI (08320618202);3061007;rj169
+;GASSS, KUMTHIYA (08320628304);3061008;rj170
+;GASSS, MANAKPUR (PIPLOD) (08320209901);3061009;rj171
+;GASSS, GOVINDPURA (08320213704);3061010;rj172
+;G.A.S.S.,KALAKOT (08320219502);3061011;rj173
+;GOVT. GIRLS SECONDARY SCHOOL JHALARAPATAN (08320247504);3061012;rj174
+;GASSS AKAWAD KHURD (08320109202);3061013;rj175
+;GSSS THIKARIYA (08320331402);3061014;rj176
+;GSS BUDHAWADA (08320340501);3061015;rj177
+;GASSS,SALOTIYA (08320501005);3061016;rj178
+;GOVT ADARSH SR.SEC.SCHOOL,KHAIRANA (08320511001);3061017;rj179
+;GASSS, DHARONIYA (08320512502);3061018;rj180
+;GOVT. GIRLS SECONDARY SCHOOL GANESHPURA GARNAWAD (08320803201);3061019;rj181
+;GSSS, RAWAN GURADI (08320604802);3061020;rj182
+;GASSS CHAUMEHLA (08320638118);3061021;rj183
+;GSSS JHALAWAR (08320248307);3061022;rj184
+;GSSS,SAMRIYA (08320520001);3061023;rj185
+;Govt Sr Sec School, Indokha (08141105608);3081001;rj186
+;Govt Sr Sec School, Kalwa (08141106801);3081002;rj187
+;Govt Girls Sec School, Budsu (08141102203);3081003;rj188
+;Govt Middle School, Jusri (08141106501);3081004;rj189
+;Govt Girls School, Chawandiya (08141102801);3081005;rj190
+;Govt Girls Secondary School (08140202202);3081006;rj191
+;Govt Secondary School (08140204105);3081007;rj192
+;Govt Secondary School (08140209103);3081008;rj193
+;Govt Secondary School (08140803101);3081009;rj194
+;Govt Secondary School (08140809804);3081010;rj195
+;Govt Secondary School (08140811301);3081011;rj196
+;Govt Sec. School (08140605706);3081012;rj197
+;Govt Sen. Sec. School (08140609005);3081013;rj198
+;Govt Sen. Sec. School (08140603504);3081014;rj199
+;Govt Sec. School (08140602601);3081015;rj200
+;Govt Secondary School (08140922202);3081016;rj201
+;Govt Secondary School (08140405701);3081017;rj202
+;Govt Secondary School (08140406507);3081018;rj203
+;Govt Senior Secondary School (08140401905);3081019;rj204
+;Govt Secondary School (08140208702);3081020;rj205
+;Govt Secondary School (08140910801);3081021;rj206
+;Govt Sen. Sec. School (08140512604);3081022;rj207
+;Govt Secondary School (08140702504);3081023;rj208
+;Govt Secondary School (08140713204);3081024;rj209
+;Govt Secondary School (08140603901);3081025;rj210
+;Govt Secondary School (08141003302);3081026;rj211
+;Govt Sr Sec School, Makrana (08141117005);3081027;rj212
+;Govt Secondary School (08141105503);3081028;rj213
+;Govt Sec School, Morer (08141109001);3081029;rj214
+;Govt Sec School, Nimbari (08141109801);3081030;rj215
+;Govt Girls Secondary School (08140212510);3081031;rj216
+;Govt Secondary School (08140210601);3081032;rj217
+;Govt Secondary School (08140208601);3081033;rj218
+;Govt Secondary School (08140200106);3081034;rj219
+;Govt Secondary School (08140108801);3081035;rj220
+;Govt Secondary School (08140508407);3081036;rj221
+;Govt Secondary School (08140512701);3081037;rj222
+;Govt Secondary School (08140512101);3081038;rj223
+;Govt Secondary School (08140704605);3081039;rj224
+;Govt Secondary School (08140717001);3081040;rj225
+;GSS KHARIYA (08140708901);3081041;rj226
+;GGHSS CHHOTI KHATU (08140717312);3081042;rj227
+;GGSS CHANDAROON (08140102902);3081043;rj228
+;GSS GOTHRA (08140105801);3081044;rj229
+;GSS GUNDISAR (08140106001);3081045;rj230
+;GSSS SANDEELA (08140511601);3081046;rj231
+;GSSS BARNEL (08140501009);3081047;rj232
+;GSS ADARSH KANGSIYA (08140506901);3081048;rj233
+;GGSS SONI DEVI SOMANI KUCHAMAN CITY (08140921403);3081049;rj234
+;GSSS DHINGSARI(LADNUN)NAGAUR (08140602102);3081050;rj235
+;GSS HIRAWATI (08140603401);3081051;rj236
+;GGHSS SHRI J.T. JASWANT GARH (08140603804);3081052;rj237
+;GSS CHINDALIYA (08141102601);3081053;rj238
+;GOVT. SECONDARY SCHOOL ITAWA LAKHA (08141105901);3081054;rj239
+;GSS DHANAPA (08140303306);3081055;rj240
+;GHSS BORWA (08141017905);3081056;rj241
+;GSSS BHADANA (08140801907);3081057;rj242
+;GHSS CHENAR (08140803201);3081058;rj243
+;GHSS KUMARI (08140808310);3081059;rj244
+;GSSS BEJATHAL (08140201607);3081060;rj245
+;GHSS CHAWANDIYA KALAN (08140202601);3081061;rj246
+;GSSS SOODWAR (08140212005);3081062;rj247
+;DR BR AMBDKAR GGRS PAWTA (08141306503);3081063;rj248
+;ZPHS ZAFFARGADH;4131001;tg101
+;ZPHS MACHUPHAD;4131002;tg102
+;ZPPSS Nawabpet;4131003;tg103
+;ZPHS Narmetta;4131004;tg104
+;Zphs Veldanda;4131005;tg105
+;ZPHS Cheeturu;4131006;tg106
+;ZPHS Kunoor;4131007;tg107
+;ZPHS Pidisilla;4141008;tg108
+;ZPHS Motlapally;4141009;tg109
+;ZPHS Alankhanipet;4221010;tg110
+;ZPHS Pedakorpole;4221011;tg111
+;ZPHS Mogullapally;4141012;tg112
+;ZPHS ASHOKNAGAR;4221013;tg113
+;ZPHS BUDHARAOPET;4221014;tg114
+;ZPHS Dharmaraopet;4221015;tg115
+;ZPHS OTAI;4161016;tg116
+;ZPHS DHARMARAM;4221017;tg117
+;ZPHS ELUKURTHY;4221018;tg118
+;GHS rangasaipet g;4231019;tg119
+;ZPPSS PEDDAMADUR;4131020;tg120
+;ZPHS PARVATHAGIRI;4221021;tg121
+;ZPHS Dhoolmitta;4191022;tg122
+;GHS krishnacolony;4231023;tg123
+;ZPHS KONKAPAKA;4221024;tg124
+;ZPHS Girls mahabubabad;4161025;tg125
+;ZPHS Pulukurthy;4221026;tg126
+;GHS orus;4231027;tg127
+;ZPHS DEVAGIRIPATNAM;4141028;tg128
+;GHS Karimabad;4231029;tg129
+;ZPHS Atmakur;4221030;tg130
+;ZPHS GUNTURPALLY;4221031;tg131
+;ZPHS edulapusapally;4161032;tg132
+;GHS g middlefort;4231033;tg133
+;ZPHS Akkampet;4221034;tg134
+;ZPHS GIRLS MULUG;4141035;tg135
+;Zppss Paidipally;4231036;tg136
+;ZPHS Damera;4221037;tg137
+;ZPHS ABBAPOOR;4141038;tg138
+;ZPPSS CHINNAMADUR;4131039;tg139
+;ZPSS Neerukulla;4221040;tg140
+;Tswrms/jr.college madikonda;4231041;tg141
+;ZPHS Pakhal Road Model;4221042;tg142
+;GHS railwaygate;4231043;tg143
+;TSTWREIS HS KOTHAGUDA;4161044;tg144
+;ZPHS CHALVAI;4141045;tg145
+;Zphs siddapur;4231046;tg146
+;Zphs mucharla;4231047;tg147
+;ZPHS ELLANDA;4221048;tg148
+;ZPHS KONDAPUR;4221049;tg149
+;GGHS lashkarbazar;4231050;tg150
+;zppss sundaraiah nagar;4231051;tg151
+;ZPHS Obul Keshvapur;4131052;tg152
+;ZPHS PEDDAPAHAD;4131053;tg153
+;ZPHS MULKALAPALLY;4161054;tg154
+;ZPHS DORNAKAL;4161055;tg155
+;ZPHS Konduru;4221056;tg156
+;ZPHS(Girls)Dharmasagar;4231057;tg157
+;ZPHS Saipet;4231058;tg158
+;ZPHS Peddapendial;4231059;tg159
+;ZPHS UPPARAPALLY;4161060;tg160
+;ZPHS PENUGONDA;4161061;tg161
+;ZPHS KALWALA;4161062;tg162
+;Zphs kambalapally;4161063;tg163
+;Hanamkonda;4231064;tg164
+;GHS Waddepalli;4231065;tg165
+;Zphs v s laxmipuram;4161066;tg166
+;ZPHS GORREKUNTA;4221067;tg167
+;ZPHS KOMMALA;4221068;tg168
+;GHS (boys) kazipet;4231069;tg169
+;ZPHS Kadipikonda;4231070;tg170
+;Zphs Hasanparthy (G);4231071;tg171
+;TSTWREIS HS AK Ghanpur;4141072;tg172
+;ZphS MEDAPALLY;4221073;tg173
+;ZPHS RUDRAGUDEM;4221074;tg174
+;ZPHS NANDIGAMA;4221075;tg175
+;ZPHS ALAIR;4161076;tg176
+;GHS Basithnagar;4231077;tg177
+;GHS Markaji;4231078;tg178
+;ZPHS mamnoor camp;4231079;tg179
+;ZPHS madikonda;4231080;tg180
+;ZPHS MECHARAJPALLY;4161081;tg181
+;ZPHS Kondaparthy;4231082;tg182
+;Ghs Somidi;4231083;tg183
+;ZPHS Tharalapally;4231084;tg184
+;Zphs Salakpur;4191085;tg185
+;Zphs Bairanpally;4191086;tg186
+;ZPHS Maddur;4191087;tg187
+;ZPHS TEKUMATLA;4141088;tg188
+;Zphs nainpaka;4141089;tg189
+;Zphs CHITYAL;4141090;tg190
+;ZPHS CHELPUR;4141091;tg191
+;ZPHS BUDDARAM;4141092;tg192
+;ZPHS GHANPUR (M);4141093;tg193
+;zphs nadikuda;4221094;tg194
+;ZPHS VARIKOLE;4221095;tg195
+;ZPHS KODAKANDLA;4131096;tg196
+;GOVT HS NARSAMPET;4221097;tg197
+;ZPHS BOYS NARSAMPET;4221098;tg198
+;ZPHS GIRLS NARSAMPET;4221099;tg199
+;ZPHS LAKNEPALLY;4221100;tg200
+;ZPHS (BOYS) MANAKONDUR;4152001;tg201
+;ZPHS Ramadugu;4152002;tg202
+;Zphs Peddalingapoor;4202003;tg203
+;Zphs Galipally;4202004;tg204
+;Zphs kanagarthi;4112005;tg205
+;Zphs Pothakapally;4112006;tg206
+;ZPHS Bandalingampally;4202007;tg207
+;ZPHS Gopalraopeta;4152008;tg208
+;ZPHS KOREM;4202009;tg209
+;Zphs NOOKALAMARRY;4202010;tg210
+;Zphs Dacharam;4202011;tg211
+;ZPHS KATNAPALLY;4152012;tg212
+;ZPHS METPALLY;4152013;tg213
+;Govt High school Vemulawada;4202014;tg214
+;Zphs Gannervaram;4152015;tg215
+;ZPHS Lingannapet;4202016;tg216
+;Zphs ellandakunta;4152017;tg217
+;ZPHS (boys) GAMBHIRAOPET;4202018;tg218
+;ZPHS RacharlaBoppapur;4202019;tg219
+;TTWR SCHOOL(Girls)Dumala;4202020;tg220
+;ZPHS Narsingapur;4202021;tg221
+;ZPHS Baswapur;4192022;tg222
+;Zphs Tssw boys jammikunta;4152023;tg223
+;ZPHS ARNAKONDA;4152024;tg224
+;ZPHS RUDRAVARAM;4202025;tg225
+;ZPHS Molangur;4152026;tg226
+;ZPHS (Girls)Kodimial;4122027;tg227
+;Zphs g vemulawada;4202028;tg228
+;ZPHS VILASAGAR;4202029;tg229
+;GHS(G) Mukarampura;4152030;tg230
+;ZPHS Kannapur;4152031;tg231
+;ZPHS Boinpalli;4202032;tg232
+;Zphs Janagapally;4152033;tg233
+;ZPHS KODURUPAKA;4202034;tg234
+;Zphs lmd colony t/m;4152035;tg235
+;Zphs nustulapur;4152036;tg236
+;Zphs Vallampatla;4202037;tg237
+;ZPHS SIRSAPALLY;4152038;tg238
+;GHS HUZURABAD;4152039;tg239
+;Zphs kolanor;4112040;tg240
+;ZPHS BORNAPALLY;4152041;tg241
+;Zphs girls jammikunta;4152042;tg242
+;Zphs.eligaid;4112043;tg243
+;ZPHS (B) UPPAL;4232044;tg244
+;ZPHS (G) UPPAL;4232045;tg245
+;ZpHS Challur;4152046;tg246
+;ZPHS Gajasingavaram;4202047;tg247
+;ZPHS MARRIPALLYGUDEM;4232048;tg248
+;Zphs rachapalli;4152049;tg249
+;ZPHS Kothapally;4152050;tg250
+;ZPHS(B) Peddapalli;4112051;tg251
+;ZPHS Moodapally;4202052;tg252
+;Zphs basanthnagar;4112053;tg253
+;Zphs jayyaram;4112054;tg254
+;ZPHS Racharla Gollapally;4202055;tg255
+;ZPHS Yellareddypet;4202056;tg256
+;ZPHS Mallial;4202057;tg257
+;ZPHS DHARMARAM;4202058;tg258
+;ZPHS NIMMAPALLY;4202059;tg259
+;Zphs NTPC jyothinagar;4112060;tg260
+;Zphs girls godavarikani;4112061;tg261
+;ZPHS Wadkapur;4112062;tg262
+;ZPHS Peddapur;4112063;tg263
+;GHS Old High School Karimnagar;4152064;tg264
+;ZPHS ALLIPUR;4122065;tg265
+;ZPHS (G) RAIKAL;4122066;tg266
+;ZPHS CHILVAKODUR;4122067;tg267
+;ZPHS Bhupathipur;4122068;tg268
+;Zphs Kandikatkoor;4202069;tg269
+;Zphs sriramulapally;4192070;tg270
+;ZPHS PACHUNUR;4152071;tg271
+;ZPHS VELDHI;4152072;tg272
+;ZPHS Mallareddypet;4202073;tg273
+;Zphs Hanmajipet;4202074;tg274
+;Zphs ODELA;4112075;tg275
+;ZPHS SHANIGARAM;4232076;tg276
+;ZPHS GANGIPALLY;4152077;tg277
+;Zphs vavilala;4152078;tg278
+;ZPHS VARSHAKONDA;4122079;tg279
+;GHS DHANGARWADI;4152080;tg280
+;Zphs gundaram;4192081;tg281
+;Zphs Nagunnor;4152082;tg282
+;ZPHS Venkatapur;4202083;tg283
+;Zphs.dhoolikatt;4112084;tg284
+;Zphs.sulthanpur;4112085;tg285
+;ZPHS (G) KAMALAPUR;4232086;tg286
+;ZPHS Ghanmukla;4152087;tg287
+;ZPHS Kothapally;4202088;tg288
+;ZPHS ANTHERGOAM;4112089;tg289
+;ZPHS POTYALA;4112090;tg290
+;Zphs korapally;4152091;tg291
+;Zphs kurikyal;4152092;tg292
+;ZPHS THATLAWAI;4122093;tg293
+;ZPHS (G) CHOPPADANDI;4152094;tg294
+;Zphs peddabonkoor;4112095;tg295
+;ZPHS Potharam;4112096;tg296
+;ZPHS GUDUR;4232097;tg297
+;ZPHS Sanugula;4202098;tg298
+;Zphs Thotapally;4192099;tg299
+;ZPHS Thippaipally;4122100;tg300
+;T.S.W.R.M School;4183001;tg1
+;ZPHS KANDAWADA;4183002;tg2
+;ZPHS Mall;4183003;tg3
+;Zphs Janwada;4183004;tg4
+;Zphs sardar nagar;4183005;tg5
+;ZPHS GHATKESAR G;4173006;tg6
+;ZPHS URELLA;4183007;tg7
+;ZPHS MIRKHANPET;4183008;tg8
+;ZPHS B MANCHAL;4183009;tg9
+;ZPHS Chilkoor;4183010;tg10
+;ZPHS THIMMAPOOR;4183011;tg11
+;ZPHS Himayatnagar;4183012;tg12
+;ZPHS Nandiwanaparthy;4183013;tg13
+;ZPHS Venkatapur;4183014;tg14
+;ZPHS Maharajpet;4183015;tg15
+;ZPHS MALKAPUR;4183016;tg16
+;ZPHS Chinnathundla;4183017;tg17
+;ZPHS EDULABAD;4173018;tg18
+;Zphs thallapally;4183019;tg19
+;ZPHS MANCHANPALLY;4213020;tg20
+;ZPHS PEDDA UMMENTHAL;4213021;tg21
+;ZPHS Medipally Nakkartha;4183022;tg22
+;ZPHS Yacharam;4183023;tg23
+;Zphs shabad boys;4183024;tg24
+;Zphs naskal;4213025;tg25
+;ZPHS ANGADICHITTEMPALLY;4213026;tg26
+;ZPHS Korremul;4173027;tg27
+;ZPHS NEDUNOOR;4183028;tg28
+;Zphs hythabad;4183029;tg29
+;ZPHS RANGAPUR;4183030;tg30
+;ZPHS MARPALLY UM;4213031;tg31
+;ZPHS Aziznagar;4183032;tg32
+;ZPHS LEMOOR;4183033;tg33
+;ZPHS ALOOR(G);4183034;tg34
+;ZPHS.Mothkur;4213035;tg35
+;ZPHS ARUTLA;4183036;tg36
+;TS MODEL SCHOOL;4213037;tg37
+;ZPHS (B) THUKKUGUDA;4183038;tg38
 ;ZPHS G GANDEED;NA;tg39
-;ZPHS SAROORNAGAR;04183040;tg40
-;ZPHS KANDANELLY;04213041;tg41
-;ZPHS PULIMAMIDI;04183042;tg42
-;Zphs shabad girls;04183043;tg43
-;ZPHS SHERIGUDA;04183044;tg44
-;ZPHS PUDUR;04213045;tg45
-;Zphs regadi doswada;04183046;tg46
-;Zphs Badangpet;04183047;tg47
-;Zphs parveda;04183048;tg48
-;ZPHS MANNEGUDA;04213049;tg49
-;ZPHS (B)MAHESHWARAM;04183050;tg50
-;ZPHS KANAKAMAMIDI;04183051;tg51
-;ZPHS CHEVELLA G;04183052;tg52
-;ZPHS(G) SHANKERPALLY;04183053;tg53
-;ZPHS PEERAJADIGUDA;04173054;tg54
-;ZPHS (B) KANDUKUR;04183055;tg55
-;ZPHS CHENGOMUL;04213056;tg56
-;ZPHS SOMAGURTHY;04213057;tg57
-;ZPHS KANKAL;04213058;tg58
-;ZPHS PATLOOR T/M;04213059;tg59
-;ZPHS MARPALLY T/M;04213060;tg60
-;ZPHS KISTAPUR;04213061;tg61
-;ZPHS DOMA;04213062;tg62
-;ZPHS NAGARAM;04183063;tg63
-;ZPHS(G) MAHESHWARAM;04183064;tg64
-;ZPHS RAJIVGANDHI NAGAR;04183065;tg65
-;ZPHS (B) PEEDEMUL;04213066;tg66
-;ZPHS KONGARKALAN;04183067;tg67
-;GHS IBRAHIMPATANAM;04183068;tg68
-;ZPHS MOMINPET(BOYS);04213069;tg69
-;ZPHS MOMIPET (G);04213070;tg70
-;ZPHS PULMAMIDI;04213071;tg71
-;ZPHS NAWABPET;04213072;tg72
-;ZPHS MIYAPUR;04183073;tg73
-;ZPHS KUKATPALLY;04173074;tg74
-;ZPHS SHAMSHIGUDA;04173075;tg75
-;ZPHS JAGATHGIRI NAGAR;04173076;tg76
-;ZPHS (B) Medchal;04173077;tg77
-;ZPHS BALAJINAGAR;04173078;tg78
-;ZPHS(B) MALAKAJGIRI;04173079;tg79
-;ZPHS NAGAWARAM;04173080;tg80
-;ZPHS HABSIGUDA;04173081;tg81
-;ZPHS HAYATHNAGAR;04183082;tg82
-;GHS RAJENDRANAGAR;04183083;tg83
-;ZPHS ANANTHAGIRI PALLY;04213084;tg84
-;ZPHS GIRLS DHARUR;04213085;tg85
-;ZPHS NAGARAM;04213086;tg86
-;ZPHS BANTWARAM;04213087;tg87
-;ZPHS MOTHUKUPALLY;04213088;tg88
-;ZPHS CHENGOLE;04213089;tg89
-;ZPHS(b) BASHEERABAD;04213090;tg90
-;ZPHS NAVALGA;04213091;tg91
-;ZPHS AGGANOOR;04213092;tg92
-;ZPHS KOKAT;04213093;tg93
-;ZPHS BANDAVELKICHERLA;04213094;tg94
-;ZPHS PUTTAPAHAD;04213095;tg95
-;ZPHS (B) KULAKACHERLA;04213096;tg96
-;ZPHS NARKHODA;04183097;tg97
-;ZPHS SHAMSHABAD(G);04183098;tg98
+;ZPHS SAROORNAGAR;4183040;tg40
+;ZPHS KANDANELLY;4213041;tg41
+;ZPHS PULIMAMIDI;4183042;tg42
+;Zphs shabad girls;4183043;tg43
+;ZPHS SHERIGUDA;4183044;tg44
+;ZPHS PUDUR;4213045;tg45
+;Zphs regadi doswada;4183046;tg46
+;Zphs Badangpet;4183047;tg47
+;Zphs parveda;4183048;tg48
+;ZPHS MANNEGUDA;4213049;tg49
+;ZPHS (B)MAHESHWARAM;4183050;tg50
+;ZPHS KANAKAMAMIDI;4183051;tg51
+;ZPHS CHEVELLA G;4183052;tg52
+;ZPHS(G) SHANKERPALLY;4183053;tg53
+;ZPHS PEERAJADIGUDA;4173054;tg54
+;ZPHS (B) KANDUKUR;4183055;tg55
+;ZPHS CHENGOMUL;4213056;tg56
+;ZPHS SOMAGURTHY;4213057;tg57
+;ZPHS KANKAL;4213058;tg58
+;ZPHS PATLOOR T/M;4213059;tg59
+;ZPHS MARPALLY T/M;4213060;tg60
+;ZPHS KISTAPUR;4213061;tg61
+;ZPHS DOMA;4213062;tg62
+;ZPHS NAGARAM;4183063;tg63
+;ZPHS(G) MAHESHWARAM;4183064;tg64
+;ZPHS RAJIVGANDHI NAGAR;4183065;tg65
+;ZPHS (B) PEEDEMUL;4213066;tg66
+;ZPHS KONGARKALAN;4183067;tg67
+;GHS IBRAHIMPATANAM;4183068;tg68
+;ZPHS MOMINPET(BOYS);4213069;tg69
+;ZPHS MOMIPET (G);4213070;tg70
+;ZPHS PULMAMIDI;4213071;tg71
+;ZPHS NAWABPET;4213072;tg72
+;ZPHS MIYAPUR;4183073;tg73
+;ZPHS KUKATPALLY;4173074;tg74
+;ZPHS SHAMSHIGUDA;4173075;tg75
+;ZPHS JAGATHGIRI NAGAR;4173076;tg76
+;ZPHS (B) Medchal;4173077;tg77
+;ZPHS BALAJINAGAR;4173078;tg78
+;ZPHS(B) MALAKAJGIRI;4173079;tg79
+;ZPHS NAGAWARAM;4173080;tg80
+;ZPHS HABSIGUDA;4173081;tg81
+;ZPHS HAYATHNAGAR;4183082;tg82
+;GHS RAJENDRANAGAR;4183083;tg83
+;ZPHS ANANTHAGIRI PALLY;4213084;tg84
+;ZPHS GIRLS DHARUR;4213085;tg85
+;ZPHS NAGARAM;4213086;tg86
+;ZPHS BANTWARAM;4213087;tg87
+;ZPHS MOTHUKUPALLY;4213088;tg88
+;ZPHS CHENGOLE;4213089;tg89
+;ZPHS(b) BASHEERABAD;4213090;tg90
+;ZPHS NAVALGA;4213091;tg91
+;ZPHS AGGANOOR;4213092;tg92
+;ZPHS KOKAT;4213093;tg93
+;ZPHS BANDAVELKICHERLA;4213094;tg94
+;ZPHS PUTTAPAHAD;4213095;tg95
+;ZPHS (B) KULAKACHERLA;4213096;tg96
+;ZPHS NARKHODA;4183097;tg97
+;ZPHS SHAMSHABAD(G);4183098;tg98
 ;ZPHS VEENCHED;NA;tg99
 ;ZPHS (G) MOHAMADABAD;NA;tg100

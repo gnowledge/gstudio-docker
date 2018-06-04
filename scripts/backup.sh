@@ -4,11 +4,11 @@
 #--------------------------------------------------------------------#
 # Backup of gstudio 
 # File name    : Backup-script-mrunal.sh
-# File version : 1.0
+# File version : 2.0
 # Created by   : Mr. Mrunal M. Nachankar
 # Created on   : 26-06-2014 12:04:AM
-# Modified by  : None
-# Modified on  : Not yet
+# Modified by  : Mr. Mrunal M. Nachankar
+# Modified on  : Sun Jun  3 20:00:46 IST 2018
 # Description  : This file is used for taking backup of gstudio
 #                1. Check for backup directory - If don't exist please create the same.
 #					1.1	Backup directory : /home/glab/rcs-db-backup/<yyyy-mm-dd> i.e for 26th June 2015 it will be "/home/glab/rcs-db-backup/2015-06-26"
@@ -20,42 +20,6 @@
 #--------------------------------------------------------------------#
 
 sleep 60;     # To start mongo
-
-# echo -e "\nBenchmark backup file exist. So performing incremental backup \n".
-# mkdir /data/benchmark-dump
-# cd /data/benchmark-dump
-# mongodump --db gstudio-mongodb --collection Benchmarks --out .
-
-# echo -e "\nCounter backup file exist. So performing incremental backup \n".
-# if [ ! -d /data/counters-dump ]; then
-#     mkdir /data/counters-dump
-# fi
-# cd /data/counters-dump
-# mongodump --db gstudio-mongodb --collection Counters --out .
-
-echo -e "\nPostgres backup file exist. So performing incremental backup \n".
-if [ ! -d /data/postgres-dump ]; then
-    mkdir /data/postgres-dump
-fi
-echo "pg_dumpall > pg_dump_all.sql;" | sudo su - postgres ;   
-
-mv /var/lib/postgresql/pg_dump_all.sql /data/postgres-dump/
-
-
-# if [[ "$(ls -ltr /backups/incremental/*full*.gpg | wc -l)" -le "2" ]]; then
-#     echo -e "\n Full backup files does not exist. So performing full backup \n".
-#     cd /home/docker/code/duplicity/
-#     ./duplicity-backup.sh --full
-# elif [[ "$(ls -ltr /backups/incremental/*full*.gpg | wc -l)" -ge "3" ]]; then
-#     echo -e "\n Full backup file exist. So performing incremental backup \n".
-#     cd /home/docker/code/duplicity/
-#     ./duplicity-backup.sh --backup
-# fi
-
-
-# change directory and fillcounter
-# cd /home/docker/code/gstudio/gnowsys-ndf/
-# python manage.py fillCounter
 
 # get current year
 cur_year=`date +"%Y"`
@@ -75,101 +39,62 @@ ss_code=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/s
 # get server name (Remove single quote {'} and Remove double quote {"})
 ss_name=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | grep -w GSTUDIO_INSTITUTE_NAME | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
 
-if [[ -d /backups/rsync/$ss_id ]]; then
-    rm -rf /backups/rsync/$ss_id
-elif [[ -d /backups/rsync/${ss_code}-${ss_id} ]]; then
-    rm -rf /backups/rsync/${ss_code}-${ss_id}
-elif [[ ! -d /backups/rsync/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs ]]; then
-    mkdir -p /backups/rsync/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
+syncthing_base_directory="/backups/syncthing";
+syncthing_year_directory="${syncthing_base_directory}/${cur_year}";
+syncthing_variable_directory="${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}";
+syncthing_sync_content_source="/data/gstudio-exported-users-analytics-csvs  /data/gstudio_tools_logs  /data/activity-timestamp-csvs  /data/assessment-media  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py  /data/git-commit-details.log  /data/system-heartbeat  /data/qbank/qbank_data.tar.gz"
+syncthing_sync_content_destination="${syncthing_base_directory}/${syncthing_variable_directory}";
+
+# ---------------------------------- x ---------------------------------- 
+
+echo -e "\nPostgres backup file exist. So performing incremental backup \n".
+if [ ! -d /data/postgres-dump ]; then
+    mkdir /data/postgres-dump
 fi
+echo "pg_dumpall > pg_dump_all.sql;" | sudo su - postgres ;   
 
-if [[ -d /backups/syncthing/$ss_id ]]; then
-    rm -rf /backups/syncthing/$ss_id /tmp/
-elif [[ -d /backups/syncthing/${ss_code}-${ss_id} ]]; then
-    rm -rf /backups/syncthing/${ss_code}-${ss_id}
-elif [[ ! -d /backups/syncthing/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs ]]; then
-    mkdir -p /backups/syncthing/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
-fi
+mv /var/lib/postgresql/pg_dump_all.sql /data/postgres-dump/
 
-if [[ -d /backups/$ss_id ]]; then
-    rm -rf /backups/$ss_id
-elif [[ -d /backups/${ss_code}-${ss_id} ]]; then
-    rm -rf /backups/${ss_code}-${ss_id}
-elif [[ ! -d /backups/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs ]]; then
-    mkdir -p /backups/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
-fi
+# ---------------------------------- x ---------------------------------- 
 
-if [[ ! -d /root/Sync ]]; then
-    mkdir -p /root/Sync
-fi
+echo -e "\nBackup /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/* in /data/assessment-media/ \n" 
+rsync -avzPh   /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/*  /data/assessment-media/
 
+echo -e "\nBackup local_settings.py(/home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py) and server_settings.py(/home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py) in /data/ \n" 
+rsync -avzPh /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py  /data/
 
-if [[ -d /tmp/$ss_id ]]; then
-    rm -rf /tmp/$ss_id 
-elif [[ -d /tmp/${ss_code}-${ss_id} ]]; then
-    rm -rf /tmp/${ss_code}-${ss_id}
-elif [[ ! -d /tmp/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs ]]; then
-    mkdir -p /tmp/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
-fi
-# mkdir /tmp/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs/
-rsync -avzPh  /data/gstudio-exported-users-analytics-csvs  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py /data/git-commit-details.log /data/system-heartbeat  /tmp/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/
+# ---------------------------------- x ---------------------------------- 
 
-cd /tmp/
-
-echo -e "\nCreate tar file of the analytics csvs"
-tar -cvzf ${ss_code}-${ss_id}.tar.gz ${cur_year} 
-
-echo -e "\nBackup gstudio-exported-users-analytics-csvs (Qunatitative research data / analytics data) - via rsync in process please be patient"
-#rsync -avzPh  /data/media /data/rcs-repo /data/benchmark-dump /data/counters-dump /data/gstudio-exported-users-analytics-csvs  /backups/rsync/$ss_id/
-rsync -avzPh  /tmp/${ss_code}-${ss_id}.tar.gz  /backups/rsync/${ss_code}-${ss_id}/
-
-#echo -e "\nBackup user analytics - via rsync in process please be patient"
-#rsync -avzPh  /data/gstudio-exported-users-analytics-csvs  /backups/syncthing/$ss_id/
-
-cp -av /root/.gnupg /backups/rsync/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs/
-
-touch /backups/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs/.stfolder
-touch /backups/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs/.stignore
-touch /backups/rsync/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs/.stfolder
-touch /backups/rsync/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs/.stignore
-
-touch /root/Sync/.stfolder
-touch /root/Sync/.stignore
-chmod +rx /root/Sync/*
-
-#chmod 644 /backups/incremental/*
-chmod +rx /backups/rsync/*
-
-
-touch /backups/syncthing${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs/.stfolder
-touch /backups/syncthing${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs/.stignore
-
-#chmod 644 /backups/incremental/*
-chmod +x /backups/syncthing/*
-
-# Remove old analytics tar.gz file
-if [[ -f /backups/rsync/${ss_id}/${ss_id}.tar.gz ]]; then
-    rm /backups/rsync/${ss_id}/${ss_id}.tar.gz
-fi
-
-if [[ -L /softwares/${ss_id}/${ss_id}.tar.gz ]]; then
-    rm /softwares/${ss_id}/${ss_id}.tar.gz
-fi
-
-# Add soft link for analytics tar.gz file
-if [[ ! -L /softwares/${ss_code}-${ss_id}.tar.gz ]]; then
-    ln -s /backups/rsync/${ss_code}-${ss_id}/${ss_code}-${ss_id}.tar.gz  /softwares/${ss_code}-${ss_id}.tar.gz
-fi
-
-# Add soft link for assessment-media file
-if [[ ! -L /softwares/assessment-media ]]; then
-    ln -s /data/assessment-media  /softwares/assessment-media
+# Add soft link for analytics progressCSV file
+if [[ ! -L /softwares/gstudio-exported-users-analytics-csvs ]]; then
+    ln -s /data/gstudio-exported-users-analytics-csvs  /softwares/gstudio-exported-users-analytics-csvs
 fi
 
 # Add soft link for gstudio_tools_logs file
 if [[ ! -L /softwares/gstudio_tools_logs ]]; then
     ln -s /data/gstudio_tools_logs  /softwares/gstudio_tools_logs
 fi
+
+# Add soft link for activity-timestamp-csvs file
+if [[ ! -L /softwares/activity-timestamp-csvs ]]; then
+    ln -s /data/activity-timestamp-csvs  /softwares/activity-timestamp-csvs
+fi
+
+# Add soft link for assessment-media file
+if [[ ! -L /softwares/assessment-media ]]; then
+    ln -s /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore  /softwares/assessment-media
+fi
+
+# Add soft link for qbank_data.tar.gz file
+if [[ ! -L /softwares/qbank_data.tar.gz ]]; then
+    if [[ -f /data/qbank/qbank_data.tar.gz ]]; then
+        ln -s /data/qbank/qbank_data.tar.gz  /softwares/qbank_data.tar.gz
+    else
+        echo -e "Source file not found. {Source filename: /data/qbank/qbank_data.tar.gz}"
+    fi
+fi
+
+# ---------------------------------- x ---------------------------------- 
 
 # log commit details - in /data/git-commit-details.log - started
 echo -e "\nDate : $(date) \n" > /data/git-commit-details.log
@@ -258,10 +183,92 @@ git diff 2>&1 | tee -a /data/git-commit-details.log
 echo -e "\nDate : $(date) \n" >> /data/git-commit-details.log
 # log commit details - in /data/git-commit-details.log - ended
 
+if [[ ! -d ${syncthing_sync_content_destination} ]]; then
+    mkdir -p ${syncthing_sync_content_destination};
+fi
 
 
-echo -e "\nBackup /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/* in /data/assessment-media/ \n" 
-rsync -avzPh   /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/*  /data/assessment-media/
+if [[ ! -f /${syncthing_base_directory}/.stfolder ]]; then
+    touch  /${syncthing_base_directory}/.stfolder;
+fi
 
-echo -e "\nBackup local_settings.py(/home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py) and server_settings.py(/home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py) in /data/ \n" 
-rsync -avzPh /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py  /data/
+if [[ ! -f /${syncthing_base_directory}/.stignore ]]; then
+    touch  /${syncthing_base_directory}/.stignore;
+fi
+
+
+if [[ ! -f /${syncthing_year_directory}/.stfolder ]]; then
+    touch  /${syncthing_year_directory}/.stfolder;
+fi
+
+if [[ ! -f /${syncthing_year_directory}/.stignore ]]; then
+    touch  /${syncthing_year_directory}/.stignore;
+fi
+
+if [[ ! -f /${syncthing_year_directory}/.gnupg ]]; then
+    rsync -avPh /root/.gnupg  /${syncthing_year_directory}/.gnupg;
+fi
+
+# ---------------------------------- x ---------------------------------- 
+
+echo -e "\nCopy content for syncing via syncthing"
+rsync -avzPh ${syncthing_sync_content_source}  ${syncthing_sync_content_destination}/;
+
+echo -e "\nCopy content for syncing via syncthing also in /softwares"
+rsync -avzPh ${syncthing_base_directory} /softwares/;
+
+# ---------------------------------- x ---------------------------------- 
+
+echo -e "\nCreate tar file of the syncthing content"
+cd /backups/
+tar -cvzf ${ss_code}-${ss_id}-syncthing.tar.gz syncthing 
+
+# Add soft link for analytics tar.gz file
+if [[ ! -L /softwares/${ss_code}-${ss_id}-syncthing.tar.gz ]]; then
+    ln -s /backups/${ss_code}-${ss_id}-syncthing.tar.gz  /softwares/${ss_code}-${ss_id}-syncthing.tar.gz
+fi
+
+# Ref: https://stackoverflow.com/questions/9981570/copying-tarring-files-that-have-been-modified-in-the-last-14-days
+echo -e "\nCreate tar file of the analytics csvs for last 24hrs, last 7days and last 30days"
+cd  /softwares/syncthing/${syncthing_variable_directory}/
+tar cvzf gstudio-exported-users-analytics-csvs ${ss_code}-${ss_id}-progressCSV.tar
+if [[ ! -L /softwares/${ss_code}-${ss_id}-progressCSV.tar.gz ]]; then
+    ln -s /backups/${ss_code}-${ss_id}-progressCSV.tar.gz  /softwares/${ss_code}-${ss_id}-progressCSV.tar.gz
+fi
+cd  /softwares/syncthing/${syncthing_variable_directory}/gstudio-exported-users-analytics-csvs/
+find . -name "*.csv" -mtime  0  -print | xargs tar cvzf ${ss_code}-${ss_id}-progressCSV-last-24hrs.tar
+if [[ ! -L /softwares/${ss_code}-${ss_id}-progressCSV-last-24hrs.tar.gz ]]; then
+    ln -s /backups/${ss_code}-${ss_id}-progressCSV-last-24hrs.tar.gz  /softwares/${ss_code}-${ss_id}-progressCSV-last-24hrs.tar.gz
+fi
+find . -name "*.csv" -mtime -7  -print | xargs tar cvzf ${ss_code}-${ss_id}-progressCSV-last-7days.tar
+if [[ ! -L /softwares/${ss_code}-${ss_id}-progressCSV-last-7days.tar.gz ]]; then
+    ln -s /backups/${ss_code}-${ss_id}-progressCSV-last-7days.tar.gz  /softwares/${ss_code}-${ss_id}-progressCSV-last-7days.tar.gz
+fi
+find . -name "*.csv" -mtime -30 -print | xargs tar cvzf ${ss_code}-${ss_id}-progressCSV-last-30days.tar
+if [[ ! -L /softwares/${ss_code}-${ss_id}-progressCSV-last-30days.tar.gz ]]; then
+    ln -s /backups/${ss_code}-${ss_id}-progressCSV-last-30days.tar.gz  /softwares/${ss_code}-${ss_id}-progressCSV-last-30days.tar.gz
+fi
+
+# ---------------------------------- x ---------------------------------- 
+
+echo -e "\nCreate tar file of the gstudio_tools_logs content"
+cd /data/
+tar -cvzf ${ss_code}-${ss_id}-gstudio_tools_logs.tar.gz /softwares/gstudio_tools_logs 
+
+# Add soft link for analytics tar.gz file
+if [[ ! -L /softwares/${ss_code}-${ss_id}-gstudio_tools_logs.tar.gz ]]; then
+    ln -s /data/${ss_code}-${ss_id}-gstudio_tools_logs.tar.gz  /softwares/${ss_code}-${ss_id}-gstudio_tools_logs.tar.gz
+fi
+
+# ---------------------------------- x ---------------------------------- 
+
+echo -e "\nCreate tar file of the activity-timestamp-csvs content"
+cd /data/
+tar -cvzf ${ss_code}-${ss_id}-activity-timestamp-csvs.tar.gz /softwares/activity-timestamp-csvs 
+
+# Add soft link for analytics tar.gz file
+if [[ ! -L /softwares/${ss_code}-${ss_id}-activity-timestamp-csvs.tar.gz ]]; then
+    ln -s /data/${ss_code}-${ss_id}-activity-timestamp-csvs.tar.gz  /softwares/${ss_code}-${ss_id}-activity-timestamp-csvs.tar.gz
+fi
+
+# ---------------------------------- x ---------------------------------- 

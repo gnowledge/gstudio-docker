@@ -308,98 +308,95 @@ function backup_completely() {
     mounting_disk
     echo -e "\n${cyan}Mounting status : $mounting_status ${reset}";
     
-    # source_path="/home/core/data/benchmark-dump";
-    # destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
-    # echo -e "\n${cyan}copy clix-platform data and necessary files except media directory from $source_path to $destination_path ${reset}"
-    # copy_content "$source_path" "$destination_path"
-
-    # source_path="/home/core/data/counters-dump";
-    # destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
-    # echo -e "\n${cyan}copy clix-platform data and necessary files except media directory from $source_path to $destination_path ${reset}"
-    # copy_content "$source_path" "$destination_path"
+    source_base_path="/home/core/data"
+    destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/"
 
     if [[ ! -d /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/ ]]; then
         mkdir -p /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/
     fi
 
-    source_path="/home/core/data/db";
-    destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
-    echo -e "\n${cyan}copy clix-platform db from $source_path to $destination_path ${reset}"
+    source_path="${source_base_path}/db";
+    echo -e "\n${cyan}copy clix-platform db from $source_path to $destination_path ${reset}";
     copy_content "$source_path" "$destination_path"
 
-    source_path="/home/core/data/gstudio-exported-users-analytics-csvs";
-    destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
-    echo -e "\n${cyan}copy clix-platform gstudio-exported-users-analytics-csvs from $source_path to $destination_path ${reset}"
+    source_path="${source_base_path}/gstudio-exported-users-analytics-csvs";
+    echo -e "\n${cyan}copy clix-platform gstudio-exported-users-analytics-csvs from $source_path to $destination_path ${reset}";
     copy_content "$source_path" "$destination_path"
 
-    source_path="/home/core/data/gstudio-logs";
-    destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
-    echo -e "\n${cyan}copy clix-platform gstudio-logs from $source_path to $destination_path ${reset}"
+    source_path="${source_base_path}/gstudio-logs";
+    echo -e "\n${cyan}copy clix-platform gstudio-logs from $source_path to $destination_path ${reset}";
     copy_content "$source_path" "$destination_path"
 
-    source_path="/home/core/data/postgres-dump";
-    destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
-    echo -e "\n${cyan}copy clix-platform postgres-dump from $source_path to $destination_path ${reset}"
+    source_path="${source_base_path}/gstudio_tools_logs";
+    echo -e "\n${cyan}copy clix-platform gstudio_tools_logs from $source_path to $destination_path ${reset}";
     copy_content "$source_path" "$destination_path"
 
-    source_path="/home/core/data/rcs-repo";
-    destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
-    echo -e "\n${cyan}copy clix-platform rcs-repo from $source_path to $destination_path ${reset}"
+    source_path="${source_base_path}/activity-timestamp-csvs";
+    echo -e "\n${cyan}copy clix-platform activity-timestamp-csvs from $source_path to $destination_path ${reset}";
     copy_content "$source_path" "$destination_path"
 
-    source_path="/home/core/data/local_settings.py";
-    destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
-    echo -e "\n${cyan}copy clix-platform local_settings.py from $source_path to $destination_path ${reset}"
+    source_path="${source_base_path}/postgres-dump";
+    echo -e "\n${cyan}copy clix-platform postgres-dump from $source_path to $destination_path ${reset}";
     copy_content "$source_path" "$destination_path"
 
-    source_path="/home/core/data/server_settings.py";
-    destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
-    echo -e "\n${cyan}copy clix-platform server_settings.py from $source_path to $destination_path ${reset}"
+    source_path="${source_base_path}/rcs-repo";
+    echo -e "\n${cyan}copy clix-platform rcs-repo from $source_path to $destination_path ${reset}";
     copy_content "$source_path" "$destination_path"
 
-    source_path="/home/core/data/system-heartbeat";
-    destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
-    echo -e "\n${cyan}copy clix-platform system-heartbeat from $source_path to $destination_path ${reset}"
+    source_path="${source_base_path}/local_settings.py";
+    echo -e "\n${cyan}copy clix-platform local_settings.py from $source_path to $destination_path ${reset}";
     copy_content "$source_path" "$destination_path"
 
-    source_path="/home/core/data/git-commit-details.log";
-    destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
-    echo -e "\n${cyan}copy clix-platform git-commit-details from $source_path to $destination_path ${reset}"
+    source_path="${source_base_path}/server_settings.py";
+    echo -e "\n${cyan}copy clix-platform server_settings.py from $source_path to $destination_path ${reset}";
     copy_content "$source_path" "$destination_path"
 
-    source_path="/home/core/data/assessment-media";
-    destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
-    echo -e "\n${cyan}copy clix-platform data and necessary files except media directory from $source_path to $destination_path ${reset}"
+    source_path="${source_base_path}/system-heartbeat";
+    echo -e "\n${cyan}copy clix-platform system-heartbeat from $source_path to $destination_path ${reset}";
     copy_content "$source_path" "$destination_path"
 
-    source_path="/home/core/data/nginx-logs";
-    destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
-    echo -e "\n${cyan}copy clix-platform nginx-logs from $source_path to $destination_path ${reset}"
+    source_path="${source_base_path}/git-commit-details.log";
+    echo -e "\n${cyan}copy clix-platform git-commit-details from $source_path to $destination_path ${reset}";
     copy_content "$source_path" "$destination_path"
 
-    source_path="/home/core/data/media";
-    destination_path="/mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/";
-    echo -e "\n${cyan}copy clix-platform media directory of data from $source_path to $destination_path ${reset}"
+    source_path="${source_base_path}/qbank/qbank_data.tar.gz";
+    echo -e "\n${cyan}copy clix-platform qbank_data.tar.gz (Cole's script) from $source_path to $destination_path ${reset}";
+    copy_content "$source_path" "$destination_path"
+
+    source_path="${source_base_path}/assessment-media";
+    echo -e "\n${cyan}copy clix-platform data and necessary files except media directory from $source_path to $destination_path ${reset}";
+    copy_content "$source_path" "$destination_path"
+
+    source_path="${source_base_path}/nginx-logs";
+    echo -e "\n${cyan}copy clix-platform nginx-logs from $source_path to $destination_path ${reset}";
+    copy_content "$source_path" "$destination_path"
+
+    source_path="${source_base_path}/media";
+    echo -e "\n${cyan}copy clix-platform media directory of data from $source_path to $destination_path ${reset}";
     copy_content "$source_path" "$destination_path" "max-size" 
 
     echo -e "\n${cyan}Size of directories: ${reset}"
-    # sudo du -hs /home/core/data/benchmark-dump /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/benchmark-dump
-    # sudo du -hs /home/core/data/counters-dump /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/counters-dump
-    sudo du -hs /home/core/data/db /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/db
-    sudo du -hs /home/core/data/gstudio-exported-users-analytics-csvs /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
-    sudo du -hs /home/core/data/gstudio-logs /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-logs
-    sudo du -hs /home/core/data/postgres-dump /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/postgres-dump
-    sudo du -hs /home/core/data/rcs-repo /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/rcs-repo
-    sudo du -hs /home/core/data/local_settings.py /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/local_settings.py
-    sudo du -hs /home/core/data/server_settings.py /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/server_settings.py
-    sudo du -hs /home/core/data/system-heartbeat /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/system-heartbeat
-    sudo du -hs /home/core/data/git-commit-details.log /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/git-commit-details.log
-    sudo du -hs /home/core/data/assessment-media /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/assessment-media
-    sudo du -hs /home/core/data/media /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/media
+    # sudo du -hs ${source_base_path}/benchmark-dump /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/benchmark-dump
+    # sudo du -hs ${source_base_path}/counters-dump /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/counters-dump
+    sudo du -hs ${source_base_path}/db /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/db
+    sudo du -hs ${source_base_path}/gstudio-exported-users-analytics-csvs /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-exported-users-analytics-csvs
+    sudo du -hs ${source_base_path}/gstudio-logs /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio-logs
+    sudo du -hs ${source_base_path}/gstudio_tools_logs /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/gstudio_tools_logs
+    sudo du -hs ${source_base_path}/activity-timestamp-csvs /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/activity-timestamp-csvs
+    sudo du -hs ${source_base_path}/postgres-dump /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/postgres-dump
+    sudo du -hs ${source_base_path}/rcs-repo /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/rcs-repo
+    sudo du -hs ${source_base_path}/local_settings.py /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/local_settings.py
+    sudo du -hs ${source_base_path}/server_settings.py /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/server_settings.py
+    sudo du -hs ${source_base_path}/system-heartbeat /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/system-heartbeat
+    sudo du -hs ${source_base_path}/git-commit-details.log /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/git-commit-details.log
+    sudo du -hs ${source_base_path}/qbank/qbank_data.tar.gz /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/qbank_data.tar.gz
+    sudo du -hs ${source_base_path}/assessment-media /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/assessment-media
+    sudo du -hs ${source_base_path}/nginx-logs /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/nginx-logs
+    sudo du -hs ${source_base_path}/media /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/media
 
-    sudo du -hc $(find /home/core/data/media -type f -size +30M)
+    sudo du -hc $(find ${source_base_path}/media -type f -size +30M)
     echo -e "\n${cyan}Size of directories: ${reset}"
-    sudo du -chs /home/core/data/* /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/*
+    sudo du -chs ${source_base_path}/* /mnt/home/core/${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}/*
 
     unmounting_disk
     echo -e "\n${cyan}Unmounting status : $unmounting_status ${reset}";

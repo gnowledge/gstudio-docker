@@ -5,7 +5,7 @@
 
 # Specify where we will install
 # the clixserver certificate
-GNAME="clixserver"
+GNAME="clixserver.tiss.edu"
 SSL_DIR="/etc/ssl/$GNAME"
 
 if [[ -d /etc/ssl/$GNAME && -f /etc/ssl/$GNAME/$GNAME.crt  && -f /etc/ssl/$GNAME/$GNAME.csr && -f /etc/ssl/$GNAME/$GNAME.key ]]; then

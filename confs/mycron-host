@@ -21,14 +21,5 @@
 # 
 # m h  dom mon dow   command
 
-01 *  * * * /home/docker/code/scripts/system-heartbeat.sh  > /tmp/cron-system-heartbeat.log
-
-05 *  * * * /home/docker/code/scripts/analytics.sh  > /tmp/cron-analytics.log
-
-10 *  * * * /home/docker/code/scripts/backup.sh  > /tmp/cron-bkp.log
-
-15 *  * * * /usr/sbin/logrotate /etc/logrotate.d/nginx  > /tmp/cron-logrotate.log
-
-20 *  * * * /usr/bin/python /home/docker/code/qbank-gstudio-scripts/single_school_get_MIT_activity_data/single_school_get_MIT_activity_data.py  > /tmp/cron-single_school_get_MIT_activity_data.log
-
-#10 *  8-14,22-31 * * [ `date +\%a` = "Fri" ] && echo "execfile('/home/docker/code/gstudio/doc/deployer/get_all_users_activity_timestamp_csvs.py')" | /usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py shell  > /tmp/cron-get_all_users_activity_timestamp_csvs.py.log
+# Trigger scripts at every reboot of host system
+@reboot     /bin/bash  /home/core/Execute-get_all_users_activity_timestamp_csvs.sh  >  /tmp/Execute-get_all_users_activity_timestamp_csvs.log  
