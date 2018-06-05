@@ -81,8 +81,11 @@ if [[ ! -L /softwares/activity-timestamp-csvs ]]; then
 fi
 
 # Add soft link for assessment-media file
-if [[ ! -L /softwares/assessment-media ]]; then
-    ln -s /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/studentResponseFiles  /softwares/assessment-media
+if [[ ! -L /softwares/assessment-media/studentResponseFiles ]]; then
+    if [[ ! -d /softwares/assessment-media ]]; then
+        mkdir -p /softwares/assessment-media
+    fi
+    ln -s /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/studentResponseFiles  /softwares/assessment-media/studentResponseFiles
 fi
 
 # Add soft link for qbank_data.tar.gz file
