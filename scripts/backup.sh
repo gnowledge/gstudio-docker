@@ -42,7 +42,7 @@ ss_name=`echo  $(echo $(more /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/s
 syncthing_base_directory="/backups/syncthing";
 syncthing_year_directory="${syncthing_base_directory}/${cur_year}";
 syncthing_variable_directory="${cur_year}/${state_code}/${ss_code}-${ss_id}/${platform}";
-syncthing_sync_content_source="/data/gstudio-exported-users-analytics-csvs  /data/gstudio_tools_logs  /data/activity-timestamp-csvs  /data/assessment-media  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py  /data/git-commit-details.log  /data/system-heartbeat  /data/qbank/qbank_data.tar.gz"
+syncthing_sync_content_source="/data/gstudio-exported-users-analytics-csvs  /data/gstudio_tools_logs  /data/activity-timestamp-csvs  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py  /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py  /data/git-commit-details.log  /data/system-heartbeat  /data/qbank/qbank_data.tar.gz"
 syncthing_sync_content_destination="${syncthing_base_directory}/${syncthing_variable_directory}";
 
 # ---------------------------------- x ---------------------------------- 
@@ -58,7 +58,7 @@ mv /var/lib/postgresql/pg_dump_all.sql /data/postgres-dump/
 # ---------------------------------- x ---------------------------------- 
 
 echo -e "\nBackup /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/* in /data/assessment-media/ \n" 
-rsync -avzPh   /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/*  /data/assessment-media/
+rsync -avzPh   /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/studentResponseFiles/*  /data/assessment-media/
 
 echo -e "\nBackup local_settings.py(/home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py) and server_settings.py(/home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py) in /data/ \n" 
 rsync -avzPh /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/local_settings.py /home/docker/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py  /data/
@@ -82,7 +82,7 @@ fi
 
 # Add soft link for assessment-media file
 if [[ ! -L /softwares/assessment-media ]]; then
-    ln -s /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore  /softwares/assessment-media
+    ln -s /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/studentResponseFiles  /softwares/assessment-media
 fi
 
 # Add soft link for qbank_data.tar.gz file
@@ -231,29 +231,30 @@ fi
 # Ref: https://stackoverflow.com/questions/9981570/copying-tarring-files-that-have-been-modified-in-the-last-14-days
 echo -e "\nCreate tar file of the analytics csvs for last 24hrs, last 7days and last 30days"
 cd  /softwares/syncthing/${syncthing_variable_directory}/
-tar cvzf gstudio-exported-users-analytics-csvs ${ss_code}-${ss_id}-progressCSV.tar
+echo "tar cvzf  ${ss_code}-${ss_id}-progressCSV.tar gstudio-exported-users-analytics-csvs   ;    /softwares/syncthing/${syncthing_variable_directory} ; $(pwd)"
+tar cvzf  ${ss_code}-${ss_id}-progressCSV.tar.gz gstudio-exported-users-analytics-csvs
 if [[ ! -L /softwares/${ss_code}-${ss_id}-progressCSV.tar.gz ]]; then
-    ln -s /backups/${ss_code}-${ss_id}-progressCSV.tar.gz  /softwares/${ss_code}-${ss_id}-progressCSV.tar.gz
+    ln -s /softwares/syncthing/${syncthing_variable_directory}/${ss_code}-${ss_id}-progressCSV.tar.gz  /softwares/${ss_code}-${ss_id}-progressCSV.tar.gz
 fi
-cd  /softwares/syncthing/${syncthing_variable_directory}/gstudio-exported-users-analytics-csvs/
-find . -name "*.csv" -mtime  0  -print | xargs tar cvzf ${ss_code}-${ss_id}-progressCSV-last-24hrs.tar
+cd  /softwares/syncthing/${syncthing_variable_directory}/
+find gstudio-exported-users-analytics-csvs -name "*.csv" -mtime  0  -print | xargs tar cvzf ${ss_code}-${ss_id}-progressCSV-last-24hrs.tar.gz
 if [[ ! -L /softwares/${ss_code}-${ss_id}-progressCSV-last-24hrs.tar.gz ]]; then
-    ln -s /backups/${ss_code}-${ss_id}-progressCSV-last-24hrs.tar.gz  /softwares/${ss_code}-${ss_id}-progressCSV-last-24hrs.tar.gz
+    ln -s /softwares/syncthing/${syncthing_variable_directory}/${ss_code}-${ss_id}-progressCSV-last-24hrs.tar.gz  /softwares/${ss_code}-${ss_id}-progressCSV-last-24hrs.tar.gz
 fi
-find . -name "*.csv" -mtime -7  -print | xargs tar cvzf ${ss_code}-${ss_id}-progressCSV-last-7days.tar
+find gstudio-exported-users-analytics-csvs -name "*.csv" -mtime -7  -print | xargs tar cvzf ${ss_code}-${ss_id}-progressCSV-last-7days.tar.gz
 if [[ ! -L /softwares/${ss_code}-${ss_id}-progressCSV-last-7days.tar.gz ]]; then
-    ln -s /backups/${ss_code}-${ss_id}-progressCSV-last-7days.tar.gz  /softwares/${ss_code}-${ss_id}-progressCSV-last-7days.tar.gz
+    ln -s /softwares/syncthing/${syncthing_variable_directory}/${ss_code}-${ss_id}-progressCSV-last-7days.tar.gz  /softwares/${ss_code}-${ss_id}-progressCSV-last-7days.tar.gz
 fi
-find . -name "*.csv" -mtime -30 -print | xargs tar cvzf ${ss_code}-${ss_id}-progressCSV-last-30days.tar
+find gstudio-exported-users-analytics-csvs -name "*.csv" -mtime -30 -print | xargs tar cvzf ${ss_code}-${ss_id}-progressCSV-last-30days.tar.gz
 if [[ ! -L /softwares/${ss_code}-${ss_id}-progressCSV-last-30days.tar.gz ]]; then
-    ln -s /backups/${ss_code}-${ss_id}-progressCSV-last-30days.tar.gz  /softwares/${ss_code}-${ss_id}-progressCSV-last-30days.tar.gz
+    ln -s /softwares/syncthing/${syncthing_variable_directory}/${ss_code}-${ss_id}-progressCSV-last-30days.tar.gz  /softwares/${ss_code}-${ss_id}-progressCSV-last-30days.tar.gz
 fi
 
 # ---------------------------------- x ---------------------------------- 
 
 echo -e "\nCreate tar file of the gstudio_tools_logs content"
 cd /data/
-tar -cvzf ${ss_code}-${ss_id}-gstudio_tools_logs.tar.gz /softwares/gstudio_tools_logs 
+tar -cvzf ${ss_code}-${ss_id}-gstudio_tools_logs.tar.gz gstudio_tools_logs 
 
 # Add soft link for analytics tar.gz file
 if [[ ! -L /softwares/${ss_code}-${ss_id}-gstudio_tools_logs.tar.gz ]]; then
@@ -264,11 +265,22 @@ fi
 
 echo -e "\nCreate tar file of the activity-timestamp-csvs content"
 cd /data/
-tar -cvzf ${ss_code}-${ss_id}-activity-timestamp-csvs.tar.gz /softwares/activity-timestamp-csvs 
+tar -cvzf ${ss_code}-${ss_id}-activity-timestamp-csvs.tar.gz activity-timestamp-csvs 
 
-# Add soft link for analytics tar.gz file
+# Add soft link for activity-timestamp tar.gz file
 if [[ ! -L /softwares/${ss_code}-${ss_id}-activity-timestamp-csvs.tar.gz ]]; then
     ln -s /data/${ss_code}-${ss_id}-activity-timestamp-csvs.tar.gz  /softwares/${ss_code}-${ss_id}-activity-timestamp-csvs.tar.gz
+fi
+
+# ---------------------------------- x ---------------------------------- 
+
+echo -e "\nCreate tar file of the assessment-media content"
+cd /data/
+tar -cvzf ${ss_code}-${ss_id}-assessment-media.tar.gz assessment-media 
+
+# Add soft link for assessment-media tar.gz file
+if [[ ! -L /softwares/${ss_code}-${ss_id}-assessment-media.tar.gz ]]; then
+    ln -s /data/${ss_code}-${ss_id}-assessment-media.tar.gz  /softwares/${ss_code}-${ss_id}-assessment-media.tar.gz
 fi
 
 # ---------------------------------- x ---------------------------------- 
