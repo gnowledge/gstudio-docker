@@ -135,10 +135,10 @@ function setup(){
         INFO "Copy oac and oat from $source_path to $destination_path" "$BASH_SOURCE" "green";
         RSYNC_CONTENT "$source_path" "$destination_path";
 
-        source_path="${source_base_path}/setup-software/oat";                                                                # oat
-        destination_path="/home/core/setup-software/";                              
-        INFO "Copy oac and oat from $source_path to $destination_path" "$BASH_SOURCE" "green";
-        RSYNC_CONTENT "$source_path" "$destination_path";
+        # source_path="${source_base_path}/setup-software/oat";                                                                # oat
+        # destination_path="/home/core/setup-software/";                              
+        # INFO "Copy oac and oat from $source_path to $destination_path" "$BASH_SOURCE" "green";
+        # RSYNC_CONTENT "$source_path" "$destination_path";
 
         source_path="${source_base_path}/docker-compose";                                                                    # dokcer-compose (docker-compose.yml for gstudio and syncthing)
         destination_path="/home/core/docker-compose";
@@ -291,13 +291,19 @@ function setup(){
 #        sudo chmod -R 755 /home/core/data/media/*
 
         echo -e "\n${cyan}school server instance config - create workspace with institute id ${reset}"
-        docker exec -it gstudio /bin/sh -c "echo \"execfile('/home/docker/code/gstudio/doc/deployer/create_workspace_from_institute_id.py')\" |/usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py shell"
+        docker exec -it gstudio /bin/sh -c "/bin/echo \"execfile('/home/docker/code/gstudio/doc/deployer/create_workspace_from_institute_id.py')\" |/usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py shell"
 
         echo -e "\n${cyan}school server instance config - correct spelling mistakes in usernames id ${reset}"
-        docker exec -it gstudio /bin/sh -c "echo \"execfile('/home/docker/code/gstudio/doc/deployer/release2-1_nov17.py')\" |/usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py shell"
+        docker exec -it gstudio /bin/sh -c "/bin/echo \"execfile('/home/docker/code/gstudio/doc/deployer/release2-1_nov17.py')\" |/usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py shell"
 
         echo -e "\n${cyan}school server instance config - set crontab (trigger script at start of system) ${reset}"
         crontab /home/core/mycron-host
+
+        # copy ssl files 
+        docker exec -it gstudio /bin/sh -c "/usr/bin/rsync -avPh /data/clixserver.tiss.edu /etc/ssl/"
+
+        # restart cron
+        # docker exec -it gstudio /bin/sh -c "/bin/kill -9 $(pidof cron) && /usr/sbin/cron "
 
         SET_SETUP_PROGRESS "$setup_progress_status_filename" "4";
     else
@@ -311,9 +317,9 @@ function setup(){
         INFO "Setup progress status value: $setup_progress_status. Hence loading docker image for the setup of syncthing." "green" ;
 
         # Set docker image realted variable
-        docker_image_path="/home/core/setup-software/syncthing/syncthing.tar";
-        docker_image_name="joeybaker/syncthing";
-        docker_image_grep_name="joeybaker/syncthing";
+        docker_image_path="/home/core/setup-software/syncthing/linuxserver-syncthing.tar";
+        docker_image_name="linuxserver/syncthing";
+        docker_image_grep_name="linuxserver/syncthing";
         CHECK_FOR_ALREADY_LOADED_DOCKER_IMAGE;
 
         SET_SETUP_PROGRESS "$setup_progress_status_filename" "5";
@@ -476,16 +482,3 @@ sudo systemctl enable docker
 SCRIPT_ENTRY
 
 exit 0;
-
-
-
-
-
-
-
-
-
-
-
-
-# exit

@@ -1,11 +1,11 @@
 # set the base image to registry.tiss.edu/gstudiobase
 FROM registry.tiss.edu/gstudiobase
 
-ARG gstudio-docker_commit_no="077e1bc94963e7e8781c2400a5a482fdb670c925"
+ARG gstudio_docker_commit_no="077e1bc94963e7e8781c2400a5a482fdb670c925"
 ARG gstudio_commit_no="8aee52ce41397958aa5244148693177a32d299de"
-ARG qbank-lite_commit_no="21f0d25a95b3e2f641269696f591a9a007ac76ee"
+ARG qbank_lite_commit_no="21f0d25a95b3e2f641269696f591a9a007ac76ee"
 ARG OpenAssessmentsClient_commit_no="41c9b1609dc8a84d53b533e7292fd0536a625c34"
-ARG qbank-gstudio-scripts_commit_no="cc47ba90634e3f944be2c443b9088c7edde80f2a"
+ARG qbank_gstudio-scripts_commit_no="cc47ba90634e3f944be2c443b9088c7edde80f2a"
 
 
 # file Author / Maintainer to Mrunal 
@@ -23,12 +23,13 @@ WORKDIR "/home/docker/code/"
 
 # install qbank-gstudio-scripts code and pip install to install pip related required packages as per requirements.txt
 RUN git clone https://743e4ddc106b7b2cf402bbf802cae683b0aa62de@github.com/CLIxIndia-Dev/qbank-gstudio-scripts.git  \
-    &&  cd qbank-gstudio-scripts && git reset --hard $qbank-gstudio-scripts_commit_no && cd ..   \
+    &&  cd qbank-gstudio-scripts && git reset --hard $qbank_gstudio_scripts_commit_no && cd ..   \
     &&  pip install -r /home/docker/code/qbank-gstudio-scripts/single_school_get_MIT_activity_data/requirements.txt
 
 
 # install gstudio docker code
 RUN git clone https://743e4ddc106b7b2cf402bbf802cae683b0aa62de@github.com/mrunal4/gstudio-docker.git  \
+    &&  cd gstudio-docker && git reset --hard $gstudio_docker_commit_no && cd ..   \
     &&  rsync -avPh --include="/*/" --include="*/.*" --include="*" gstudio-docker/  .   \ 
     &&  rm -rf gstudio-docker
 
@@ -52,7 +53,7 @@ RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
 # Clone qbank repos at manage.py level
 RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
     &&  git clone -b clixserver.tiss.edu https://github.com/gnowledge/qbank-lite.git   \
-    &&  cd gstudio && git reset --hard $qbank-lite_commit_no && cd ..   \
+    &&  cd qbank-lite && git reset --hard $qbank_lite_commit_no && cd ..   \
     &&  cd qbank-lite   \
     &&  git submodule update --init --recursive   
 
@@ -61,7 +62,7 @@ RUN cd /home/docker/code/gstudio/gnowsys-ndf/   \
 RUN cd /home/docker/code/   \
     &&  git clone -b clixserver.tiss.edu https://github.com/gnowledge/OpenAssessmentsClient.git   \
     &&  mkdir -p /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/repository/AssetContent    /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/studentResponseFiles   \
-    &&  cd gstudio && git reset --hard $OpenAssessmentsClient_commit_no && cd ..   \
+    &&  cd OpenAssessmentsClient && git reset --hard $OpenAssessmentsClient_commit_no && cd ..   \
     &&  cd OpenAssessmentsClient   \
 #   &&  npm build    \
     &&  yarn   \
