@@ -60,7 +60,7 @@ function backup_completely() {
     for (( i=1; i<5; i++ )); 
     do
 
-          check_disk=`lsblk | grep sdb9 | wc -l`
+          check_disk=`lsblk | grep /mnt | wc -l`
 
           if [[ "$check_disk" != "1" ]]; then
                 sleep 5;
