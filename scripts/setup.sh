@@ -27,6 +27,8 @@ source ./mrulogger.sh
 
 SCRIPT_ENTRY
 
+sudo true
+
 function setup(){
 
     # Variables related to "copy_content_validations" function
@@ -100,7 +102,7 @@ function setup(){
         INFO "Copy mrulogger.sh script from $source_path to $destination_path" "$BASH_SOURCE" "green";
         RSYNC_CONTENT "$source_path" "$destination_path";
 
-        source_path="${source_base_path}/Execute-single_school_get_MIT_activity_data.sh";                                    # Execute-single_school_get_MIT_activity_data.sh
+        source_path="${source_base_path}/Execute-get_all_users_activity_timestamp_csvs.sh";                                    # Execute-single_school_get_MIT_activity_data.sh
         destination_path="/home/core/";
         INFO "Copy Execute-single_school_get_MIT_activity_data.sh script from $source_path to $destination_path" "$BASH_SOURCE" "green";
         RSYNC_CONTENT "$source_path" "$destination_path";
@@ -141,18 +143,28 @@ function setup(){
         # RSYNC_CONTENT "$source_path" "$destination_path";
 
         source_path="${source_base_path}/docker-compose";                                                                    # dokcer-compose (docker-compose.yml for gstudio and syncthing)
-        destination_path="/home/core/docker-compose";
+        destination_path="/home/core/";
         INFO "Copy user-csvs directory from $source_path to $destination_path" "$BASH_SOURCE" "green";
         RSYNC_CONTENT "$source_path" "$destination_path";
 
-        source_path="${source_base_path}/setup-software/gstudio";                                                            # gstudio docker image
+        source_path="${source_base_path}/setup-software/docker-images/gstudio";                                              # gstudio docker image
         destination_path="/home/core/setup-software/";                              
         INFO "Copy gstudio docker image from $source_path to $destination_path" "$BASH_SOURCE" "green";
         RSYNC_CONTENT "$source_path" "$destination_path";
 
-        source_path="${source_base_path}/setup-software/syncthing";                                                          # syncthing docker image
+        source_path="${source_base_path}/setup-software/docker-images/syncthing";                                            # syncthing docker image
         destination_path="/home/core/setup-software/";                              
         INFO "Copy syncthing docker image from $source_path to $destination_path" "$BASH_SOURCE" "green";
+        RSYNC_CONTENT "$source_path" "$destination_path";
+
+        source_path="${source_base_path}/setup-software/i2c-softwares/Fonts/";                                              # fonts
+        destination_path="/usr/share/fonts/";
+        INFO "Copy display-pics directory from $source_path to $destination_path" "$BASH_SOURCE" "green";
+        RSYNC_CONTENT "$source_path" "$destination_path";
+
+        source_path="${source_base_path}/assesment-datastore";                                                               # assesment-datastore
+        destination_path="/home/core/";
+        INFO "Copy display-pics directory from $source_path to $destination_path" "$BASH_SOURCE" "green";
         RSYNC_CONTENT "$source_path" "$destination_path";
 
         UMOUNT_PARTITION "/dev/$selected_usb_disk" "/mnt/";
@@ -169,9 +181,9 @@ function setup(){
         INFO "Setup progress status value: $setup_progress_status. Hence loading docker image for the setup of student CLIx platform." "green" ;
 
         # Set docker image realted variable
-        docker_image_path="/home/core/setup-software/gstudio/registry.tiss.edu-school-server-dlkit-43-7b32cc4.tar";
-        docker_image_name="registry.tiss.edu/school-server-dlkit:43-7b32cc4";
-        docker_image_grep_name="43-7b32cc4";
+        docker_image_path="/home/core/setup-software/gstudio/registry.tiss.edu-school-server-master-20180605-v1.tar";
+        docker_image_name="registry.tiss.edu/school-server-master:20180605-v1";
+        docker_image_grep_name="20180605-v1";
         CHECK_FOR_ALREADY_LOADED_DOCKER_IMAGE;
 
         SET_SETUP_PROGRESS "$setup_progress_status_filename" "2";
@@ -212,8 +224,10 @@ function setup(){
         
         CHECK_FILE_EXISTENCE "/home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py" "create"
 
+	echo "ss_id: $ss_id ; ss_code: $ss_code ; ss_name: $ss_name ; state_code: $state_code"
+
         # get server id (Remove single quote {'} and Remove double quote {"})
-        ss_id=`echo  $(echo $(more /home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | grep -w GSTUDIO_INSTITUTE_ID | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
+#        ss_id=`echo  $(echo $(more /home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | grep -w GSTUDIO_INSTITUTE_ID | sed 's/.*=//g')) | sed "s/'//g" | sed 's/"//g'`
         #ss_id=$(more /home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py | sed -n '/.*=/{p;q;}' | sed 's/.*= //g' | sed "s/'//g" | sed 's/"//g')
 
         # Trim leading  whitespaces 
@@ -225,10 +239,10 @@ function setup(){
         if grep -Fq "GSTUDIO_INSTITUTE_ID" /home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py
         then
             # code if found
-            sed -e "/GSTUDIO_INSTITUTE_ID/ s/=.*/='${ss_id}'/" -i  /home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
+            sudo sh -c "sed -e \"/GSTUDIO_INSTITUTE_ID/ s/=.*/='${ss_id}'/\" -i  /home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py";
         else
             # code if not found
-            echo -e "GSTUDIO_INSTITUTE_ID ='${ss_id}'" >>  /home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
+            sudo sh -c "echo -e \"GSTUDIO_INSTITUTE_ID ='${ss_id}'\" >>  /home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py";
         fi
 
         # update school code
@@ -242,10 +256,10 @@ function setup(){
         if grep -Fq "GSTUDIO_INSTITUTE_ID_SECONDARY" /home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py
         then
             # code if found
-            sed -e "/GSTUDIO_INSTITUTE_ID_SECONDARY/ s/=.*/='${ss_code}'/" -i  /home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
+            sudo sh -c "sed -e \"/GSTUDIO_INSTITUTE_ID_SECONDARY/ s/=.*/='${ss_code}'/\" -i  /home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py";
         else
             # code if not found
-            echo -e "GSTUDIO_INSTITUTE_ID_SECONDARY ='${ss_code}'" >>  /home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
+            sudo sh -c "echo -e \"GSTUDIO_INSTITUTE_ID_SECONDARY ='${ss_code}'\" >>  /home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py";
         fi
 
         # update school name
@@ -255,16 +269,22 @@ function setup(){
         ss_name=$(echo ${ss_name##*( )})
         # Trim trailing  whitespaces 
         ss_name=$(echo ${ss_name%%*( )})
+    	state_code=${ss_id:0:2};
+
 
         if grep -Fq "GSTUDIO_INSTITUTE_NAME" /home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py
         then
             # code if found
-            sed -e "/GSTUDIO_INSTITUTE_NAME/ s/=.*/='${ss_name}'/" -i  /home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
+            sudo sh -c "sed -e \"/GSTUDIO_INSTITUTE_NAME/ s|=.*|='${ss_name}'|\" -i  /home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py";
         else
             # code if not found
-            echo -e "GSTUDIO_INSTITUTE_NAME ='${ss_name}'" >>  /home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py;
+            sudo sh -c "echo -e \"GSTUDIO_INSTITUTE_NAME ='${ss_name}'\" >>  /home/core/code/gstudio/gnowsys-ndf/gnowsys_ndf/server_settings.py";
         fi
 
+	echo "ss_id: $ss_id ; ss_code: $ss_code ; ss_name: $ss_name ; state_code: $state_code"
+
+        INFO "Waiting for the processes to start" "" "green";
+        WARNING "caution : it may take long time (90s)";
 
         sleep 90      # Wait for apllication to start properly
 
@@ -272,17 +292,18 @@ function setup(){
         docker exec -it gstudio /bin/sh -c "echo 'psql -f /data/drop_database.sql;' | sudo su - postgres"
         docker exec -it gstudio /bin/sh -c "echo 'psql -f /data/pg_dump_all.sql;' | sudo su - postgres"
 
-        echo -e "\n${cyan}school server instance config - copying oac, oat and AssetContent ${reset}"
-        docker exec -it gstudio /bin/sh -c "rsync -avzPh /data/CLIx/datastore/AssetContent/* /home/docker/code/gstudio/gnowsys-ndf/qbank-lite/webapps/CLIx/datastore/repository/AssetContent/"
-
         echo -e "\n${cyan}restarting school server instance to apply the configuration ${reset}"
         docker restart gstudio
+
+        INFO "Restarting gstudio container. " "" "green";
+        WARNING "caution : it may take long time (60s)";
 
         sleep 60      # Wait for apllication to start properly
 
         echo -e "\n${cyan}school server instance config - copy display pics and user csvs ${reset}"  
         docker cp display-pics gstudio:/home/docker/code/
-        docker cp user-csvs/${ss_id}_users.csv gstudio:/home/docker/code/user-csvs/
+	    docker exec -it gstudio /bin/sh -c "mkdir /home/docker/code/user-csvs"
+        docker cp user-csvs/${state_code}/${ss_id}_users.csv gstudio:/home/docker/code/user-csvs/
 
         echo -e "\n${cyan}school server instance config - create users and apply display pics ${reset}"
         docker exec -it gstudio /bin/sh -c "/usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py sync_users /home/docker/code/user-csvs/${ss_id}_users.csv"
@@ -294,7 +315,7 @@ function setup(){
         docker exec -it gstudio /bin/sh -c "/bin/echo \"execfile('/home/docker/code/gstudio/doc/deployer/create_workspace_from_institute_id.py')\" |/usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py shell"
 
         echo -e "\n${cyan}school server instance config - correct spelling mistakes in usernames id ${reset}"
-        docker exec -it gstudio /bin/sh -c "/bin/echo \"execfile('/home/docker/code/gstudio/doc/deployer/release2-1_nov17.py')\" |/usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py shell"
+        docker exec -it gstudio /bin/sh -c "/bin/echo \"execfile('/home/docker/code/gstudio/doc/release-scripts/release2-1_nov17.py')\" |/usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py shell"
 
         echo -e "\n${cyan}school server instance config - set crontab (trigger script at start of system) ${reset}"
         crontab /home/core/mycron-host
@@ -302,9 +323,33 @@ function setup(){
         # copy ssl files 
         docker exec -it gstudio /bin/sh -c "/usr/bin/rsync -avPh /data/clixserver.tiss.edu /etc/ssl/"
 
+        echo -e "\n${cyan}collectstatic${reset}"
+        docker exec -it gstudio /bin/sh -c "/bin/echo yes |/usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py collectstatic"
+
+        echo -e "\n${cyan}trigger crontab scripts to set syncthing${reset}"
+        docker exec -it gstudio /bin/sh -c "/home/docker/code/scripts/system-heartbeat.sh  > /tmp/cron-system-heartbeat.log"
+        docker exec -it gstudio /bin/sh -c "/home/docker/code/scripts/analytics.sh  > /tmp/cron-analytics.log"
+        docker exec -it gstudio /bin/sh -c "/home/docker/code/scripts/backup.sh  > /tmp/cron-bkp.log"
+        docker exec -it gstudio /bin/sh -c "/usr/sbin/logrotate /etc/logrotate.d/nginx  > /tmp/cron-logrotate.log"
+        docker exec -it gstudio /bin/sh -c "/usr/bin/python /home/docker/code/qbank-gstudio-scripts/single_school_get_MIT_activity_data/single_school_get_MIT_activity_data.py  > /tmp/cron-single_school_get_MIT_activity_data.log"
+        docker exec -it gstudio /bin/sh -c "/bin/echo \"execfile('/home/docker/code/gstudio/doc/deployer/get_all_users_activity_timestamp_csvs.py')\" | /usr/bin/python /home/docker/code/gstudio/gnowsys-ndf/manage.py shell  > /tmp/cron-get_all_users_activity_timestamp_csvs.py.log"
+
+        echo -e "\n${cyan}copying fonts${reset}"
+        sudo rsync -avPh /mnt/home/core/installation-content/setup-software/i2c-softwares/Fonts/* /usr/share/fonts/;
+        sudo fc-cache -f -v
+
+
+        echo -e "\n${cyan}restarting school server instance to apply the configuration ${reset}"
+        docker restart gstudio
+
+        INFO "Restarting gstudio container. " "" "green";
+        WARNING "caution : it may take long time (180s)";
+
+        sleep 180      # Wait for apllication to start properly
+
         # restart cron
         # docker exec -it gstudio /bin/sh -c "/bin/kill -9 $(pidof cron) && /usr/sbin/cron "
-
+    
         SET_SETUP_PROGRESS "$setup_progress_status_filename" "4";
     else
         WARNING "Setup progress step value is ${setup_progress_status}, hence continuing with the process.\nSkipping the step 4 of setting up / configuring the container for the setup of student CLIx platform."  "$BASH_SOURCE";
@@ -405,11 +450,11 @@ if grep -Fq "APT::Periodic::Update-Package-Lists" /etc/apt/apt.conf.d/10periodic
 then
     # code if found
     INFO "Auto-updates (package list) entry already exist in '/etc/apt/apt.conf.d/10periodic'. Hence trying to update (set it to disable{value as '1'})" "$BASH_SOURCE" "green";
-    sudo echo -e "APT::Periodic::Update-Package-Lists /"0/";" | sudo tee -a /etc/apt/apt.conf.d/10periodic;
+    sudo sed -i 's/APT::Periodic::Update-Package-Lists .*$/APT::Periodic::Update-Package-Lists "0"/' /etc/apt/apt.conf.d/10periodic
 else
     # code if not found
     WARNING "Auto-updates (package list) entry doesn't exist in '/etc/apt/apt.conf.d/10periodic'. Hence trying to add (set it to disable{value as '1'})" "$BASH_SOURCE";    
-    sudo echo -e "APT::Periodic::Update-Package-Lists /"0/";" | sudo tee -a /etc/apt/apt.conf.d/10periodic;
+    sudo echo -e "APT::Periodic::Update-Package-Lists \"0\";" | sudo tee -a /etc/apt/apt.conf.d/10periodic;
 fi
 
 # update disable unattended updates (download upgradeable package) entry
@@ -417,11 +462,11 @@ if grep -Fq "APT::Periodic::Download-Upgradeable-Packages" /etc/apt/apt.conf.d/1
 then
     # code if found
     INFO "Auto-updates (download upgradeable package) entry already exist in '/etc/apt/apt.conf.d/10periodic'. Hence trying to update (set it to disable{value as '1'})" "$BASH_SOURCE" "green";
-    sudo echo -e "APT::Periodic::Download-Upgradeable-Packages /"0/";" | sudo tee -a /etc/apt/apt.conf.d/10periodic;
+    sudo sed -i 's/APT::Periodic::Download-Upgradeable-Packages .*$/APT::Periodic::Download-Upgradeable-Packages "0"/' /etc/apt/apt.conf.d/10periodic
 else
     # code if not found
     WARNING "Auto-updates (download upgradeable package) entry doesn't exist in '/etc/apt/apt.conf.d/10periodic'. Hence trying to add (set it to disable{value as '1'})" "$BASH_SOURCE";    
-    sudo echo -e "APT::Periodic::Download-Upgradeable-Packages /"0/";" | sudo tee -a /etc/apt/apt.conf.d/10periodic;
+    sudo echo -e "APT::Periodic::Download-Upgradeable-Packages \"0\";" | sudo tee -a /etc/apt/apt.conf.d/10periodic;
 fi
 
 # update disable unattended updates (upgrade packages) entry
@@ -429,11 +474,11 @@ if grep -Fq "APT::Periodic::Unattended-Upgrade" /etc/apt/apt.conf.d/10periodic
 then
     # code if found
     INFO "Auto-updates (upgrade packages) entry already exist in '/etc/apt/apt.conf.d/10periodic'. Hence trying to update (set it to disable{value as '1'})" "$BASH_SOURCE" "green";
-    sudo echo -e "APT::Periodic::Unattended-Upgrade /"0/";" | sudo tee -a /etc/apt/apt.conf.d/10periodic;
+    sudo sed -i 's/APT::Periodic::Unattended-Upgrade .*$/APT::Periodic::Unattended-Upgrade "0"/' /etc/apt/apt.conf.d/10periodic
 else
     # code if not found
     WARNING "Auto-updates (upgrade packages) entry doesn't exist in '/etc/apt/apt.conf.d/10periodic'. Hence trying to add (set it to disable{value as '1'})" "$BASH_SOURCE";    
-    sudo echo -e "APT::Periodic::Unattended-Upgrade /"0/";" | sudo tee -a /etc/apt/apt.conf.d/10periodic;
+    sudo echo -e "APT::Periodic::Unattended-Upgrade \"0\";" | sudo tee -a /etc/apt/apt.conf.d/10periodic;
 fi
 
 
@@ -442,11 +487,11 @@ if grep -Fq "APT::Periodic::Update-Package-Lists" /etc/apt/apt.conf.d/20auto-upg
 then
     # code if found
     INFO "Auto-updates (package list) entry already exist in '/etc/apt/apt.conf.d/20auto-upgrades'. Hence trying to update (set it to disable{value as '1'})" "$BASH_SOURCE" "green";
-    sudo echo -e "APT::Periodic::Update-Package-Lists /"0/";" | sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades;
+    sudo sed -i 's/APT::Periodic::Update-Package-Lists .*$/APT::Periodic::Update-Package-Lists "0"/' /etc/apt/apt.conf.d/20auto-upgrades
 else
     # code if not found
     WARNING "Auto-updates (package list) entry doesn't exist in '/etc/apt/apt.conf.d/20auto-upgrades'. Hence trying to add (set it to disable{value as '1'})" "$BASH_SOURCE";    
-    sudo echo -e "APT::Periodic::Update-Package-Lists /"0/";" | sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades;
+    sudo echo -e "APT::Periodic::Update-Package-Lists \"0\";" | sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades;
 fi
 
 # update disable unattended updates (download upgradeable package) entry
@@ -454,11 +499,11 @@ if grep -Fq "APT::Periodic::Download-Upgradeable-Packages" /etc/apt/apt.conf.d/2
 then
     # code if found
     INFO "Auto-updates (download upgradeable package) entry already exist in '/etc/apt/apt.conf.d/20auto-upgrades'. Hence trying to update (set it to disable{value as '1'})" "$BASH_SOURCE" "green";
-    sudo echo -e "APT::Periodic::Download-Upgradeable-Packages /"0/";" | sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades;
+    sudo sed -i 's/APT::Periodic::Download-Upgradeable-Packages .*$/APT::Periodic::Download-Upgradeable-Packages "0"/' /etc/apt/apt.conf.d/20auto-upgrades
 else
     # code if not found
     WARNING "Auto-updates (download upgradeable package) entry doesn't exist in '/etc/apt/apt.conf.d/20auto-upgrades'. Hence trying to add (set it to disable{value as '1'})" "$BASH_SOURCE";    
-    sudo echo -e "APT::Periodic::Download-Upgradeable-Packages /"0/";" | sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades;
+    sudo echo -e "APT::Periodic::Download-Upgradeable-Packages \"0\";" | sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades;
 fi
 
 # update disable unattended updates (upgrade packages) entry
@@ -466,11 +511,11 @@ if grep -Fq "APT::Periodic::Unattended-Upgrade" /etc/apt/apt.conf.d/20auto-upgra
 then
     # code if found
     INFO "Auto-updates (upgrade packages) entry already exist in '/etc/apt/apt.conf.d/20auto-upgrades'. Hence trying to update (set it to disable{value as '1'})" "$BASH_SOURCE" "green";
-    sudo echo -e "APT::Periodic::Unattended-Upgrade /"0/";" | sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades;
+    sudo sed -i 's/APT::Periodic::Unattended-Upgrade .*$/APT::Periodic::Unattended-Upgrade "0"/' /etc/apt/apt.conf.d/20auto-upgrades
 else
     # code if not found
     WARNING "Auto-updates (upgrade packages) entry doesn't exist in '/etc/apt/apt.conf.d/20auto-upgrades'. Hence trying to add (set it to disable{value as '1'})" "$BASH_SOURCE";    
-    sudo echo -e "APT::Periodic::Unattended-Upgrade /"0/";" | sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades;
+    sudo echo -e "APT::Periodic::Unattended-Upgrade \"0\";" | sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades;
 fi
 
 setup
