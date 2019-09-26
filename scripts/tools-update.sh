@@ -16,8 +16,8 @@ reset="\033[0m" ;
 #filename=$(basename $(ls  /mnt/update_*.tar.gz |  head -n 1));
 #update_patch="${filename%.*.*}";
 #update_patch="update_patch-beb6af2-r2.1-20171229"
-
-patch=$(basename $(tar -tf /mnt/patch-*.tar.gz |  head -n 1));
+#patch=$(basename $(tar -tf /mnt/patch-*.tar.gz |  head -n 1));
+patch="update-patch-c0463c5-r6-20190718";
 
 #echo -e "\n${cyan}copy updated patch from /mnt/${update_patch}/tools-updates/setup-software/* to /home/core/setup-software/  ${reset}";
 #sudo rsync -avzPh /mnt/${update_patch}/tools-updates/setup-software/*  /home/core/setup-software/;

@@ -21,16 +21,17 @@ grey="\033[0;97m" ;
 white="\033[0;98m" ;
 reset="\033[0m" ;
 
-filename=$(basename $(ls -dr /home/docker/code/patch-*/ |  head -n 1));
-patch="${filename%.*.*}";
+#filename=$(basename $(ls -dr /home/docker/code/patch-*/ |  head -n 1));
+#patch="${filename%.*.*}";
 #update_patch="update_patch-beb6af2-r2.1-20171229"
+patch="update-patch-c0463c5-r6-20190718";
 
 # git offline update docker code - started
 # git_commit_no_docker="520d9ed489fba752fa3843ccb98c0c9ad70329e3";             # Earlier commit no
 # git_commit_no_docker="3a12a65e161c7a13ebfe528fa0dd00359bd7f9c0";             # Commit on 13-11-2017
 #git_commit_no_docker="beb6af265bd62b6dc34bb0acdfcdcedb6b2bccd0";               # Commit on 29-12-2017
-
-git_commit_no_docker="26eaf18e4e75553786d52ecb96e259b68090c139";
+#git_commit_no_docker="26eaf18e4e75553786d52ecb96e259b68090c139";
+git_commit_no_docker="c0463c5a55a92629edbca0ee34b8c7cbba161d3a";
 
 echo -e "\n${cyan}change the directory to /home/docker/code/ ${reset}"
 cd /home/docker/code/
@@ -55,7 +56,8 @@ git merge $git_commit_no_docker
 
 #git_commit_no_gstudio="5d5ed8acd48950f9eb850590bef068f853a42fb5";             # Earlier commit no
 #git_commit_no_gstudio="225cf7b5b8c11b916ee33488c5fc2e82ceaffa5d";              # Commit on 05-01-2018 
-git_commit_no_gstudio="d6f6592643ec87f06e493aa12467fd17d67b93bd";
+#git_commit_no_gstudio="d6f6592643ec87f06e493aa12467fd17d67b93bd";              #patch-r5 commit
+git_commit_no_gstudio="235eb4e9818a333e132595664838a22c8e4b4d11";
 
 #--- One time for 20170912 update - started
 echo -e "\n${cyan}change the directory to /home/docker/code/gstudio ${reset}"
@@ -79,6 +81,23 @@ git merge $git_commit_no_gstudio
 
 # git offline update gstudio code - ended
 
+# git offline update qbank-gstudio-scripts code - started
+
+git_commit_no_qbank_gstudio_scripts="002cbdff2e596f2dab6f0b2c14efd5a561b3dae0";
+
+echo -e "\n${cyan}change the directory to /home/docker/code/qbank-gstudio-scripts/ ${reset}"
+cd /home/docker/code/qbank-gstudio-scripts/
+
+echo -e "\n${cyan}changing the git branch to master";
+git checkout master;
+
+echo -e "\n${cyan}fetching git details from /home/docker/code/${patch}/qbank-gstudio-scripts ${reset}"
+git fetch /home/docker/code/${patch}/code-updates/qbank-gstudio-scripts
+
+echo -e "\n${cyan}merging till specified commit number (${git_commit_no_qbank_gstudio_scripts}) from /home/docker/code/${patch}/qbank-gstudio-scripts ${reset}"
+git merge ${git_commit_no_qbank_gstudio_scripts}
+
+# git offline update qbank-gstudio-scripts code - ended
 
 # git offline update qbank-lite code - started
 
