@@ -32,18 +32,18 @@ docker exec -it gstudio /bin/sh -c "/bin/bash /home/docker/code/${patch}/tools-u
 
 #copying the chrome version 69 and firefox version 65.0.1 for windows and ubuntu
 echo -e "\n${cyan}Copying the chromev69 folder from patch folder to setup-software ${reset}";
-sudo rsync -avPhz /mnt/${patch}/tools-updates/chrome_v69 /home/core/setup-software/i2c-softwares/Browsers/ ;
+sudo rsync -avPhz /mnt/update-patch-r6/${patch}/tools-updates/chrome_v69 /home/core/setup-software/i2c-softwares/Browsers/ ;
 
 echo -e "\n${cyan}Copying the firefox_v65.0.1 folder from patch folder to setup-software ${reset}";
-sudo rsync -avPhz /mnt/${patch}/tools-updates/firefox_v65.0.1 /home/core/setup-software/i2c-softwares/Browsers/ ;
+sudo rsync -avPhz /mnt/update-patch-r6/${patch}/tools-updates/firefox_v65.0.1 /home/core/setup-software/i2c-softwares/Browsers/ ;
 
 #copying the libre office version 6.1.5.2 for ubuntu
 echo -e "\n${cyan}Copying the LibreOffice_6.1.5.2_Linux_x86-64_deb folder from patch folder to setup-software ${reset}";
-sudo rsync -avPhz /mnt/${patch}/tools-updates/LibreOffice_6.1.5.2_Linux_x86-64_deb /home/core/setup-software/i2c-softwares/LibreOffice/ ;
+sudo rsync -avPhz /mnt/update-patch-r6/${patch}/tools-updates/LibreOffice_6.1.5.2_Linux_x86-64_deb /home/core/setup-software/i2c-softwares/LibreOffice/ ;
 
 #copying the scratch version 1.4.0.6 for ubuntu
 echo -e "\n${cyan}Copying the scratch_1.4.0.6_dfsg1-5_all.deb package from patch folder to setup-software ${reset}";
-sudo rsync -avPhz /mnt/${patch}/tools-updates/scratch_1.4.0.6_dfsg1-5_all.deb /home/core/setup-software/i2c-softwares/Scratch/ ;
+sudo rsync -avPhz /mnt/update-patch-r6/${patch}/tools-updates/scratch_1.4.0.6_dfsg1-5_all.deb /home/core/setup-software/i2c-softwares/Scratch/ ;
 
 #installing google chrome version 69 
 echo -e "\n${cyan}Installing Google Chrome Version 69 ${reset}";

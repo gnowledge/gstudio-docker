@@ -33,7 +33,7 @@ patch="update-patch-c0463c5-r6-20190718";
 
 #for copying the help_videos folder to /data/media
 echo -e "\n${cyan}Copying the help_videos folder to /data/media ${reset}";
-sudo rsync -avPhz /mnt/${patch}/data-updates/help_videos /home/core/data/media/ ;
+sudo rsync -avPhz /mnt/update-patch-r6/${patch}/data-updates/help_videos /home/core/data/media/ ;
 
 #for copying data-updates to /data folder
 echo -e "\n${cyan}copying the data-updates folder to /data folder ${reset}";
