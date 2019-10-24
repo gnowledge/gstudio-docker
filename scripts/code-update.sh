@@ -16,24 +16,21 @@ reset="\033[0m" ;
 
 #for filename
 
-patch=$(basename $(tar -tf /mnt/patch-*.tar.gz |  head -n 1));
-#filename=$(basename $(ls  /mnt/update_*.tar.gz |  head -n 1));
+#patch=$(basename $(tar -tf /mnt/patch-*.tar.gz |  head -n 1));
 #update_patch="${filename%.*.*}";
-#update_patch="update_patch-beb6af2-r2.1-20171229"
+#patch="patch-7a6c2ac-r5-20190221";
+#patch="patch-26eaf18-r5-20190320";
+patch="update-patch-c0463c5-r6-20190718";
 
 #code to run the script named git-offline-code-update.sh inside the container started
 
 echo -e "\n${cyan}copying updated patch from /mnt/${patch} to /home/docker/code/ in gstudio container ${reset}";
-#sudo docker cp /mnt/${update_patch} gstudio:/home/docker/code/;
-sudo rsync -avPhz /mnt/${patch} /home/core/code/ ;
+sudo rsync -avPhz /mnt/update-patch-r6/${patch} /home/core/code/ ;
 
 echo -e "\n${cyan}Updating offline patch ${reset}";
 docker exec -it gstudio /bin/sh -c "/bin/bash /home/docker/code/${patch}/code-updates/git-offline-update.sh";
 
-# echo -e "\n${cyan}Cleaning up qbank hardcoded file names - offline patch ${reset}";
-# docker exec -it gstudio /bin/sh -c "/usr/bin/python /home/docker/code/${update_patch}/code-updates/gstudio-docker/scripts/cleaning-up-qbank-hardcoded-file-names.py";
-
-#code to run the script named git-offline-code-update.sh inside the container ended
+#code to run the script named git-offline-code-update.sh inside the container started
 
 #code to copy user-csvs of sp99, sp100 and cc inside the container started
 
@@ -51,15 +48,6 @@ echo -e "\n${cyan} Changing the permissions of /home/core/user-csvs folder"
 sudo chown root:root /home/core/user-csvs ;
 sudo chmod +xr /home/core/user-csvs ;
 
-#echo -e "\n${cyan}copy updated patch from /mnt/${update_patch}/code-updates/backup-old-server-data.sh to /home/core/ ${reset}";
-#sudo cp /mnt/${update_patch}/code-updates/backup-old-server-data.sh /home/core/;
-
-#echo -e "\n${cyan}Restart gstudio container ${reset}";
-#sudo docker restart gstudio;
-
-#echo -e "\n${cyan}set timezone as IST (Asia/Kolkata) ${reset}";
-#sudo timedatectl set-timezone Asia/Kolkata
-
 #code to run the script named python-files-exec.sh inside the container started
 
 echo -e "\n${cyan}Executing the python files ${reset}";
@@ -73,4 +61,5 @@ docker exec -it gstudio /bin/sh -c "/bin/bash /home/docker/code/${patch}/code-up
 echo -e "\n${cyan}Copying the scripts for old server data backup and getting all user activity timestamp csvs to /home/core";
 sudo rsync -avPhz /home/core/code/scripts/backup-old-server-data.sh /home/core/ ;
 sudo rsync -avPhz /home/core/code/scripts/Execute-get_all_users_activity_timestamp_csvs.sh /home/core/ ;
-sudo rsync -avPhz /mnt/${patch}/code-updates/execute-ActivityTimestamp-process.sh /home/core/ ;
+sudo rsync -avPhz /mnt/update-patch-r6/${patch}/code-updates/execute-ActivityTimestamp-process.sh /home/core/ ;
+

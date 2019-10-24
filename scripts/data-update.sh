@@ -15,7 +15,8 @@ reset="\033[0m" ;
 #filename=$(basename $(ls  /mnt/update_*.tar.gz |  head -n 1));
 #update_patch="${filename%.*.*}";
 #update_patch="update_patch-beb6af2-r2.1-20171229"
-patch=$(basename $(tar -tf /mnt/patch-*.tar.gz |  head -n 1));
+#patch=$(basename $(tar -tf /mnt/patch-*.tar.gz |  head -n 1));
+patch="update-patch-c0463c5-r6-20190718";
 
 # echo -e "\n${cyan}copy updated patch from /mnt/home/core/${update_patch} to /home/docker/code/ in gstudio container ${reset}";
 # sudo docker cp /mnt/${update_patch} gstudio:/home/docker/code/;
@@ -32,7 +33,7 @@ patch=$(basename $(tar -tf /mnt/patch-*.tar.gz |  head -n 1));
 
 #for copying the help_videos folder to /data/media
 echo -e "\n${cyan}Copying the help_videos folder to /data/media ${reset}";
-sudo rsync -avPhz /mnt/${patch}/data-updates/help_videos /home/core/data/media/ ;
+sudo rsync -avPhz /mnt/update-patch-r6/${patch}/data-updates/help_videos /home/core/data/media/ ;
 
 #for copying data-updates to /data folder
 echo -e "\n${cyan}copying the data-updates folder to /data folder ${reset}";

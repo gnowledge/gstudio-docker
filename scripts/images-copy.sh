@@ -14,10 +14,11 @@ reset="\033[0m" ;
 
 # for filename 
 
-filename=$(basename $(ls -dr /home/docker/code/patch-*/ |  head -n 1));
-patch="${filename%.*.*}"; 
+#filename=$(basename $(ls -dr /home/docker/code/patch-*/ |  head -n 1));
+#patch="${filename%.*.*}"; 
 #patch="patch-7a6c2ac-r5-20190221";    #earlier patch
 #patch="patch-26eaf18-r5-20190320";    #latest patch
+patch="update-patch-c0463c5-r6-20190718";
 
 # Code to fix the image link started
 echo -e "\n${cyan}change the directory to /data/ ${reset}";

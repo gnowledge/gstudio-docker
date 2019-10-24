@@ -12,10 +12,11 @@ grey="\033[0;97m" ;
 white="\033[0;98m" ;
 reset="\033[0m" ;
 
-filename=$(basename $(ls -dr /home/docker/code/patch-*/ |  head -n 1));
-patch="${filename%.*.*}";
+#filename=$(basename $(ls -dr /home/docker/code/patch-*/ |  head -n 1));
+#patch="${filename%.*.*}";
 #patch="patch-7a6c2ac-r5-20190221";    #earlier patch
 #patch="patch-26eaf18-r5-20190320";    #latest patch
+patch="update-patch-c0463c5-r6-20190718";
 
 # git offline update Astroamer_Planet_Trek_Activity code - started
 git_commit_no_Astroamer_Planet_Trek_Activity="39f1cc7cb1cd567f69477b20830bf7f9b89be4d6";              # Commit on 01/10/2018
